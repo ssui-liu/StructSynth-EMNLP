@@ -19,3 +19,7 @@ Prompt-based methods avoid parameter updates: CuratedLLM (CLLM)~\cite{cllm2024} 
 GraDe~\cite{zhang-etal-2025-features} moves closer to structure-aware LLM generation by injecting a learned sparse dependency graph into the Transformer attention mechanism, but the graph serves as an attention mask rather than an explicit generation blueprint, and requires model fine-tuning.
 Unlike these methods, \textsf{StructSynth} first discovers an interpretable global dependency topology and then uses it as an executable blueprint for structure-preserving generation, without any model fine-tuning.
 
+\paragraph{LLM-Assisted Dependency Discovery.}
+LLMs have been applied to structure learning itself. Early work demonstrated that LLMs can accurately judge pairwise causal directions from variable semantics alone~\cite{kiciman2023causal}. To scale beyond pairwise queries, BFS-based strategies reframe structure discovery as a graph traversal task, substantially reducing the number of LLM calls~\cite{jiralerspong2024efficient, zanna2025fairness}. A complementary line integrates LLM judgments with classical constraint-based algorithms, using the LLM to validate or correct statistically proposed edges~\cite{ban2023causal}.
+However, these methods target causal graph identification as an end in itself and do not connect the discovered structure to a downstream data generation process.
+\textsf{StructSynth} bridges this gap: the dependency topology it discovers is not merely an analytical artifact but an executable generative contract that directly governs layer-wise synthesis.
