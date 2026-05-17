@@ -1,0 +1,127 @@
+\section{Methodology}
+
+The proposed \textsf{StructSynth} leverages a Large Language Model (LLM) to perform efficient dependency graph discovery and subsequent data generation. As depicted in Figure~\ref{fig:pipeline}, the methodology comprises two primary stages: a \textbf{structure learning phase} to discover the underlying dependency graph and a \textbf{graph-aware generation phase} that synthesizes new tabular data using the learned graph as a blueprint.\footnote{See Appendix~\ref{app:prompts} for full prompt templates with formatting details and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
+
+\subsection{Problem Definition}
+
+Consider a small tabular training dataset, denoted as $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\mathtt{train}}, \mathbf{A})$. $\mathbf{X}_{\mathtt{train}} = \{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ represents a set of $n$ instances (or rows), where the number of available samples is severely limited ($n \le 100$). The set $\mathbf{A} = \{A_1, \ldots, A_K\}$ defines the schema of the data through its $K$ attributes (or columns). Our primary objective is to employ an LLM-based generation function, $f_{\mathtt{LLM}}$, to produce a synthetic dataset, $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$, that is both realistic and diverse. The ultimate goal is to demonstrate that a downstream model trained on an augmented dataset, $\mathcal{D}_{\mathtt{aug}} = (\mathbf{X}_{\mathtt{train}} \cup \mathbf{X}_{\mathtt{synth}}, \mathbf{A})$, exhibits superior performance on a held-out test set, $\mathcal{D}_{\mathtt{test}}$, when compared to a model trained exclusively on the original, smaller dataset $\mathcal{D}_{\mathtt{train}}$.
+
+We adopt the DAG formulation for its functional role in defining a generative ordering; Appendix~\ref{sec:why_dag} provides a detailed justification.
+
+\subsection{Dependency Structure Discovery}
+
+The first step in \textsf{StructSynth} is to uncover the dependency structure present in the limited training data, represented as a DAG $G = (V, E)$. The node set $V \subseteq \mathbf{A}$ consists of selected attributes from the dataset schema $\mathbf{A}$, while the edges $E$ capture probabilistic dependencies among these attributes. The framework employs an iterative, breadth-first search (BFS) guided by an LLM to progressively construct the dependency graph. This design explicitly adapts to data-scarce settings by (a) leveraging the LLM's semantic prior as a structural regularizer, (b) using statistical association scores as weak supervision, and (c) decoupling structure discovery from generation to reduce per-stage sample complexity. The core steps are described below.
+
+\subsubsection{Graph Initialization}
+We initiate the graph construction by identifying source nodes attributes that are not influenced by any others in the dataset. A small subset of the training data, $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$, serves as in-context examples for the LLM, which is guided by a specifically designed prompt, $\pi_{\mathtt{source}}$. Formally, the initial set of source nodes, $V_{\mathtt{source}}$, is determined by the following operation:
+\begin{equation}
+    V_{\mathtt{source}} = f_{\mathtt{LLM}}(\pi_{\mathtt{source}} ( \mathcal{D}_{\mathtt{few\_shot}})) .
+\end{equation}
+Consequently, the initial graph is set to $G_0 = (V_{\mathtt{source}}, \emptyset)$. To manage the discovery process, a queue $Q$ for the Breadth-First Search (BFS) is initialized with these source nodes, i.e., $Q \leftarrow V_{\mathtt{source}}$, and a set for tracking explored attributes, $V_{\mathtt{visited}}$, is initialized as empty.
+
+\subsubsection{Expansion and Reasoned Link Generation}
+
+The framework expands the graph $G$ through an iterative, breadth-first process. In each iteration $t$, a node $A_i$ is dequeued from the processing queue $Q$ and added to the set of visited nodes, $V_{\mathtt{visited}}$. To inform the model's link generation with empirical data, we compute a vector of association scores, $\mathcal{S}(A_i) \in \mathbb{R}^{K-1}$, between $A_i$ and all other attributes in $\mathbf{A}$. These scores are calculated using dependency measures specific to the data types of each attribute pair: \textit{Pearson's R} for continuous-continuous pairs, \textit{Correlation Ratio} for categorical-continuous pairs, and \textit{Cramér's V} for categorical-categorical pairs~\cite{agresti2011categorical} (see Appendix~\ref{app:association_scores} for detailed formulas).
+
+Subsequently, the LLM is queried with a comprehensive prompt, $\pi_{\mathtt{generate}}$, which integrates the current graph state $G_t$, the node $A_i$, and the statistical scores $\mathcal{S}(A_i)$. The model's task is to propose a set of direct successors for $A_i$ and provide a textual rationale for each proposed relationship. The structured output of this query is a set of successor-rationale pairs, denoted as $P_i$:
+\begin{equation}
+    P_i = f_{\mathtt{LLM}}(\pi_{\mathtt{generate}}(A_i, G_t, \mathcal{S}(A_i), \mathcal{D}_{\mathtt{few\_shot}})).
+\end{equation}
+From this set, we define the proposed new edges, $E_{\mathtt{prop}, t}$, and the set of newly discovered nodes, $V_{\mathtt{new}, t}$, which are not already in the graph's vertex set $V_t$:
+\begin{equation}
+    \begin{aligned}
+        E_{\mathtt{prop}, t} &= \{ (A_i \to A_j, r_{ij}) \mid (A_j, r_{ij}) \in P_i \}, \\
+        V_{\mathtt{new}, t} &= \{ A_j \mid (A_j, \_) \in P_i \land A_j \notin V_t \}.
+    \end{aligned}
+\end{equation}
+These new nodes are then added to the queue $Q$ for subsequent exploration, ensuring the continued expansion of the graph.%  boundary.
+
+\subsubsection{LLM-based Cycle Resolution}
+
+To ensure that the graph remains a DAG throughout, the framework resolves any cycles that may result from integrating proposed edges $E_{\mathtt{prop}, t}$ into the current graph $G_t = (V_t, E_t)$. Specifically, we construct the candidate edge set $E_{\mathtt{candidate}} = E_t \cup E_{\mathtt{prop}, t}$ and apply a cycle detection algorithm to identify all elementary cycles, $\Psi$. 
+
+If cycles are detected ($\Psi \neq \emptyset$), the framework initiates a reasoned resolution process. For each cycle $\psi \in \Psi$, where $\psi$ represents the specific subset of edges from $E_{\mathtt{candidate}}$ that forms the circular path (e.g., $\{ (A \to B, r_{ab}), (B \to C, r_{bc}), (C \to A, r_{ca}) \}$), the LLM is queried with the prompt $\pi_{\mathtt{resolve}}$. The prompt's input, $\psi$, provides the model with the complete logical contradiction, including the rationales for both newly proposed and previously established edges. The model's task is to analyze this conflict and identify the single edge whose removal is most justified. This resolution logic is applied to every detected cycle. The complete set of pruned edges, $E_{\mathtt{pruned}}$, is thus defined by collecting the output for each cycle in $\Psi$. The state for the next iteration, $G_{t+1}$, is then formally defined by removing these pruned edges from the candidate set:
+\begin{equation}
+    \begin{aligned}
+        E_{\mathtt{pruned}} &= \{ f_{\mathtt{LLM}}(\pi_{\mathtt{resolve}}(\psi)) \mid \psi \in \Psi \} \\
+        G_{t+1} &= (V_t \cup V_{\mathtt{new}, t}, (E_t \cup E_{\mathtt{prop}, t}) \setminus E_{\mathtt{pruned}}).
+    \end{aligned}
+\end{equation}
+This general mechanism ensures the graph remains acyclic and empowers the model to revise its structure based on new, more confident evidence.
+
+
+\subsubsection{Continuation of BFS}
+
+The process continues iteratively. Following the cycle resolution step, the newly discovered nodes, $V_{\mathtt{new}, t}$, which are now part of the updated graph $G_{t+1}$, are added to the processing queue $Q$. The framework then returns to the \textit{Expansion and Reasoned Link Generation} step to process the next node from the queue. This iterative expansion-resolution cycle continues until $Q$ is empty, at which point the complete, acyclic dependency graph $G$ is returned as the final output.
+
+\begin{table*}[ht]
+
+    \small
+    \centering
+    \setlength{\tabcolsep}{1mm}
+    \caption{Comparison of Models on Downstream Model Performance (\%). (C) and (R) denote classification and regression tasks, respectively. $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
+    \begin{tabular}{ll|llllll|c|c}
+    \toprule
+    
+    \textbf{Type} & \textbf{Method} & 
+    \multicolumn{1}{c}{\textbf{Adult (C)}} & 
+    \multicolumn{1}{c}{\textbf{Anxiety (C)$^\dag$}} & 
+    \multicolumn{1}{c}{\textbf{Compas (C)}} & 
+    \multicolumn{1}{c}{\textbf{Salary (R)$^\dag$}} & 
+    \multicolumn{1}{c}{\textbf{Obesity (R)}} & 
+    \multicolumn{1}{c}{\textbf{Churn (C)}} & 
+    \textbf{Average} & \textbf{Avg. Rank} \\
+    \midrule
+    \multirow{1}{*}{Real} & $\mathcal{D}_\mathtt{train}$ & $82.51_{\pm 1.93}$ & $85.49_{\pm 1.60}$ & $64.84_{\pm 2.51}$ & $49.71_{\pm 7.02}$ & $59.83_{\pm 6.40}$ & $86.86_{\pm 3.78}$ & $71.54$ & - \\
+    
+    \midrule
+    \multirow{5}{*}{DGMs} & TVAE & $81.21_{\pm 1.54}$ & $79.63_{\pm 2.65}$ & $64.39_{\pm 2.06}$ & $46.18_{\pm 5.91}$ & $60.92_{\pm 2.61}$ & $87.42_{\pm 3.80}$ & $69.96$ & $6.50$ \\
+    & DDPM & $81.72_{\pm 1.79}$ & $82.94_{\pm 3.24}$ & $66.01_{\pm 2.50}$ & $22.30_{\pm 15.70}$ & $43.20_{\pm 7.98}$ & $85.91_{\pm 2.05}$ & $63.68$ & $8.17$ \\
+    & CTGAN & $81.14_{\pm 1.81}$ & $76.06_{\pm 1.47}$ & $65.17_{\pm 2.61}$ & $46.17_{\pm 5.25}$ & $54.29_{\pm 5.90}$ & $86.50_{\pm 4.17}$ & $68.22$ & $7.83$ \\
+    & NFlow & $75.42_{\pm 4.58}$ & $74.83_{\pm 2.94}$ & $63.68_{\pm 4.22}$ & $25.55_{\pm 6.16}$ & $46.80_{\pm 4.17}$ & $84.99_{\pm 2.73}$ & $61.88$ & $11.00$ \\
+    & TabSyn & $83.88_{\pm 1.56}$ & \underline{$85.68_{\pm 2.40}$} & $67.77_{\pm 6.98}$ & $47.17_{\pm 9.58}$ & $43.50_{\pm 9.91}$ & $89.86_{\pm 1.53}$ & $69.64$ & $3.83$ \\
+    \midrule
+    \multirow{3}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $78.92_{\pm 3.04}$ & $80.92_{\pm 1.61}$ & $63.73_{\pm 3.85}$ & $43.18_{\pm 10.65}$ & $55.84_{\pm 7.77}$ & $85.27_{\pm 3.98}$ & $67.98$ & $8.50$ \\
+    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $46.33_{\pm 7.29}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $6.00$ \\
+    & DECAF & $77.64_{\pm 3.91}$ & $79.90_{\pm 2.30}$ & $63.90_{\pm 3.69}$ & $43.58_{\pm 6.25}$ & $52.88_{\pm 6.44}$ & $83.94_{\pm 2.97}$ & $66.97$ & $9.17$ \\
+    \midrule
+    \multirow{3}{*}{LLMs} & GReaT & $82.55_{\pm 2.20}$ & $83.81_{\pm 2.55}$ & $64.02_{\pm 2.72}$ & $51.43_{\pm 3.31}$ & $47.03_{\pm 9.16}$ & $86.67_{\pm 3.20}$ & $69.25$ & $6.00$ \\
+    & CLLM & \underline{$83.95_{\pm 2.09}$} & $85.17_{\pm 0.94}$ & \underline{$66.24_{\pm 1.51}$} & \underline{$54.53_{\pm 0.20}$} & \underline{$60.43_{\pm 7.19}$} & \underline{$89.81_{\pm 2.78}$} & \underline{$73.36$} & \underline{$2.67$} \\
+    & GraDe & $83.72_{\pm 1.44}$ & $79.74_{\pm 2.01}$ & $66.15_{\pm 4.90}$ & $35.03_{\pm 8.08}$ & $22.92_{\pm 7.01}$ & $88.81_{\pm 2.51}$ & $62.73$ & $7.33$ \\
+    \midrule
+    \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{85.55_{\pm 1.08}}$ & $\boldsymbol{86.45_{\pm 0.57}}$ & $\boldsymbol{69.40_{\pm 0.25}}$ & $\boldsymbol{55.98_{\pm 2.96}}$ & $\boldsymbol{62.27_{\pm 5.40}}$ & $\boldsymbol{90.39_{\pm 1.96}}$ & $\boldsymbol{75.01}$ & $\boldsymbol{1.00}$ \\
+    
+    \bottomrule
+    \end{tabular}
+    \label{tab:results_comparison_performance}
+\end{table*}
+
+\subsection{Structure-Guided Synthesis}
+\label{sec:synth}
+
+Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthetic tabular data generation. Constructing each synthetic data point $\tilde{\mathbf{x}}_j$ is performed in two sequential phases aligned with the underlying data structure.
+
+\subsubsection{Generating Graph-Based Values}
+
+This phase generates values for attributes $V$ defined by the learned dependency graph. Initially, the nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the corresponding dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ represents the parent nodes of attributes in $L_i$. Additionally, we select the relevant slice of the few-shot dataset as $\mathcal{D}_{\mathtt{few\_shot}}^i = \Pi_{L_i \cup \Gamma^{-}(L_i)}(\mathcal{D}_{\mathtt{few\_shot}})
+$, where $\Pi$ denotes the projection operator onto specified columns.
+
+Values for attributes in layer $L_i$, denoted as $\tilde{\mathbf{x}}_{j, L_i}$, are generated conditionally based on previously generated values for preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
+\begin{equation}
+\tilde{\mathbf{x}}_{j, L_i} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen}}\left( \tilde{\mathbf{x}}_{j, <i},\ G_i,\ L_i,\ \mathcal{D}_{\mathtt{few\_shot}}^i\right)\right).
+\end{equation}
+Iterating through all layers yields a partial synthetic data point $\tilde{\mathbf{x}}_{j, V}$ comprising values for all graph-dependent attributes.
+
+\subsubsection{Generating Independent Values}
+
+Subsequently, values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ are generated collectively in a single step, conditioned upon the complete set of previously generated graph-based values $\tilde{\mathbf{x}}_{j, V}$:
+\begin{equation}
+\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen\_iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right),
+\end{equation}
+where $\mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}} = \Pi_{A_{\mathtt{iso}}}(\mathcal{D}_{\mathtt{few\_shot}}).$
+
+\subsubsection{Final Assembly}
+
+A complete synthetic data point $\tilde{\mathbf{x}}_j$ is formed by concatenating the graph-dependent and independent attribute values as $\tilde{\mathbf{x}}_j = \mathtt{concat}(\tilde{\mathbf{x}}_{j, V}, \tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}})$. Repeating this procedure $s$ times yields the synthetic dataset $\mathbf{X}_{\mathtt{synth}} = \{\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_s\}$, resulting in the final synthetic dataset $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$.
+
+%% Experiments section - migrated from AAAI source

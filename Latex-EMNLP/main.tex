@@ -1,0 +1,144 @@
+%%
+%% StructSynth paper - EMNLP/*ACL review format
+%% Migrated from the journal-format source
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+\documentclass[11pt]{article}
+
+\usepackage[review]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+
+%% Algorithm packages
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+%% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%% Table and figure packages
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{subcaption}
+
+%% Color and styling packages
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pifont}
+
+%% tcolorbox for prompt boxes in appendix
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+%% Enumitem for customizing lists
+\usepackage{enumitem}
+
+%% siunitx for table formatting
+\usepackage{siunitx}
+\sisetup{
+  detect-weight = true,
+  detect-family = true,
+  detect-shape  = true,
+  detect-mode   = true,
+  table-number-alignment = right,
+}
+
+%% Graphics
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+\hyphenpenalty = 5000
+\tolerance = 2000
+
+\colorlet{SubtotalGray}{black!8}
+
+%% Define custom colors
+\definecolor{RedOrange}{RGB}{255,69,0}
+\definecolor{BlueGreen}{RGB}{0,128,128}
+\definecolor{mygray}{gray}{0.4}
+\definecolor{darksalmon}{rgb}{0.91, 0.59, 0.48}
+\definecolor{green(pigment)}{rgb}{0.0, 0.65, 0.31}
+
+%% Custom commands for checkmarks and crosses
+\newcommand{\cmark}{\color{mygray}\ding{51}}
+\newcommand{\xmark}{\color{mygray}\ding{55}}
+\newcommand{\XSolidBrush}{\ding{55}}
+\newcommand{\Checkmark}{\ding{51}}
+
+%% Custom commands for performance indicators
+\newcommand{\blue}[1]{$_{\color{BlueGreen}\downarrow #1}$}
+\newcommand{\red}[1]{$_{\color{RedOrange}\uparrow #1}$}
+
+\title{StructSynth: Dependency Structure Discovery for High-Fidelity Tabular Data Synthesis in Low-Data Regimes}
+
+\author{
+  Siyi Liu \\
+  The Hong Kong University of Science and Technology (Guangzhou) \\
+  \texttt{ssui.liu1022@gmail.com} \\\And
+  Yujia Zheng \\
+  Carnegie Mellon University \\
+  \texttt{yujiazh@cmu.edu} \\\And
+  Yongqi Zhang\thanks{Corresponding author.} \\
+  The Hong Kong University of Science and Technology (Guangzhou) \\
+  \texttt{yzhangee@connect.ust.hk}
+}
+
+%% ============================================================
+%% Document begins
+%% ============================================================
+\begin{document}
+
+\maketitle
+
+%% Abstract
+\input{sections/abstract}
+
+%% ============================================================
+%% Paper body
+%% ============================================================
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/conclusion}
+\input{sections/limitations}
+
+%% ============================================================
+%% Acknowledgments
+%% ============================================================
+% \section*{Acknowledgments}
+% TODO: Add acknowledgments in the camera-ready version.
+
+%% ============================================================
+%% References
+%% ============================================================
+%% acl.sty applies acl_natbib automatically.
+\bibliography{references}
+
+%% ============================================================
+%% Appendix
+%% ============================================================
+\newpage
+\appendix
+\input{sections/appendix}
+
+\end{document}

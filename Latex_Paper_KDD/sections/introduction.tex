@@ -1,0 +1,55 @@
+\section{Introduction}
+
+% Fig.1: Teaser figure showing method landscape and StructSynth's position
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig/intro2.png}
+% \caption{Overview of tabular data synthesis paradigms. \textbf{Top}: Few-shot data encodes an unknown underlying dependency structure. \textbf{Middle}: Existing approaches either learn dependencies \textit{implicitly} (deep generative models), assume \textit{pre-learned} structure (structure-aware methods), or \textit{induce} dependencies from linearized text (LLMs). \textbf{Bottom}: \textsf{StructSynth} explicitly discovers dependency structure via LLM-guided search with statistical cues, then synthesizes data layer-by-layer following topological order.}
+\caption{\textbf{\textsf{StructSynth} vs. Existing Paradigms: Decoupling Structure Discovery from Data Generation.} \textbf{Top}: Few-shot data encodes an unknown underlying dependency structure. \textbf{Middle}: Existing approaches either learn dependencies \textit{implicitly} (deep generative models), assume \textit{pre-learned} structure (structure-aware methods), or \textit{induce} dependencies from linearized text (LLMs). \textbf{Bottom}: \textsf{StructSynth} explicitly discovers dependency structure via LLM-guided search with statistical cues, then synthesizes data layer-by-layer following topological order.}
+
+
+\label{fig:teaser}
+\end{figure}
+
+% P1: Problem Definition through Data Mining Lens
+% Goal: Reframe tabular data as a carrier of dependency structures and statistical patterns
+% Tabular data is a cornerstone format across healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued not merely for its ubiquity but for the \textbf{interpretable dependency relationships and statistical patterns} it encodes. 
+Most real-world structured information can be naturally represented as tables, making tabular data a foundational abstraction for modern data analytics and machine learning~\cite{jonker2025structured_unstructured_ibm}. This abstraction underpins high-stakes applications across healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued not merely for its ubiquity but for the interpretable dependency relationships and statistical patterns it encodes.
+These dependencies---the probabilistic relationships among features---are what enable Machine Learning (ML) models to learn meaningful decision boundaries and make reliable predictions.
+However, in many critical domains such as rare medical conditions, emerging financial sectors, or underrepresented populations~\cite{fonseca2023tabular}, data scarcity poses a fundamental challenge: when samples are limited, the reliable discovery of these underlying patterns becomes unstable.
+This instability is further compounded by common data characteristics including class imbalance, missing values, mixed categorical-continuous types, and long-tail category distributions.
+The resulting paradox---the widespread availability of the tabular format alongside the critical lack of sufficient samples in key areas---undermines the training, validation, and deployment of robust ML solutions~\cite{chai2022data, borisov2022deep}.
+Synthetic data generation offers a potential remedy, but its value lies not in merely augmenting volume; rather, effective synthesis must \textbf{preserve the dependency relationship} inherent in the original data, lest the augmentation introduce noise rather than signal.
+
+% P2: Method Landscape and Gap Analysis (anchored by Fig.1)
+% Goal: Use Fig.1 as a method taxonomy showing three paradigms and their structural bottlenecks
+To address data scarcity, conventional generative approaches have been developed with distinct strategies for handling feature dependencies (see Figure~\ref{fig:teaser}). \textbf{Deep Generative Models (DGMs)}, including Variational Autoencoders~\cite{patki2016synthetic}, Generative Adversarial Networks~\cite{xu2019modeling}, and Diffusion Models~\cite{kotelnikov2023tabddpm}, learn complex feature dependencies \textit{implicitly} by fitting the data distribution. However, this implicit dependency learning process is severely compromised when training data is sparse, causing the learned patterns to distort and generating low-fidelity synthetic samples. \textbf{Structure-Aware Methods} take a different approach by explicitly modeling the data's underlying relational structure as an inductive bias. This principle underlies foundational methods like Bayesian Networks~\cite{ankan2015pgmpy, zhang2017privbayes} and has been integrated into advanced deep learning frameworks such as DECAF~\cite{van2021decaf} and GOGGLE~\cite{liu2023goggle}. However, the robustness of these methods hinges on the accurate discovery of the dependency graph. In data-scarce scenarios, the estimation of this graph becomes unstable, thereby compromising the integrity of the generation process. More recently, \textbf{Large Language Models (LLMs)} have emerged as a powerful paradigm for few-shot generation, leveraging vast prior knowledge to seemingly bypass data scarcity~\cite{cllm2024}. However, LLMs process tabular data through linearized textual representations, which means they can only \textit{induce} dependencies sequentially from the input sequence rather than capturing explicit graphical relationships~\cite{liu2024rethinking}. This structure-blind approach often produces synthetic data that fails to respect the true underlying dependency structure. In conclusion, existing paradigms either fit dependencies \textit{implicitly} (data-hungry), assume reliable graph discovery (which collapses in low-data regimes), or \textit{induce} dependencies from unstructured text (structure-blind).
+% As summarized in Figure~\ref{fig:teaser},
+
+
+
+
+% P3: Core Insight and Research Questions
+% Goal: Frame the contribution as a discover-then-synthesize data mining pipeline
+These observations motivate a \textbf{discover-then-synthesize} paradigm that decomposes tabular data synthesis into two distinct stages: (1)~\textit{dependency structure discovery}---mining stable relational patterns from limited samples while avoiding spurious correlations, and (2)~\textit{structure-conditioned generation}---synthesizing data that explicitly respects the discovered structure rather than merely inducing it from sequential input.
+This framing leads to two fundamental research questions: 
+\textit{(RQ1) How can we reliably discover the underlying dependency structure when data is limited?}
+% reducing spurious dependencies and improving discovery stability?}
+\textit{(RQ2) How can we ensure that the generation process explicitly follows this discovered structure to achieve high structural fidelity?}
+Addressing these questions poses significant challenges: limited samples destabilize statistical association tests, making discovered dependencies prone to spurious correlations; and ensuring structural fidelity during generation requires more than sequential conditioning.
+% , rather than implicitly inducing dependencies from linearized representations?}
+
+% P4: Method Overview and Contributions
+% Goal: Crisp method summary tied to Fig.1, then contributions with high information density
+To address these challenges, we propose \textsf{StructSynth}, a decoupled two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis, as illustrated in the lower panel of Figure~\ref{fig:teaser}.
+In the \textbf{Dependency Structure Discovery} stage, we propose an LLM-guided breadth-first search that integrates statistical association cues 
+% (Pearson's R, Cramér's V, and Correlation Ratio) 
+with the model's prior knowledge to progressively construct a Directed Acyclic Graph (DAG)\footnote{Here, we use ``DAG'' to denote a directed dependency graph: edges capture statistical/probabilistic dependencies inferred from limited observations and are used as a generative blueprint, not as a claim of ground-truth causality.}. A cycle resolution mechanism with explicit rationales ensures the graph remains acyclic while preserving the most plausible dependencies.
+In the \textbf{Structure-Guided Synthesis} stage, we leverage this DAG as a structural blueprint: nodes are partitioned into topological layers, and data synthesis proceeds autoregressively with each feature conditioned explicitly on its parent nodes. This design guarantees, \textit{by construction}, that the synthetic data strictly adheres to the discovered dependency structure.
+Our contributions are summarized as follows:
+\begin{itemize}[leftmargin=*]
+    \item We propose a \textbf{discover-then-synthesize} framework that decouples dependency structure mining from data generation, enabling reliable pattern discovery under severe data scarcity.
+    \item We introduce an LLM-guided structure discovery mechanism that combines statistical cues with prior knowledge and employs reasoned cycle resolution, paired with a \textbf{structure-conditioned generation} stage that enforces dependencies by design through topological layering and parent-conditioned synthesis.
+    \item Extensive experiments demonstrate that \textsf{StructSynth} achieves state-of-the-art downstream utility (average rank 1.00 across six datasets) while providing the best \textbf{privacy-fidelity trade-off}, proving its effectiveness in challenging low-data regimes.
+\end{itemize}
+

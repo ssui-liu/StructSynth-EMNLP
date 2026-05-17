@@ -1,0 +1,15 @@
+\section{Limitations and Future Directions}
+
+While StructSynth demonstrates strong empirical performance, we acknowledge several limitations that define the boundaries of the current work and point toward promising future directions.
+
+\paragraph{Dependence on LLM Prior Knowledge.}
+StructSynth's structure discovery stage relies on the LLM's semantic understanding of feature names and inter-feature relationships. When feature names are opaque (e.g., anonymized identifiers such as ``Feature\_1'', ``Feature\_2'') or the dataset domain falls outside the LLM's training distribution, the quality of the semantic prior may degrade. Our experiments on post-knowledge-cutoff datasets (Anxiety and Salary) partially address this concern by showing robust performance even without direct prior exposure, yet extremely niche or proprietary domains remain untested.
+
+\paragraph{Scalability with Feature Dimensionality.}
+Our evaluation covers datasets with $K \in [8, 19]$ features, where the BFS-based discovery operates efficiently at $O(K)$ LLM calls. However, for high-dimensional tabular data ($K > 50$), two challenges arise: (1) the number of BFS steps increases linearly, compounding API costs; and (2) the LLM's context window may not accommodate the growing graph state and association score vectors. Future work could explore hierarchical or block-wise discovery strategies that partition features into semantic groups before performing fine-grained structure learning within each group.
+
+\paragraph{DAG Structural Assumption.}
+The DAG formulation, while functionally necessary for autoregressive generation (Section~\ref{sec:why_dag}), inherently cannot represent bidirectional or cyclic dependencies. In real-world data, some feature relationships are genuinely symmetric (e.g., Height $\leftrightarrow$ Weight). Our cycle resolution mechanism handles these cases by selecting one direction, but this introduces an asymmetry that may not reflect the true underlying relationship. Exploring alternative structural representations, such as partially directed acyclic graphs (PDAGs) or chain graphs, could provide more expressive modeling while preserving the ability to define a generation order.
+
+\paragraph{API Cost and Reproducibility.}
+StructSynth currently relies on commercial LLM APIs, which introduces both cost considerations and reproducibility concerns due to potential model version updates. Our token usage analysis (Table~\ref{tab:token_usage}) shows that the overhead is modest (+31\% over CLLM) and input-dominant, but large-scale deployment would benefit from distilling the structure discovery and generation capabilities into locally hosted open-source models. Preliminary results with open-source LLMs (Figure~\ref{fig:llm_compare}) suggest that StructSynth's advantages generalize across model families, making such distillation a viable path forward.

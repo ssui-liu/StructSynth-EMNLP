@@ -1,0 +1,43 @@
+\section{Discussion}
+
+In this section, we discuss the broader implications of our results, analyze key design decisions, and contextualize StructSynth within the landscape of structure-aware generative methods.
+
+\subsection{Structure-Blind vs.\ Structure-Aware Generation}
+\label{sec:structure_discussion}
+
+A central question raised by our work is whether explicit structural guidance provides a \emph{qualitative}---rather than merely quantitative---advantage over structure-blind LLM generation. To address this, we compare StructSynth against its closest structure-blind counterpart, CLLM, which uses the same LLM with identical hyperparameters but generates data without any structural blueprint.
+
+Our ablation study (Table~\ref{tab:ablation_study}) provides direct evidence for three distinct dimensions of improvement. First, regarding \textbf{structural modeling}: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence. In contrast, StructSynth encodes dependencies as an explicit DAG, ensuring that relationships are \emph{discovered} rather than incidentally induced. Second, regarding \textbf{generation strategy}: CLLM generates all features in a single pass without constraints, whereas StructSynth enforces a topological ordering that guarantees each feature is conditioned on its true parent nodes. Removing this ordering alone (\textit{No Topological Order} variant) degrades AUC by 1.1 points, while removing the graph entirely (\textit{No Structure} variant, equivalent to CLLM) causes a 1.6-point drop. Third, regarding \textbf{regularization}: the DAG serves as a structural regularizer that constrains the generation space, preventing the LLM from overfitting to spurious patterns in the few available training samples. This regularization effect is evidenced by StructSynth's superior privacy preservation (avg.\ rank 1.33 vs.\ CLLM's 3.33), indicating reduced memorization of training records.
+
+These results demonstrate that the advantage of StructSynth is \emph{not} merely the result of adding peripheral components to an LLM pipeline, but stems from a fundamental shift in how dependencies are modeled and enforced during generation.
+
+
+\subsection{Understanding the Fidelity-Privacy Trade-off}
+\label{sec:fidelity_discussion}
+
+A nuanced finding in our evaluation is that StructSynth does not achieve the highest Statistical Fidelity score (avg.\ rank 7.08), despite its strong downstream utility (avg.\ rank 1.00) and privacy preservation (avg.\ rank 1.33). We argue that this apparent discrepancy is both expected and desirable, reflecting the inherent tension between fidelity and privacy.
+
+To understand this trade-off, consider GReaT, which achieves the best Statistical Fidelity (avg.\ rank 3.33). However, its Privacy Risk score of 90.15\% reveals severe memorization---the model essentially reproduces training records rather than generating novel samples. This high fidelity is therefore an artifact of overfitting rather than genuine distributional learning. At the other extreme, the Bayesian Sampler in our ablation achieves the best raw fidelity score (48.86) but the lowest AUC (81.17), conclusively demonstrating that \textbf{high pairwise fidelity does not guarantee downstream utility}.
+
+This discrepancy can be further understood by examining what Statistical Fidelity actually measures. The metric quantifies the preservation of \emph{pairwise} correlations across all feature pairs. In contrast, StructSynth's DAG encodes \emph{conditional} dependencies---the probabilistic relationships between parent and child nodes. These conditional dependencies are what drive downstream model performance, as they capture the generative mechanisms underlying the data. StructSynth optimizes for preserving these conditional structures rather than pairwise statistics, which explains its superior utility despite moderate pairwise fidelity scores.
+
+In summary, StructSynth's structural blueprint acts as a \emph{principled regularizer}: it constrains the generation process to follow discovered conditional dependencies, which simultaneously prevents memorization (ensuring privacy) and preserves the dependency structure that matters most for downstream tasks (ensuring utility), even at the cost of slightly lower pairwise correlation matching.
+
+
+\subsection{When Does Structural Guidance Help Most?}
+\label{sec:when_helps}
+
+Our experiments on varying training sample sizes (Figure~\ref{fig:influence_n}) reveal that StructSynth's advantage is most pronounced in the low-data regime ($n \leq 50$), where it maintains high AUC while baselines deteriorate significantly. As $n$ increases toward 200, the performance gap narrows, though StructSynth remains competitive.
+
+This pattern has an intuitive explanation. When data is scarce, statistical methods for structure discovery (e.g., PC algorithm, NoTears) suffer from unstable association estimates, leading to unreliable graphs. In this regime, StructSynth's LLM-guided discovery provides a powerful complement: the model's semantic prior knowledge acts as a \emph{structural regularizer}, stabilizing the discovery process by filtering out statistically spurious correlations that would mislead purely data-driven approaches. As more data becomes available, statistical methods become increasingly reliable on their own, diminishing the relative advantage of LLM-guided reasoning.
+
+This analysis also reveals StructSynth's natural boundary conditions. The method is best suited for scenarios where: (1) the number of training samples is severely limited ($n \leq 100$); (2) features have semantically meaningful names and relationships that an LLM can reason about; and (3) the underlying dependency structure is sparse enough to be well-represented by a DAG. In contrast, for purely numerical datasets with opaque feature names (e.g., anonymized sensor readings), the LLM's semantic prior provides less value, and the framework may offer diminished advantages over purely statistical approaches.
+
+
+\subsection{Relationship to Causal Inference}
+
+It is important to clearly distinguish StructSynth's dependency graphs from causal graphs in the traditional sense. As established in Section~\ref{sec:why_dag}, our DAG serves as a \emph{generative blueprint}---its edges encode statistical and probabilistic dependencies used to organize the synthesis process, not claims of ground-truth causality.
+
+This distinction separates StructSynth from classical causal discovery methods such as the PC algorithm~\cite{spirtes2000causation}, FCI~\cite{spirtes2000causation}, or GES~\cite{chickering2002optimal}, which aim to identify the true causal data-generating mechanism under specific assumptions (e.g., faithfulness, sufficiency). Our objective is fundamentally different: we seek a dependency structure that enables \emph{effective conditional generation}, not one that supports causal interventions or counterfactual reasoning.
+
+Nevertheless, our SHD evaluations on benchmark DAGs (Figure~\ref{fig:shd}) demonstrate that the structures discovered by StructSynth often closely approximate the ground-truth causal graphs. This is not a contradiction: when the true data-generating process follows a DAG, a well-discovered dependency structure will naturally align with the causal structure, even though causal identification is not our explicit goal. This alignment is a desirable side effect that contributes to the high fidelity of our generated data.

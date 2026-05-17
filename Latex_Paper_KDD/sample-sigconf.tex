@@ -1,0 +1,198 @@
+%%
+%% StructSynth paper - ACM KDD format
+%% Migrated from AAAI/arXiv format
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+% \documentclass[sigconf]{acmart}
+\documentclass[sigconf,anonymous,review]{acmart}
+%% Additional packages for algorithms
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+%% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%% Table and figure packages
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{subcaption}
+
+%% Color and styling packages
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pifont}
+
+%% tcolorbox for prompt boxes in appendix
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+%% Enumitem for customizing lists
+\usepackage{enumitem}
+
+\usepackage{booktabs,multirow,siunitx}
+\sisetup{
+  detect-weight = true,
+  detect-family = true,
+  detect-shape  = true,
+  detect-mode   = true,
+  table-number-alignment = right,
+}
+
+\hyphenpenalty = 5000 
+\tolerance = 2000
+
+\colorlet{SubtotalGray}{black!8}
+
+%% Define custom colors
+\definecolor{RedOrange}{RGB}{255,69,0}
+\definecolor{BlueGreen}{RGB}{0,128,128}
+\definecolor{mygray}{gray}{0.4}
+\definecolor{darksalmon}{rgb}{0.91, 0.59, 0.48}
+\definecolor{green(pigment)}{rgb}{0.0, 0.65, 0.31}
+
+%% Custom commands for checkmarks and crosses
+\newcommand{\cmark}{\color{mygray}\ding{51}}
+\newcommand{\xmark}{\color{mygray}\ding{55}}
+\newcommand{\XSolidBrush}{\ding{55}}
+\newcommand{\Checkmark}{\ding{51}}
+
+%% Custom commands for performance indicators
+\newcommand{\blue}[1]{$_{\color{BlueGreen}\downarrow #1}$}
+\newcommand{\red}[1]{$_{\color{RedOrange}\uparrow #1}$}
+
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+%% Rights management information - placeholder values
+% \setcopyright{acmlicensed}
+% \copyrightyear{2025}
+% \acmYear{2025}
+% \acmDOI{XXXXXXX.XXXXXXX}
+% \acmConference[KDD '25]{Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining}{August 3--7, 2025}{Toronto, ON, Canada}
+% \acmISBN{978-1-4503-XXXX-X/2025/08}
+
+%%
+%% end of the preamble, start of the body of the document source.
+
+% 1. 去掉引文格式 (ACM Reference Format)
+\settopmatter{printacmref=false} 
+
+% 2. 去掉版权信息 (Permission Block)
+\renewcommand\footnotetextcopyrightpermission[1]{} 
+
+% 3. 去掉页眉中的 DOI 等信息 (针对部分版本)
+\makeatletter
+\renewcommand\@formatdoi[1]{}
+\makeatother
+
+\begin{document}
+
+%%
+%% Paper title
+% Title: Emphasizes dependency structure discovery rather than LLM implementation
+\title{StructSynth: Dependency Structure Discovery for High-Fidelity Tabular Data Synthesis in Low-Data Regimes}
+
+%%
+%% Author definitions in ACM format
+\author{Siyi Liu}
+\email{ssui.liu1022@gmail.com}
+\affiliation{%
+  \institution{The Hong Kong University of Science and Technology (Guangzhou)}
+  \city{Guangzhou}
+  \country{China}
+}
+
+\author{Yujia Zheng}
+\email{yujiazh@cmu.edu}
+\affiliation{%
+  \institution{Carnegie Mellon University}
+  \city{Pittsburgh}
+  \state{Pennsylvania}
+  \country{USA}
+}
+
+\author{Yongqi Zhang}
+\authornote{Corresponding Author.}
+\email{yzhangee@connect.ust.hk}
+\affiliation{%
+  \institution{The Hong Kong University of Science and Technology (Guangzhou)}
+  \city{Guangzhou}
+  \country{China}
+}
+
+%%
+%% Short author list for page headers
+\renewcommand{\shortauthors}{Liu et al.}
+
+%%
+%% Abstract
+\begin{abstract}
+The application of machine learning on tabular data in specialized domains is severely limited by data scarcity. Tabular data derives its value from the dependency relationships among features, yet reliably discovering these patterns becomes unstable when samples are scarce. Existing generative approaches either learn dependencies implicitly (failing in low-data regimes), assume pre-learned dependency graphs (which collapse under data scarcity), or induce dependencies from unstructured text (ignoring explicit structure). To address these limitations, we introduce \textsf{StructSynth}, a \textit{discover-then-synthesize} framework that decouples dependency structure mining from data generation. In the first stage, \textsf{StructSynth} performs explicit dependency structure discovery, combining LLM-based reasoning with statistical association cues to construct a Directed Acyclic Graph (DAG) from limited samples. In the second stage, this learned structure serves as a blueprint for structure-conditioned generation, where data synthesis proceeds autoregressively following topological order, ensuring each feature is conditioned on its parent nodes. This design guarantees, by construction, that synthetic data respects the discovered dependencies. Extensive experiments demonstrate that \textsf{StructSynth} achieves state-of-the-art downstream utility while providing the best privacy-fidelity trade-off, proving especially effective in challenging low-data scenarios.
+\end{abstract}
+
+%%
+%% CCS Concepts for machine learning and data synthesis
+% \begin{CCSXML}
+% <ccs2012>
+%  <concept>
+%   <concept_id>10010147.10010257.10010293.10010294</concept_id>
+%   <concept_desc>Computing methodologies~Neural networks</concept_desc>
+%   <concept_significance>500</concept_significance>
+%  </concept>
+%  <concept>
+%   <concept_id>10010147.10010178.10010187</concept_id>
+%   <concept_desc>Computing methodologies~Causal reasoning and diagnostics</concept_desc>
+%   <concept_significance>300</concept_significance>
+%  </concept>
+%  <concept>
+%   <concept_id>10002951.10003317.10003347.10003350</concept_id>
+%   <concept_desc>Information systems~Data mining</concept_desc>
+%   <concept_significance>300</concept_significance>
+%  </concept>
+% </ccs2012>
+% \end{CCSXML}
+
+% \ccsdesc[500]{Computing methodologies~Neural networks}
+% \ccsdesc[300]{Computing methodologies~Causal reasoning and diagnostics}
+% \ccsdesc[300]{Information systems~Data mining}
+
+%%
+%% Keywords
+% Keywords: Emphasize dependency structure and data mining aspects
+\keywords{Tabular Data Synthesis, Dependency Structure Discovery, Structure-Conditioned Generation, Data Augmentation, Low-Data Regimes}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\input{sections/introduction}
+\input{sections/related_works}
+\input{sections/methodology}
+%% Experiments section - migrated from AAAI source
+\input{sections/experiments}
+\input{sections/conclusion}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample-base}
+
+\newpage
+% \appendix
+\input{sections/appendix}
+\end{document}

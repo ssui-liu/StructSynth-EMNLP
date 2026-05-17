@@ -1,0 +1,3 @@
+\section*{Limitations}
+
+StructSynth relies on the LLM's semantic prior over feature names and domains, so opaque or highly specialized schemas may weaken structure discovery. Its current evaluation covers moderate-dimensional tables ($K \in [8, 19]$); substantially wider schemas may require hierarchical discovery to control API cost and context length. The DAG formulation is functionally useful for autoregressive generation, but it cannot directly express cyclic or bidirectional dependencies. Finally, the current implementation depends on commercial LLM APIs, which introduces cost and reproducibility considerations despite the modest token overhead reported in Appendix~\ref{sec:token_usage}.
