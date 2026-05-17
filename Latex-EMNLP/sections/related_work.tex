@@ -10,7 +10,6 @@
 \paragraph{Tabular Synthesis in Low-Data Regimes.}
 Deep generative models---including VAE-based~\cite{patki2016synthetic}, GAN-based~\cite{xu2019modeling}, and diffusion-based~\cite{kotelnikov2023tabddpm, tabsyn} approaches---capture the joint distribution end-to-end but are data-hungry and provide limited control over inter-feature dependencies.
 Structure-aware methods address this by incorporating explicit dependency graphs; Bayesian-network-based generators~\cite{ankan2015pgmpy, zhang2017privbayes} and graph-based VAEs~\cite{van2021decaf, liu2023goggle} condition synthesis on learned graphical structures, yet their effectiveness degrades when the underlying graphs cannot be reliably estimated from scarce samples.
-A detailed discussion of these methods is provided in Appendix~\ref{app:extended_related_work}.
 
 
 \paragraph{LLM-Based Tabular Generation.}
@@ -23,3 +22,4 @@ Unlike these methods, \textsf{StructSynth} first discovers an interpretable glob
 LLMs have been applied to structure learning itself. Early work demonstrated that LLMs can accurately judge pairwise causal directions from variable semantics alone~\cite{kiciman2023causal}. To scale beyond pairwise queries, BFS-based strategies reframe structure discovery as a graph traversal task, substantially reducing the number of LLM calls~\cite{jiralerspong2024efficient, zanna2025fairness}. A complementary line integrates LLM judgments with classical constraint-based algorithms, using the LLM to validate or correct statistically proposed edges~\cite{ban2023causal}.
 However, these methods target causal graph identification as an end in itself and do not connect the discovered structure to a downstream data generation process.
 \textsf{StructSynth} bridges this gap: the dependency topology it discovers is not merely an analytical artifact but an executable generative contract that directly governs layer-wise synthesis.
+An extended discussion of all the above lines of work is provided in Appendix~\ref{app:extended_related_work}.
