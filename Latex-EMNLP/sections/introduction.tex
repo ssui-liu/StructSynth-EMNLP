@@ -10,16 +10,10 @@
 \label{fig:teaser}
 \end{figure}
 
-% P1: Problem Definition through Data Mining Lens
-% Goal: Reframe tabular data as a carrier of dependency structures and statistical patterns
-% Tabular data is a cornerstone format across healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued not merely for its ubiquity but for the \textbf{interpretable dependency relationships and statistical patterns} it encodes. 
-Most real-world structured information can be naturally represented as tables, making tabular data a foundational abstraction for modern data analytics and machine learning~\cite{jonker2025structured_unstructured_ibm}. This abstraction underpins high-stakes applications across healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued not merely for its ubiquity but for the interpretable dependency relationships and statistical patterns it encodes.
-These dependencies---the probabilistic relationships among features---are what enable Machine Learning (ML) models to learn meaningful decision boundaries and make reliable predictions.
-However, in many critical domains such as rare medical conditions, emerging financial sectors, or underrepresented populations~\cite{fonseca2023tabular}, data scarcity poses a fundamental challenge.
-When the number of available samples is severely limited ($n \le 100$), three compounding failure modes emerge: (i)~\emph{statistical instability}---association tests (e.g., conditional independence tests, correlation estimates) lose statistical power, causing discovered dependencies to be dominated by spurious correlations rather than true structural signals; (ii)~\emph{structure learning collapse}---graph discovery algorithms that rely on these noisy statistics produce unreliable dependency structures, which in turn misguide any subsequent generation process; and (iii)~\emph{generative overfitting}---deep generative models, starved of training signal, tend to memorize the few available records rather than learning the underlying distribution, resulting in poor diversity and privacy violations.
-These failure modes are further compounded by common data characteristics including class imbalance, missing values, mixed categorical-continuous types, and long-tail category distributions.
-The resulting paradox---the widespread availability of the tabular format alongside the critical lack of sufficient samples in key areas---undermines the training, validation, and deployment of robust ML solutions~\cite{chai2022data, borisov2022deep}.
-Synthetic data generation offers a potential remedy, but its value lies not in merely augmenting volume; rather, effective synthesis must \textbf{preserve the dependency relationship} inherent in the original data, lest the augmentation introduce noise rather than signal.
+Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued for the interpretable dependency relationships it encodes among features.
+These dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries, yet in many critical domains data scarcity poses a fundamental challenge~\cite{fonseca2023tabular}.
+When available samples are severely limited ($n \le 100$), dependency discovery becomes unstable---statistical association tests lose power, graph learning algorithms produce unreliable structures, and deep generative models overfit to the few available records~\cite{chai2022data, borisov2022deep}.
+Synthetic data generation offers a potential remedy, but effective synthesis must \textbf{preserve the dependency relationships} inherent in the original data rather than merely augmenting volume.
 
 % P2: Method Landscape and Gap Analysis (anchored by Fig.1)
 % Goal: Use Fig.1 as a method taxonomy showing three paradigms and their structural bottlenecks
