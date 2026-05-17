@@ -21,16 +21,11 @@ As illustrated in Figure~\ref{fig:teaser}, existing generative approaches addres
 \textbf{Large Language Models (LLMs)} leverage vast prior knowledge for few-shot generation~\cite{cllm2024}, yet they \textit{induce} dependencies only through linearized text, ignoring explicit graphical relationships~\cite{liu2024rethinking}.
 These limitations motivate a \textbf{discover-then-synthesize} paradigm that decouples dependency structure mining from data generation: first discovering stable relational patterns from limited samples, then synthesizing data that explicitly follows the discovered structure.
 
-% P4: Method Overview and Contributions
-% Goal: Crisp method summary tied to Fig.1, then contributions with high information density
-To address these challenges, we propose \textsf{StructSynth}, a decoupled two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis, as illustrated in the lower panel of Figure~\ref{fig:teaser}.
-In the \textbf{Dependency Structure Discovery} stage, we propose an LLM-guided breadth-first search that integrates statistical association cues 
-% (Pearson's R, Cramér's V, and Correlation Ratio) 
-with the model's prior knowledge to progressively construct a Directed Acyclic Graph (DAG)\footnote{Here, we use ``DAG'' to denote a directed dependency graph: edges capture statistical/probabilistic dependencies inferred from limited observations and are used as a generative blueprint, not as a claim of ground-truth causality.}. A cycle resolution mechanism with explicit rationales ensures the graph remains acyclic while preserving the most plausible dependencies.
-In the \textbf{Structure-Guided Synthesis} stage, we leverage this DAG as a structural blueprint: nodes are partitioned into topological layers, and data synthesis proceeds autoregressively with each feature conditioned explicitly on its parent nodes. This design guarantees, \textit{by construction}, that the synthetic data strictly adheres to the discovered dependency structure.
-Our contributions are summarized as follows:
+We propose \textsf{StructSynth}, a two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis.
+In the \textbf{Dependency Structure Discovery} stage, LLM-based reasoning is combined with statistical association cues to construct a Directed Acyclic Graph (DAG)\footnote{We use ``DAG'' to denote a directed dependency graph used as a generative blueprint, not a claim of ground-truth causality.} from limited samples, with a cycle resolution mechanism ensuring acyclicity.
+In the \textbf{Structure-Guided Synthesis} stage, this DAG serves as an executable blueprint: data synthesis proceeds autoregressively in topological order, with each feature conditioned on its parent nodes, guaranteeing adherence to the discovered dependency graph.
+Our contributions are:
 \begin{itemize}[leftmargin=*]
-    \item We propose a \textbf{discover-then-synthesize} framework that decouples dependency structure mining from data generation, enabling reliable pattern discovery under severe data scarcity.
-    \item We introduce an LLM-guided structure discovery mechanism that combines statistical cues with prior knowledge and employs reasoned cycle resolution, paired with a \textbf{structure-conditioned generation} stage that enforces dependencies by design through topological layering and parent-conditioned synthesis.
-    \item Extensive experiments demonstrate that \textsf{StructSynth} achieves state-of-the-art downstream utility (average rank 1.00 across six datasets) while providing the best \textbf{privacy-fidelity trade-off}, proving its effectiveness in challenging low-data regimes.
+    \item We propose a \textbf{discover-then-synthesize} framework that converts LLM reasoning and statistical evidence into an executable global dependency topology, and uses it as a structural blueprint for controlled, layer-wise data generation.
+    \item Extensive experiments across six datasets demonstrate that \textsf{StructSynth} achieves state-of-the-art \textbf{downstream utility and privacy preservation} while maintaining competitive structural fidelity, with robustness to sample size and LLM backbones.
 \end{itemize}
