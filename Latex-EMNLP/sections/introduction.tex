@@ -15,23 +15,11 @@ These dependencies are what enable Machine Learning (ML) models to learn meaning
 When available samples are severely limited ($n \le 100$), dependency discovery becomes unstable---statistical association tests lose power, graph learning algorithms produce unreliable structures, and deep generative models overfit to the few available records~\cite{chai2022data, borisov2022deep}.
 Synthetic data generation offers a potential remedy, but effective synthesis must \textbf{preserve the dependency relationships} inherent in the original data rather than merely augmenting volume.
 
-% P2: Method Landscape and Gap Analysis (anchored by Fig.1)
-% Goal: Use Fig.1 as a method taxonomy showing three paradigms and their structural bottlenecks
-To address data scarcity, conventional generative approaches have been developed with distinct strategies for handling feature dependencies (see Figure~\ref{fig:teaser}). \textbf{Deep Generative Models (DGMs)}, including Variational Autoencoders~\cite{patki2016synthetic}, Generative Adversarial Networks~\cite{xu2019modeling}, and Diffusion Models~\cite{kotelnikov2023tabddpm}, learn complex feature dependencies \textit{implicitly} by fitting the data distribution. However, this implicit dependency learning process is severely compromised when training data is sparse, causing the learned patterns to distort and generating low-fidelity synthetic samples. \textbf{Structure-Aware Methods} take a different approach by explicitly modeling the data's underlying relational structure as an inductive bias. This principle underlies foundational methods like Bayesian Networks~\cite{ankan2015pgmpy, zhang2017privbayes} and has been integrated into advanced deep learning frameworks such as DECAF~\cite{van2021decaf} and GOGGLE~\cite{liu2023goggle}. However, the robustness of these methods hinges on the accurate discovery of the dependency graph. In data-scarce scenarios, the estimation of this graph becomes unstable, thereby compromising the integrity of the generation process. More recently, \textbf{Large Language Models (LLMs)} have emerged as a powerful paradigm for few-shot generation, leveraging vast prior knowledge to seemingly bypass data scarcity~\cite{cllm2024}. However, LLMs process tabular data through linearized textual representations, which means they can only \textit{induce} dependencies sequentially from the input sequence rather than capturing explicit graphical relationships~\cite{liu2024rethinking}. This structure-blind approach often produces synthetic data that fails to respect the true underlying dependency structure. In conclusion, existing paradigms either fit dependencies \textit{implicitly} (data-hungry), assume reliable graph discovery (which collapses in low-data regimes), or \textit{induce} dependencies from unstructured text (structure-blind).
-% As summarized in Figure~\ref{fig:teaser},
-
-
-
-
-% P3: Core Insight and Research Questions
-% Goal: Frame the contribution as a discover-then-synthesize data mining pipeline
-These observations motivate a \textbf{discover-then-synthesize} paradigm that decomposes tabular data synthesis into two distinct stages: (1)~\textit{dependency structure discovery}---mining stable relational patterns from limited samples while avoiding spurious correlations, and (2)~\textit{structure-conditioned generation}---synthesizing data that explicitly respects the discovered structure rather than merely inducing it from sequential input.
-This framing leads to two fundamental research questions: 
-\textit{(RQ1) How can we reliably discover the underlying dependency structure when data is limited?}
-% reducing spurious dependencies and improving discovery stability?}
-\textit{(RQ2) How can we ensure that the generation process explicitly follows this discovered structure to achieve high structural fidelity?}
-Addressing these questions poses significant challenges: limited samples destabilize statistical association tests, making discovered dependencies prone to spurious correlations; and ensuring structural fidelity during generation requires more than sequential conditioning.
-% , rather than implicitly inducing dependencies from linearized representations?}
+As illustrated in Figure~\ref{fig:teaser}, existing generative approaches address data scarcity with distinct but limited strategies for handling feature dependencies.
+\textbf{Deep generative models} learn dependencies \textit{implicitly} by fitting the data distribution, yet become unreliable when training samples are scarce.
+\textbf{Structure-aware methods} explicitly model relational structure as an inductive bias, but their effectiveness hinges on accurate graph discovery, which collapses under data scarcity.
+\textbf{Large Language Models (LLMs)} leverage vast prior knowledge for few-shot generation~\cite{cllm2024}, yet they \textit{induce} dependencies only through linearized text, ignoring explicit graphical relationships~\cite{liu2024rethinking}.
+These limitations motivate a \textbf{discover-then-synthesize} paradigm that decouples dependency structure mining from data generation: first discovering stable relational patterns from limited samples, then synthesizing data that explicitly follows the discovered structure.
 
 % P4: Method Overview and Contributions
 % Goal: Crisp method summary tied to Fig.1, then contributions with high information density
