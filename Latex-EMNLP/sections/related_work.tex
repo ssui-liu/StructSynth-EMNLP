@@ -7,12 +7,10 @@
 \label{fig:pipeline}
 \end{figure*}
 
-\subsection{Conventional Tabular Data Synthesis}
-Tabular data synthesis addresses data scarcity and privacy concerns by learning generative models to sample realistic data. Early approaches, such as the SMOTE~\cite{chawla2002smote} and methods based on Copulas~\cite{xue2000multivariate}, were foundational but often struggled to capture complex, non-linear relationships.
-
-\textbf{Deep Generative Models (DGMs).} This prompted a shift towards more expressive deep generative models (DGMs) that learn the data distribution implicitly. Advances in deep generative modeling, including Variational Autoencoders (VAEs) such as TVAE~\cite{patki2016synthetic}, Generative Adversarial Networks (GANs) exemplified by CTGAN~\cite{xu2019modeling}, and Normalizing Flow-based methods~\cite{papamakarios2021normalizing}, have significantly improved fidelity through implicit distribution learning. More recently, diffusion-based methods like TabDDPM~\cite{kotelnikov2023tabddpm} and TabSyn~\cite{tabsyn} achieved state-of-the-art performance. TabSyn, in particular, encodes mixed-type tabular data into a continuous latent space via VAE and applies score-based diffusion therein, explicitly improving inter-column relation fidelity while reducing inference steps. However, since these DGMs implicitly learn complex feature dependencies, they still offer limited interpretability and controllability over the generation process.
-
-\textbf{Structure-Aware Methods.} To enhance generative fidelity and controllability, structure-aware methods explicitly incorporate feature dependency structures into data synthesis. Early methods based on Bayesian Networks~\cite{ankan2015pgmpy} and PrivBayes~\cite{zhang2017privbayes} generate samples guided by learned graphical structures, with PrivBayes introducing privacy-preserving mechanisms on top of the Bayesian framework. Recent deep-learning methods integrate structured inductive biases more effectively; DECAF~\cite{van2021decaf} leverages causal reasoning for fairness, while GOGGLE~\cite{liu2023goggle} employs a graph-based VAE. However, their effectiveness heavily depends on accurately learned graphs from data, posing challenges especially under limited data scenarios.
+\paragraph{Tabular Synthesis in Low-Data Regimes.}
+Deep generative models---including VAE-based~\cite{patki2016synthetic}, GAN-based~\cite{xu2019modeling}, and diffusion-based~\cite{kotelnikov2023tabddpm, tabsyn} approaches---capture the joint distribution end-to-end but are data-hungry and provide limited control over inter-feature dependencies.
+Structure-aware methods address this by incorporating explicit dependency graphs; Bayesian-network-based generators~\cite{ankan2015pgmpy, zhang2017privbayes} and graph-based VAEs~\cite{van2021decaf, liu2023goggle} condition synthesis on learned graphical structures, yet their effectiveness degrades when the underlying graphs cannot be reliably estimated from scarce samples.
+A detailed discussion of these methods is provided in Appendix~\ref{app:extended_related_work}.
 
 
 \subsection{LLM-Based Tabular Data Synthesis}
