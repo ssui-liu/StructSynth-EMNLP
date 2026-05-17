@@ -2,6 +2,23 @@
 %% Content migrated from the journal-style main text back into appendix.
 
 
+\section{Extended Related Work}
+\label{app:extended_related_work}
+
+This section provides an extended discussion of the related work summarized in Section~\ref{sec:related_works}, offering additional technical details on representative methods in each line of research.
+
+\subsection{Early and Statistical Methods}
+Early tabular data synthesis methods relied on statistical techniques. SMOTE~\cite{chawla2002smote} generates synthetic minority-class samples by interpolating between nearest neighbors in feature space, addressing class imbalance but limited to local linear combinations. Copula-based methods~\cite{xue2000multivariate} model the joint distribution by separately estimating marginal distributions and their dependency structure through copula functions, providing a principled statistical framework but struggling to capture complex, non-linear inter-feature relationships. These foundational approaches established the core objectives of tabular synthesis---realistic sample generation with dependency preservation---but their limited expressiveness motivated the shift toward deep generative models.
+
+\subsection{Deep Generative Models for Tabular Data}
+Deep generative models learn the data distribution through expressive neural architectures. TVAE~\cite{patki2016synthetic} adapts the Variational Autoencoder framework to mixed-type tabular data by applying mode-specific normalization to continuous columns. CTGAN~\cite{xu2019modeling} introduces a conditional GAN with a training-by-sampling strategy that addresses the imbalanced categorical distributions common in tabular datasets. Normalizing Flow-based methods~\cite{papamakarios2021normalizing} learn invertible transformations between a simple base distribution and the data distribution, offering exact likelihood computation. More recently, diffusion-based approaches have achieved strong results: TabDDPM~\cite{kotelnikov2023tabddpm} applies denoising diffusion probabilistic models to tabular data with separate handling of numerical and categorical features, while TabSyn~\cite{tabsyn} first encodes mixed-type tabular data into a continuous latent space via a VAE and then applies score-based diffusion within that space, improving inter-column relation fidelity while reducing inference steps. Despite these advances, all DGM-based approaches learn feature dependencies only as a byproduct of distribution fitting, offering limited interpretability or explicit control over the dependency structure during generation.
+
+\subsection{Structure-Aware Generative Methods}
+Structure-aware methods explicitly incorporate graphical models of feature dependencies into the generative process. Bayesian Network-based generators~\cite{ankan2015pgmpy} learn a directed acyclic graph over features and sample from the resulting factorized joint distribution. PrivBayes~\cite{zhang2017privbayes} extends this framework with differential privacy guarantees by injecting calibrated noise into the learned conditional distributions, enabling privacy-preserving synthesis. Among deep-learning approaches, DECAF~\cite{van2021decaf} leverages a user-specified or learned causal graph to achieve fairness-aware generation by intervening on sensitive attributes, while GOGGLE~\cite{liu2023goggle} employs a graph-based VAE that jointly learns the dependency structure and the generative model in an end-to-end differentiable manner. However, the quality of these methods is fundamentally tied to the accuracy of the underlying graph, which degrades substantially under limited-sample settings where conditional independence tests lack statistical power and score-based search becomes prone to local optima.
+
+\subsection{LLM-Based Tabular Generation: Extended Discussion}
+Beyond the prompt-based and structure-aware LLM methods discussed in the main text, several fine-tuning approaches have been proposed. GReaT~\cite{borisov2023language} serializes each table row as a natural-language sentence with randomized column ordering and fine-tunes a pre-trained GPT-2 model for autoregressive row generation. TAPTAP~\cite{zhang2023generative} introduces a table pre-training stage that exposes the LLM to diverse tabular datasets before task-specific fine-tuning, improving generalization across domains. AIGT~\cite{zhang2025aigt} further augments the fine-tuning paradigm with attribute-level instruction tuning, enabling the model to follow explicit generation directives for individual columns. While these fine-tuning methods can achieve high fidelity when sufficient training data is available, they incur substantial computational costs and their performance degrades markedly in low-data regimes ($n \le 100$) where the limited training set is insufficient for effective parameter adaptation.
+
 \section{Structure Learning Background}
 \label{app:structure_learning_background}
 
@@ -142,11 +159,11 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 \label{app:detailed_experimental_setup}
 
 \begin{table*}[t]
-\small
 \centering
-\setlength{\tabcolsep}{2.5pt}
 \caption{Summary of Dataset Characteristics.}
 \label{tab:dataset_summary}
+\resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{lcccccc}
 \toprule
 \textbf{Dataset} & \textbf{\# Num Feat.} & \textbf{\# Cat Feat.} & \textbf{\# Classes} & \textbf{Domain} & \textbf{Task} & \textbf{Pre-LLM Knowledge Cutoff} \\
@@ -158,7 +175,7 @@ Salary~\cite{kaggleGlobalMarket} & 3 & 15 & - & Economy & Regression & \textcolo
 Obesity~\cite{obesity} & 7 & 8 & - & Medical/Health & Regression & \textcolor{darksalmon}{\XSolidBrush} \\
 Churn~\cite{churn} & 8 & 4 & 2 & Business & Binary & \textcolor{darksalmon}{\XSolidBrush} \\
 \bottomrule
-\end{tabular}
+\end{tabular}}%
 \end{table*}
 
 \subsection{Datasets}
@@ -331,13 +348,12 @@ Importantly, this ``input-dominant'' overhead implies that the \textbf{real mone
 
 \begin{table*}[t]
   \centering
-  \small
-  \setlength{\tabcolsep}{4.2pt}
-  \renewcommand{\arraystretch}{1.12}
-
   \caption{Token usage under 100-shot ($\times 10^3$ tokens). We report input/output tokens for \textsc{CLLM} and \textsf{StructSynth}; overhead compares \textsf{StructSynth} combined totals (graph+table) against \textsc{CLLM} totals.}
   \label{tab:token_usage}
 
+  \resizebox{\textwidth}{!}{%
+  \small
+  \renewcommand{\arraystretch}{1.12}
   \begin{tabular}{@{}ll *{7}{S[table-format=+3.1]}@{}}
     \toprule
     \textbf{Method} & \textbf{Component} & {\textbf{Adult}} & {\textbf{Anxiety}} & {\textbf{Churn}} & {\textbf{Compas}} & {\textbf{Obesity}} & {\textbf{Salary}} & {\textbf{Avg.}} \\
@@ -373,7 +389,7 @@ Importantly, this ``input-dominant'' overhead implies that the \textbf{real mone
       & Relative Output (\%) &  10.1 &   3.0 &   2.2 &  -3.3 &   1.5 &   1.0 &   2.7 \\
       & Relative Total (\%)  &  41.7 &  37.9 &  36.5 &  19.2 &  40.6 &  23.1 &  31.0 \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}}%
 \end{table*}
 
 \section{Extended Discussion}
