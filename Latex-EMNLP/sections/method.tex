@@ -1,7 +1,7 @@
 \section{Methodology}
 
 As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} comprises two stages: \textbf{Dependency Structure Discovery}, which constructs a DAG from limited data via LLM-guided search, and \textbf{Structure-Guided Synthesis}, which uses the learned graph as a blueprint for autoregressive data generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
-This design adapts to data-scarce settings by (a) leveraging the LLM's semantic prior as a structural regularizer, (b) using statistical association scores as weak supervision, and (c) decoupling structure discovery from generation to reduce per-stage sample complexity.
+Within each stage, the framework addresses data scarcity through complementary mechanisms: (a) leveraging the LLM's semantic prior as a structural regularizer, and (b) using statistical association scores as weak supervision.
 
 \subsection{Problem Definition}
 
