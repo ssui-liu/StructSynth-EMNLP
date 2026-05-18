@@ -22,8 +22,9 @@ As illustrated in Figure~\ref{fig:teaser}, existing generative approaches each s
 In short, these approaches either \textit{couple} structure discovery with generation---forcing both stages to share the same scarce-sample bottleneck---or \textit{bypass} structure discovery entirely.
 This shared failure mode motivates a \textbf{discover-then-synthesize} paradigm that explicitly \textit{decouples} the two stages, reducing per-stage sample complexity so that each can be addressed with complementary signals.
 
-We propose \textsf{StructSynth}, a two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis.
-In the \textbf{Dependency Structure Discovery} stage, LLM-based reasoning is combined with statistical association cues to construct a Directed Acyclic Graph (DAG)\footnote{We use ``DAG'' to denote a directed dependency graph used as a generative blueprint, not a claim of ground-truth causality.} from limited samples, with a cycle resolution mechanism ensuring acyclicity.
+Decoupling yields two key advantages: the structure discovery stage can combine \textit{complementary} signals---LLM semantic priors and statistical association cues---to overcome small-sample instability in either signal alone; the generation stage can treat the discovered structure as a hard generative constraint rather than a soft attention bias, ensuring dependency-faithful synthesis by construction.
+These requirements lead directly to \textsf{StructSynth}, a two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis whose stages mirror the two sub-problems created by decoupling.
+In the \textbf{Dependency Structure Discovery} stage, LLM-based reasoning is integrated with statistical evidence to construct a Directed Acyclic Graph (DAG)\footnote{We use ``DAG'' to denote a directed dependency graph used as a generative blueprint, not a claim of ground-truth causality.} from limited samples, with a cycle resolution mechanism ensuring acyclicity.
 In the \textbf{Structure-Guided Synthesis} stage, this DAG serves as an executable blueprint: data synthesis proceeds autoregressively in topological order, with each feature conditioned on its parent nodes, guaranteeing adherence to the discovered dependency graph.
 Our contributions are:
 \begin{itemize}[leftmargin=*]
