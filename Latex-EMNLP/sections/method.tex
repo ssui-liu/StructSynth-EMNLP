@@ -20,20 +20,12 @@ The graph is initialized as $G_0 = (V_{\mathtt{source}}, \emptyset)$ and expande
 
 \subsubsection{Expansion and Reasoned Link Generation}
 
-The framework expands the graph $G$ through an iterative, breadth-first process. In each iteration $t$, a node $A_i$ is dequeued from the processing queue $Q$ and added to the set of visited nodes, $V_{\mathtt{visited}}$. To inform the model's link generation with empirical data, we compute a vector of association scores, $\mathcal{S}(A_i) \in \mathbb{R}^{K-1}$, between $A_i$ and all other attributes in $\mathbf{A}$. These scores are calculated using dependency measures specific to the data types of each attribute pair: \textit{Pearson's R} for continuous-continuous pairs, \textit{Correlation Ratio} for categorical-continuous pairs, and \textit{Cramér's V} for categorical-categorical pairs~\cite{agresti2011categorical} (see Appendix~\ref{app:association_scores} for detailed formulas).
-
-Subsequently, the LLM is queried with a comprehensive prompt, $\pi_{\mathtt{generate}}$, which integrates the current graph state $G_t$, the node $A_i$, and the statistical scores $\mathcal{S}(A_i)$. The model's task is to propose a set of direct successors for $A_i$ and provide a textual rationale for each proposed relationship. The structured output of this query is a set of successor-rationale pairs, denoted as $P_i$:
+In each BFS iteration $t$, a node $A_i$ is dequeued and the framework computes type-appropriate association scores $\mathcal{S}(A_i) \in \mathbb{R}^{K-1}$ between $A_i$ and all other attributes~\cite{agresti2011categorical} (see Appendix~\ref{app:association_scores}).
+The LLM is then queried with a prompt $\pi_{\mathtt{generate}}$ that integrates the current graph state $G_t$, the node $A_i$, and $\mathcal{S}(A_i)$. The model proposes a set of direct successors for $A_i$, each accompanied by a textual rationale:
 \begin{equation}
     P_i = f_{\mathtt{LLM}}(\pi_{\mathtt{generate}}(A_i, G_t, \mathcal{S}(A_i), \mathcal{D}_{\mathtt{few\_shot}})).
 \end{equation}
-From this set, we define the proposed new edges, $E_{\mathtt{prop}, t}$, and the set of newly discovered nodes, $V_{\mathtt{new}, t}$, which are not already in the graph's vertex set $V_t$:
-\begin{equation}
-    \begin{aligned}
-        E_{\mathtt{prop}, t} &= \{ (A_i \to A_j, r_{ij}) \mid (A_j, r_{ij}) \in P_i \}, \\
-        V_{\mathtt{new}, t} &= \{ A_j \mid (A_j, \_) \in P_i \land A_j \notin V_t \}.
-    \end{aligned}
-\end{equation}
-These new nodes are then added to the queue $Q$ for subsequent exploration, ensuring the continued expansion of the graph.%  boundary.
+From $P_i$, new directed edges and previously unseen nodes are extracted and added to the graph and BFS queue, respectively.
 
 \subsubsection{LLM-based Cycle Resolution}
 
