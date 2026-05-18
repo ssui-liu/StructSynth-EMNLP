@@ -83,11 +83,9 @@ We evaluate the generated data on downstream tasks and, for comparison, also rep
 
 
 
-\subsubsection{Privacy Preservation and Statistical Fidelity }
+\subsubsection{Privacy Preservation and Statistical Fidelity}
 
-We evaluate each generative model on the competing objectives of statistical fidelity and privacy preservation to analyze this critical trade-off. Our analysis reveals a fundamental tension in this domain, where high statistical accuracy often results from data memorization. This is evident in our baseline comparisons (Table \ref{tab:results_comparison_merged}). For instance, GraDe achieves strong fidelity (avg. rank 4.17) at the cost of poor privacy preservation (avg. rank 9.50), indicating that its attention-based generation tends toward data memorization. Similarly, methods like NFlow and CTGAN rank highly on reproducing pairwise correlations but exhibit mediocre privacy and poor downstream utility, revealing their inability to robustly capture complex dependencies. At the other end of the spectrum, prompt-based models like CLLM, which do not directly model the training data distribution, achieve strong privacy (avg. rank 3.33) but offer lower statistical fidelity (avg. rank 8.50).
-
-In contrast, \textsf{StructSynth} resolves this trade-off more effectively, outperforming competitors like CLLM on both fronts. It achieves the best privacy preservation among all models (avg. rank 1.33) while also delivering competitive statistical fidelity (avg. rank 7.08). We attribute this performance to our decoupled framework, which uses an explicit structural blueprint as a regularizer to guide the LLM. This strategy constrains overfitting to individual training records, thereby enhancing privacy, while still capturing essential feature dependencies to ensure data utility. Overall, \textsf{StructSynth} provides a robust and reliable solution for synthesizing tabular data with a superior privacy-fidelity trade-off.
+Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy. High statistical fidelity often stems from memorization: for example, GReaT achieves the best fidelity (avg.\ rank 3.33) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.33), outperforming CLLM (avg.\ rank 3.33), while maintaining competitive statistical fidelity (avg.\ rank 7.08). We attribute this to the explicit structural blueprint acting as a regularizer: it constrains overfitting to individual records while preserving the dependency structure that drives downstream utility.
 
 
 \begin{figure*}[t!]
