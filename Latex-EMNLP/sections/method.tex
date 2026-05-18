@@ -1,6 +1,7 @@
 \section{Methodology}
 
-The proposed \textsf{StructSynth} leverages a Large Language Model (LLM) to perform efficient dependency graph discovery and subsequent data generation. As depicted in Figure~\ref{fig:pipeline}, the methodology comprises two primary stages: a \textbf{structure learning phase} to discover the underlying dependency graph and a \textbf{graph-aware generation phase} that synthesizes new tabular data using the learned graph as a blueprint.\footnote{See Appendix~\ref{app:prompts} for full prompt templates with formatting details and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
+As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} comprises two stages: \textbf{Dependency Structure Discovery}, which constructs a DAG from limited data via LLM-guided search, and \textbf{Structure-Guided Synthesis}, which uses the learned graph as a blueprint for autoregressive data generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
+This design adapts to data-scarce settings by (a) leveraging the LLM's semantic prior as a structural regularizer, (b) using statistical association scores as weak supervision, and (c) decoupling structure discovery from generation to reduce per-stage sample complexity.
 
 \subsection{Problem Definition}
 
@@ -8,7 +9,7 @@ Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\math
 
 \subsection{Dependency Structure Discovery}
 
-The first step in \textsf{StructSynth} is to uncover the dependency structure present in the limited training data, represented as a DAG $G = (V, E)$. The node set $V \subseteq \mathbf{A}$ consists of selected attributes from the dataset schema $\mathbf{A}$, while the edges $E$ capture probabilistic dependencies among these attributes. The framework employs an iterative, breadth-first search (BFS) guided by an LLM to progressively construct the dependency graph. This design explicitly adapts to data-scarce settings by (a) leveraging the LLM's semantic prior as a structural regularizer, (b) using statistical association scores as weak supervision, and (c) decoupling structure discovery from generation to reduce per-stage sample complexity. The core steps are described below.
+The dependency structure is represented as a DAG $G = (V, E)$, where the node set $V \subseteq \mathbf{A}$ contains selected attributes and edges $E$ encode probabilistic dependencies. The graph is constructed iteratively via BFS as described below.
 
 \subsubsection{Graph Initialization}
 We initiate the graph construction by identifying source nodes attributes that are not influenced by any others in the dataset. A small subset of the training data, $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$, serves as in-context examples for the LLM, which is guided by a specifically designed prompt, $\pi_{\mathtt{source}}$. Formally, the initial set of source nodes, $V_{\mathtt{source}}$, is determined by the following operation:
