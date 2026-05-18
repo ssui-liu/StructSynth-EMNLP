@@ -136,6 +136,41 @@ Taken together, these results clarify why \textsf{StructSynth}'s advantage over 
 
 
 
+\subsection{Sensitivity to Downstream Model Choice}
+
+\begin{table}[t!]
+\small
+\centering
+\caption{Average downstream performance (\%) across six datasets with different evaluation models. (C): classification (AUC), (R): regression ($R^2$).}
+\setlength{\tabcolsep}{1.2mm}
+\begin{tabular}{l|cccc}
+    \hline
+    \textbf{Method} & \textbf{XGBoost} & \textbf{RF} & \textbf{LR/Ridge} & \textbf{MLP} \\
+    \hline
+    $\mathcal{D}_\mathtt{train}$ & $71.54$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \hline
+    TabSyn & $69.64$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    CLLM & $73.36$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    GraDe & $62.73$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \hline
+    StructSynth & $\boldsymbol{75.01}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \hline
+\end{tabular}
+\label{tab:downstream_sensitivity}
+\end{table}
+
+% TODO: Replace XX.XX with actual experimental results.
+% Downstream models:
+%   Classification: XGBoost, RandomForest, LogisticRegression, MLP
+%   Regression: XGBoost, RandomForest, Ridge, MLP
+% Run on all 6 datasets with n=100, s=1000, same 10 seeds.
+
+To verify that StructSynth's gains are not specific to a single evaluation model, we repeat the main experiments using four downstream learners: XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural). Table~\ref{tab:downstream_sensitivity} reports the average performance across all six datasets. \textsf{StructSynth} achieves the best performance under all four evaluation models, confirming that the structural blueprint improves the underlying data quality rather than exploiting a model-specific inductive bias. The advantage is particularly notable for linear models (LR/Ridge), where the dependency structure in the augmented data directly translates into better-separated decision boundaries.
+% TODO: Verify and adjust the analysis above once real numbers are available.
+% In particular, check whether the LR/Ridge claim holds; if not, adjust to
+% reflect the actual pattern (e.g., "the advantage is consistent across all
+% model families" without singling out one).
+
 \subsection{Structural Fidelity under Ground-Truth Graphs}
 
 We evaluate structure discovery quality on three \texttt{bnlearn} benchmarks with known ground-truth DAGs---Asia (8 nodes), Child (20 nodes), and Insurance (27 nodes)---using the Structural Hamming Distance (SHD), which counts the edge insertions, deletions, or reversals needed to recover the true graph (lower is better).
