@@ -84,10 +84,8 @@ Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthe
 
 \subsubsection{Generating Graph-Based Values}
 
-This phase generates values for attributes $V$ defined by the learned dependency graph. Initially, the nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the corresponding dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ represents the parent nodes of attributes in $L_i$. Additionally, we select the relevant slice of the few-shot dataset as $\mathcal{D}_{\mathtt{few\_shot}}^i = \Pi_{L_i \cup \Gamma^{-}(L_i)}(\mathcal{D}_{\mathtt{few\_shot}})
-$, where $\Pi$ denotes the projection operator onto specified columns.
-
-Values for attributes in layer $L_i$, denoted as $\tilde{\mathbf{x}}_{j, L_i}$, are generated conditionally based on previously generated values for preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
+The nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ denotes parent nodes, along with the corresponding columns from the few-shot examples.
+Values for layer $L_i$ are generated conditionally on all preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
 \begin{equation}
 \tilde{\mathbf{x}}_{j, L_i} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen}}\left( \tilde{\mathbf{x}}_{j, <i},\ G_i,\ L_i,\ \mathcal{D}_{\mathtt{few\_shot}}^i\right)\right).
 \end{equation}
