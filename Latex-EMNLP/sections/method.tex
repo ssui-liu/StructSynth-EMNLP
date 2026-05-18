@@ -29,21 +29,11 @@ From $P_i$, new directed edges and previously unseen nodes are extracted and add
 
 \subsubsection{LLM-based Cycle Resolution}
 
-To ensure that the graph remains a DAG throughout, the framework resolves any cycles that may result from integrating proposed edges $E_{\mathtt{prop}, t}$ into the current graph $G_t = (V_t, E_t)$. Specifically, we construct the candidate edge set $E_{\mathtt{candidate}} = E_t \cup E_{\mathtt{prop}, t}$ and apply a cycle detection algorithm to identify all elementary cycles, $\Psi$. 
-
-If cycles are detected ($\Psi \neq \emptyset$), the framework initiates a reasoned resolution process. For each cycle $\psi \in \Psi$, where $\psi$ represents the specific subset of edges from $E_{\mathtt{candidate}}$ that forms the circular path (e.g., $\{ (A \to B, r_{ab}), (B \to C, r_{bc}), (C \to A, r_{ca}) \}$), the LLM is queried with the prompt $\pi_{\mathtt{resolve}}$. The prompt's input, $\psi$, provides the model with the complete logical contradiction, including the rationales for both newly proposed and previously established edges. The model's task is to analyze this conflict and identify the single edge whose removal is most justified. This resolution logic is applied to every detected cycle. The complete set of pruned edges, $E_{\mathtt{pruned}}$, is thus defined by collecting the output for each cycle in $\Psi$. The state for the next iteration, $G_{t+1}$, is then formally defined by removing these pruned edges from the candidate set:
+Integrating the proposed edges into $G_t$ may introduce cycles. A cycle detection algorithm identifies all elementary cycles $\Psi$ in the candidate edge set $E_t \cup E_{\mathtt{prop}, t}$. For each cycle $\psi \in \Psi$, the LLM is queried with $\pi_{\mathtt{resolve}}$, which presents the conflicting edges together with their rationales. The model identifies the single least-justified edge for removal; the union of all removed edges forms $E_{\mathtt{pruned}}$. The graph is then updated:
 \begin{equation}
-    \begin{aligned}
-        E_{\mathtt{pruned}} &= \{ f_{\mathtt{LLM}}(\pi_{\mathtt{resolve}}(\psi)) \mid \psi \in \Psi \} \\
-        G_{t+1} &= (V_t \cup V_{\mathtt{new}, t}, (E_t \cup E_{\mathtt{prop}, t}) \setminus E_{\mathtt{pruned}}).
-    \end{aligned}
+    G_{t+1} = (V_t \cup V_{\mathtt{new}, t},\ (E_t \cup E_{\mathtt{prop}, t}) \setminus E_{\mathtt{pruned}}).
 \end{equation}
-This general mechanism ensures the graph remains acyclic and empowers the model to revise its structure based on new, more confident evidence.
-
-
-\subsubsection{Continuation of BFS}
-
-The process continues iteratively. Following the cycle resolution step, the newly discovered nodes, $V_{\mathtt{new}, t}$, which are now part of the updated graph $G_{t+1}$, are added to the processing queue $Q$. The framework then returns to the \textit{Expansion and Reasoned Link Generation} step to process the next node from the queue. This iterative expansion-resolution cycle continues until $Q$ is empty, at which point the complete, acyclic dependency graph $G$ is returned as the final output.
+This expansion-resolution cycle continues until the BFS queue is empty, yielding the final DAG $G$.
 
 \begin{table*}[ht]
 
