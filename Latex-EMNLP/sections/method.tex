@@ -4,9 +4,7 @@ The proposed \textsf{StructSynth} leverages a Large Language Model (LLM) to perf
 
 \subsection{Problem Definition}
 
-Consider a small tabular training dataset, denoted as $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\mathtt{train}}, \mathbf{A})$. $\mathbf{X}_{\mathtt{train}} = \{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ represents a set of $n$ instances (or rows), where the number of available samples is severely limited ($n \le 100$). The set $\mathbf{A} = \{A_1, \ldots, A_K\}$ defines the schema of the data through its $K$ attributes (or columns). Our primary objective is to employ an LLM-based generation function, $f_{\mathtt{LLM}}$, to produce a synthetic dataset, $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$, that is both realistic and diverse. The ultimate goal is to demonstrate that a downstream model trained on an augmented dataset, $\mathcal{D}_{\mathtt{aug}} = (\mathbf{X}_{\mathtt{train}} \cup \mathbf{X}_{\mathtt{synth}}, \mathbf{A})$, exhibits superior performance on a held-out test set, $\mathcal{D}_{\mathtt{test}}$, when compared to a model trained exclusively on the original, smaller dataset $\mathcal{D}_{\mathtt{train}}$.
-
-We adopt the DAG formulation for its functional role in defining a generative ordering; Appendix~\ref{sec:why_dag} provides a detailed justification.
+Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\mathtt{train}}, \mathbf{A})$ with $n \le 100$ instances and $K$ attributes, our goal is to use an LLM-based generator $f_{\mathtt{LLM}}$ to produce a synthetic dataset $\mathcal{D}_{\mathtt{synth}}$ that, when combined with $\mathcal{D}_{\mathtt{train}}$, improves downstream model performance. We adopt the DAG formulation for its functional role in defining a generative ordering; Appendix~\ref{sec:why_dag} provides a detailed justification.
 
 \subsection{Dependency Structure Discovery}
 
@@ -56,11 +54,11 @@ The process continues iteratively. Following the cycle resolution step, the newl
 
 \begin{table*}[ht]
 
-    \small
     \centering
-    \setlength{\tabcolsep}{1mm}
     \caption{Comparison of Models on Downstream Model Performance (\%). (C) and (R) denote classification and regression tasks, respectively. $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
-    \begin{tabular}{ll|llllll|c|c}
+    \resizebox{\textwidth}{!}{%
+    \small
+    \begin{tabular}{ll llllll cc}
     \toprule
     
     \textbf{Type} & \textbf{Method} & 
@@ -92,7 +90,7 @@ The process continues iteratively. Following the cycle resolution step, the newl
     \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{85.55_{\pm 1.08}}$ & $\boldsymbol{86.45_{\pm 0.57}}$ & $\boldsymbol{69.40_{\pm 0.25}}$ & $\boldsymbol{55.98_{\pm 2.96}}$ & $\boldsymbol{62.27_{\pm 5.40}}$ & $\boldsymbol{90.39_{\pm 1.96}}$ & $\boldsymbol{75.01}$ & $\boldsymbol{1.00}$ \\
     
     \bottomrule
-    \end{tabular}
+    \end{tabular}}%
     \label{tab:results_comparison_performance}
 \end{table*}
 
