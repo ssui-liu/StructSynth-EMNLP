@@ -91,16 +91,12 @@ Values for layer $L_i$ are generated conditionally on all preceding layers $\til
 \end{equation}
 Iterating through all layers yields a partial synthetic data point $\tilde{\mathbf{x}}_{j, V}$ comprising values for all graph-dependent attributes.
 
-\subsubsection{Generating Independent Values}
+\subsubsection{Completing Synthesis}
 
-Subsequently, values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ are generated collectively in a single step, conditioned upon the complete set of previously generated graph-based values $\tilde{\mathbf{x}}_{j, V}$:
+Values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ (those outside the dependency graph) are generated in a single step, conditioned on all graph-based values $\tilde{\mathbf{x}}_{j, V}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen\_iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right),
+\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen\_iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right).
 \end{equation}
-where $\mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}} = \Pi_{A_{\mathtt{iso}}}(\mathcal{D}_{\mathtt{few\_shot}}).$
-
-\subsubsection{Final Assembly}
-
-A complete synthetic data point $\tilde{\mathbf{x}}_j$ is formed by concatenating the graph-dependent and independent attribute values as $\tilde{\mathbf{x}}_j = \mathtt{concat}(\tilde{\mathbf{x}}_{j, V}, \tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}})$. Repeating this procedure $s$ times yields the synthetic dataset $\mathbf{X}_{\mathtt{synth}} = \{\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_s\}$, resulting in the final synthetic dataset $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$.
+The graph-dependent and isolated values are concatenated to form each synthetic record; repeating $s$ times yields $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$.
 
 %% Experiments section - migrated from AAAI source
