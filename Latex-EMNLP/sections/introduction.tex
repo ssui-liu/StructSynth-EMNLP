@@ -10,10 +10,10 @@
 \label{fig:teaser}
 \end{figure}
 
-Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued for the interpretable dependency relationships it encodes among features.
-These dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries, yet in many critical domains data scarcity poses a fundamental challenge~\cite{fonseca2023tabular}.
-When available samples are severely limited ($n \le 100$), dependency discovery becomes unstable---statistical association tests lose power, graph learning algorithms produce unreliable structures, and deep generative models overfit to the few available records~\cite{chai2022data, borisov2022deep}.
-Synthetic data generation offers a potential remedy, but effective synthesis must \textbf{preserve the dependency relationships} inherent in the original data rather than merely augmenting volume.
+Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}. Its value lies not in individual features but in the \textbf{dependency relationships} among them---these inter-feature dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular}.
+When available samples are severely limited ($n \le 100$), discovering these dependencies becomes the \textit{first} point of failure: statistical association tests lose power, and graph learning algorithms produce unreliable structures~\cite{chai2022data, borisov2022deep}.
+This upstream collapse in dependency discovery propagates downstream---without a reliable structural foundation, even powerful generative models cannot produce synthetic data that preserves the original relational patterns.
+Consequently, effective synthesis in low-data regimes must first solve the \textbf{dependency discovery bottleneck} before addressing data generation itself.
 
 As illustrated in Figure~\ref{fig:teaser}, existing generative approaches address data scarcity with distinct but limited strategies for handling feature dependencies.
 \textbf{Deep generative models} learn dependencies \textit{implicitly} by fitting the data distribution, yet become unreliable when training samples are scarce.
