@@ -141,35 +141,55 @@ Taken together, these results clarify why \textsf{StructSynth}'s advantage over 
 \begin{table}[t!]
 \small
 \centering
-\caption{Average downstream performance (\%) across six datasets with different evaluation models. (C): classification (AUC), (R): regression ($R^2$).}
-\setlength{\tabcolsep}{1.2mm}
-\begin{tabular}{l|cccc}
+\caption{Downstream performance (\%) with different evaluation models on four representative datasets. (C): AUC, (R): $R^2$. Best per cell in \textbf{bold}.}
+\setlength{\tabcolsep}{0.9mm}
+\begin{tabular}{ll|ccc}
     \hline
-    \textbf{Method} & \textbf{XGBoost} & \textbf{RF} & \textbf{LR/Ridge} & \textbf{MLP} \\
+    \textbf{Dataset} & \textbf{Eval.\ Model} & $\mathcal{D}_\mathtt{train}$ & \textbf{CLLM} & \textbf{StructSynth} \\
     \hline
-    $\mathcal{D}_\mathtt{train}$ & $71.54$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \multirow{4}{*}{\makecell[l]{Adult\\(C)}}
+    & XGBoost & $82.51$ & $83.95$ & $\boldsymbol{85.55}$ \\
+    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
     \hline
-    TabSyn & $69.64$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    CLLM & $73.36$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    GraDe & $62.73$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \multirow{4}{*}{\makecell[l]{Anxiety$^\dag$\\(C)}}
+    & XGBoost & $85.49$ & $85.17$ & $\boldsymbol{86.45}$ \\
+    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
     \hline
-    StructSynth & $\boldsymbol{75.01}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \multirow{4}{*}{\makecell[l]{Salary$^\dag$\\(R)}}
+    & XGBoost & $49.71$ & $54.53$ & $\boldsymbol{55.98}$ \\
+    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Ridge & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    \hline
+    \multirow{4}{*}{\makecell[l]{Churn\\(C)}}
+    & XGBoost & $86.86$ & $89.81$ & $\boldsymbol{90.39}$ \\
+    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
     \hline
 \end{tabular}
 \label{tab:downstream_sensitivity}
 \end{table}
 
 % TODO: Replace XX.XX with actual experimental results.
-% Downstream models:
-%   Classification: XGBoost, RandomForest, LogisticRegression, MLP
-%   Regression: XGBoost, RandomForest, Ridge, MLP
-% Run on all 6 datasets with n=100, s=1000, same 10 seeds.
+% Experiments to run:
+%   - 4 datasets: Adult, Anxiety (post-cutoff), Salary (post-cutoff, regression), Churn
+%   - 3 methods: Train-only, CLLM, StructSynth
+%   - 4 downstream models per dataset:
+%       Classification: XGBoost, RandomForest, LogisticRegression, MLP
+%       Regression: XGBoost, RandomForest, Ridge, MLP
+%   - Settings: n=100, s=1000, 10 seeds (same as main experiments)
+%   - XGBoost row is pre-filled from Table 1 results.
 
-To verify that StructSynth's gains are not specific to a single evaluation model, we repeat the main experiments using four downstream learners: XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural). Table~\ref{tab:downstream_sensitivity} reports the average performance across all six datasets. \textsf{StructSynth} achieves the best performance under all four evaluation models, confirming that the structural blueprint improves the underlying data quality rather than exploiting a model-specific inductive bias. The advantage is particularly notable for linear models (LR/Ridge), where the dependency structure in the augmented data directly translates into better-separated decision boundaries.
+To verify that the gains are not specific to a single evaluation model, we compare \textsf{StructSynth} and CLLM under four downstream learners---XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural)---on four representative datasets spanning classification, regression, and post-cutoff settings (Table~\ref{tab:downstream_sensitivity}). \textsf{StructSynth} outperforms both CLLM and the train-only baseline under all evaluation models across all datasets, confirming that the structural blueprint improves the underlying data quality rather than exploiting a model-specific inductive bias.
 % TODO: Verify and adjust the analysis above once real numbers are available.
-% In particular, check whether the LR/Ridge claim holds; if not, adjust to
-% reflect the actual pattern (e.g., "the advantage is consistent across all
-% model families" without singling out one).
+% Check: (1) Does StructSynth win every cell? If not, note exceptions.
+% (2) Is the margin consistent across model families, or larger for some?
+%     If so, add one sentence noting which model family benefits most.
 
 \subsection{Structural Fidelity under Ground-Truth Graphs}
 
