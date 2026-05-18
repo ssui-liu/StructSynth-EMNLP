@@ -8,15 +8,7 @@ We conduct experiments on six real-world tabular datasets: Adult~\cite{adult_2},
 We compare our method against eleven baselines from three categories (implementation details in Appendix~\ref{app:baselines}): 1)~\textbf{Deep Generative Models (DGMs)}, including TVAE~\cite{xu2019modeling}, CTGAN~\cite{xu2019modeling}, TabDDPM~\cite{kotelnikov2023tabddpm}, NFlow~\cite{papamakarios2021normalizing}, and TabSyn~\cite{tabsyn}; 2)~\textbf{Structure-Aware Methods}, including Bayesian Networks~\cite{ankan2015pgmpy}, GOGGLE~\cite{liu2023goggle}, and DECAF~\cite{van2021decaf}; and 3)~\textbf{LLM-based Methods}, including GReaT~\cite{borisov2023language}, CLLM~\cite{cllm2024}, and GraDe~\cite{zhang-etal-2025-features}. 
 
 \subsubsection{Evaluation Metrics}
-Following previous methods~\cite{borisov2023language, cllm2024}, we evaluate the quality of synthetic data using three different metrics, with detailed definitions provided in Appendix~\ref{app:metrics}:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Downstream Model Performance:} This metric evaluates the data's utility by training a downstream model on the augmented dataset $\mathcal{D}_{\mathtt{aug}} = (\mathcal{D}_{\mathtt{train}} \cup \mathcal{D}_{\mathtt{synth}})$ and conducting an evaluation on the real test set $\mathcal{D}_{\mathtt{test}}$. We report Area Under the Curve (AUC) for classification and R-squared ($R^2$) for regression.
-
-    \item \textbf{Statistical Fidelity:} This metric evaluates how well the statistical properties of the synthetic dataset, $\mathcal{D}_{\mathtt{synth}}$, replicate those of the original dataset, $\mathcal{D}_{\mathtt{train}}$. We calculate it as the mean absolute difference between the pairwise correlation matrices of $\mathbf{X}_{\mathtt{synth}}$ and $\mathbf{X}_{\mathtt{train}}$, where a \textbf{lower score indicates higher fidelity}.
-
-    \item \textbf{Privacy Risk Assessment:} This metric assesses privacy risk by measuring if records in $\mathcal{D}_{\mathtt{synth}}$ are overly similar to the $\mathcal{D}_{\mathtt{train}}$. For each instance in $\mathbf{X}_{\mathtt{synth}}$, we find its nearest neighbor in the set of all real records ($\mathbf{X}_{\mathtt{train}} \cup \mathbf{X}_{\mathtt{test}}$). The score is the fraction of synthetic records whose nearest neighbor is from $\mathbf{X}_{\mathtt{train}}$, where a \textbf{value approaching 0.5 indicates better privacy preservation}~\cite{van2023membership}. 
-
-\end{itemize}
+We evaluate synthetic data quality along three axes (detailed definitions in Appendix~\ref{app:metrics}): \textbf{Downstream Model Performance} (AUC for classification, $R^2$ for regression, trained on $\mathcal{D}_{\mathtt{aug}} = \mathcal{D}_{\mathtt{train}} \cup \mathcal{D}_{\mathtt{synth}}$ and evaluated on $\mathcal{D}_{\mathtt{test}}$); \textbf{Statistical Fidelity} (mean pairwise correlation difference between real and synthetic data; \textbf{lower is better}); and \textbf{Privacy Risk}~\cite{van2023membership} (fraction of synthetic nearest neighbors from training set; \textbf{closer to 0.5 is better}).
 
 \subsubsection{Implementation Details}
 
@@ -24,13 +16,12 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 
 
 \begin{table*}[ht]
-\small
 \centering
-
-\setlength{\tabcolsep}{1mm} 
 \caption{Comparison of Models on Privacy Preservation and Statistical Fidelity (\%). $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
 
-\begin{tabular}{ll|llllll|c|c}
+\resizebox{\textwidth}{!}{%
+\small
+\begin{tabular}{ll llllll cc}
 \toprule
 
 \textbf{Type} & \textbf{Method} & 
@@ -61,8 +52,8 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
     \midrule
     \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{49.97_{\pm 5.78}}$ & \underline{$44.74_{\pm 5.13}$} & $\boldsymbol{62.37_{\pm 3.86}}$ & $\boldsymbol{50.13_{\pm 4.89}}$ & $\boldsymbol{49.80_{\pm 6.31}}$ & \underline{$48.67_{\pm 4.84}$} & $50.95$ & $\boldsymbol{1.33}$ \\
 
-\bottomrule
-\toprule
+\midrule
+\midrule
 \multicolumn{10}{l}{{Results for \textbf{Statistical Fidelity}.} \textit{A lower score indicates higher fidelity.}} \\
 \midrule
     \multirow{5}{*}{DGMs} & TVAE & $53.71_{\pm 1.80}$ & $46.16_{\pm 1.28}$ & $60.26_{\pm 1.09}$ & $66.93_{\pm 1.13}$ & \underline{$58.41_{\pm 0.52}$} & $53.22_{\pm 1.54}$ & $58.11$ & $5.17$ \\
@@ -81,7 +72,7 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
     \midrule
     Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & \underline{$57.23_{\pm 1.69}$} & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & $7.08$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}}%
 \label{tab:results_comparison_merged}
 
 \end{table*}
