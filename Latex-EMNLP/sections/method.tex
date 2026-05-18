@@ -12,11 +12,11 @@ Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\math
 The dependency structure is represented as a DAG $G = (V, E)$, where the node set $V \subseteq \mathbf{A}$ contains selected attributes and edges $E$ encode probabilistic dependencies. The graph is constructed iteratively via BFS as described below.
 
 \subsubsection{Graph Initialization}
-We initiate the graph construction by identifying source nodes attributes that are not influenced by any others in the dataset. A small subset of the training data, $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$, serves as in-context examples for the LLM, which is guided by a specifically designed prompt, $\pi_{\mathtt{source}}$. Formally, the initial set of source nodes, $V_{\mathtt{source}}$, is determined by the following operation:
+The graph construction begins by identifying source nodes---attributes not influenced by any others. Using a small subset $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$ as in-context examples, the LLM determines the initial source nodes:
 \begin{equation}
     V_{\mathtt{source}} = f_{\mathtt{LLM}}(\pi_{\mathtt{source}} ( \mathcal{D}_{\mathtt{few\_shot}})) .
 \end{equation}
-Consequently, the initial graph is set to $G_0 = (V_{\mathtt{source}}, \emptyset)$. To manage the discovery process, a queue $Q$ for the Breadth-First Search (BFS) is initialized with these source nodes, i.e., $Q \leftarrow V_{\mathtt{source}}$, and a set for tracking explored attributes, $V_{\mathtt{visited}}$, is initialized as empty.
+The graph is initialized as $G_0 = (V_{\mathtt{source}}, \emptyset)$ and expanded via BFS from these source nodes.
 
 \subsubsection{Expansion and Reasoned Link Generation}
 
