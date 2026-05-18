@@ -134,9 +134,6 @@ To isolate the contributions of our method's two main stages, we evaluate seven 
 The results (Table~\ref{tab:ablation_study}) yield three insights. First, \textbf{LLM-guided discovery outperforms classical alternatives}: \textsf{StructSynth} exceeds both \textit{PC} and \textit{NoTears} by 1.0--1.4 AUC pts, showing that semantic priors stabilize structure learning under data scarcity. Second, \textbf{structural guidance is multifaceted}: removing the graph (\textit{No Structure}, --1.6 pts) or ignoring topological ordering (\textit{No Topological Order}, --1.1 pts) both degrade utility. Finally, \textbf{synergy is vital}: replacing the LLM with a \textit{Bayesian Sampler} causes the sharpest drop (--4.4 pts), confirming that the structural blueprint guides but cannot replace the LLM's generative capabilities.
 
 
-% The results, summarized in Table \ref{tab:ablation_study}, confirm that the framework's success stems from the synergy between the discovered graph and the LLM's generative power. Our central finding is that graph awareness is critical. Removing the structural guidance (\textit{No Structure}) significantly reduces AUC by 1.6 pts. More dramatically, replacing the LLM with a Bayesian Sampler yields the largest performance drop (–4.4 pts). This confirms the vital synergy between the learned graph and the LLM's generative capabilities—neither component is sufficient in isolation. We also find that prompt signals matter, as using \textit{No-Correlation} degrades AUC by 1.5 pts, highlighting their utility as a form of weak supervision.
-
-
 
 \subsection{Structural Fidelity under Ground-Truth Graphs}
 
