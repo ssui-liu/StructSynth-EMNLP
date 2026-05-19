@@ -10,12 +10,12 @@
 \label{fig:teaser}
 \end{figure}
 
-Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}. Its value lies not in individual features but in the \textbf{dependency relationships} among them---these inter-feature dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular}.
-When available samples are severely limited ($n \le 100$), discovering these dependencies becomes the \textit{first} point of failure: statistical association tests lose power, and graph learning algorithms produce unreliable structures~\cite{chai2022data, borisov2022deep}.
-This upstream collapse in dependency discovery propagates downstream---without a reliable structural foundation, even powerful generative models cannot produce synthetic data that preserves the original relational patterns.
-Consequently, effective synthesis in low-data regimes must first solve the \textbf{dependency discovery bottleneck} before addressing data generation itself.
+Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued for the dependency relationships it encodes among features---these inter-feature dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular}.
+In many such domains, data scarcity poses a fundamental challenge, and synthetic data generation has emerged as a primary remedy~\cite{borisov2022deep}.
+Yet effective synthesis must go beyond augmenting volume: it must \textbf{preserve the dependency relationships} inherent in the original data, since downstream models rely on these relationships for generalization~\cite{liu2023goggle, zhao2024tabular}.
+When available samples are severely limited, however, the very dependencies that synthesis must preserve become difficult to discover reliably.
 
-As illustrated in Figure~\ref{fig:teaser}, existing generative approaches each sidestep, rather than solve, this dependency discovery bottleneck.
+As illustrated in Figure~\ref{fig:teaser}, existing generative approaches each sidestep, rather than solve, this dependency discovery challenge.
 \textbf{Deep generative models} merge structure discovery and generation into a single end-to-end process, so that both collapse simultaneously when training samples are scarce.
 \textbf{Structure-aware methods} isolate graph learning as a prerequisite, yet rely on purely statistical algorithms whose outputs become unreliable under scarcity---errors in the discovered structure propagate directly into generation~\cite{chai2022data}.
 \textbf{Large Language Models (LLMs)} bypass explicit structure altogether~\cite{cllm2024}, encoding inter-feature dependencies only implicitly through linearized text rather than exploiting the graphical nature of tabular data~\cite{liu2024rethinking}.
