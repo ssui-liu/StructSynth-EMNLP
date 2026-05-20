@@ -4,31 +4,36 @@
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/intro2.png}
-\caption{\textbf{Tabular synthesis paradigms under data scarcity.} Existing approaches handle dependencies implicitly, from pre-learned graphs, or through serialized text. \textsf{StructSynth} explicitly discovers an executable dependency topology and uses it as a generation blueprint.}
+\caption{\textbf{Tabular synthesis paradigms under data scarcity.} Conventional methods learn dependencies implicitly via distribution fitting or from pre-learned graphs; LLM-based methods encode them through serialized text. Recent graph-aware approaches (not shown) incorporate dependency structure as attention masks or distribution priors, but do not use it to organize the generation process. \textsf{StructSynth} discovers a dependency graph and treats it as a generation plan that determines the order, conditioning context, and scope of each LLM call.}
 
 
 \label{fig:teaser}
 \end{figure}
 
-Tabular data underpins high-stakes applications in healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}, valued for the dependency relationships it encodes among features---these inter-feature dependencies are what enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular}.
-In many such domains, data scarcity poses a fundamental challenge, and synthetic data generation has emerged as a primary remedy~\cite{borisov2022deep}.
-Yet effective synthesis must go beyond augmenting volume: it must \textbf{preserve the dependency relationships} inherent in the original data, since downstream models rely on these relationships for generalization~\cite{liu2023goggle, zhao2024tabular}.
-When available samples are severely limited, however, the very dependencies that synthesis must preserve become difficult to discover reliably.
+Low-data tabular synthesis---generating realistic records from scarce samples in domains such as healthcare~\cite{choi2017generating}, finance~\cite{rundo2019machine}, and education~\cite{luan2021review}---poses several intertwined challenges~\cite{borisov2022deep}.
+Among them, \textbf{preserving inter-feature dependencies} is particularly fragile under sample scarcity: the dependency relationships that enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular} rely on statistical signals that degrade rapidly as sample size shrinks.
+Without faithful dependencies, additional synthetic samples add volume without adding predictive signal~\cite{liu2023goggle}.
 
-As illustrated in Figure~\ref{fig:teaser}, existing generative approaches each sidestep, rather than solve, this dependency discovery challenge.
-\textbf{Deep generative models} merge structure discovery and generation into a single end-to-end process, so that both collapse simultaneously when training samples are scarce.
-\textbf{Structure-aware methods} isolate graph learning as a prerequisite, yet rely on purely statistical algorithms whose outputs become unreliable under scarcity---errors in the discovered structure propagate directly into generation~\cite{chai2022data}.
-\textbf{Large Language Models (LLMs)} bypass explicit structure altogether~\cite{cllm2024}, encoding inter-feature dependencies only implicitly through linearized text rather than exploiting the graphical nature of tabular data~\cite{liu2024rethinking}.
-In short, these approaches either \textit{couple} structure discovery with generation---forcing both stages to share the same scarce-sample bottleneck---or \textit{bypass} structure discovery entirely.
-This shared failure mode motivates a \textbf{discover-then-synthesize} paradigm that explicitly \textit{decouples} the two stages, reducing per-stage sample complexity so that each can be addressed with complementary signals.
+As illustrated in Figure~\ref{fig:teaser}, conventional tabular generators offer two important but partial ways of handling dependencies.
+\textbf{Deep generative models} capture the joint distribution end-to-end, implicitly learning inter-feature dependencies through distribution fitting; however, their performance varies across architectures, with many requiring substantially more samples to converge reliably.
+\textbf{Structure-aware methods} make dependencies explicit through graphical models such as Bayesian networks~\cite{ankan2015pgmpy} and graph-based VAEs~\cite{liu2023goggle}, yet the quality of the learned graph degrades under scarcity---errors in the discovered structure propagate directly into generation~\cite{chai2022data}.
 
-Decoupling yields two key advantages: the structure discovery stage can combine \textit{complementary} signals---LLM semantic priors and statistical association cues---to overcome small-sample instability in either signal alone; the generation stage can treat the discovered structure as a hard generative constraint rather than a soft attention bias, ensuring dependency-faithful synthesis by construction.
-These requirements lead directly to \textsf{StructSynth}, a two-stage framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis whose stages mirror the two sub-problems created by decoupling.
-In the \textbf{Dependency Structure Discovery} stage, LLM-based reasoning is integrated with statistical evidence to construct a Directed Acyclic Graph (DAG)\footnote{We use ``DAG'' to denote a directed dependency graph used as a generative blueprint, not a ground-truth causal claim.} from limited samples, with a cycle resolution mechanism ensuring acyclicity.
-In the \textbf{Structure-Guided Synthesis} stage, this DAG serves as an executable blueprint: synthesis proceeds autoregressively in topological order, with each feature conditioned on its parents, guaranteeing adherence to the discovered dependency graph.
+\textbf{Large Language Models (LLMs)} provide a complementary advantage: they can exploit attribute names, descriptions, and in-context examples as semantic priors, reducing reliance on statistical signals alone~\cite{borisov2023language, cllm2024}.
+Yet most LLM-based synthesizers encode inter-feature dependencies only through flat textualization of attribute--value pairs, which does not explicitly encode dependency directions or conditional independence structure~\cite{liu2024rethinking}.
+As a result, dependency preservation is left to the implicit capacity of the language model rather than being structurally enforced.
+
+A natural response is to make dependencies explicit in the generation process.
+Recent graph-aware generation methods take steps in this direction: GraDe~\cite{zhang-etal-2025-features} injects a learned sparse dependency graph into the Transformer attention mechanism, while SPADA~\cite{yang2025doubling} uses the graph to guide lightweight statistical estimators such as normalizing flows.
+These designs validate the importance of sparse dependency structure, yet neither treats the graph as a \textit{generation plan} that organizes the LLM's own generation process---the graph serves as an internal attention mask or a distribution prior rather than determining what to generate, in what order, and conditioned on which context.
+Moreover, both approaches are not designed for the low-data regime, as they rely on model fine-tuning or sufficient samples to fit conditional distributions.
+This gap raises a natural question: \textit{can a dependency graph determine the generation order, conditioning context, and scope of each black-box LLM call?}
+
+We answer this question with \textsf{StructSynth}, a framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis that treats a dependency graph as a generation plan---one that determines how prompts are constructed and sequenced for black-box LLM synthesis.
+To use a graph as such a plan, two requirements must be met: the graph must be reliably discovered from limited samples, and it must organize the LLM's generation process. This naturally leads to a two-stage design.
+In \textbf{Evidence-Grounded Graph Induction}, LLM-based reasoning is integrated with statistical association cues to construct a Directed Acyclic Graph (DAG)\footnote{We use ``DAG'' to denote a directed dependency graph used as a generative blueprint, not a ground-truth causal claim.} from limited samples, with a cycle resolution mechanism ensuring acyclicity. Separating discovery from synthesis allows each stage to leverage complementary signals---semantic priors and statistical evidence---without being bottlenecked by a shared scarcity constraint.
+In \textbf{Graph-Planned Conditional Synthesis}, this DAG serves as an executable generation plan: synthesis proceeds autoregressively in topological order, with each layer of features conditioned on its parent values, so that dependency adherence is enforced by construction.
 Our contributions are:
 \begin{itemize}[leftmargin=*]
-    \item We identify \textbf{dependency structure discovery}---not generation model capacity---as the primary bottleneck for tabular synthesis in low-data regimes, and show that existing methods fail because they either couple discovery with generation or bypass it entirely.
-    \item Based on this diagnosis, we propose \textsf{StructSynth}, a \textbf{discover-then-synthesize} framework that decouples the two stages: the discovery stage fuses LLM semantic priors with statistical association cues to obtain reliable structures from limited samples, while the generation stage enforces the discovered topology as an executable blueprint for layer-wise synthesis.
-    \item Extensive experiments across six datasets demonstrate that \textsf{StructSynth} achieves state-of-the-art \textbf{downstream utility and privacy preservation} while maintaining competitive structural fidelity. Ablations confirm that each stage contributes independently, validating the decoupled design.
+    \item We propose to treat a dependency graph as a \textbf{generation plan} that determines the generation order, conditioning context, and scope of each LLM call for tabular synthesis. We instantiate this idea in \textsf{StructSynth}, where \textbf{Evidence-Grounded Graph Induction} fuses LLM semantic priors with statistical association cues to discover reliable structures from limited samples, and \textbf{Graph-Planned Conditional Synthesis} enforces the discovered topology as an executable blueprint for layer-wise generation.
+    \item Extensive experiments across six datasets demonstrate that \textsf{StructSynth} achieves state-of-the-art \textbf{downstream utility and privacy preservation} while maintaining competitive statistical fidelity. Ablations confirm that both stages contribute independently, validating the generation-plan design.
 \end{itemize}

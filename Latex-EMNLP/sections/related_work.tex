@@ -4,7 +4,7 @@
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/pipeline.png}
-\caption{Overview of the \textsf{StructSynth} framework. The method first performs \textbf{Dependency Structure Discovery} to infer a dependency graph from limited data via an LLM-guided search. Subsequently, \textbf{Structure-Guided Synthesis} leverages the learned graph as a blueprint to autoregressively guide the LLM in generating new tabular data.}
+\caption{Overview of the \textsf{StructSynth} framework. The method first performs \textbf{Evidence-Grounded Graph Induction} to infer a dependency graph from limited data via an LLM-guided search. Subsequently, \textbf{Graph-Planned Conditional Synthesis} leverages the learned graph as a blueprint to autoregressively guide the LLM in generating new tabular data.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -17,6 +17,7 @@ Structure-aware methods address this by incorporating explicit dependency graphs
 Fine-tuning approaches such as GReaT~\cite{borisov2023language} and TAPTAP~\cite{zhang2023generative} serialize rows as text and train LLMs for autoregressive generation, but are computationally expensive and degrade under data scarcity.
 Prompt-based methods avoid parameter updates: CuratedLLM (CLLM)~\cite{cllm2024} selects curated in-context examples to guide generation, yet treats each column independently without modeling inter-feature dependencies; TabGen-ICL~\cite{fang-etal-2025-tabgen} iteratively refines in-context selection to align the generated distribution with the real one.
 GraDe~\cite{zhang-etal-2025-features} moves closer to structure-aware LLM generation by injecting a learned sparse dependency graph into the Transformer attention mechanism, but the graph serves as an attention mask rather than an explicit generation blueprint, and requires model fine-tuning.
+SPADA~\cite{yang2025doubling} further decouples the two stages by replacing LLM-based generation with lightweight statistical estimators (KDE, normalizing flows), greatly accelerating sampling but relying on sufficient data to fit reliable conditional distributions.
 
 \paragraph{LLM-Assisted Dependency Discovery.}
 LLMs have been applied to structure learning itself. Early work demonstrated that LLMs can accurately judge pairwise causal directions from variable semantics alone~\cite{kiciman2023causal}. To scale beyond pairwise queries, BFS-based strategies reframe structure discovery as a graph traversal task, substantially reducing the number of LLM calls~\cite{jiralerspong2024efficient, zanna2025fairness}. A complementary line integrates LLM judgments with classical constraint-based algorithms, using the LLM to validate or correct statistically proposed edges~\cite{ban2023causal}.

@@ -14,7 +14,7 @@ Early tabular data synthesis methods relied on statistical techniques. SMOTE~\ci
 Deep generative models learn the data distribution through expressive neural architectures. TVAE~\cite{patki2016synthetic} adapts the Variational Autoencoder framework to mixed-type tabular data by applying mode-specific normalization to continuous columns. CTGAN~\cite{xu2019modeling} introduces a conditional GAN with a training-by-sampling strategy that addresses the imbalanced categorical distributions common in tabular datasets. Normalizing Flow-based methods~\cite{papamakarios2021normalizing} learn invertible transformations between a simple base distribution and the data distribution, offering exact likelihood computation. More recently, diffusion-based approaches have achieved strong results: TabDDPM~\cite{kotelnikov2023tabddpm} applies denoising diffusion probabilistic models to tabular data with separate handling of numerical and categorical features, while TabSyn~\cite{tabsyn} first encodes mixed-type tabular data into a continuous latent space via a VAE and then applies score-based diffusion within that space, improving inter-column relation fidelity while reducing inference steps. Despite these advances, all DGM-based approaches learn feature dependencies only as a byproduct of distribution fitting, offering limited interpretability or explicit control over the dependency structure during generation.
 
 \subsection{Structure-Aware Generative Methods}
-Structure-aware methods explicitly incorporate graphical models of feature dependencies into the generative process. Bayesian Network-based generators~\cite{ankan2015pgmpy} learn a directed acyclic graph over features and sample from the resulting factorized joint distribution. PrivBayes~\cite{zhang2017privbayes} extends this framework with differential privacy guarantees by injecting calibrated noise into the learned conditional distributions, enabling privacy-preserving synthesis. Among deep-learning approaches, DECAF~\cite{van2021decaf} leverages a user-specified or learned causal graph to achieve fairness-aware generation by intervening on sensitive attributes, while GOGGLE~\cite{liu2023goggle} employs a graph-based VAE that jointly learns the dependency structure and the generative model in an end-to-end differentiable manner. However, the quality of these methods is fundamentally tied to the accuracy of the underlying graph, which degrades substantially under limited-sample settings where conditional independence tests lack statistical power and score-based search becomes prone to local optima.
+Structure-aware methods explicitly incorporate graphical models of feature dependencies into the generative process. Bayesian Network-based generators~\cite{ankan2015pgmpy} learn a directed acyclic graph over features and sample from the resulting factorized joint distribution. PrivBayes~\cite{zhang2017privbayes} extends this framework with differential privacy guarantees by injecting calibrated noise into the learned conditional distributions, enabling privacy-preserving synthesis. Among deep-learning approaches, DECAF~\cite{van2021decaf} leverages a user-specified or learned causal graph to achieve fairness-aware generation by intervening on sensitive attributes, while GOGGLE~\cite{liu2023goggle} employs a graph-based VAE that jointly learns the dependency structure and the generative model in an end-to-end differentiable manner. However, the quality of these methods is fundamentally tied to the accuracy of the underlying graph, which degrades substantially under limited-sample settings where conditional independence tests lack statistical power and score-based search becomes prone to local optima. More recently, SPADA~\cite{yang2025doubling} employs an LLM to annotate sparse feature dependencies as a directed graph, then synthesizes data by traversing the graph with kernel density estimation or conditional normalizing flows, bypassing LLM-based generation entirely to achieve substantial sampling speedups.
 
 \subsection{LLM-Based Tabular Generation: Extended Discussion}
 Beyond the prompt-based and structure-aware LLM methods discussed in the main text, several fine-tuning approaches have been proposed. GReaT~\cite{borisov2023language} serializes each table row as a natural-language sentence with randomized column ordering and fine-tunes a pre-trained GPT-2 model for autoregressive row generation. TAPTAP~\cite{zhang2023generative} introduces a table pre-training stage that exposes the LLM to diverse tabular datasets before task-specific fine-tuning, improving generalization across domains. AIGT~\cite{zhang2025aigt} further augments the fine-tuning paradigm with attribute-level instruction tuning, enabling the model to follow explicit generation directives for individual columns. While these fine-tuning methods can achieve high fidelity when sufficient training data is available, they incur substantial computational costs and their performance degrades markedly in low-data regimes ($n \le 100$) where the limited training set is insufficient for effective parameter adaptation.
@@ -96,7 +96,7 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 \State \textbf{Output:} Synthetic dataset $\mathcal{D}_{\mathtt{synth}} = (X_{\mathtt{synth}}, A)$
 
 \vspace{0.2cm}
-\Statex \textbf{Stage 1: Dependency Structure Discovery}
+\Statex \textbf{Stage 1: Evidence-Grounded Graph Induction}
 \Statex \textit{1. Graph Initialization}
 \State Select a few-shot subset $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$
 \State $V_{\mathtt{source}} \gets f_{\mathtt{LLM}}(\pi_{\mathtt{source}}(\mathcal{D}_{\mathtt{few\_shot}}))$
@@ -131,7 +131,7 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 
 \vspace{0.3cm}
 
-\Statex \textbf{Stage 2: Structure-Guided Synthesis}
+\Statex \textbf{Stage 2: Graph-Planned Conditional Synthesis}
 \State Partition nodes $V$ into topological layers $\mathcal{L} = (L_1, \dots, L_m)$
 \State $X_{\mathtt{synth}} \gets \emptyset$
 \For{$j \gets 1$ to $s$}
@@ -188,7 +188,7 @@ For all baseline methods, with the exception of CuratedLLM, we utilize the imple
 
 \subsection{Implementation and Hyperparameters}
 \label{app:hyperparameter}
-The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth}, the XGBoost model for downstream evaluation, and the Peter-Clark algorithm are provided in Table~\ref{tab:hyperparameters}. For the software implementation, we utilize the Langchain library to manage LLM inference and the Causal-Learn library~\cite{zheng2024causal} for the PC algorithm.
+The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth}, the downstream evaluation models, and the Peter-Clark algorithm are provided in Table~\ref{tab:hyperparameters}. For the software implementation, we utilize the Langchain library to manage LLM inference and the Causal-Learn library~\cite{zheng2024causal} for the PC algorithm.
 
 \begin{table}[t]
 \centering
@@ -214,6 +214,16 @@ The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth},
     & colsample\_bytree = 1 \\
     & reg\_alpha = 0 \\
     & reg\_lambda = 1 \\
+    \midrule
+    \midrule
+    \multirow{2}{*}{Random Forest} & n\_estimators = 200 \\
+    & n\_jobs = $-1$ \\
+    \midrule
+    \multirow{2}{*}{\makecell[l]{Logistic Reg.\\/ Ridge}} & max\_iter = 1000 (Logistic Reg.) \\
+    & solver = `lbfgs' (Logistic Reg.) \\
+    \midrule
+    \multirow{2}{*}{MLP} & hidden\_layer\_sizes = (100,) \\
+    & max\_iter = 500 \\
     \midrule
     \multirow{3}{*}{PC algorithm} & alpha = 0.05 \\
     & indep\_test = `kci' \\
@@ -401,15 +411,15 @@ In this section, we discuss the broader implications of our results, analyze key
 \label{sec:structure_discussion}
 A central question raised by our work is whether explicit structural guidance provides a \emph{qualitative}---rather than merely quantitative---advantage over structure-blind LLM generation. To address this, we compare StructSynth against its closest structure-blind counterpart, CLLM, which uses the same LLM with identical hyperparameters but generates data without any structural blueprint.
 
-Our ablation study (Table~\ref{tab:ablation_study}) provides direct evidence for three distinct dimensions of improvement. First, regarding \textbf{structural modeling}: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence. In contrast, StructSynth encodes dependencies as an explicit DAG, ensuring that relationships are \emph{discovered} rather than incidentally induced. Second, regarding \textbf{generation strategy}: CLLM generates all features in a single pass without constraints, whereas StructSynth enforces a topological ordering that guarantees each feature is conditioned on its true parent nodes. Removing this ordering alone (\textit{No Topological Order} variant) degrades AUC by 1.1 points, while removing the graph entirely (\textit{No Structure} variant, equivalent to CLLM) causes a 1.6-point drop. Third, regarding \textbf{regularization}: the DAG serves as a structural regularizer that constrains the generation space, preventing the LLM from overfitting to spurious patterns in the few available training samples. This regularization effect is evidenced by StructSynth's superior privacy preservation (avg.\ rank 1.33 vs.\ CLLM's 3.33), indicating reduced memorization of training records.
+Our ablation study (Table~\ref{tab:ablation_study}) provides direct evidence for three distinct dimensions of improvement. First, regarding \textbf{structural modeling}: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence. In contrast, StructSynth encodes dependencies as an explicit DAG, ensuring that relationships are \emph{discovered} rather than incidentally induced. Second, regarding \textbf{generation strategy}: CLLM generates all features in a single pass without constraints, whereas StructSynth enforces a topological ordering that guarantees each feature is conditioned on its true parent nodes. Removing this ordering alone (\textit{No Topological Order} variant) degrades AUC by 1.1 points, while removing the graph entirely (\textit{No Structure} variant, equivalent to CLLM) causes a 1.6-point drop. Third, regarding \textbf{regularization}: the DAG serves as a structural regularizer that constrains the generation space, preventing the LLM from overfitting to spurious patterns in the few available training samples. This regularization effect is evidenced by StructSynth's superior privacy preservation (avg.\ rank 1.50 vs.\ CLLM's 3.50), indicating reduced memorization of training records.
 
 These results demonstrate that the advantage of StructSynth is \emph{not} merely the result of adding peripheral components to an LLM pipeline, but stems from a fundamental shift in how dependencies are modeled and enforced during generation.
 
 \subsection{Understanding the Fidelity-Privacy Trade-off}
 \label{sec:fidelity_discussion}
-A nuanced finding in our evaluation is that StructSynth does not achieve the highest Statistical Fidelity score (avg.\ rank 7.08), despite its strong downstream utility (avg.\ rank 1.00) and privacy preservation (avg.\ rank 1.33). We argue that this apparent discrepancy is both expected and desirable, reflecting the inherent tension between fidelity and privacy.
+A nuanced finding in our evaluation is that StructSynth does not achieve the highest Statistical Fidelity score (avg.\ rank 7.92), despite its strong downstream utility (avg.\ rank 1.00) and privacy preservation (avg.\ rank 1.50). We argue that this apparent discrepancy is both expected and desirable, reflecting the inherent tension between fidelity and privacy.
 
-To understand this trade-off, consider GReaT, which achieves the best Statistical Fidelity (avg.\ rank 3.33). However, its Privacy Risk score of 90.15\% reveals severe memorization---the model essentially reproduces training records rather than generating novel samples. This high fidelity is therefore an artifact of overfitting rather than genuine distributional learning. At the other extreme, the Bayesian Sampler in our ablation achieves the best raw fidelity score (48.86) but the lowest AUC (81.17), conclusively demonstrating that \textbf{high pairwise fidelity does not guarantee downstream utility}.
+To understand this trade-off, consider GReaT, which achieves the best Statistical Fidelity (avg.\ rank 3.67). However, its Privacy Risk score of 90.15\% reveals severe memorization---the model essentially reproduces training records rather than generating novel samples. This high fidelity is therefore an artifact of overfitting rather than genuine distributional learning. At the other extreme, the Bayesian Sampler in our ablation achieves the best raw fidelity score (48.86) but the lowest AUC (81.17), conclusively demonstrating that \textbf{high pairwise fidelity does not guarantee downstream utility}.
 
 This discrepancy can be further understood by examining what Statistical Fidelity actually measures. The metric quantifies the preservation of \emph{pairwise} correlations across all feature pairs. In contrast, StructSynth's DAG encodes \emph{conditional} dependencies---the probabilistic relationships between parent and child nodes. These conditional dependencies are what drive downstream model performance, as they capture the generative mechanisms underlying the data. StructSynth optimizes for preserving these conditional structures rather than pairwise statistics, which explains its superior utility despite moderate pairwise fidelity scores.
 

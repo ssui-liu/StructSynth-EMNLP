@@ -1,13 +1,13 @@
 \section{Methodology}
 
-As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} comprises two stages: \textbf{Dependency Structure Discovery}, which constructs a DAG from limited data via LLM-guided search, and \textbf{Structure-Guided Synthesis}, which uses the learned graph as a blueprint for autoregressive data generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
+As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} comprises two stages: \textbf{Evidence-Grounded Graph Induction}, which constructs a DAG from limited data via LLM-guided search, and \textbf{Graph-Planned Conditional Synthesis}, which uses the learned graph as a blueprint for autoregressive data generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
 Within each stage, the framework addresses data scarcity through complementary mechanisms: (a) leveraging the LLM's semantic prior as a structural regularizer, and (b) using statistical association scores as weak supervision.
 
 \subsection{Problem Definition}
 
 Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\mathtt{train}}, \mathbf{A})$ with $n \le 100$ instances and $K$ attributes, our goal is to use an LLM-based generator $f_{\mathtt{LLM}}$ to produce a synthetic dataset $\mathcal{D}_{\mathtt{synth}}$ that, when combined with $\mathcal{D}_{\mathtt{train}}$, improves downstream model performance. We adopt the DAG formulation for its functional role in defining a generative ordering; Appendix~\ref{sec:why_dag} provides a detailed justification.
 
-\subsection{Dependency Structure Discovery}
+\subsection{Evidence-Grounded Graph Induction}
 
 The dependency structure is represented as a DAG $G = (V, E)$, where the node set $V \subseteq \mathbf{A}$ contains selected attributes and edges $E$ encode probabilistic dependencies. The graph is constructed iteratively via BFS as described below.
 
@@ -56,19 +56,20 @@ This expansion-resolution cycle continues until the BFS queue is empty, yielding
     \multirow{1}{*}{Real} & $\mathcal{D}_\mathtt{train}$ & $82.51_{\pm 1.93}$ & $85.49_{\pm 1.60}$ & $64.84_{\pm 2.51}$ & $49.71_{\pm 7.02}$ & $59.83_{\pm 6.40}$ & $86.86_{\pm 3.78}$ & $71.54$ & - \\
     
     \midrule
-    \multirow{5}{*}{DGMs} & TVAE & $81.21_{\pm 1.54}$ & $79.63_{\pm 2.65}$ & $64.39_{\pm 2.06}$ & $46.18_{\pm 5.91}$ & $60.92_{\pm 2.61}$ & $87.42_{\pm 3.80}$ & $69.96$ & $6.50$ \\
-    & DDPM & $81.72_{\pm 1.79}$ & $82.94_{\pm 3.24}$ & $66.01_{\pm 2.50}$ & $22.30_{\pm 15.70}$ & $43.20_{\pm 7.98}$ & $85.91_{\pm 2.05}$ & $63.68$ & $8.17$ \\
-    & CTGAN & $81.14_{\pm 1.81}$ & $76.06_{\pm 1.47}$ & $65.17_{\pm 2.61}$ & $46.17_{\pm 5.25}$ & $54.29_{\pm 5.90}$ & $86.50_{\pm 4.17}$ & $68.22$ & $7.83$ \\
-    & NFlow & $75.42_{\pm 4.58}$ & $74.83_{\pm 2.94}$ & $63.68_{\pm 4.22}$ & $25.55_{\pm 6.16}$ & $46.80_{\pm 4.17}$ & $84.99_{\pm 2.73}$ & $61.88$ & $11.00$ \\
-    & TabSyn & $83.88_{\pm 1.56}$ & \underline{$85.68_{\pm 2.40}$} & $67.77_{\pm 6.98}$ & $47.17_{\pm 9.58}$ & $43.50_{\pm 9.91}$ & $89.86_{\pm 1.53}$ & $69.64$ & $3.83$ \\
+    \multirow{5}{*}{DGMs} & TVAE & $81.21_{\pm 1.54}$ & $79.63_{\pm 2.65}$ & $64.39_{\pm 2.06}$ & $46.18_{\pm 5.91}$ & \underline{$60.92_{\pm 2.61}$} & $87.42_{\pm 3.80}$ & $69.96$ & $7.00$ \\
+    & DDPM & $81.72_{\pm 1.79}$ & $82.94_{\pm 3.24}$ & $66.01_{\pm 2.50}$ & $22.30_{\pm 15.70}$ & $43.20_{\pm 7.98}$ & $85.91_{\pm 2.05}$ & $63.68$ & $8.67$ \\
+    & CTGAN & $81.14_{\pm 1.81}$ & $76.06_{\pm 1.47}$ & $65.17_{\pm 2.61}$ & $46.17_{\pm 5.25}$ & $54.29_{\pm 5.90}$ & $86.50_{\pm 4.17}$ & $68.22$ & $8.33$ \\
+    & NFlow & $75.42_{\pm 4.58}$ & $74.83_{\pm 2.94}$ & $63.68_{\pm 4.22}$ & $25.55_{\pm 6.16}$ & $46.80_{\pm 4.17}$ & $84.99_{\pm 2.73}$ & $61.88$ & $11.67$ \\
+    & TabSyn & $83.88_{\pm 1.56}$ & \underline{$85.68_{\pm 2.40}$} & \underline{$67.77_{\pm 6.98}$} & $47.17_{\pm 9.58}$ & $43.50_{\pm 9.91}$ & \underline{$89.86_{\pm 1.53}$} & $69.64$ & $4.00$ \\
     \midrule
-    \multirow{3}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $78.92_{\pm 3.04}$ & $80.92_{\pm 1.61}$ & $63.73_{\pm 3.85}$ & $43.18_{\pm 10.65}$ & $55.84_{\pm 7.77}$ & $85.27_{\pm 3.98}$ & $67.98$ & $8.50$ \\
-    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $46.33_{\pm 7.29}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $6.00$ \\
-    & DECAF & $77.64_{\pm 3.91}$ & $79.90_{\pm 2.30}$ & $63.90_{\pm 3.69}$ & $43.58_{\pm 6.25}$ & $52.88_{\pm 6.44}$ & $83.94_{\pm 2.97}$ & $66.97$ & $9.17$ \\
+    \multirow{4}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $78.92_{\pm 3.04}$ & $80.92_{\pm 1.61}$ & $63.73_{\pm 3.85}$ & $43.18_{\pm 10.65}$ & $55.84_{\pm 7.77}$ & $85.27_{\pm 3.98}$ & $67.98$ & $9.00$ \\
+    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $46.33_{\pm 7.29}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $6.17$ \\
+    & DECAF & $77.64_{\pm 3.91}$ & $79.90_{\pm 2.30}$ & $63.90_{\pm 3.69}$ & $43.58_{\pm 6.25}$ & $52.88_{\pm 6.44}$ & $83.94_{\pm 2.97}$ & $66.97$ & $9.67$ \\
+    & SPADA-NF & $81.25_{\pm 1.35}$ & $65.39_{\pm 2.64}$ & $65.58_{\pm 3.02}$ & $35.70_{\pm 5.70}$ & $45.73_{\pm 4.52}$ & $87.55_{\pm 1.24}$ & $63.53$ & $8.83$ \\
     \midrule
-    \multirow{3}{*}{LLMs} & GReaT & $82.55_{\pm 2.20}$ & $83.81_{\pm 2.55}$ & $64.02_{\pm 2.72}$ & $51.43_{\pm 3.31}$ & $47.03_{\pm 9.16}$ & $86.67_{\pm 3.20}$ & $69.25$ & $6.00$ \\
-    & CLLM & \underline{$83.95_{\pm 2.09}$} & $85.17_{\pm 0.94}$ & \underline{$66.24_{\pm 1.51}$} & \underline{$54.53_{\pm 0.20}$} & \underline{$60.43_{\pm 7.19}$} & \underline{$89.81_{\pm 2.78}$} & \underline{$73.36$} & \underline{$2.67$} \\
-    & GraDe & $83.72_{\pm 1.44}$ & $79.74_{\pm 2.01}$ & $66.15_{\pm 4.90}$ & $35.03_{\pm 8.08}$ & $22.92_{\pm 7.01}$ & $88.81_{\pm 2.51}$ & $62.73$ & $7.33$ \\
+    \multirow{3}{*}{LLMs} & GReaT & $82.55_{\pm 2.20}$ & $83.81_{\pm 2.55}$ & $64.02_{\pm 2.72}$ & $51.43_{\pm 3.31}$ & $47.03_{\pm 9.16}$ & $86.67_{\pm 3.20}$ & $69.25$ & $6.33$ \\
+    & CLLM & \underline{$83.95_{\pm 2.09}$} & $85.17_{\pm 0.94}$ & $66.24_{\pm 1.51}$ & \underline{$54.53_{\pm 0.20}$} & $60.43_{\pm 7.19}$ & $89.81_{\pm 2.78}$ & \underline{$73.36$} & \underline{$2.67$} \\
+    & GraDe & $83.72_{\pm 1.44}$ & $79.74_{\pm 2.01}$ & $66.15_{\pm 4.90}$ & $35.03_{\pm 8.08}$ & $22.92_{\pm 7.01}$ & $88.81_{\pm 2.51}$ & $62.73$ & $7.67$ \\
     \midrule
     \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{85.55_{\pm 1.08}}$ & $\boldsymbol{86.45_{\pm 0.57}}$ & $\boldsymbol{69.40_{\pm 0.25}}$ & $\boldsymbol{55.98_{\pm 2.96}}$ & $\boldsymbol{62.27_{\pm 5.40}}$ & $\boldsymbol{90.39_{\pm 1.96}}$ & $\boldsymbol{75.01}$ & $\boldsymbol{1.00}$ \\
     
@@ -77,7 +78,7 @@ This expansion-resolution cycle continues until the BFS queue is empty, yielding
     \label{tab:results_comparison_performance}
 \end{table*}
 
-\subsection{Structure-Guided Synthesis}
+\subsection{Graph-Planned Conditional Synthesis}
 \label{sec:synth}
 
 Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthetic tabular data generation. Constructing each synthetic data point $\tilde{\mathbf{x}}_j$ is performed in two sequential phases aligned with the underlying data structure.
@@ -87,7 +88,7 @@ Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthe
 The nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ denotes parent nodes, along with the corresponding columns from the few-shot examples.
 Values for layer $L_i$ are generated conditionally on all preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, L_i} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen}}\left( \tilde{\mathbf{x}}_{j, <i},\ G_i,\ L_i,\ \mathcal{D}_{\mathtt{few\_shot}}^i\right)\right).
+\tilde{\mathbf{x}}_{j, L_i} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen}}\big( \tilde{\mathbf{x}}_{j, <i},\; G_i,\; L_i,\; \mathcal{D}_{\mathtt{few\_shot}}^i\big)\Big).
 \end{equation}
 Iterating through all layers yields a partial synthetic data point $\tilde{\mathbf{x}}_{j, V}$ comprising values for all graph-dependent attributes.
 
@@ -95,7 +96,7 @@ Iterating through all layers yields a partial synthetic data point $\tilde{\math
 
 Values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ (those outside the dependency graph) are generated in a single step, conditioned on all graph-based values $\tilde{\mathbf{x}}_{j, V}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen\_iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right).
+\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen\_iso}}\big(\tilde{\mathbf{x}}_{j, V},\; A_{\mathtt{iso}},\; \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\big)\Big).
 \end{equation}
 The graph-dependent and isolated values are concatenated to form each synthetic record; repeating $s$ times yields $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$.
 
