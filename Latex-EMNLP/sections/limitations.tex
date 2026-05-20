@@ -1,3 +1,14 @@
 \section*{Limitations}
 
-StructSynth relies on the LLM's semantic prior over feature names and domains, so opaque or highly specialized schemas may weaken structure discovery. Its current evaluation covers moderate-dimensional tables ($K \in [8, 19]$); substantially wider schemas may require hierarchical discovery to control API cost and context length. The DAG formulation is functionally useful for autoregressive generation, but it cannot directly express cyclic or bidirectional dependencies. Finally, the current implementation depends on commercial LLM APIs, which introduces cost and reproducibility considerations despite the modest token overhead reported in Appendix~\ref{sec:token_usage}.
+\paragraph{LLM semantic prior.}
+\textsf{StructSynth}'s structure discovery quality depends on the LLM's ability to interpret feature names and domain context.
+When schemas are opaque (e.g., anonymized identifiers such as \texttt{V1, V2}) or use highly specialized nomenclature (e.g., genomic locus codes), the semantic prior weakens considerably.
+Although statistical association cues can partially compensate, a fully anonymized schema effectively reduces our hybrid discovery to a purely statistical method, forfeiting the complementary benefit that motivates the design.
+
+\paragraph{DAG assumption.}
+The directed acyclic graph formulation, while well-suited for autoregressive generation, cannot directly represent cyclic or bidirectional dependencies.
+For data governed by genuine feedback loops---such as reciprocal economic indicators---the framework must approximate such relationships with unidirectional edges, potentially losing part of the underlying dependency structure.
+
+\paragraph{LLM API dependence.}
+The current implementation relies on commercial LLM APIs, raising cost and reproducibility concerns.
+While Appendix~\ref{sec:token_usage} reports modest token overhead and experiments across multiple LLM backends confirm robustness to the specific model choice, API version updates may still affect exact reproducibility of the discovered structures.
