@@ -25,7 +25,7 @@ As a result, dependency preservation is left to the implicit capacity of the lan
 A natural response is to make dependencies explicit in the generation process.
 Recent graph-aware generation methods take steps in this direction: GraDe~\cite{zhang-etal-2025-features} injects a learned sparse dependency graph into the Transformer attention mechanism, while SPADA~\cite{yang2025doubling} uses the graph to guide lightweight statistical estimators such as normalizing flows.
 These designs validate the importance of sparse dependency structure, yet neither treats the graph as a \textit{generation plan} that organizes the LLM's own generation process---the graph serves as an internal attention mask or a distribution prior rather than determining what to generate, in what order, and conditioned on which context.
-Moreover, both approaches are not designed for the low-data regime, as they rely on model fine-tuning or sufficient samples to fit conditional distributions.
+Moreover, neither method targets the low-data regime, as they rely on model fine-tuning or sufficient samples to fit conditional distributions.
 This gap raises a natural question: \textit{can a dependency graph determine the generation order, conditioning context, and scope of each black-box LLM call?}
 
 We answer this question with \textsf{StructSynth}, a framework for \underline{Struct}ure-aware tabular data \underline{Synth}esis that treats a dependency graph as a generation plan---one that determines how prompts are constructed and sequenced for black-box LLM synthesis.
