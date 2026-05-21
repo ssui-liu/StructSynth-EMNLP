@@ -5,7 +5,7 @@ We conduct experiments on six real-world tabular datasets: Adult~\cite{adult_2},
 
 
 \subsubsection{Baselines}
-We compare our method against eleven baselines from three categories (implementation details in Appendix~\ref{app:baselines}): 1)~\textbf{Deep Generative Models (DGMs)}, including TVAE~\cite{xu2019modeling}, CTGAN~\cite{xu2019modeling}, TabDDPM~\cite{kotelnikov2023tabddpm}, NFlow~\cite{papamakarios2021normalizing}, and TabSyn~\cite{tabsyn}; 2)~\textbf{Structure-Aware Methods}, including Bayesian Networks~\cite{ankan2015pgmpy}, GOGGLE~\cite{liu2023goggle}, and DECAF~\cite{van2021decaf}; and 3)~\textbf{LLM-based Methods}, including GReaT~\cite{borisov2023language}, CLLM~\cite{cllm2024}, and GraDe~\cite{zhang-etal-2025-features}. 
+We compare our method against twelve baselines from three categories (implementation details in Appendix~\ref{app:baselines}): 1)~\textbf{Deep Generative Models (DGMs)}, including TVAE~\cite{xu2019modeling}, CTGAN~\cite{xu2019modeling}, TabDDPM~\cite{kotelnikov2023tabddpm}, NFlow~\cite{papamakarios2021normalizing}, and TabSyn~\cite{tabsyn}; 2)~\textbf{Structure-Aware Methods}, including Bayesian Networks~\cite{ankan2015pgmpy}, GOGGLE~\cite{liu2023goggle}, DECAF~\cite{van2021decaf}, and SPADA-NF~\cite{yang2025doubling}; and 3)~\textbf{LLM-based Methods}, including GReaT~\cite{borisov2023language}, CLLM~\cite{cllm2024}, and GraDe~\cite{zhang-etal-2025-features}.
 
 \subsubsection{Evaluation Metrics}
 Following previous work~\cite{borisov2023language, cllm2024}, we evaluate synthetic data along three axes (detailed definitions in Appendix~\ref{app:metrics}): \textbf{Downstream Model Performance} measures the utility of synthetic data by training a downstream model on $\mathcal{D}_{\mathtt{aug}} = \mathcal{D}_{\mathtt{train}} \cup \mathcal{D}_{\mathtt{synth}}$ and evaluating on $\mathcal{D}_{\mathtt{test}}$; we report AUC for classification and $R^2$ for regression. \textbf{Statistical Fidelity} quantifies how well pairwise correlations in the synthetic data match the real data (\textbf{lower is better}). \textbf{Privacy Risk}~\cite{van2023membership} measures whether synthetic records are overly similar to training records; the score is the fraction of synthetic nearest neighbors drawn from $\mathcal{D}_{\mathtt{train}}$ (\textbf{closer to 0.5 is better}).
@@ -36,41 +36,43 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 \midrule
 \multicolumn{10}{l}{{Results for \textbf{Privacy Preservation}.} \textit{A value approaching 0.5 indicates better privacy preservation.}} \\
 \midrule
-    \multirow{5}{*}{DGMs} & TVAE & \underline{$50.34_{\pm 3.91}$} & $55.41_{\pm 4.26}$ & $64.50_{\pm 5.18}$ & $55.09_{\pm 4.38}$ & $52.93_{\pm 7.86}$ & $58.70_{\pm 4.75}$ & $56.16$ & $4.33$ \\
-    & DDPM & $99.95_{\pm 0.05}$ & $66.20_{\pm 13.17}$ & $67.18_{\pm 18.06}$ & $63.32_{\pm 19.52}$ & $71.36_{\pm 16.88}$ & $62.89_{\pm 24.91}$ & $71.82$ & $9.67$ \\
-    & CTGAN & $50.70_{\pm 3.64}$ & $56.64_{\pm 4.72}$ & $64.43_{\pm 4.22}$ & $53.59_{\pm 2.05}$ & $53.44_{\pm 3.89}$ & $57.84_{\pm 2.31}$ & $56.11$ & $4.67$ \\
-    & NFlow & $54.36_{\pm 1.92}$ & $\boldsymbol{53.52_{\pm 3.08}}$ & \underline{$62.57_{\pm 3.66}$} & $52.76_{\pm 2.34}$ & $51.74_{\pm 3.68}$ & $52.97_{\pm 3.33}$ & $54.65$ & $3.50$ \\
-    & TabSyn & $51.64_{\pm 2.67}$ & $70.53_{\pm 7.45}$ & $67.55_{\pm 5.40}$ & $54.66_{\pm 4.19}$ & $63.30_{\pm 7.19}$ & $59.38_{\pm 3.70}$ & $61.18$ & $7.50$ \\
+    \multirow{5}{*}{DGMs} & TVAE & \underline{$50.34_{\pm 3.91}$} & $55.41_{\pm 4.26}$ & $64.50_{\pm 5.18}$ & $55.09_{\pm 4.38}$ & $52.93_{\pm 7.86}$ & $58.70_{\pm 4.75}$ & $56.16$ & $4.50$ \\
+    & DDPM & $99.95_{\pm 0.05}$ & $66.20_{\pm 13.17}$ & $67.18_{\pm 18.06}$ & $63.32_{\pm 19.52}$ & $71.36_{\pm 16.88}$ & $62.89_{\pm 24.91}$ & $71.82$ & $10.00$ \\
+    & CTGAN & $50.70_{\pm 3.64}$ & $56.64_{\pm 4.72}$ & $64.43_{\pm 4.22}$ & $53.59_{\pm 2.05}$ & $53.44_{\pm 3.89}$ & $57.84_{\pm 2.31}$ & $56.11$ & $4.83$ \\
+    & NFlow & $54.36_{\pm 1.92}$ & $\boldsymbol{53.52_{\pm 3.08}}$ & $62.57_{\pm 3.66}$ & $52.76_{\pm 2.34}$ & $51.74_{\pm 3.68}$ & $52.97_{\pm 3.33}$ & $54.65$ & $3.67$ \\
+    & TabSyn & $51.64_{\pm 2.67}$ & $70.53_{\pm 7.45}$ & $67.55_{\pm 5.40}$ & $54.66_{\pm 4.19}$ & $63.30_{\pm 7.19}$ & $59.38_{\pm 3.70}$ & $61.18$ & $7.67$ \\
 \midrule
-    \multirow{3}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $49.15_{\pm 7.97}$ & $43.62_{\pm 33.49}$ & $65.16_{\pm 17.25}$ & $30.94_{\pm 18.49}$ & $44.28_{\pm 23.83}$ & $61.87_{\pm 18.01}$ & \underline{$49.17$} & $7.17$ \\
-    & BN & $53.73_{\pm 2.36}$ & $72.98_{\pm 4.69}$ & $67.78_{\pm 3.63}$ & $61.50_{\pm 1.48}$ & $68.02_{\pm 2.18}$ & $59.68_{\pm 3.74}$ & $63.95$ & $8.83$ \\
-    & DECAF & $46.23_{\pm 19.13}$ & $58.59_{\pm 10.37}$ & $64.07_{\pm 19.14}$ & $56.91_{\pm 17.41}$ & \underline{$50.82_{\pm 15.49}$} & $69.79_{\pm 18.81}$ & $57.74$ & $6.33$ \\
+    \multirow{4}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $49.15_{\pm 7.97}$ & $43.62_{\pm 33.49}$ & $65.16_{\pm 17.25}$ & $30.94_{\pm 18.49}$ & $44.28_{\pm 23.83}$ & $61.87_{\pm 18.01}$ & \underline{$49.17$} & $7.33$ \\
+    & BN & $53.73_{\pm 2.36}$ & $72.98_{\pm 4.69}$ & $67.78_{\pm 3.63}$ & $61.50_{\pm 1.48}$ & $68.02_{\pm 2.18}$ & $59.68_{\pm 3.74}$ & $63.95$ & $9.00$ \\
+    & DECAF & $46.23_{\pm 19.13}$ & $58.59_{\pm 10.37}$ & $64.07_{\pm 19.14}$ & $56.91_{\pm 17.41}$ & \underline{$50.82_{\pm 15.49}$} & $69.79_{\pm 18.81}$ & $57.74$ & $6.50$ \\
+    & SPADA-NF & $95.20_{\pm 0.71}$ & $78.76_{\pm 15.53}$ & $\boldsymbol{57.86_{\pm 11.26}}$ & $94.98_{\pm 0.88}$ & $83.08_{\pm 1.69}$ & $92.30_{\pm 1.49}$ & $83.70$ & $10.17$ \\
     \midrule
-    \multirow{3}{*}{LLMs} & GReaT & $99.50_{\pm 0.35}$ & $85.39_{\pm 2.29}$ & $94.10_{\pm 1.33}$ & $86.66_{\pm 2.45}$ & $80.75_{\pm 2.99}$ & $94.51_{\pm 1.48}$ & $90.15$ & $11.83$ \\
-    & CLLM & $49.45_{\pm 3.85}$ & $44.37_{\pm 4.55}$ & $64.14_{\pm 4.22}$ & \underline{$50.96_{\pm 5.40}$} & $45.36_{\pm 2.69}$ & $\boldsymbol{48.78_{\pm 5.82}}$ & $\boldsymbol{50.51}$ & \underline{$3.33$} \\
-    & GraDe & $97.51_{\pm 1.60}$ & $61.14_{\pm 1.94}$ & $75.11_{\pm 5.11}$ & $65.99_{\pm 2.60}$ & $59.30_{\pm 4.76}$ & $69.07_{\pm 2.86}$ & $71.35$ & $9.50$ \\
+    \multirow{3}{*}{LLMs} & GReaT & $99.50_{\pm 0.35}$ & $85.39_{\pm 2.29}$ & $94.10_{\pm 1.33}$ & $86.66_{\pm 2.45}$ & $80.75_{\pm 2.99}$ & $94.51_{\pm 1.48}$ & $90.15$ & $12.50$ \\
+    & CLLM & $49.45_{\pm 3.85}$ & $44.37_{\pm 4.55}$ & $64.14_{\pm 4.22}$ & \underline{$50.96_{\pm 5.40}$} & $45.36_{\pm 2.69}$ & $\boldsymbol{48.78_{\pm 5.82}}$ & $\boldsymbol{50.51}$ & \underline{$3.50$} \\
+    & GraDe & $97.51_{\pm 1.60}$ & $61.14_{\pm 1.94}$ & $75.11_{\pm 5.11}$ & $65.99_{\pm 2.60}$ & $59.30_{\pm 4.76}$ & $69.07_{\pm 2.86}$ & $71.35$ & $9.83$ \\
     \midrule
-    \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{49.97_{\pm 5.78}}$ & \underline{$44.74_{\pm 5.13}$} & $\boldsymbol{62.37_{\pm 3.86}}$ & $\boldsymbol{50.13_{\pm 4.89}}$ & $\boldsymbol{49.80_{\pm 6.31}}$ & \underline{$48.67_{\pm 4.84}$} & $50.95$ & $\boldsymbol{1.33}$ \\
+    \multirow{1}{*}{Ours} & StructSynth & $\boldsymbol{49.97_{\pm 5.78}}$ & \underline{$44.74_{\pm 5.13}$} & \underline{$62.37_{\pm 3.86}$} & $\boldsymbol{50.13_{\pm 4.89}}$ & $\boldsymbol{49.80_{\pm 6.31}}$ & \underline{$48.67_{\pm 4.84}$} & $50.95$ & $\boldsymbol{1.50}$ \\
 
 \midrule
 \midrule
 \multicolumn{10}{l}{{Results for \textbf{Statistical Fidelity}.} \textit{A lower score indicates higher fidelity.}} \\
 \midrule
-    \multirow{5}{*}{DGMs} & TVAE & $53.71_{\pm 1.80}$ & $46.16_{\pm 1.28}$ & $60.26_{\pm 1.09}$ & $66.93_{\pm 1.13}$ & \underline{$58.41_{\pm 0.52}$} & $53.22_{\pm 1.54}$ & $58.11$ & $5.17$ \\
-    & DDPM & $65.26_{\pm 1.05}$ & $52.76_{\pm 1.22}$ & $64.94_{\pm 1.79}$ & $90.51_{\pm 0.33}$ & $64.44_{\pm 1.36}$ & $64.40_{\pm 2.90}$ & $67.05$ & $10.00$ \\
-    & CTGAN & \underline{$52.37_{\pm 1.56}$} & $47.14_{\pm 2.39}$ & $59.96_{\pm 0.90}$ & $58.57_{\pm 0.89}$ & $58.71_{\pm 0.57}$ & \underline{$52.32_{\pm 1.75}$} & $54.85$ & \underline{$4.17$} \\
-    & NFlow & $\boldsymbol{50.68_{\pm 2.71}}$ & \underline{$43.50_{\pm 1.77}$} & $60.62_{\pm 0.93}$ & \underline{$52.38_{\pm 1.10}$} & $58.85_{\pm 0.98}$ & $53.98_{\pm 2.24}$ & $\boldsymbol{53.34}$ & $4.50$ \\
-    & TabSyn & $49.17_{\pm 1.34}$ & $55.31_{\pm 1.31}$ & $57.23_{\pm 2.24}$ & $62.90_{\pm 3.01}$ & $58.08_{\pm 0.54}$ & $53.99_{\pm 2.08}$ & $56.11$ & $4.75$ \\
+    \multirow{5}{*}{DGMs} & TVAE & $53.71_{\pm 1.80}$ & $46.16_{\pm 1.28}$ & $60.26_{\pm 1.09}$ & $66.93_{\pm 1.13}$ & $58.41_{\pm 0.52}$ & $53.22_{\pm 1.54}$ & $56.45$ & $6.00$ \\
+    & DDPM & $65.26_{\pm 1.05}$ & $52.76_{\pm 1.22}$ & $64.94_{\pm 1.79}$ & $90.51_{\pm 0.33}$ & $64.44_{\pm 1.36}$ & $64.40_{\pm 2.90}$ & $67.05$ & $10.83$ \\
+    & CTGAN & $52.37_{\pm 1.56}$ & $47.14_{\pm 2.39}$ & $59.96_{\pm 0.90}$ & $58.57_{\pm 0.89}$ & $58.71_{\pm 0.57}$ & $52.32_{\pm 1.75}$ & \underline{$54.85$} & $4.83$ \\
+    & NFlow & \underline{$50.68_{\pm 2.71}$} & $43.50_{\pm 1.77}$ & $60.62_{\pm 0.93}$ & \underline{$52.38_{\pm 1.10}$} & $58.85_{\pm 0.98}$ & $53.98_{\pm 2.24}$ & $\boldsymbol{53.34}$ & $5.00$ \\
+    & TabSyn & $\boldsymbol{49.17_{\pm 1.34}}$ & $55.31_{\pm 1.31}$ & $57.23_{\pm 2.24}$ & $62.90_{\pm 3.01}$ & $58.08_{\pm 0.54}$ & $53.99_{\pm 2.08}$ & $56.11$ & $5.58$ \\
 \midrule
-    \multirow{3}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $68.32_{\pm 1.38}$ & $51.58_{\pm 7.27}$ & $66.19_{\pm 1.13}$ & $87.15_{\pm 1.65}$ & $63.80_{\pm 2.40}$ & $65.51_{\pm 2.16}$ & $67.09$ & $10.00$ \\
-    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $\boldsymbol{46.33_{\pm 7.29}}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $8.17$ \\
-    & DECAF & $62.71_{\pm 3.21}$ & $48.53_{\pm 1.53}$ & $63.82_{\pm 1.34}$ & $84.70_{\pm 2.41}$ & $60.93_{\pm 2.21}$ & $60.22_{\pm 0.88}$ & $63.49$ & $8.17$ \\
+    \multirow{4}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $68.32_{\pm 1.38}$ & $51.58_{\pm 7.27}$ & $66.19_{\pm 1.13}$ & $87.15_{\pm 1.65}$ & $63.80_{\pm 2.40}$ & $65.51_{\pm 2.16}$ & $67.09$ & $10.83$ \\
+    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $\boldsymbol{46.33_{\pm 7.29}}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $8.83$ \\
+    & DECAF & $62.71_{\pm 3.21}$ & $48.53_{\pm 1.53}$ & $63.82_{\pm 1.34}$ & $84.70_{\pm 2.41}$ & $60.93_{\pm 2.21}$ & $60.22_{\pm 0.88}$ & $63.49$ & $9.00$ \\
+    & SPADA-NF & $83.14_{\pm 0.73}$ & $45.92_{\pm 1.33}$ & \underline{$53.62_{\pm 1.55}$} & $61.79_{\pm 0.55}$ & $\boldsymbol{55.29_{\pm 0.85}}$ & $\boldsymbol{47.85_{\pm 1.17}}$ & $57.94$ & \underline{$4.33$} \\
     \midrule
-    \multirow{3}{*}{LLMs} & GReaT & $82.71_{\pm 1.35}$ & $\boldsymbol{40.10_{\pm 1.64}}$ & $\boldsymbol{52.17_{\pm 1.18}}$ & $58.75_{\pm 0.89}$ & $\boldsymbol{56.83_{\pm 0.87}}$ & $\boldsymbol{48.18_{\pm 2.16}}$ & \underline{$56.46$} & $\boldsymbol{3.33}$ \\
-    & CLLM & $61.93_{\pm 4.43}$ & $57.64_{\pm 1.51}$ & $59.74_{\pm 2.33}$ & $78.60_{\pm 0.98}$ & $65.74_{\pm 1.42}$ & $62.20_{\pm 3.68}$ & $64.31$ & $8.50$ \\
-    & GraDe & $84.30_{\pm 0.86}$ & $42.59_{\pm 0.93}$ & $53.82_{\pm 2.62}$ & $55.85_{\pm 1.42}$ & $57.44_{\pm 1.43}$ & $53.66_{\pm 1.90}$ & $57.94$ & \underline{$4.17$} \\
+    \multirow{3}{*}{LLMs} & GReaT & $82.71_{\pm 1.35}$ & $\boldsymbol{40.10_{\pm 1.64}}$ & $\boldsymbol{52.17_{\pm 1.18}}$ & $58.75_{\pm 0.89}$ & \underline{$56.83_{\pm 0.87}$} & \underline{$48.18_{\pm 2.16}$} & $56.46$ & $\boldsymbol{3.67}$ \\
+    & CLLM & $61.93_{\pm 4.43}$ & $57.64_{\pm 1.51}$ & $59.74_{\pm 2.33}$ & $78.60_{\pm 0.98}$ & $65.74_{\pm 1.42}$ & $62.20_{\pm 3.68}$ & $64.31$ & $9.33$ \\
+    & GraDe & $84.30_{\pm 0.86}$ & \underline{$42.59_{\pm 0.93}$} & $53.82_{\pm 2.62}$ & $55.85_{\pm 1.42}$ & $57.44_{\pm 1.43}$ & $53.66_{\pm 1.90}$ & $57.94$ & $4.83$ \\
     \midrule
-    Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & \underline{$57.23_{\pm 1.69}$} & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & $7.08$ \\
+    Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & $57.23_{\pm 1.69}$ & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & $7.92$ \\
 \bottomrule
 \end{tabular}}%
 \label{tab:results_comparison_merged}
@@ -85,7 +87,7 @@ Table~\ref{tab:results_comparison_performance} summarizes the downstream results
 
 \subsubsection{Privacy Preservation and Statistical Fidelity}
 
-Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, GReaT achieves the best fidelity (avg.\ rank 3.33) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. Similarly, GraDe attains strong fidelity (avg.\ rank 4.17) at the cost of poor privacy (avg.\ rank 9.50). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.33) but weaker fidelity (avg.\ rank 8.50). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.33) while maintaining competitive statistical fidelity (avg.\ rank 7.08). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The structural blueprint thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
+Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, GReaT achieves the best fidelity (avg.\ rank 3.67) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. Similarly, SPADA-NF attains strong fidelity (avg.\ rank 4.33) at the cost of poor privacy (avg.\ rank 10.17). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.50) but weaker fidelity (avg.\ rank 9.33). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.50) while maintaining competitive statistical fidelity (avg.\ rank 7.92). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The structural blueprint thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
 
 
 \begin{figure*}[t!]
@@ -149,56 +151,31 @@ Taken together, these results clarify why \textsf{StructSynth}'s advantage over 
     \hline
     \multirow{4}{*}{\makecell[l]{Adult\\(C)}}
     & XGBoost & $82.51$ & $83.95$ & $\boldsymbol{85.55}$ \\
-    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Random Forest & $85.03$ & $84.63$ & $\boldsymbol{87.45}$ \\
+    & Logistic Reg. & $85.68$ & $85.49$ & $\boldsymbol{87.80}$ \\
+    & MLP & $83.63$ & $83.59$ & $\boldsymbol{86.85}$ \\
     \hline
     \multirow{4}{*}{\makecell[l]{Anxiety$^\dag$\\(C)}}
     & XGBoost & $85.49$ & $85.17$ & $\boldsymbol{86.45}$ \\
-    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Random Forest & $86.85$ & $85.14$ & $\boldsymbol{87.04}$ \\
+    & Logistic Reg. & $87.26$ & $85.87$ & $\boldsymbol{87.82}$ \\
+    & MLP & $84.85$ & $82.27$ & $\boldsymbol{85.76}$ \\
     \hline
     \multirow{4}{*}{\makecell[l]{Salary$^\dag$\\(R)}}
     & XGBoost & $49.71$ & $54.53$ & $\boldsymbol{55.98}$ \\
-    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & Ridge & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Random Forest & $55.16$ & $51.29$ & $\boldsymbol{57.12}$ \\
+    & Ridge & $\boldsymbol{59.48}$ & $52.58$ & $56.80$ \\
+    & MLP & $44.61$ & $\boldsymbol{46.00}$ & $42.64$ \\
     \hline
     \multirow{4}{*}{\makecell[l]{Churn\\(C)}}
     & XGBoost & $86.86$ & $89.81$ & $\boldsymbol{90.39}$ \\
-    & Random Forest & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & Logistic Reg. & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
-    & MLP & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ & $\mathtt{XX.XX}$ \\
+    & Random Forest & $90.78$ & $91.66$ & $\boldsymbol{92.49}$ \\
+    & Logistic Reg. & $90.61$ & $91.91$ & $\boldsymbol{92.19}$ \\
+    & MLP & $91.71$ & $92.36$ & $\boldsymbol{93.61}$ \\
     \hline
 \end{tabular}
 \label{tab:downstream_sensitivity}
 \end{table}
-
-% TODO: Replace XX.XX with actual experimental results.
-% Experiments to run:
-%   - 4 datasets: Adult, Anxiety (post-cutoff), Salary (post-cutoff, regression), Churn
-%   - 3 methods: Train-only, CLLM, StructSynth
-%   - 4 downstream models per dataset:
-%       Classification: XGBoost, RandomForest, LogisticRegression, MLP
-%       Regression: XGBoost, RandomForest, Ridge, MLP
-%   - Settings: n=100, s=1000, 10 seeds (same as main experiments)
-%   - XGBoost row is pre-filled from Table 1 results.
-
-To verify that the gains are not specific to a single evaluation model, we compare \textsf{StructSynth} and CLLM under four downstream learners---XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural)---on four representative datasets spanning classification, regression, and post-cutoff settings (Table~\ref{tab:downstream_sensitivity}). \textsf{StructSynth} outperforms both CLLM and the train-only baseline under all evaluation models across all datasets, confirming that the structural blueprint improves the underlying data quality rather than exploiting a model-specific inductive bias.
-% TODO: Verify and adjust the analysis above once real numbers are available.
-% Check: (1) Does StructSynth win every cell? If not, note exceptions.
-% (2) Is the margin consistent across model families, or larger for some?
-%     If so, add one sentence noting which model family benefits most.
-
-\subsection{Structural Fidelity under Ground-Truth Graphs}
-
-We evaluate structure discovery quality on three \texttt{bnlearn} benchmarks with known ground-truth DAGs---Asia (8 nodes), Child (20 nodes), and Insurance (27 nodes)---using the Structural Hamming Distance (SHD), which counts the edge insertions, deletions, or reversals needed to recover the true graph (lower is better).
-
-Figure~\ref{fig:shd} shows SHD across varying sample sizes ($n \in \{20, 50, 100, 200\}$). \textsf{StructSynth} achieves the lowest or near-lowest SHD on all three datasets, with the advantage most pronounced in low-data settings ($n \leq 50$) where traditional constraint-based methods (FCI) and score-based methods (GOGGLE, NoTears) produce substantially higher errors. This confirms that the LLM's semantic prior effectively complements weak statistical signals, enabling robust structure recovery even from severely limited samples. Detailed graph visualizations are provided in Appendix~\ref{app:qualitative_graph_analysis}.
-
-
-\subsection{Influence of Training Sample Size}
 
 \begin{figure*}[t!]
 \centering
@@ -214,6 +191,16 @@ Figure~\ref{fig:shd} shows SHD across varying sample sizes ($n \in \{20, 50, 100
 \label{fig:llm_compare}
 \end{figure}
 
+To verify that the gains are not specific to a single evaluation model, we compare \textsf{StructSynth} and CLLM under four downstream learners---XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural)---on four representative datasets spanning classification, regression, and post-cutoff settings (Table~\ref{tab:downstream_sensitivity}). \textsf{StructSynth} wins 14 out of 16 cells, outperforming both CLLM and the train-only baseline across all three classification datasets under every evaluation model. The two exceptions occur on the Salary regression task, where Ridge and MLP favor $\mathcal{D}_\mathtt{train}$ and CLLM respectively, suggesting that linear and shallow neural models are more sensitive to distributional shifts in regression settings. Across classification datasets, the margin is largest for MLP (+3.26 AUC on Adult), indicating that neural models benefit most from the improved distributional quality of StructSynth's synthetic data.
+
+\subsection{Structural Fidelity under Ground-Truth Graphs}
+
+We evaluate structure discovery quality on three \texttt{bnlearn} benchmarks with known ground-truth DAGs---Asia (8 nodes), Child (20 nodes), and Insurance (27 nodes)---using the Structural Hamming Distance (SHD), which counts the edge insertions, deletions, or reversals needed to recover the true graph (lower is better).
+
+Figure~\ref{fig:shd} shows SHD across varying sample sizes ($n \in \{20, 50, 100, 200\}$). \textsf{StructSynth} achieves the lowest or near-lowest SHD on all three datasets, with the advantage most pronounced in low-data settings ($n \leq 50$) where traditional constraint-based methods (FCI) and score-based methods (GOGGLE, NoTears) produce substantially higher errors. This confirms that the LLM's semantic prior effectively complements weak statistical signals, enabling robust structure recovery even from severely limited samples. Detailed graph visualizations are provided in Appendix~\ref{app:qualitative_graph_analysis}.
+
+
+\subsection{Influence of Training Sample Size}
 
 To evaluate data efficiency, we vary the training size $n$ from 20 to 200 on the Adult dataset and measure AUC, Statistical Fidelity, and Privacy Risk deviation $\Delta = |\text{PrivacyRisk} - 0.5|$ (Figure~\ref{fig:influence_n}). \textsf{StructSynth} maintains high AUC, low fidelity error, and near-zero $\Delta$ across all sample sizes. The advantage is most pronounced in the low-data regime ($n \leq 50$), where baselines like BN and GOGGLE require significantly more samples to become competitive, while \textsf{StructSynth} sustains stable performance. This suggests that the structural blueprint acts as a regularizer: it prevents record-level overfitting and yields a stable utility-privacy-fidelity balance independent of sample size.
 
