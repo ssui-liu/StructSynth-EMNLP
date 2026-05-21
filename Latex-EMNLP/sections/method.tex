@@ -11,6 +11,12 @@ We address this by representing inter-feature dependencies as a Directed Acyclic
 
 The dependency structure is represented as a DAG $G = (V, E)$, where the node set $V \subseteq \mathbf{A}$ contains selected attributes and edges $E$ encode probabilistic dependencies. The graph is constructed iteratively via BFS as described below.
 
+\paragraph{Design Rationale for Low-Data Regimes.}
+Three complementary mechanisms adapt this stage to data-scarce settings.
+\textbf{(a)} With only $n \le 100$ samples, statistical association estimates are noisy and prone to spurious correlations. The LLM's world knowledge acts as an informative prior that filters out statistically plausible but semantically implausible edges, regularizing the discovery process.
+\textbf{(b)} Conversely, the computed association scores $\mathcal{S}$ ground the LLM's reasoning in empirical evidence, preventing hallucinated dependencies that lack statistical support. Neither signal is reliable alone at small $n$; their combination stabilizes discovery.
+\textbf{(c)} The decoupled architecture itself reduces per-stage sample complexity: structure discovery only needs to identify \emph{which} dependencies exist (a discrete, lower-dimensional problem), while generation only needs to model conditional distributions along the discovered graph---a factorization substantially easier than jointly learning both structure and generation.
+
 \subsubsection{Graph Initialization}
 The graph construction begins by identifying source nodes---attributes not influenced by any others. Using a small subset $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$ as in-context examples, the LLM determines the initial source nodes:
 \begin{equation}
