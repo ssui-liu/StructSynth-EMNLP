@@ -14,13 +14,10 @@ Low-data tabular synthesis---generating realistic records from scarce samples in
 Among them, \textbf{preserving inter-feature dependencies} is particularly fragile under sample scarcity: the dependency relationships that enable Machine Learning (ML) models to learn meaningful decision boundaries~\cite{fonseca2023tabular} rely on statistical signals that degrade rapidly as sample size shrinks.
 Without faithful dependencies, additional synthetic samples add volume without adding predictive signal~\cite{liu2023goggle}.
 
-As illustrated in Figure~\ref{fig:teaser}, conventional tabular generators offer two important but partial ways of handling dependencies.
+As illustrated in Figure~\ref{fig:teaser}, existing tabular generators handle dependencies in three important but partial ways.
 \textbf{Deep generative models} capture the joint distribution end-to-end, implicitly learning inter-feature dependencies through distribution fitting; however, their performance varies across architectures, with many requiring substantially more samples to converge reliably.
 \textbf{Structure-aware methods} make dependencies explicit through graphical models such as Bayesian networks~\cite{ankan2015pgmpy} and graph-based VAEs~\cite{liu2023goggle}, yet the quality of the learned graph degrades under scarcity---errors in the discovered structure propagate directly into generation~\cite{chai2022data}.
-
-\textbf{Large Language Models (LLMs)} provide a complementary advantage: they can exploit attribute names, descriptions, and in-context examples as semantic priors, reducing reliance on statistical signals alone~\cite{borisov2023language, cllm2024}.
-Yet most LLM-based synthesizers encode inter-feature dependencies only through flat textualization of attribute--value pairs, which does not explicitly encode dependency directions or conditional independence structure~\cite{liu2024rethinking}.
-As a result, dependency preservation is left to the implicit capacity of the language model rather than being structurally enforced.
+\textbf{Large Language Models (LLMs)} exploit attribute names, descriptions, and in-context examples as semantic priors~\cite{borisov2023language, cllm2024}, but most LLM-based synthesizers encode dependencies only through flat textualization of attribute--value pairs, without explicitly modeling dependency directions or conditional independence structure~\cite{liu2024rethinking}.
 
 A natural response is to make dependencies explicit in the generation process.
 Recent graph-aware generation methods take steps in this direction: GraDe~\cite{zhang-etal-2025-features} injects a learned sparse dependency graph into the Transformer attention mechanism, while SPADA~\cite{yang2025doubling} uses the graph to guide lightweight statistical estimators such as normalizing flows.
@@ -35,5 +32,5 @@ In \textbf{Graph-Planned Conditional Synthesis}, this DAG serves as an executabl
 Our contributions are:
 \begin{itemize}[leftmargin=*]
     \item We propose to treat a dependency graph as a \textbf{generation plan} that determines the generation order, conditioning context, and scope of each LLM call for tabular synthesis. We instantiate this idea in \textsf{StructSynth}, where \textbf{Evidence-Grounded Graph Induction} fuses LLM semantic priors with statistical association cues to discover reliable structures from limited samples, and \textbf{Graph-Planned Conditional Synthesis} enforces the discovered topology as an executable blueprint for layer-wise generation.
-    \item Extensive experiments across six datasets demonstrate that \textsf{StructSynth} achieves state-of-the-art \textbf{downstream utility and privacy preservation} while maintaining competitive statistical fidelity. Ablations confirm that both stages contribute independently, validating the generation-plan design.
+    \item Experiments on six datasets show that \textsf{StructSynth} achieves state-of-the-art \textbf{downstream utility and privacy preservation} while maintaining competitive statistical fidelity. Ablations confirm that both stages contribute independently, validating the generation-plan design.
 \end{itemize}
