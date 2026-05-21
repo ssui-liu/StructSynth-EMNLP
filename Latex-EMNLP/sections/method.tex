@@ -88,7 +88,7 @@ Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthe
 The nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ denotes parent nodes, along with the corresponding columns from the few-shot examples.
 Values for layer $L_i$ are generated conditionally on all preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, L_i} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen}}\big( \tilde{\mathbf{x}}_{j, <i},\; G_i,\; L_i,\; \mathcal{D}_{\mathtt{few\_shot}}^i\big)\Big).
+\tilde{\mathbf{x}}_{j,L_i} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen}}\!\big(\tilde{\mathbf{x}}_{j,<i},\, G_i,\, L_i,\, \mathcal{D}_{\mathtt{few\_shot}}^i\big)\!\Big).
 \end{equation}
 Iterating through all layers yields a partial synthetic data point $\tilde{\mathbf{x}}_{j, V}$ comprising values for all graph-dependent attributes.
 
@@ -96,7 +96,7 @@ Iterating through all layers yields a partial synthetic data point $\tilde{\math
 
 Values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ (those outside the dependency graph) are generated in a single step, conditioned on all graph-based values $\tilde{\mathbf{x}}_{j, V}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen\_iso}}\big(\tilde{\mathbf{x}}_{j, V},\; A_{\mathtt{iso}},\; \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\big)\Big).
+\tilde{\mathbf{x}}_{j,A_{\mathtt{iso}}} \!=\! f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen\_iso}}\!\big(\tilde{\mathbf{x}}_{j,V},\, A_{\mathtt{iso}},\, \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\big)\!\Big).
 \end{equation}
 The graph-dependent and isolated values are concatenated to form each synthetic record; repeating $s$ times yields $\mathcal{D}_{\mathtt{synth}} = (\mathbf{X}_{\mathtt{synth}}, \mathbf{A})$.
 
