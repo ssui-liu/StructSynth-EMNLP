@@ -1,16 +1,16 @@
 \section{Experiments}
 \subsection{Experimental Setups}
-\subsubsection{Datasets}
+\paragraph{Datasets.}
 We conduct experiments on six real-world tabular datasets: Adult~\cite{adult_2}, Anxiety~\cite{kaggleSocialAnxiety}, Compas~\cite{propublicaMachineBias}, Salary~\cite{kaggleGlobalMarket}, Obesity~\cite{obesity}, and Churn~\cite{churn}. These datasets cover a range of domains (e.g., social, medical, business) and downstream tasks including binary/multi-class classification and regression. Notably, Anxiety and Salary were released after the knowledge cutoff of modern LLMs, allowing us to assess performance in the absence of prior exposure. Full dataset details are provided in Appendix~\ref{app:datasets}. Additionally, for evaluating structure discovery quality, we utilize three benchmark datasets from bnlearn~\cite{scutari2010learning} with known ground-truth DAGs: Asia~\cite{bnlearn-repo-asia} (8 nodes), Child~\cite{bnlearn-repo-child} (20 nodes), and Insurance~\cite{bnlearn-repo-insurance} (27 nodes). These allow direct measurement of structural recovery via the Structural Hamming Distance (SHD)~\cite{de2009comparison}. 
 
 
-\subsubsection{Baselines}
+\paragraph{Baselines.}
 We compare our method against twelve baselines from three categories (implementation details in Appendix~\ref{app:baselines}): 1)~\textbf{Deep Generative Models (DGMs)}, including TVAE~\cite{xu2019modeling}, CTGAN~\cite{xu2019modeling}, TabDDPM~\cite{kotelnikov2023tabddpm}, NFlow~\cite{papamakarios2021normalizing}, and TabSyn~\cite{tabsyn}; 2)~\textbf{Structure-Aware Methods}, including Bayesian Networks~\cite{ankan2015pgmpy}, GOGGLE~\cite{liu2023goggle}, DECAF~\cite{van2021decaf}, and SPADA-NF~\cite{yang2025doubling}; and 3)~\textbf{LLM-based Methods}, including GReaT~\cite{borisov2023language}, CLLM~\cite{cllm2024}, and GraDe~\cite{zhang-etal-2025-features}.
 
-\subsubsection{Evaluation Metrics}
+\paragraph{Evaluation Metrics.}
 Following previous work~\cite{borisov2023language, cllm2024}, we evaluate synthetic data along three axes (detailed definitions in Appendix~\ref{app:metrics}): \textbf{Downstream Model Performance} measures the utility of synthetic data by training a downstream model on $\mathcal{D}_{\mathtt{aug}} = \mathcal{D}_{\mathtt{train}} \cup \mathcal{D}_{\mathtt{synth}}$ and evaluating on $\mathcal{D}_{\mathtt{test}}$; we report AUC for classification and $R^2$ for regression. \textbf{Statistical Fidelity} quantifies how well pairwise correlations in the synthetic data match the real data (\textbf{lower is better}). \textbf{Privacy Risk}~\cite{van2023membership} measures whether synthetic records are overly similar to training records; the score is the fraction whose nearest neighbor is drawn from $\mathcal{D}_{\mathtt{train}}$ (\textbf{ideal: 0.5}).
 
-\subsubsection{Implementation Details}
+\paragraph{Implementation Details.}
 
 We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \textsf{StructSynth} models. Our experiments evaluate the low-data regime, generating 1000 synthetic samples ($s=1000$) from 100 original samples ($n=100$). Downstream performance is assessed using an XGBoost model. All experiments are repeated 10 times, and we report mean $\pm$ standard deviation; Appendix~\ref{app:hyperparameter} lists the full hyperparameter configurations.
 
@@ -80,14 +80,14 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 \end{table*}
 
 \subsection{Main Results}
-\subsubsection{Downstream Model Performance}
-Table~\ref{tab:results_comparison_performance} summarizes the downstream results. \textsf{StructSynth} achieves the best mean performance on all six datasets, with a perfect average rank of 1.00 and the highest average score (75.01). This improves over using only $\mathcal{D}_\mathtt{train}$ (71.54) and surpasses the strongest competitor, CLLM (73.36), demonstrating that explicitly guiding an LLM with a structural blueprint yields substantial gains. Standard DGMs and structure-aware models perform notably weaker, as implicit distribution learning and data-driven graph discovery are unreliable in our $n=100$ low-data setting.
+\paragraph{Downstream Model Performance.}
+Table~\ref{tab:results_comparison_performance} summarizes the downstream results. \textsf{StructSynth} achieves the best mean performance on all six datasets, with a perfect average rank of 1.00 and the highest average score (75.01). This improves over using only $\mathcal{D}_\mathtt{train}$ (71.54) and surpasses the strongest competitor, CLLM (73.36), demonstrating that explicitly guiding an LLM with a graph-based generation plan yields substantial gains. Standard DGMs and structure-aware models perform notably weaker, as implicit distribution learning and data-driven graph discovery are unreliable in our $n=100$ low-data setting.
 
 
 
-\subsubsection{Privacy Preservation and Statistical Fidelity}
+\paragraph{Privacy Preservation and Statistical Fidelity.}
 
-Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, GReaT achieves the best fidelity (avg.\ rank 3.67) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. Similarly, SPADA-NF attains strong fidelity (avg.\ rank 4.33) at the cost of poor privacy (avg.\ rank 10.17). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.50) but weaker fidelity (avg.\ rank 9.33). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.50) while maintaining competitive statistical fidelity (avg.\ rank 7.92). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The structural blueprint thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
+Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, GReaT achieves the best fidelity (avg.\ rank 3.67) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. Similarly, SPADA-NF attains strong fidelity (avg.\ rank 4.33) at the cost of poor privacy (avg.\ rank 10.17). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.50) but weaker fidelity (avg.\ rank 9.33). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.50) while maintaining competitive statistical fidelity (avg.\ rank 7.92). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The generation plan thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
 
 
 \begin{figure*}[t!]
@@ -133,8 +133,8 @@ To isolate the contributions of our method's two main stages, we evaluate seven 
 
 \end{table}
 
-The results (Table~\ref{tab:ablation_study}) yield three insights. First, \textbf{LLM-guided discovery outperforms classical alternatives}: \textsf{StructSynth} exceeds both \textit{PC} and \textit{NoTears} by 1.0--1.4 AUC pts, showing that semantic priors stabilize structure learning under data scarcity. Second, \textbf{structural guidance is multifaceted}: removing the graph (\textit{No Structure}, --1.6 pts) or ignoring topological ordering (\textit{No Topological Order}, --1.1 pts) both degrade utility. Finally, \textbf{synergy is vital}: replacing the LLM with a \textit{Bayesian Sampler} causes the sharpest drop (--4.4 pts), confirming that the structural blueprint guides but cannot replace the LLM's generative capabilities.
-Taken together, these results clarify why \textsf{StructSynth}'s advantage over CLLM is not merely incremental: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence, whereas \textsf{StructSynth} encodes dependencies as an explicit DAG that ensures relationships are \emph{discovered} rather than incidentally induced.
+The results (Table~\ref{tab:ablation_study}) yield three insights. First, \textbf{LLM-guided discovery outperforms classical alternatives}: \textsf{StructSynth} exceeds both \textit{PC} and \textit{NoTears} by 1.0--1.4 AUC pts, showing that semantic priors stabilize structure learning under data scarcity. Second, \textbf{structural guidance is multifaceted}: removing the graph (\textit{No Structure}, --1.6 pts) or ignoring topological ordering (\textit{No Topological Order}, --1.1 pts) both degrade utility. Finally, \textbf{synergy is vital}: replacing the LLM with a \textit{Bayesian Sampler} causes the sharpest drop (--4.4 pts), confirming that the generation plan guides but cannot replace the LLM's generative capabilities.
+Taken together, these results clarify why \textsf{StructSynth}'s advantage over CLLM is not merely incremental: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence, whereas \textsf{StructSynth} encodes dependencies as an explicit DAG so that relationships are \emph{discovered} rather than incidentally induced.
 
 
 
@@ -163,7 +163,7 @@ Figure~\ref{fig:shd} shows SHD across varying sample sizes ($n \in \{20, 50, 100
 
 \subsection{Influence of Training Sample Size}
 
-To evaluate data efficiency, we vary the training size $n$ from 20 to 200 on the Adult dataset and measure AUC, Statistical Fidelity, and Privacy Risk deviation $\Delta = |\text{PrivacyRisk} - 0.5|$ (Figure~\ref{fig:influence_n}). \textsf{StructSynth} maintains high AUC, low fidelity error, and near-zero $\Delta$ across all sample sizes. The advantage is most pronounced in the low-data regime ($n \leq 50$), where baselines like BN and GOGGLE require significantly more samples to become competitive, while \textsf{StructSynth} sustains stable performance. This suggests that the structural blueprint acts as a regularizer: it prevents record-level overfitting and yields a stable utility-privacy-fidelity balance independent of sample size.
+To evaluate data efficiency, we vary the training size $n$ from 20 to 200 on the Adult dataset and measure AUC, Statistical Fidelity, and Privacy Risk deviation $\Delta = |\text{PrivacyRisk} - 0.5|$ (Figure~\ref{fig:influence_n}). \textsf{StructSynth} maintains high AUC, low fidelity error, and near-zero $\Delta$ across all sample sizes. The advantage is most pronounced in the low-data regime ($n \leq 50$), where baselines like BN and GOGGLE require significantly more samples to become competitive, while \textsf{StructSynth} sustains stable performance. This suggests that the generation plan acts as a regularizer: it prevents record-level overfitting and yields a stable utility-privacy-fidelity balance independent of sample size.
 
 
 
