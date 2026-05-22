@@ -57,22 +57,22 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 \midrule
 \multicolumn{10}{l}{{Results for \textbf{Statistical Fidelity Error}.} \textit{A lower score indicates higher fidelity.}} \\
 \midrule
-    \multirow{5}{*}{DGMs} & TVAE & $53.71_{\pm 1.80}$ & $46.16_{\pm 1.28}$ & $60.26_{\pm 1.09}$ & $66.93_{\pm 1.13}$ & $58.41_{\pm 0.52}$ & $53.22_{\pm 1.54}$ & $56.45$ & $6.00$ \\
-    & DDPM & $65.26_{\pm 1.05}$ & $52.76_{\pm 1.22}$ & $64.94_{\pm 1.79}$ & $90.51_{\pm 0.33}$ & $64.44_{\pm 1.36}$ & $64.40_{\pm 2.90}$ & $67.05$ & $10.83$ \\
-    & CTGAN & $52.37_{\pm 1.56}$ & $47.14_{\pm 2.39}$ & $59.96_{\pm 0.90}$ & $58.57_{\pm 0.89}$ & $58.71_{\pm 0.57}$ & $52.32_{\pm 1.75}$ & \underline{$54.85$} & $4.83$ \\
-    & NFlow & \underline{$50.68_{\pm 2.71}$} & $43.50_{\pm 1.77}$ & $60.62_{\pm 0.93}$ & \underline{$52.38_{\pm 1.10}$} & $58.85_{\pm 0.98}$ & $53.98_{\pm 2.24}$ & $\boldsymbol{53.34}$ & $5.00$ \\
-    & TabSyn & $\boldsymbol{49.17_{\pm 1.34}}$ & $55.31_{\pm 1.31}$ & $57.23_{\pm 2.24}$ & $62.90_{\pm 3.01}$ & $58.08_{\pm 0.54}$ & $53.99_{\pm 2.08}$ & $56.11$ & $5.58$ \\
+    \multirow{5}{*}{DGMs} & TVAE & $53.71_{\pm 1.80}$ & $46.16_{\pm 1.28}$ & $60.26_{\pm 1.09}$ & $66.93_{\pm 1.13}$ & $58.41_{\pm 0.52}$ & $53.22_{\pm 1.54}$ & $56.45$ & $6.50$ \\
+    & DDPM & $65.26_{\pm 1.05}$ & $52.76_{\pm 1.22}$ & $64.94_{\pm 1.79}$ & $90.51_{\pm 0.33}$ & $64.44_{\pm 1.36}$ & $64.40_{\pm 2.90}$ & $67.05$ & $11.33$ \\
+    & CTGAN & $52.37_{\pm 1.56}$ & $47.14_{\pm 2.39}$ & $59.96_{\pm 0.90}$ & $58.57_{\pm 0.89}$ & $58.71_{\pm 0.57}$ & $52.32_{\pm 1.75}$ & $54.85$ & $5.50$ \\
+    & NFlow & $50.68_{\pm 2.71}$ & $43.50_{\pm 1.77}$ & $60.62_{\pm 0.93}$ & $\boldsymbol{52.38_{\pm 1.10}}$ & $58.85_{\pm 0.98}$ & $53.98_{\pm 2.24}$ & \underline{$53.34$} & $5.50$ \\
+    & TabSyn & \underline{$49.17_{\pm 1.34}$} & $55.31_{\pm 1.31}$ & $57.23_{\pm 2.24}$ & $62.90_{\pm 3.01}$ & $58.08_{\pm 0.54}$ & $53.99_{\pm 2.08}$ & $56.11$ & $6.17$ \\
 \midrule
-    \multirow{4}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $68.32_{\pm 1.38}$ & $51.58_{\pm 7.27}$ & $66.19_{\pm 1.13}$ & $87.15_{\pm 1.65}$ & $63.80_{\pm 2.40}$ & $65.51_{\pm 2.16}$ & $67.09$ & $10.83$ \\
-    & BN & $82.68_{\pm 1.35}$ & $82.77_{\pm 2.39}$ & $60.13_{\pm 3.46}$ & $\boldsymbol{46.33_{\pm 7.29}}$ & $59.76_{\pm 3.46}$ & $88.85_{\pm 3.02}$ & $70.09$ & $8.83$ \\
-    & DECAF & $62.71_{\pm 3.21}$ & $48.53_{\pm 1.53}$ & $63.82_{\pm 1.34}$ & $84.70_{\pm 2.41}$ & $60.93_{\pm 2.21}$ & $60.22_{\pm 0.88}$ & $63.49$ & $9.00$ \\
-    & SPADA-NF & $83.14_{\pm 0.73}$ & $45.92_{\pm 1.33}$ & \underline{$53.62_{\pm 1.55}$} & $61.79_{\pm 0.55}$ & $\boldsymbol{55.29_{\pm 0.85}}$ & $\boldsymbol{47.85_{\pm 1.17}}$ & $57.94$ & \underline{$4.33$} \\
+    \multirow{4}{*}{\makecell[l]{Structure\\Aware}} & GOGGLE & $68.32_{\pm 1.38}$ & $51.58_{\pm 7.27}$ & $66.19_{\pm 1.13}$ & $87.15_{\pm 1.65}$ & $63.80_{\pm 2.40}$ & $65.51_{\pm 2.16}$ & $67.09$ & $11.33$ \\
+    & BN & $\boldsymbol{47.46_{\pm 2.15}}$ & $\boldsymbol{38.57_{\pm 1.01}}$ & $60.33_{\pm 0.82}$ & \underline{$54.39_{\pm 1.52}$} & $57.42_{\pm 0.75}$ & \underline{$48.10_{\pm 1.29}$} & $\boldsymbol{51.05}$ & $3.00$ \\
+    & DECAF & $62.71_{\pm 3.21}$ & $48.53_{\pm 1.53}$ & $63.82_{\pm 1.34}$ & $84.70_{\pm 2.41}$ & $60.93_{\pm 2.21}$ & $60.22_{\pm 0.88}$ & $63.49$ & $9.50$ \\
+    & SPADA-NF & $83.14_{\pm 0.73}$ & $45.92_{\pm 1.33}$ & \underline{$53.62_{\pm 1.55}$} & $61.79_{\pm 0.55}$ & $\boldsymbol{55.29_{\pm 0.85}}$ & $\boldsymbol{47.85_{\pm 1.17}}$ & $57.94$ & $4.50$ \\
     \midrule
-    \multirow{3}{*}{LLMs} & GReaT & $82.71_{\pm 1.35}$ & $\boldsymbol{40.10_{\pm 1.64}}$ & $\boldsymbol{52.17_{\pm 1.18}}$ & $58.75_{\pm 0.89}$ & \underline{$56.83_{\pm 0.87}$} & \underline{$48.18_{\pm 2.16}$} & $56.46$ & $\boldsymbol{3.67}$ \\
-    & CLLM & $61.93_{\pm 4.43}$ & $57.64_{\pm 1.51}$ & $59.74_{\pm 2.33}$ & $78.60_{\pm 0.98}$ & $65.74_{\pm 1.42}$ & $62.20_{\pm 3.68}$ & $64.31$ & $9.33$ \\
-    & GraDe & $84.30_{\pm 0.86}$ & \underline{$42.59_{\pm 0.93}$} & $53.82_{\pm 2.62}$ & $55.85_{\pm 1.42}$ & $57.44_{\pm 1.43}$ & $53.66_{\pm 1.90}$ & $57.94$ & $4.83$ \\
+    \multirow{3}{*}{LLMs} & GReaT & $82.71_{\pm 1.35}$ & \underline{$40.10_{\pm 1.64}$} & $\boldsymbol{52.17_{\pm 1.18}}$ & $58.75_{\pm 0.89}$ & \underline{$56.83_{\pm 0.87}$} & $48.18_{\pm 2.16}$ & $56.46$ & $4.00$ \\
+    & CLLM & $61.93_{\pm 4.43}$ & $57.64_{\pm 1.51}$ & $59.74_{\pm 2.33}$ & $78.60_{\pm 0.98}$ & $65.74_{\pm 1.42}$ & $62.20_{\pm 3.68}$ & $64.31$ & $9.83$ \\
+    & GraDe & $84.30_{\pm 0.86}$ & $42.59_{\pm 0.93}$ & $53.82_{\pm 2.62}$ & $55.85_{\pm 1.42}$ & $57.44_{\pm 1.43}$ & $53.66_{\pm 1.90}$ & $57.94$ & $5.33$ \\
     \midrule
-    Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & $57.23_{\pm 1.69}$ & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & $7.92$ \\
+    Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & $57.23_{\pm 1.69}$ & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & $8.50$ \\
 \bottomrule
 \end{tabular}}%
 \label{tab:results_comparison_merged}
@@ -87,7 +87,7 @@ Table~\ref{tab:results_comparison_performance} summarizes the downstream results
 
 \paragraph{Privacy Preservation and Statistical Fidelity Error.}
 
-Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, GReaT achieves the best fidelity (avg.\ rank 3.67) but exhibits severe privacy risk (90.15\%), essentially reproducing training records. Similarly, SPADA-NF attains strong fidelity (avg.\ rank 4.33) at the cost of poor privacy (avg.\ rank 10.17). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.50) but weaker fidelity (avg.\ rank 9.33). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.50) while maintaining competitive statistical fidelity (avg.\ rank 7.92). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The generation plan thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
+Table~\ref{tab:results_comparison_merged} reveals a fundamental tension between fidelity and privacy: high statistical fidelity often stems from memorization. For example, BN achieves the best fidelity (avg.\ rank 3.00) but exhibits poor privacy (avg.\ rank 9.00). GReaT ranks second in fidelity (avg.\ rank 4.00) yet has the worst privacy risk (90.15\%), essentially reproducing training records. Similarly, SPADA-NF attains strong fidelity (avg.\ rank 4.50) at the cost of poor privacy (avg.\ rank 10.17). At the other end, prompt-based CLLM achieves strong privacy (avg.\ rank 3.50) but weaker fidelity (avg.\ rank 9.83). \textsf{StructSynth} achieves the best privacy preservation (avg.\ rank 1.50) while maintaining competitive statistical fidelity (avg.\ rank 8.50). Importantly, high pairwise fidelity does not guarantee downstream utility: the \textit{Bayesian Sampler} ablation achieves the best raw fidelity (48.86) yet the lowest AUC (81.17). This is because Statistical Fidelity measures \emph{pairwise} correlations, whereas StructSynth's DAG encodes \emph{conditional} dependencies between parent and child nodes---the relationships that actually drive downstream model performance. The generation plan thus acts as a principled regularizer: it constrains overfitting to individual records while preserving the conditional structure that matters most for utility.
 
 
 \begin{figure*}[t!]
