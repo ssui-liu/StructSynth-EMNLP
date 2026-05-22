@@ -66,7 +66,7 @@ The Correlation Ratio, $\eta$, measures the relationship between a categorical v
 where $n_x$ is the number of samples in category $x$, $\bar{y}_x$ is the mean of $y$ for samples in category $x$, and $\bar{y}$ is the overall mean. The value of $\eta$ ranges from $[0, 1]$, with values closer to 1 indicating that the categorical variable provides more information about the continuous variable.
 
 \subsection{Categorical-Categorical: Cramér's V}
-For two categorical variables with a contingency table of dimensions $r \times k$, Cramér's V is based on the $\chi^2$ statistic. To ensure robustness, we employ the bias correction proposed by Bergsma and Wicher (2013).
+For two categorical variables with a contingency table of dimensions $r \times k$, Cramér's V is based on the $\chi^2$ statistic. To ensure robustness, we employ the bias correction proposed by \citet{bergsma2013bias}.
 
 First, the bias-corrected $\phi^2$ is calculated as:
 \begin{equation}
