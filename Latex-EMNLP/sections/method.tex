@@ -3,7 +3,7 @@
 Synthesizing realistic tabular data from scarce samples requires preserving the dependency relationships among features---the very relationships that enable downstream models to learn meaningful decision boundaries.
 Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\mathtt{train}}, \mathbf{A})$ with $n \le 100$ instances and $K$ attributes, our goal is to use an LLM-based generator $f_{\mathtt{LLM}}$ to produce a synthetic dataset $\mathcal{D}_{\mathtt{synth}}$ that, when combined with $\mathcal{D}_{\mathtt{train}}$, improves downstream model performance.
 
-We address this by representing inter-feature dependencies as a Directed Acyclic Graph (DAG) and using it as a generation plan that organizes the LLM's synthesis process. A DAG naturally encodes generation order: its topological sort yields the synthesis sequence, and each node's parents define the conditioning set (see Appendix~\ref{sec:why_dag} for further justification). As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} realizes this idea through two coupled stages.
+We address this by representing inter-feature dependencies as a Directed Acyclic Graph (DAG) and using it as a generation plan that organizes the LLM's synthesis process. A DAG naturally encodes generation order: its topological sort yields the synthesis sequence, and each node's parents define the conditioning set (see Appendix~\ref{sec:why_dag} for further justification). Concretely, the graph determines three aspects of the generation plan: topological layers fix the generation order (\S\ref{sec:synth}), parent sets define the conditioning context, and local subgraphs bound the scope of each prompt. As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} realizes this idea through two coupled stages.
 \textbf{Evidence-Grounded Graph Induction} constructs the DAG from limited data by combining LLM-based reasoning with statistical association cues---the LLM's semantic prior acts as a structural regularizer while the statistical scores provide empirical grounding.
 \textbf{Graph-Planned Conditional Synthesis} then uses the learned DAG as a generation plan: synthesis proceeds autoregressively in topological order, conditioning each feature on its parent nodes and making the planned conditioning structure explicit throughout generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
 
@@ -12,7 +12,7 @@ We address this by representing inter-feature dependencies as a Directed Acyclic
 The dependency structure is represented as a DAG $G = (V, E)$, where the node set $V \subseteq \mathbf{A}$ contains selected attributes and edges $E$ encode probabilistic dependencies. The graph is constructed iteratively via BFS as described below.
 
 \subsubsection{Graph Initialization}
-The graph construction begins by identifying source nodes---attributes not influenced by any others. Using a small subset $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$ as in-context examples, the LLM determines the initial source nodes:
+The graph construction begins by identifying source nodes---root attributes in the generation plan that are generated without conditioning on other attributes. Using a small subset $\mathcal{D}_{\mathtt{few\_shot}} \subseteq \mathcal{D}_{\mathtt{train}}$ as in-context examples, the LLM determines the initial source nodes:
 \begin{equation}
     V_{\mathtt{source}} = f_{\mathtt{LLM}}(\pi_{\mathtt{source}} ( \mathcal{D}_{\mathtt{few\_shot}})) .
 \end{equation}
@@ -20,7 +20,7 @@ The graph is initialized as $G_0 = (V_{\mathtt{source}}, \emptyset)$ and expande
 
 \subsubsection{Expansion and Reasoned Link Generation}
 
-In each BFS iteration $t$, a node $A_i$ is dequeued and the framework computes association scores $\mathcal{S}(A_i) \in \mathbb{R}^{K-1}$ between $A_i$ and all other attributes~\cite{agresti2011categorical} (Cram\'{e}r's $V$ for categorical and Pearson's $r$ for continuous pairs; see Appendix~\ref{app:association_scores} for mixed-type handling).
+At iteration $t$, let $G_t = (V_t, E_t)$ denote the current graph. Each BFS step dequeues a node $A_i$ and computes normalized association scores $\mathcal{S}(A_i) \in [0,1]^{K-1}$ between $A_i$ and all other attributes~\cite{agresti2011categorical}, using Cram\'{e}r's $V$ for categorical pairs, $|r|$ (absolute Pearson correlation) for continuous pairs, and the correlation ratio for mixed pairs (see Appendix~\ref{app:association_scores} for details).
 The LLM is then queried with a prompt $\pi_{\mathtt{generate}}$ that integrates the current graph state $G_t$, the node $A_i$, and $\mathcal{S}(A_i)$---pairing statistical evidence with the LLM's semantic prior so that each compensates the other's weakness at small $n$. The model proposes a set of direct successors for $A_i$, each accompanied by a textual rationale:
 \begin{equation}
     P_i = f_{\mathtt{LLM}}(\pi_{\mathtt{generate}}(A_i, G_t, \mathcal{S}(A_i), \mathcal{D}_{\mathtt{few\_shot}})).
@@ -29,7 +29,7 @@ From $P_i$, new directed edges and previously unseen nodes are extracted and add
 
 \subsubsection{LLM-based Cycle Resolution}
 
-Integrating the proposed edges into $G_t$ may introduce cycles. A cycle detection algorithm identifies all elementary cycles $\Psi$ in the candidate edge set $E_t \cup E_{\mathtt{prop}, t}$. For each cycle $\psi \in \Psi$, the LLM is queried with $\pi_{\mathtt{resolve}}$, which presents the conflicting edges together with their rationales. The model identifies the single least-justified edge for removal; the union of all removed edges forms $E_{\mathtt{pruned}}$. The graph is then updated:
+Integrating the proposed edges into $G_t$ may introduce cycles. The LLM proposals yield a candidate edge set $E_{\mathtt{prop},t}$ and a set of newly discovered attributes $V_{\mathtt{new},t}$. A cycle detection algorithm identifies all elementary cycles $\Psi$ in $E_t \cup E_{\mathtt{prop},t}$. For each cycle $\psi \in \Psi$, the LLM is queried with $\pi_{\mathtt{resolve}}$, which presents the conflicting edges together with their rationales. The model identifies the single least-justified edge for removal; the union of all removed edges forms $E_{\mathtt{pruned}}$. The graph is then updated:
 \begin{equation}
     G_{t+1} = (V_t \cup V_{\mathtt{new}, t},\ (E_t \cup E_{\mathtt{prop}, t}) \setminus E_{\mathtt{pruned}}).
 \end{equation}
