@@ -5,7 +5,7 @@ Given a small tabular dataset $\mathcal{D}_{\mathtt{train}} = (\mathbf{X}_{\math
 
 We address this by representing inter-feature dependencies as a Directed Acyclic Graph (DAG) and using it as a generation plan that organizes the LLM's synthesis process. A DAG naturally encodes generation order: its topological sort yields the synthesis sequence, and each node's parents define the conditioning set (see Appendix~\ref{sec:why_dag} for further justification). Concretely, the graph determines three aspects of the generation plan: topological layers fix the generation order (\S\ref{sec:synth}), parent sets define the conditioning context, and local subgraphs bound the scope of each prompt. As depicted in Figure~\ref{fig:pipeline}, \textsf{StructSynth} realizes this idea through two coupled stages.
 \textbf{Evidence-Grounded Graph Induction} constructs the DAG from limited data by combining LLM-based reasoning with statistical association cues---the LLM's semantic prior acts as a structural regularizer while the statistical scores provide empirical grounding.
-\textbf{Graph-Planned Conditional Synthesis} then uses the learned DAG as a generation plan: synthesis proceeds autoregressively in topological order, conditioning each feature on its parent nodes and making the planned conditioning structure explicit throughout generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
+\textbf{Graph-Planned Conditional Synthesis} then uses the learned DAG as a generation plan: synthesis proceeds autoregressively in topological order, conditioning each feature on previously generated values while the local dependency subgraph makes the planned parent structure explicit throughout generation.\footnote{See Appendix~\ref{app:prompts} for full prompt templates and Algorithm~\ref{alg:structsynth} in Appendix~\ref{sec:algorithm} for the complete procedure.}
 
 \subsection{Evidence-Grounded Graph Induction}
 
@@ -86,7 +86,7 @@ Upon learning the dependency structure $G=(V, E)$, we utilize it to guide synthe
 \subsubsection{Generating Graph-Based Values}
 
 The nodes $V$ are partitioned into topological layers $\mathcal{L} = (L_1, \dots, L_m)$. For each layer $L_i$, we extract the dependency subgraph $G_i = G[L_i \cup \Gamma^{-}(L_i)]$, where $\Gamma^{-}(L_i)$ denotes parent nodes, along with the corresponding columns from the few-shot examples.
-Values for layer $L_i$ are generated conditionally on all preceding layers $\tilde{\mathbf{x}}_{j, <i}$:
+Values for layer $L_i$ are generated conditionally on all previously generated values $\tilde{\mathbf{x}}_{j, <i}$, with the local subgraph $G_i$ specifying the parent dependencies to preserve:
 \begin{equation}
 \tilde{\mathbf{x}}_{j,L_i} = f_{\mathtt{LLM}}\!\Big(\pi_{\mathtt{data\_gen}}\!\big(\tilde{\mathbf{x}}_{j,<i},\, G_i,\, L_i,\, \mathcal{D}_{\mathtt{few\_shot}}^i\big)\!\Big).
 \end{equation}
