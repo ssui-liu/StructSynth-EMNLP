@@ -486,7 +486,7 @@ Nevertheless, our SHD evaluations on benchmark DAGs (Figure~\ref{fig:shd}) demon
 \label{app:prompts}
 This section provides a guide to the prompt templates used in the StructSynth framework. A key step in our methodology is the textualization of diverse data structures---including statistical scores, dependency graphs, and tabular data---to serve as inputs for the Large Language Model (LLM). \hyperref[box:textualization_examples]{Box 1} shows concrete examples of this process. 
 
-The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generation}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{iso}$}} prompt generates values for the remaining isolated features.
+The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generate}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{iso}$}} prompt generates values for the remaining isolated features.
 
 
 \begin{tcolorbox}[
@@ -566,7 +566,7 @@ You are an expert data analyst. Based on the following information:
 
 \textbf{Task Description:}
 
-Identify the initial "source nodes" for a dependency graph. A source node is a foundational variable that is not influenced by any other variable in this dataset.
+Identify the initial "source nodes" for a dependency graph. A source node is a root attribute that is generated without conditioning on other attributes in this dataset.
 
 
 \vspace{\medskipamount}
@@ -600,7 +600,7 @@ Identify the initial "source nodes" for a dependency graph. A source node is a f
     float*=t, width=\textwidth, floatplacement=htbp,
     colback=pink!10!white,  % Light pink background
     colframe=pink!75!black, % Dark pink/magenta frame
-    title={Prompt for Link Generation in Dependency Discovery ($\pi_\mathtt{generation}$)}, % Box title
+    title={Prompt for Link Generation in Dependency Discovery ($\pi_\mathtt{generate}$)}, % Box title
     fonttitle=\bfseries\color{white}, 
     arc=2mm, % rounded corners
     boxrule=1pt % thickness of the frame
@@ -701,7 +701,7 @@ removal to break the cycle.
     float*=t, width=\textwidth, floatplacement=htbp,
     colback=blue!5!white,  % Light blue background
     colframe=blue!75!black, % Dark blue frame
-    title={Prompt for Structure-Guided Data Synthesis ($\pi_\mathtt{data\_gen}$)}, % Box title
+    title={Prompt for Graph-Planned Conditional Synthesis ($\pi_\mathtt{data\_gen}$)}, % Box title
     fonttitle=\bfseries\color{white}, % Title font bold, color white
     arc=2mm, % rounded corners
     boxrule=1pt % thickness of the frame
