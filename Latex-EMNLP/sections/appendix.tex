@@ -5,7 +5,7 @@
 \section{Extended Related Work}
 \label{app:extended_related_work}
 
-This section provides an extended discussion of the related work summarized in Section~\ref{sec:related_works}, offering additional technical details on representative methods in each line of research.
+This section provides an extended discussion of the related work summarized in Section~\ref{sec:related_work}, offering additional technical details on representative methods in each line of research.
 
 \subsection{Early and Statistical Methods}
 Early tabular data synthesis methods relied on statistical techniques. SMOTE~\cite{chawla2002smote} generates synthetic minority-class samples by interpolating between nearest neighbors in feature space, addressing class imbalance but limited to local linear combinations. Copula-based methods~\cite{xue2000multivariate} model the joint distribution by separately estimating marginal distributions and their dependency structure through copula functions, providing a principled statistical framework but struggling to capture complex, non-linear inter-feature relationships. These foundational approaches established the core objectives of tabular synthesis---realistic sample generation with dependency preservation---but their limited expressiveness motivated the shift toward deep generative models.
@@ -328,13 +328,13 @@ A visual comparison reveals a strong alignment between our LLM-discovered graph 
 \label{app:structure_examples}
 To provide a concrete illustration of the structural discovery capabilities discussed above, Figure~\ref{fig:structure_examples} presents a visual comparison of the dependency graphs learned by \textsf{StructSynth} and four representative baselines on the Asia dataset ($n=100$). The \textbf{Ground Truth} graph represents the underlying causal mechanism of the dataset, where, for example, \textit{smoke} causes \textit{lung} (cancer) and \textit{bronc} (bronchitis), which in turn cause \textit{dysp} (dyspnoea).
 
-\textsf{StructSynth} successfully recovers the majority of these key dependencies, including the V-structure at \textit{dysp} and the causal chain from \textit{smoke} to \textit{lung}. The slight deviations are minimal and do not disrupt the global topological ordering, ensuring that the subsequent generation process follows a valid causal path.
+\textsf{StructSynth} successfully recovers the majority of these key dependencies, including the V-structure at \textit{dysp} and the dependency chain from \textit{smoke} to \textit{lung}. The slight deviations are minimal and do not disrupt the global topological ordering, ensuring that the subsequent generation process follows a valid dependency path.
 
 In contrast, baseline methods exhibit significant structural distortions:
 \begin{itemize}[leftmargin=*]
     \item \textbf{GraDe} tends to produce an overly dense graph with numerous spurious edges (e.g., direct links between \textit{asia} and \textit{dysp}), likely due to its reliance on attention maps that can conflate indirect correlations with direct causation.
     \item \textbf{GOGGLE}, while capturing some dependencies, suffers from edge reversals (e.g., \textit{lung} $\rightarrow$ \textit{smoke}) and misses critical connections (e.g., \textit{bronc} is isolated from \textit{dysp}). This reflects the instability of end-to-end differentiable structure learning in low-data regimes.
-    \item \textbf{NoTears} yields a sparse and fragmented graph, failing to identify the relationship between \textit{smoke} and \textit{lung}, which are central to the dataset's causal logic.
+    \item \textbf{NoTears} yields a sparse and fragmented graph, failing to identify the relationship between \textit{smoke} and \textit{lung}, which are central to the dataset's dependency structure.
     \item \textbf{FCI}, a constraint-based method, correctly identifies some skeletons but leaves many edges undirected (represented by bi-directed or unoriented edges), failing to provide a clear generative order.
 \end{itemize}
 
@@ -453,7 +453,7 @@ In this section, we discuss the broader implications of our results, analyze key
 \label{sec:structure_discussion}
 A central question raised by our work is whether explicit structural guidance provides a \emph{qualitative}---rather than merely quantitative---advantage over structure-blind LLM generation. To address this, we compare StructSynth against its closest structure-blind counterpart, CLLM, which uses the same LLM with identical hyperparameters but generates data without any structural blueprint.
 
-Our ablation study (Table~\ref{tab:ablation_study}) provides direct evidence for three distinct dimensions of improvement. First, regarding \textbf{structural modeling}: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence. In contrast, StructSynth encodes dependencies as an explicit DAG, ensuring that relationships are \emph{discovered} rather than incidentally induced. Second, regarding \textbf{generation strategy}: CLLM generates all features in a single pass without constraints, whereas StructSynth enforces a topological ordering that guarantees each feature is conditioned on its true parent nodes. Removing this ordering alone (\textit{No Topological Order} variant) degrades AUC by 1.1 points, while removing the graph entirely (\textit{No Structure} variant, equivalent to CLLM) causes a 1.6-point drop. Third, regarding \textbf{regularization}: the DAG serves as a structural regularizer that constrains the generation space, preventing the LLM from overfitting to spurious patterns in the few available training samples. This regularization effect is evidenced by StructSynth's superior privacy preservation (avg.\ rank 1.50 vs.\ CLLM's 3.50), indicating reduced memorization of training records.
+Our ablation study (Table~\ref{tab:ablation_study}) provides direct evidence for three distinct dimensions of improvement. First, regarding \textbf{structural modeling}: CLLM processes features in an arbitrary serialized order, implicitly inducing dependencies from the input sequence. In contrast, StructSynth encodes dependencies as an explicit DAG, ensuring that relationships are \emph{discovered} rather than incidentally induced. Second, regarding \textbf{generation strategy}: CLLM generates all features in a single pass without constraints, whereas StructSynth enforces a topological ordering that guarantees each feature is conditioned on its discovered parent nodes. Removing this ordering alone (\textit{No Topological Order} variant) degrades AUC by 1.1 points, while removing the graph entirely (\textit{No Structure} variant, equivalent to CLLM) causes a 1.6-point drop. Third, regarding \textbf{regularization}: the DAG serves as a structural regularizer that constrains the generation space, preventing the LLM from overfitting to spurious patterns in the few available training samples. This regularization effect is evidenced by StructSynth's superior privacy preservation (avg.\ rank 1.50 vs.\ CLLM's 3.50), indicating reduced memorization of training records.
 
 These results demonstrate that the advantage of StructSynth is \emph{not} merely the result of adding peripheral components to an LLM pipeline, but stems from a fundamental shift in how dependencies are modeled and enforced during generation.
 
@@ -486,7 +486,7 @@ Nevertheless, our SHD evaluations on benchmark DAGs (Figure~\ref{fig:shd}) demon
 \label{app:prompts}
 This section provides a guide to the prompt templates used in the StructSynth framework. A key step in our methodology is the textualization of diverse data structures---including statistical scores, dependency graphs, and tabular data---to serve as inputs for the Large Language Model (LLM). \hyperref[box:textualization_examples]{Box 1} shows concrete examples of this process. 
 
-The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generation}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{data\_gen\_iso}$}} prompt generates values for the remaining isolated features.
+The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generation}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{iso}$}} prompt generates values for the remaining isolated features.
 
 
 \begin{tcolorbox}[
@@ -566,7 +566,7 @@ You are an expert data analyst. Based on the following information:
 
 \textbf{Task Description:}
 
-Identify the initial "source nodes" for a dependency graph. A source node is a foundational variable that is not caused by any other variable in this dataset.
+Identify the initial "source nodes" for a dependency graph. A source node is a foundational variable that is not influenced by any other variable in this dataset.
 
 
 \vspace{\medskipamount}
@@ -588,7 +588,7 @@ Identify the initial "source nodes" for a dependency graph. A source node is a f
 \textbf{Your Task is to Identify the Source Nodes:}
 \begin{itemize}[leftmargin=*, itemsep=2pt]
     \item Your only task is to analyze the provided column descriptions and data.
-    \item Identify the features that are most likely to be \textbf{source nodes} (i.e., fundamental attributes that are not effects of other features).
+    \item Identify the features that are most likely to be \textbf{source nodes} (i.e., fundamental attributes that are not dependent on other features).
     \item Provide your answer as a simple list of the identified source node names.
 \end{itemize}
 \label{prompt:source}
@@ -613,7 +613,7 @@ You are an expert data analyst building a dependency graph. Based on the followi
 
 \textbf{Task Description:}
 
-For the given $\texttt{\{current\_feature}\}$, your task is to propose its direct successors (effects) 
+For the given $\texttt{\{current\_feature}\}$, your task is to propose its direct successors (dependents) 
 from the list of available features. For each proposed dependency, you must provide a 
 brief, evidence-based rationale.
 
@@ -647,7 +647,7 @@ brief, evidence-based rationale.
 \begin{itemize}[leftmargin=*, itemsep=2pt]
     \item Your focus is on the feature: $\texttt{\{current\_feature}\}$.
     \item Review the \textbf{Statistical Evidence}, which shows the strength of association between $\texttt{\{current\_feature\}}$ and other candidate features $\texttt{\{all\_features\}}$.
-    \item Based on the statistical scores, the example data, and the existing graph, identify which other features are most likely to be \textbf{direct effects} of $\texttt{\{current\_feature\}}$.
+    \item Based on the statistical scores, the example data, and the existing graph, identify which other features are most likely to be \textbf{direct dependents} of $\texttt{\{current\_feature\}}$.
     \item For each dependency you propose, you \textbf{must} provide a concise $\texttt{rationale}$. This rationale should explain why the dependency makes sense (e.g., "Higher Education is strongly correlated with and typically precedes higher Income").
     \item Do not propose links that would create an obvious logical contradiction with the existing graph structure.
     \item Format your final output as a list of dependency edges and their corresponding rationales.

@@ -1,10 +1,10 @@
-\section{Related Works}
-\label{sec:related_works}
+\section{Related Work}
+\label{sec:related_work}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/pipeline.png}
-\caption{Overview of the \textsf{StructSynth} framework. The method first performs \textbf{Evidence-Grounded Graph Induction} to infer a dependency graph from limited data via an LLM-guided search. Subsequently, \textbf{Graph-Planned Conditional Synthesis} leverages the learned graph as a blueprint to autoregressively guide the LLM in generating new tabular data.}
+\caption{Overview of the \textsf{StructSynth} framework. The method first performs \textbf{Evidence-Grounded Graph Induction} to infer a dependency graph from limited data via an LLM-guided search. Subsequently, \textbf{Graph-Planned Conditional Synthesis} uses the learned graph as a generation plan to autoregressively guide the LLM in generating new tabular data.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -15,8 +15,8 @@ Structure-aware methods address this by incorporating explicit dependency graphs
 
 \paragraph{LLM-Based Tabular Generation.}
 Fine-tuning approaches such as GReaT~\cite{borisov2023language} and TAPTAP~\cite{zhang2023generative} serialize rows as text and train LLMs for autoregressive generation, but are computationally expensive and degrade under data scarcity.
-Prompt-based methods avoid parameter updates: CuratedLLM (CLLM)~\cite{cllm2024} selects curated in-context examples to guide generation, yet treats each column independently without modeling inter-feature dependencies; TabGen-ICL~\cite{fang-etal-2025-tabgen} iteratively refines in-context selection to align the generated distribution with the real one.
-GraDe~\cite{zhang-etal-2025-features} moves closer to structure-aware LLM generation by injecting a learned sparse dependency graph into the Transformer attention mechanism, but the graph serves as an attention mask rather than an explicit generation blueprint, and requires model fine-tuning.
+Prompt-based methods avoid parameter updates: CuratedLLM (CLLM)~\cite{cllm2024} selects curated in-context examples to guide generation, yet does not explicitly model inter-feature dependency structure; TabGen-ICL~\cite{fang-etal-2025-tabgen} iteratively refines in-context selection to align the generated distribution with the real one.
+GraDe~\cite{zhang-etal-2025-features} moves closer to structure-aware LLM generation by injecting a learned sparse dependency graph into the Transformer attention mechanism, but the graph serves as an attention mask rather than an explicit generation plan, and requires model fine-tuning.
 SPADA~\cite{yang2025doubling} further decouples the two stages by replacing LLM-based generation with lightweight statistical estimators (KDE, normalizing flows), greatly accelerating sampling but relying on sufficient data to fit reliable conditional distributions.
 
 \paragraph{LLM-Assisted Dependency Discovery.}
