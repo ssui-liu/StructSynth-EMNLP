@@ -1,6 +1,6 @@
 # StructSynth 论文审阅优化提示词
 
-请基于 `EMNLP26_StructSynth.pdf`（LaTeX 源码位于 `Latex-EMNLP/sections/`），以 EMNLP 审稿人视角对该论文进行系统性审阅与优化建议，重点关注以下两个方面：
+请基于 `EMNLP26_StructSynth.pdf`，以 EMNLP 审稿人视角对该论文进行系统性审阅与优化建议，重点关注以下两个方面：
 
 ## 一、篇幅压缩（EMNLP 正文限 8 页）
 
