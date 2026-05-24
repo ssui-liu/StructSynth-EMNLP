@@ -145,7 +145,7 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
     
     \Statex \hspace{\algorithmicindent} \textit{b. Generating Independent Values}
     \State $A_{\mathtt{iso}} \gets A \setminus V$
-    \State $\tilde{x}_{j, A_{\mathtt{iso}}} \gets f_{\mathtt{LLM}}(\pi_{\mathtt{data\_gen\_iso}}(\tilde{x}_{j,V}, A_{\mathtt{iso}}, \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}))$
+    \State $\tilde{x}_{j, A_{\mathtt{iso}}} \gets f_{\mathtt{LLM}}(\pi_{\mathtt{iso}}(\tilde{x}_{j,V}, A_{\mathtt{iso}}, \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}))$
     
     \Statex \hspace{\algorithmicindent} \textit{c. Final Assembly}
     \State $\tilde{x}_j \gets \mathtt{concat}(\tilde{x}_{j,V}, \tilde{x}_{j,A_{\mathtt{iso}}})$
@@ -755,7 +755,7 @@ of their parent features.
     float*=t, width=\textwidth, floatplacement=htbp,
     colback=purple!10!white,  % Light purple background
     colframe=purple!75!black, % Dark purple frame
-    title={Prompt for Independent Feature Synthesis ($\pi_\mathtt{data\_gen\_iso}$)}, % Box title
+    title={Prompt for Independent Feature Synthesis ($\pi_\mathtt{iso}$)}, % Box title
     fonttitle=\bfseries\color{white}, % Title font bold, color white
     arc=2mm, % rounded corners
     boxrule=1pt % thickness of the frame

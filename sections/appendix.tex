@@ -9,7 +9,7 @@
 \label{app:prompts}
 This section provides a guide to the prompt templates used in the StructSynth framework. A key step in our methodology is the textualization of diverse data structures---including statistical scores, dependency graphs, and tabular data---to serve as inputs for the Large Language Model (LLM). \hyperref[box:textualization_examples]{Box 1} shows concrete examples of this process. 
 
-The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generation}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{data\_gen\_iso}$}} prompt generates values for the remaining isolated features.
+The StructSynth pipeline employs a sequence of prompts to complete its tasks. First, the \hyperref[prompt:source]{\texttt{$\pi_\mathtt{source}$}} prompt initiates graph discovery by identifying initial root nodes. During the iterative graph construction, the \hyperref[prompt:generation]{\texttt{$\pi_\mathtt{generation}$}} prompt proposes new dependency edges with corresponding rationales. If a cycle is detected, the \hyperref[prompt:resolve]{\texttt{$\pi_\mathtt{resolve}$}} prompt is used to analyze the conflict and remove the weakest link. Finally, for data synthesis, the \hyperref[prompt:data_gen]{\texttt{$\pi_\mathtt{data\_gen}$}} prompt generates values for dependent features, after which the \hyperref[prompt:data_gen_iso]{\texttt{$\pi_\mathtt{iso}$}} prompt generates values for the remaining isolated features.
 
 
 \begin{tcolorbox}[
@@ -278,7 +278,7 @@ of their parent features.
     float*=t, width=\textwidth, floatplacement=htbp,
     colback=purple!10!white,  % Light purple background
     colframe=purple!75!black, % Dark purple frame
-    title={Prompt for Independent Feature Synthesis ($\pi_\mathtt{data\_gen\_iso}$)}, % Box title
+    title={Prompt for Independent Feature Synthesis ($\pi_\mathtt{iso}$)}, % Box title
     fonttitle=\bfseries\color{white}, % Title font bold, color white
     arc=2mm, % rounded corners
     boxrule=1pt % thickness of the frame
@@ -326,5 +326,4 @@ Your task is to generate plausible values for the remaining isolated features, e
 \end{tcolorbox}
 
 \clearpage
-
 

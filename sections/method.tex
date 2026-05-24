@@ -140,7 +140,7 @@ Iterating through all layers yields a partial synthetic data point $\tilde{\math
 
 Subsequently, values for isolated attributes $A_{\mathtt{iso}} = \mathbf{A} \setminus V$ are generated collectively in a single step, conditioned upon the complete set of previously generated graph-based values $\tilde{\mathbf{x}}_{j, V}$:
 \begin{equation}
-\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{data\_gen\_iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right),
+\tilde{\mathbf{x}}_{j, A_{\mathtt{iso}}} = f_{\mathtt{LLM}}\left(\pi_{\mathtt{iso}}\left(\tilde{\mathbf{x}}_{j, V},\ A_{\mathtt{iso}},\ \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}\right)\right),
 \end{equation}
 where $\mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}} = \Pi_{A_{\mathtt{iso}}}(\mathcal{D}_{\mathtt{few\_shot}}).$
 
@@ -246,7 +246,7 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
     
     \Statex \hspace{\algorithmicindent} \textit{b. Generating Independent Values}
     \State $A_{\mathtt{iso}} \gets A \setminus V$
-    \State $\tilde{x}_{j, A_{\mathtt{iso}}} \gets f_{\mathtt{LLM}}(\pi_{\mathtt{data\_gen\_iso}}(\tilde{x}_{j,V}, A_{\mathtt{iso}}, \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}))$
+    \State $\tilde{x}_{j, A_{\mathtt{iso}}} \gets f_{\mathtt{LLM}}(\pi_{\mathtt{iso}}(\tilde{x}_{j,V}, A_{\mathtt{iso}}, \mathcal{D}_{\mathtt{few\_shot}}^{\mathtt{iso}}))$
     
     \Statex \hspace{\algorithmicindent} \textit{c. Final Assembly}
     \State $\tilde{x}_j \gets \mathtt{concat}(\tilde{x}_{j,V}, \tilde{x}_{j,A_{\mathtt{iso}}})$
@@ -255,4 +255,3 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 \State \textbf{Return} $\mathcal{D}_{\mathtt{synth}} = (X_{\mathtt{synth}}, A)$
 \end{algorithmic}
 \end{algorithm*}
-
