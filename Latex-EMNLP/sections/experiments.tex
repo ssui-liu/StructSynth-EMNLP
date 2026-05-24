@@ -81,7 +81,7 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 
 \subsection{Main Results}
 \paragraph{Downstream Model Performance.}
-Table~\ref{tab:results_comparison_performance} summarizes the downstream results. \textsf{StructSynth} achieves the best mean performance on all six datasets, with a perfect average rank of 1.00 and the highest average score (75.01). This improves over using only $\mathcal{D}_\mathtt{train}$ (71.54) and surpasses the strongest competitor, CLLM (73.36), demonstrating that explicitly guiding an LLM with a graph-based generation plan yields substantial gains. Standard DGMs and structure-aware models perform notably weaker, as implicit distribution learning and data-driven graph discovery are unreliable in our $n=100$ low-data setting.
+Table~\ref{tab:results_comparison_performance} summarizes the downstream results. \textsf{StructSynth} achieves the best mean performance on all six datasets, with a perfect average rank of 1.00 and the highest average score (75.01). This improves over using only $\mathcal{D}_\mathtt{train}$ (71.54) and surpasses the strongest competitor, CLLM (73.36), demonstrating that explicitly guiding an LLM with a graph-based generation plan yields substantial gains. Notably, these gains hold on the two post-cutoff datasets (Anxiety, Salary), where the LLM lacks prior exposure, confirming that the improvement stems from structural guidance rather than memorized knowledge. Standard DGMs and structure-aware models perform notably weaker, as implicit distribution learning and data-driven graph discovery are unreliable in our $n=100$ low-data setting.
 
 
 
