@@ -84,12 +84,11 @@ YQ 指出 Figure 6 中有 "Captial Gain / Captial Loss" typo（应为 "Capital"�
 
 ---
 
-## 5. Bergsma (2013) 引用 — 手动添加 BibTeX
+## ~~5. Bergsma (2013) 引用~~ ✅ 已完成
 
 | Item | Detail |
 |------|--------|
-| 当前状态 | `sections/appendix.tex` L69 手写引用 "Bergsma and Wicher (2013)"，无 `\cite{}`，`references.bib` 中无条目 |
-| 注意 | 作者全名是 **Wicher Bergsma**（单一作者，Wicher 是 first name），非两人合著 |
+| 状态 | bib 条目已添加 (`bergsma2013bias`)，appendix L69 已改为 `\citet{bergsma2013bias}`，bib 中多余文字行已清理 |
 
 ### 需要执行
 
