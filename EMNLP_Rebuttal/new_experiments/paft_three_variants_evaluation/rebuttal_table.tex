@@ -1,0 +1,50 @@
+% PAFT three-variant aligned evaluation results.
+% Full per-seed results and standard deviations are archived in evaluation_outputs/.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\hline
+Variant & Avg. AUC $\uparrow$ & Avg. R$^2$ $\uparrow$ & Fidelity diff. $\downarrow$ & Mean DCR & Mean $|\mathrm{DCR}-.5|\downarrow$ \\
+\hline
+\texttt{paft\_anon\_headers} & 0.7672 & 0.3964 & 0.5454 & 0.6600 & 0.1600 \\
+\texttt{paft\_full} & 0.7521 & \textbf{0.4039} & \textbf{0.5374} & 0.6535 & 0.1535 \\
+\texttt{paft\_graph\_orders} & \textbf{0.7818} & 0.3596 & 0.5400 & 0.6497 & \textbf{0.1497} \\
+\hline
+\end{tabular}
+\caption{Aggregate PAFT variant comparison across six datasets. Utility uses the same XGBoost evaluation protocol as StructSynth. Avg. AUC is averaged over the four classification datasets; Avg. R$^2$ is averaged over the two regression datasets. Lower fidelity difference is better; DCR is ideal at 0.50, so privacy is compared using the mean absolute deviation from 0.50. The graph-order variant currently has 5 seeds, while the other two variants have 10 seeds.}
+\label{tab:paft_variant_aggregate}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\begin{tabular}{llrrrr}
+\hline
+Dataset & Variant & Seeds & DCR (ideal .50) & Fidelity diff. $\downarrow$ & Utility $\uparrow$ \\
+\hline
+adult & \texttt{paft\_anon\_headers} & 10 & 0.7632 & 0.5205 & AUC 0.8083 \\
+adult & \texttt{paft\_full} & 10 & 0.7635 & 0.5166 & AUC 0.7870 \\
+adult & \texttt{paft\_graph\_orders} & 5 & 0.7388 & 0.5030 & AUC 0.8170 \\
+anxiety & \texttt{paft\_anon\_headers} & 10 & 0.6095 & 0.4351 & AUC 0.7304 \\
+anxiety & \texttt{paft\_full} & 10 & 0.6076 & 0.4296 & AUC 0.7217 \\
+anxiety & \texttt{paft\_graph\_orders} & 5 & 0.5956 & 0.4308 & AUC 0.8386 \\
+churn & \texttt{paft\_anon\_headers} & 10 & 0.6267 & 0.5593 & AUC 0.8910 \\
+churn & \texttt{paft\_full} & 10 & 0.6232 & 0.5472 & AUC 0.8988 \\
+churn & \texttt{paft\_graph\_orders} & 5 & 0.6514 & 0.5429 & AUC 0.8849 \\
+compas & \texttt{paft\_anon\_headers} & 10 & 0.7496 & 0.5534 & AUC 0.6393 \\
+compas & \texttt{paft\_full} & 10 & 0.7531 & 0.5386 & AUC 0.6007 \\
+compas & \texttt{paft\_graph\_orders} & 5 & 0.7408 & 0.5563 & AUC 0.5868 \\
+obesity\_reg & \texttt{paft\_anon\_headers} & 10 & 0.5893 & 0.5693 & R$^2$ 0.3568 \\
+obesity\_reg & \texttt{paft\_full} & 10 & 0.5708 & 0.5700 & R$^2$ 0.3601 \\
+obesity\_reg & \texttt{paft\_graph\_orders} & 5 & 0.5732 & 0.5764 & R$^2$ 0.3609 \\
+salary & \texttt{paft\_anon\_headers} & 10 & 0.6217 & 0.6347 & R$^2$ 0.4359 \\
+salary & \texttt{paft\_full} & 10 & 0.6028 & 0.6222 & R$^2$ 0.4476 \\
+salary & \texttt{paft\_graph\_orders} & 5 & 0.5984 & 0.6307 & R$^2$ 0.3582 \\
+\hline
+\end{tabular}
+\caption{Dataset-level aligned evaluation results for the three PAFT variants. Utility is AUC for classification datasets and R$^2$ for regression datasets; DCR is ideal at 0.50.}
+\label{tab:paft_variant_dataset_level}
+\end{table*}

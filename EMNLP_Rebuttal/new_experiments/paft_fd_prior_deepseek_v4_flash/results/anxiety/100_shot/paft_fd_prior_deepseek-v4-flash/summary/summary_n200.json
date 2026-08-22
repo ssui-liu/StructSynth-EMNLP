@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.7371818181818182,
+    "accuracy_std": 0.021002557892231353,
+    "accuracy_n": 5,
+    "f1": 0.7371818181818182,
+    "f1_std": 0.021002557892231353,
+    "f1_n": 5,
+    "auc_roc": 0.8670647170912794,
+    "auc_roc_std": 0.012175081374654069,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.7068181818181818,
+            "f1": 0.7068181818181818,
+            "precision": 0.7068181818181818,
+            "recall": 0.7068181818181818,
+            "auc_roc": 0.8456973093471277
+        },
+        "44": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.7213636363636363,
+            "f1": 0.7213636363636363,
+            "precision": 0.7213636363636363,
+            "recall": 0.7213636363636363,
+            "auc_roc": 0.864410983329232
+        },
+        "45": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.75,
+            "f1": 0.75,
+            "precision": 0.75,
+            "recall": 0.75,
+            "auc_roc": 0.8818861720236192
+        },
+        "42": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.7413636363636363,
+            "f1": 0.7413636363636363,
+            "precision": 0.7413636363636363,
+            "recall": 0.7413636363636363,
+            "auc_roc": 0.8744540023450348
+        },
+        "46": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.7663636363636364,
+            "f1": 0.7663636363636364,
+            "precision": 0.7663636363636364,
+            "recall": 0.7663636363636364,
+            "auc_roc": 0.8688751184113831
+        }
+    },
+    "dataset": "anxiety",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 200
+}

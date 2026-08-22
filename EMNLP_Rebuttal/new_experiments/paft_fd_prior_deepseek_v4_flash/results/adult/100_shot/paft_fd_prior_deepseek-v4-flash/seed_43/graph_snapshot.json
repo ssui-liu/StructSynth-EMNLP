@@ -1,0 +1,189 @@
+{
+  "nodes": [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "country",
+    "salary"
+  ],
+  "edges": [
+    {
+      "from": "education",
+      "to": "education-num",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'education' functionally determines 'education-num' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "age": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "workclass": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "fnlwgt": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "education": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "education-num"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "education-num"
+        ],
+        "in_graph": true
+      },
+      "education-num": {
+        "level": 1,
+        "parents": [
+          "education"
+        ],
+        "children": [],
+        "ancestors": [
+          "education"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "marital-status": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "occupation": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "relationship": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "race": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "sex": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "capital-gain": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "capital-loss": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "hours-per-week": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "country": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "salary": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      }
+    },
+    "levels": {
+      "0": [
+        "education"
+      ],
+      "1": [
+        "education-num"
+      ],
+      "others": [
+        "age",
+        "workclass",
+        "fnlwgt",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "capital-gain",
+        "capital-loss",
+        "hours-per-week",
+        "country",
+        "salary"
+      ]
+    },
+    "generation_order": [
+      "education",
+      "education-num"
+    ],
+    "max_depth": 1
+  }
+}

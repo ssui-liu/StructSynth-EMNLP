@@ -1,0 +1,1614 @@
+          StructSynth: Dependency Graphs as Generation Plans for Low-Data
+                       Tabular Synthesis with Language Models
+
+
+                                              Anonymous ACL submission
+
+
+
+
+001                         Abstract
+002       Tabular data derives its value from inter-feature
+003       dependencies, yet preserving them during
+004       synthesis is fragile when samples are scarce.
+005       Existing approaches either learn dependencies
+006       implicitly through distribution fitting, rely on
+007       statistical graph learning that becomes unstable
+008       with few samples, or encode structure through
+009       flat text serialization. Recent graph-aware
+010       methods use dependency graphs as attention
+011       biases or as backbones for non-LLM samplers,
+012       but they do not use the graph as a prompt-
+013       level plan for organizing the LLM’s own
+014       generation process. We introduce StructSynth,
+015       a framework that treats a dependency graph as
+016       a generation plan—determining the generation
+017       order, conditioning context, and scope of
+018       each black-box LLM call. In Evidence-
+019       Grounded Graph Induction, LLM reasoning
+020       and statistical association cues jointly construct
+021       a Directed Acyclic Graph (DAG) from limited              Figure 1: Tabular synthesis paradigms under data
+022       samples. In Graph-Planned Conditional                    scarcity. Conventional methods learn dependencies
+023       Synthesis, this DAG drives autoregressive                implicitly via distribution fitting or through learned
+024       synthesis in topological order, conditioning             graphical structures; LLM-based methods encode them
+025       each feature on previously generated values              through serialized text. StructSynth discovers a
+026       with graph-specified parent structure guiding            dependency graph and treats it as a generation plan
+027       each step, making the conditioning schedule              dictating each LLM call’s order, context, and scope.
+028       explicit throughout synthesis. Experiments
+029       show that StructSynth achieves state-of-the-
+030       art downstream utility and privacy preserva-             rely on statistical signals that degrade rapidly as      044
+031       tion while maintaining competitive statistical           sample size shrinks. Without faithful dependencies,      045
+032       fidelity, especially in low-data scenarios.              additional synthetic samples add volume without          046
+                                                                   adding predictive signal (Liu et al., 2023).             047
+033   1   Introduction
+                                                                      As illustrated in Figure 1, existing tabular          048
+034   Low-data tabular synthesis—generating realistic              generators handle dependencies in three important        049
+035   records from scarce samples in domains such as               but partial ways. Deep generative models                 050
+036   healthcare (Choi et al., 2017), finance (Rundo               capture the joint distribution end-to-end, implic-       051
+037   et al., 2019), and education (Luan and Tsai, 2021)—          itly learning inter-feature dependencies through         052
+038   poses several intertwined challenges (Borisov et al.,        distribution fitting; however, their performance         053
+039   2022). Among them, preserving inter-feature                  varies across architectures, with many requiring         054
+040   dependencies is particularly fragile under sample            substantially more samples to converge reliably.         055
+041   scarcity: the dependency relationships that enable           Structure-aware methods make dependencies                056
+042   Machine Learning (ML) models to learn meaning-               explicit through graphical models such as Bayesian       057
+043   ful decision boundaries (Fonseca and Bacao, 2023)            networks (Ankan and Panda, 2015) and graph-              058
+
+
+                                                               1
+059   based VAEs (Liu et al., 2023), yet the quality                       DAG serves as the generation plan: synthesis            108
+060   of the learned graph degrades under scarcity—                        proceeds autoregressively in topological order, with    109
+061   errors in the discovered structure propagate directly                each layer of features conditioned on previously        110
+062   into generation (Chai et al., 2022). Large                           generated values and the local dependency sub-          111
+063   Language Models (LLMs) exploit attribute names,                      graph guiding parent-aware generation at every          112
+064   descriptions, and in-context examples as seman-                      step. Our contributions are:                            113
+065   tic priors (Borisov et al., 2023; Seedat et al.,
+                                                                           • We propose to treat a dependency graph as             114
+066   2024), but most LLM-based synthesizers encode
+                                                                             a generation plan that determines the gener-          115
+067   dependencies only through flat textualization of
+                                                                             ation order, conditioning context, and scope          116
+068   attribute–value pairs, without explicitly modeling
+                                                                             of each LLM call for tabular synthesis. We            117
+069   dependency directions or conditional independence
+                                                                             instantiate this idea in StructSynth, where           118
+070   structure (Liu et al., 2024).
+                                                                             Evidence-Grounded Graph Induction fuses               119
+071      Recent graph-aware methods take steps toward
+                                                                             LLM semantic priors with statistical association      120
+072   making dependencies explicit: GraDe (Zhang et al.,
+                                                                             cues to discover reliable structures from limited     121
+073   2025b) injects a learned dependency graph into the
+                                                                             samples, and Graph-Planned Conditional Syn-           122
+074   Transformer attention mask, while SPADA (Yang
+                                                                             thesis compiles the discovered topology into          123
+075   et al., 2025) uses the graph to guide normalizing
+                                                                             a generation plan for layer-wise conditional          124
+076   flows. However, neither treats the graph as a
+                                                                             synthesis.                                            125
+077   generation plan that organizes the LLM’s own
+078   generation process—both use it as an internal                        • Experiments on six datasets show that Struct-         126
+079   modeling bias or an external sampler backbone,                         Synth achieves state-of-the-art downstream            127
+080   rather than as a prompt-level plan that determines                     utility and privacy preservation while main-          128
+081   what to generate, in what order, and with which                        taining competitive statistical fidelity. Ablations   129
+082   context—and both require model fine-tuning or                          confirm that both stages contribute independently,    130
+083   sufficient samples, leaving the low-data regime                        validating the generation-plan design.                131
+084   unaddressed. This gap raises a natural question:
+085   can a dependency graph determine the generation                      2   Related Work                                        132
+086   order, conditioning context, and scope of each
+                                                                           Tabular Synthesis in Low-Data Regimes. Deep             133
+087   black-box LLM call?
+                                                                           generative models—including VAE-based (Patki            134
+088      We answer this question with StructSynth,
+                                                                           et al., 2016), GAN-based (Xu et al., 2019),             135
+089   a framework for Structure-aware tabular data
+                                                                           and diffusion-based (Kotelnikov et al., 2023;           136
+090   Synthesis that treats a dependency graph as a
+                                                                           Zhang et al., 2024) approaches—capture the              137
+091   generation plan—one that determines how prompts
+                                                                           joint distribution end-to-end but are data-hungry       138
+092   are constructed and sequenced for black-box LLM
+                                                                           and provide limited control over inter-feature          139
+093   synthesis. To use a graph as such a plan, two
+                                                                           dependencies. Structure-aware methods address           140
+094   requirements must be met: the graph must be
+                                                                           this by incorporating explicit dependency graphs;       141
+095   reliably discovered from limited samples, and
+                                                                           Bayesian-network-based generators (Ankan and            142
+096   it must organize the LLM’s generation process.
+                                                                           Panda, 2015; Zhang et al., 2017) and graph-             143
+097   This naturally leads to a two-stage design. In
+                                                                           based VAEs (Van Breugel et al., 2021; Liu et al.,       144
+098   Evidence-Grounded Graph Induction, LLM-
+                                                                           2023) condition synthesis on learned graphical          145
+099   based reasoning is integrated with statistical as-
+                                                                           structures, yet their effectiveness degrades when       146
+100   sociation cues to construct a Directed Acyclic
+                                                                           the underlying graphs cannot be reliably estimated      147
+101   Graph (DAG)1 from limited samples, with a
+                                                                           from scarce samples.                                    148
+102   cycle resolution mechanism ensuring acyclic-
+103   ity. Separating discovery from synthesis allows                      LLM-Based Tabular Generation. Fine-tuning               149
+104   each stage to leverage complementary signals—                        approaches such as GReaT (Borisov et al., 2023)         150
+105   semantic priors and statistical evidence—without                     and TAPTAP (Zhang et al., 2023) serialize rows as       151
+106   being bottlenecked by a shared scarcity constraint.                  text and train LLMs for autoregressive generation,      152
+107   In Graph-Planned Conditional Synthesis, this                         but are computationally expensive and degrade           153
+
+         1
+                                                                           under data scarcity. Prompt-based methods avoid         154
+          We use “DAG” to denote a directed dependency graph
+      used as a generative structure for organizing synthesis, not a       parameter updates, relying instead on inference-        155
+      ground-truth causal claim.                                           time prompts or example selection: CuratedLLM           156
+
+
+                                                                       2
+      Figure 2: Overview of the StructSynth framework. The method first performs Evidence-Grounded Graph
+      Induction to infer a dependency graph from limited data via an LLM-guided search. Subsequently, Graph-Planned
+      Conditional Synthesis uses the learned graph as a generation plan to autoregressively guide the LLM in generating
+      new tabular data.
+
+
+157   (CLLM) (Seedat et al., 2024) selects curated in-              calls (Jiralerspong et al., 2024; Zanna and Sano,     182
+158   context examples to guide generation, yet does not            2025). A complementary line integrates LLM judg-      183
+159   explicitly model inter-feature dependency structure;          ments with classical constraint-based algorithms,     184
+160   TabGen-ICL (Fang et al., 2025) iteratively refines            using the LLM to validate or correct statistically    185
+161   in-context selection to align the generated distribu-         proposed edges (Ban et al., 2023). However, these     186
+162   tion with the real one. GraDe (Zhang et al., 2025b)           methods target causal graph identification as an      187
+163   moves closer to structure-aware LLM generation                end in itself and do not connect the discovered       188
+164   by injecting a learned sparse dependency graph                structure to a downstream data generation process.    189
+165   into the Transformer attention mechanism, but                 An extended discussion of all the above lines of      190
+166   the graph serves as an attention mask rather than             work is provided in Appendix A.                       191
+167   an explicit generation plan, and requires model
+168   fine-tuning. SPADA (Yang et al., 2025) further                3   Methodology                                       192
+
+169   decouples the two stages by replacing LLM-based
+                                                                    Synthesizing realistic tabular data from scarce       193
+170   generation with lightweight statistical estimators
+                                                                    samples requires preserving the dependency rela-      194
+171   (KDE, normalizing flows), greatly accelerating
+                                                                    tionships among features—the very relationships       195
+172   sampling but relying on sufficient data to fit reliable
+                                                                    that enable downstream models to learn meaningful     196
+173   conditional distributions.
+                                                                    decision boundaries. Given a small tabular dataset    197
+                                                                    Dtrain = (Xtrain , A) with n ≤ 100 instances          198
+174   LLM-Assisted Dependency Discovery. LLMs                       and K attributes, our goal is to use an LLM-          199
+175   have been applied to structure learning itself. Early         based generator fLLM to produce a synthetic dataset   200
+176   work demonstrated that LLMs can accurately                    Dsynth that, when combined with Dtrain , improves     201
+177   judge pairwise causal directions from variable                downstream model performance.                         202
+178   semantics alone (Kiciman et al., 2023). To scale                 We address this by representing inter-feature      203
+179   beyond pairwise queries, BFS-based strategies                 dependencies as a Directed Acyclic Graph (DAG)        204
+180   reframe structure discovery as a graph traversal              and using it as a generation plan that organizes      205
+181   task, substantially reducing the number of LLM                the LLM’s synthesis process. A DAG naturally          206
+
+
+                                                                3
+207   encodes generation order: its topological sort              Pearson correlation) for continuous pairs, and the          253
+208   yields the synthesis sequence, and each node’s              correlation ratio for mixed pairs (see Appendix D           254
+209   parents define the conditioning set (see Appendix C         for details). The LLM is then queried with a prompt         255
+210   for further justification). Concretely, the graph           πgenerate that integrates the current graph state           256
+211   determines three aspects of the generation plan:            Gt , the node Ai , and S(Ai )—pairing statistical           257
+212   topological layers fix the generation order (§3.2),         evidence with the LLM’s semantic prior so that              258
+213   parent sets define the conditioning context, and            each compensates the other’s weakness at small n.           259
+214   local subgraphs bound the scope of each prompt.             The model proposes a set of direct successors for           260
+215   As depicted in Figure 2, StructSynth realizes               Ai , each accompanied by a textual rationale:               261
+216   this idea through two coupled stages. Evidence-
+                                                                   Pi = fLLM (πgenerate (Ai , Gt , S(Ai ), Dfew_shot )).
+217   Grounded Graph Induction constructs the DAG
+                                                                                                                      (2)     262
+218   from limited data by combining LLM-based reason-
+                                                                  From Pi , new directed edges and previously unseen          263
+219   ing with statistical association cues—the LLM’s
+                                                                  nodes are extracted and added to the graph and BFS          264
+220   semantic prior acts as a structural regularizer while
+                                                                  queue, respectively.                                        265
+221   the statistical scores provide empirical grounding.
+222   Graph-Planned Conditional Synthesis then uses               3.1.3 LLM-based Cycle Resolution                            266
+223   the learned DAG as a generation plan: synthesis             Integrating the proposed edges into Gt may                  267
+224   proceeds autoregressively in topological order,             introduce cycles. The LLM proposals yield a                 268
+225   conditioning each feature on previously generated           candidate edge set Eprop,t and a set of newly               269
+226   values while the local dependency subgraph makes            discovered attributes Vnew,t . A cycle detection            270
+227   the planned parent structure explicit throughout            algorithm identifies all elementary cycles Ψ in Et ∪        271
+228   generation.2                                                Eprop,t . For each cycle ψ ∈ Ψ, the LLM is queried          272
+                                                                  with πresolve , which presents the conflicting edges        273
+229   3.1     Evidence-Grounded Graph Induction
+                                                                  together with their rationales. The model identifies        274
+230   The dependency structure is represented as a DAG            the single least-justified edge for removal; the            275
+231   G = (V, E), where the node set V ⊆ A contains               union of all removed edges forms Epruned . The              276
+232   selected attributes and edges E encode proba-               graph is then updated:                                      277
+233   bilistic dependencies. The graph is constructed
+234   iteratively via BFS as described below.                      Gt+1 = (Vt ∪ Vnew,t , (Et ∪ Eprop,t ) \ Epruned ).
+                                                                                                                  (3)         278
+235   3.1.1 Graph Initialization                                  This expansion-resolution cycle continues until the         279
+236   The graph construction begins by identifying                BFS queue is empty, yielding the final DAG G.               280
+237   source nodes—root attributes in the generation plan
+                                                                  3.2   Graph-Planned Conditional Synthesis                   281
+238   that are generated without conditioning on other at-
+239   tributes. Using a small subset Dfew_shot ⊆ Dtrain           Upon learning the dependency structure G =                  282
+240   as in-context examples, the LLM determines the              (V, E), we utilize it to guide synthetic tabular data       283
+241   initial source nodes:                                       generation. Constructing each synthetic data point          284
+                                                                  x̃j is performed in two sequential phases aligned           285
+242           Vsource = fLLM (πsource (Dfew_shot )).    (1)       with the underlying data structure.                         286
+
+243   The graph is initialized as G0 = (Vsource , ∅) and          3.2.1 Generating Graph-Based Values                         287
+244   expanded via BFS from these source nodes.                   The nodes V are partitioned into topological layers         288
+                                                                  L = (L1 , . . . , Lm ). For each layer Li , we extract      289
+245   3.1.2   Expansion and Reasoned Link
+                                                                  the dependency subgraph Gi = G[Li ∪ Γ− (Li )],              290
+246           Generation
+                                                                  where Γ− (Li ) denotes parent nodes, along with             291
+247   At iteration t, let Gt = (Vt , Et ) denote the              the corresponding columns from the few-shot                 292
+248   current graph.     Each BFS step dequeues a                 examples. Values for layer Li are generated                 293
+249   node Ai and computes normalized association                 conditionally on all previously generated values            294
+250   scores S(Ai ) ∈ [0, 1]K−1 between Ai and all                x̃j,<i , with the local subgraph Gi specifying the          295
+251   other attributes (Agresti and Kateri, 2011), using          parent dependencies to preserve:                            296
+252   Cramér’s V for categorical pairs, |r| (absolute                                                                 
+                                                                                                               i
+         2                                                        x̃j,Li = fLLM πdata_gen x̃j,<i , Gi , Li , Dfew_shot    .
+          See Appendix K for full prompt templates and
+      Algorithm 1 in Appendix E for the complete procedure.                                                          (4)      297
+
+
+                                                              4
+      Table 1: Comparison of Models on Downstream Model Performance (%). (C) and (R) denote classification and
+      regression tasks, respectively. † indicates datasets created post LLM knowledge cutoff. Best results are in bold;
+      second-best are underlined.
+
+       Type        Method         Adult (C)   Anxiety (C)†   Compas (C)       Salary (R)†   Obesity (R)   Churn (C)    Average   Avg. Rank
+       Real        Dtrain        82.51±1.93   85.49±1.60     64.84±2.51       49.71±7.02    59.83±6.40    86.86±3.78    71.54        -
+                   TVAE          81.21±1.54   79.63±2.65     64.39±2.06       46.18±5.91    60.92±2.61    87.42±3.80    69.96       7.00
+                   DDPM          81.72±1.79   82.94±3.24     66.01±2.50       22.30±15.70   43.20±7.98    85.91±2.05    63.68       8.67
+       DGMs        CTGAN         81.14±1.81   76.06±1.47     65.17±2.61       46.17±5.25    54.29±5.90    86.50±4.17    68.22       8.33
+                   NFlow         75.42±4.58   74.83±2.94     63.68±4.22       25.55±6.16    46.80±4.17    84.99±2.73    61.88      11.67
+                   TabSyn        83.88±1.56   85.68±2.40     67.77±6.98       47.17±9.58    43.50±9.91    89.86±1.53    69.64       4.00
+                   GOGGLE        78.92±3.04   80.92±1.61     63.73±3.85       43.18±10.65   55.84±7.77    85.27±3.98    67.98      9.00
+       Structure   BN            82.68±1.35   82.77±2.39     60.13±3.46       46.33±7.29    59.76±3.46    88.85±3.02    70.09      6.17
+       Aware       DECAF         77.64±3.91   79.90±2.30     63.90±3.69       43.58±6.25    52.88±6.44    83.94±2.97    66.97      9.67
+                   SPADA-NF      81.25±1.35   65.39±2.64     65.58±3.02       35.70±5.70    45.73±4.52    87.55±1.24    63.53      8.83
+                   GReaT         82.55±2.20   83.81±2.55     64.02±2.72       51.43±3.31    47.03±9.16    86.67±3.20    69.25      6.33
+       LLMs        CLLM          83.95±2.09   85.17±0.94     66.24±1.51       54.53±0.20    60.43±7.19    89.81±2.78    73.36      2.67
+                   GraDe         83.72±1.44   79.74±2.01     66.15±4.90       35.03±8.08    22.92±7.01    88.81±2.51    62.73      7.67
+       Ours        StructSynth   85.55±1.08   86.45±0.57     69.40±0.25       55.98±2.96    62.27±5.40    90.39±1.96   75.01       1.00
+
+
+
+298   Iterating through all layers yields a partial synthetic                 nodes), Child (Scutari, 1996b) (20 nodes), and                 329
+299   data point x̃j,V comprising values for all graph-                       Insurance (Scutari, 1996c) (27 nodes). These allow             330
+300   dependent attributes.                                                   direct measurement of structural recovery via the              331
+                                                                              Structural Hamming Distance (SHD) (de Jongh                    332
+301   3.2.2 Completing Synthesis
+                                                                              and Druzdzel, 2009).                                           333
+302   Values for isolated attributes Aiso = A \ V (those
+303   outside the dependency graph) are generated in a                        Baselines. We compare our method against                       334
+304   single step, conditioned on all graph-based values                      twelve baselines from three categories                         335
+305   x̃j,V :                                                                 (implementation details in Appendix F.2):                      336
+                                                                           1) Deep Generative Models (DGMs), including                    337
+                                              iso
+         x̃j,Aiso = fLLM πiso x̃j,V , Aiso , Dfew_shot    .                   TVAE (Xu et al., 2019), CTGAN (Xu et al.,                      338
+306                                                       (5)                 2019), TabDDPM (Kotelnikov et al., 2023),                      339
+307   The graph-dependent and isolated values are con-                        NFlow (Papamakarios et al., 2021), and                         340
+308   catenated to form each synthetic record; repeating                      TabSyn (Zhang et al., 2024); 2) Structure-Aware                341
+309   s times yields Dsynth = (Xsynth , A).                                   Methods, including Bayesian Networks (Ankan                    342
+                                                                              and Panda, 2015), GOGGLE (Liu et al., 2023),                   343
+310   4     Experiments                                                       DECAF (Van Breugel et al., 2021), and SPADA-                   344
+                                                                              NF (Yang et al., 2025); and 3) LLM-based                       345
+311   4.1     Experimental Setups
+                                                                              Methods, including GReaT (Borisov et al., 2023),               346
+312   Datasets. We conduct experiments on six real-                           CLLM (Seedat et al., 2024), and GraDe (Zhang                   347
+313   world tabular datasets: Adult (Becker and Ko-                           et al., 2025b).                                                348
+314   havi, 1996), Anxiety (Henderson et al., 2025),
+315   Compas (Angwin et al., 2016), Salary (Sajjad,                           Evaluation      Metrics. Following          previous           349
+316   2025), Obesity (Palechor and de la Hoz Manotas,                         work (Borisov et al., 2023; Seedat et al., 2024), we           350
+317   2019), and Churn (Keramati et al., 2014). These                         evaluate synthetic data along three axes (detailed             351
+318   datasets cover a range of domains (e.g., social,                        definitions in Appendix F.4): Downstream                       352
+319   medical, business) and downstream tasks including                       Model Performance measures the utility of                      353
+320   binary/multi-class classification and regression.                       synthetic data by training a downstream model                  354
+321   Notably, Anxiety and Salary were released after                         on Daug = Dtrain ∪ Dsynth and evaluating on                    355
+322   the knowledge cutoff of modern LLMs, allowing                           Dtest ; we report AUC for classification and R2 for            356
+323   us to assess performance in the absence of prior                        regression. Statistical Fidelity Error quantifies              357
+324   exposure. Full dataset details are provided in                          how well pairwise correlations in the synthetic                358
+325   Appendix F.1. Additionally, for evaluating struc-                       data match the real data (lower is better). Privacy            359
+326   ture discovery quality, we utilize three benchmark                      Risk (van Breugel et al., 2023) measures whether               360
+327   datasets from bnlearn (Scutari, 2010) with known                        synthetic records are overly similar to training               361
+328   ground-truth DAGs: Asia (Scutari, 1996a) (8                             records; the score is the fraction whose nearest               362
+
+
+                                                                          5
+363   neighbor is drawn from Dtrain (ideal: 0.5).                (48.86) yet the lowest AUC (81.17). This is because     413
+                                                                 Statistical Fidelity measures pairwise correlations,    414
+364   Implementation Details. We use gpt-4o-mini
+                                                                 whereas StructSynth’s DAG encodes conditional           415
+365   with a temperature of 0.9 for both the CLLM and
+                                                                 dependencies between parent and child nodes—the         416
+366   StructSynth models. Our experiments evaluate
+                                                                 relationships that actually drive downstream model      417
+367   the low-data regime, generating 1000 synthetic
+                                                                 performance. The generation plan thus acts as a         418
+368   samples (s = 1000) from 100 original samples
+                                                                 principled regularizer: it constrains overfitting to    419
+369   (n = 100). Downstream performance is assessed
+                                                                 individual records while preserving the conditional     420
+370   using an XGBoost model. All experiments are
+                                                                 structure that matters most for utility.                421
+371   repeated 10 times, and we report mean ± standard
+372   deviation. Unless otherwise stated, Dfew_shot =            4.3   Ablation Study                                    422
+373   Dtrain in the 100-shot setting; Appendix F.3 lists
+                                                                 To isolate the contributions of our method’s two        423
+374   the full hyperparameter configurations.
+                                                                 main stages, we evaluate seven variants. For            424
+
+375   4.2   Main Results                                         the structure learning stage: 1) PC Discovery,          425
+                                                                 substituting our LLM-guided discovery with the          426
+376   Downstream Model Performance. Table 1 sum-
+                                                                 classical Peter–Clark algorithm (Spirtes et al.,        427
+377   marizes the downstream results. StructSynth
+                                                                 2000); 2) NoTears Discovery, replacing our method       428
+378   achieves the best mean performance on all six
+                                                                 with the continuous optimization-based NoTears          429
+379   datasets, with a perfect average rank of 1.00
+                                                                 algorithm (Zheng et al., 2018); 3) No-Association       430
+380   and the highest average score (75.01). This
+                                                                 Scores, removing statistical association scores from    431
+381   improves over using only Dtrain (71.54) and
+                                                                 the prompt to examine their guiding influence;          432
+382   surpasses the strongest competitor, CLLM (73.36),
+                                                                 and 4) Pairwise Discovery, replacing the efficient      433
+383   demonstrating that explicitly guiding an LLM with
+                                                                 BFS traversal with less scalable pairwise queries to    434
+384   a graph-based generation plan yields substantial
+                                                                 evaluate the performance-efficiency trade-off. For      435
+385   gains. Notably, these gains hold on the two
+                                                                 the data generation stage: 5) No Topological Order,     436
+386   post-cutoff datasets (Anxiety, Salary), where the
+                                                                 conducting data generation based on the complete        437
+387   LLM lacks prior exposure, confirming that the
+                                                                 learned structure but ignoring the topological order;   438
+388   improvement stems from structural guidance rather
+                                                                 6) No Structure, removing structural guidance           439
+389   than memorized knowledge. Standard DGMs and
+                                                                 entirely (equivalent to the CLLM); and 7) Bayesian      440
+390   structure-aware models perform notably weaker, as
+                                                                 Sampler, using a Bayesian sampler over the              441
+391   implicit distribution learning and data-driven graph
+                                                                 learned graph instead of the LLM generator.             442
+392   discovery are unreliable in our n = 100 low-data
+                                                                    The results (Table 3) yield three insights. First,   443
+393   setting.
+                                                                 LLM-guided discovery outperforms classical              444
+394   Privacy Preservation and Statistical Fidelity              alternatives: StructSynth exceeds both PC               445
+395   Error. Table 2 reveals a fundamental tension               and NoTears by 1.0–1.4 AUC pts, showing that            446
+396   between fidelity and privacy: high statistical             semantic priors stabilize structure learning under      447
+397   fidelity often stems from memorization. For                data scarcity. Second, structural guidance is           448
+398   example, BN achieves the best fidelity (avg. rank          multifaceted: removing the graph (No Structure,         449
+399   3.00) but exhibits poor privacy (avg. rank 9.00).          –1.6 pts) or ignoring topological ordering (No          450
+400   GReaT ranks second in fidelity (avg. rank 4.00)            Topological Order, –1.1 pts) both degrade utility.      451
+401   yet has the worst privacy risk (90.15%), essentially       Finally, synergy is vital: replacing the LLM            452
+402   reproducing training records. Similarly, SPADA-            with a Bayesian Sampler causes the sharpest drop        453
+403   NF attains strong fidelity (avg. rank 4.50) at             (–4.4 pts), confirming that the generation plan         454
+404   the cost of poor privacy (avg. rank 10.17). At             guides but cannot replace the LLM’s generative          455
+405   the other end, prompt-based CLLM achieves                  capabilities. Taken together, these results clarify     456
+406   strong privacy (avg. rank 3.50) but weaker fidelity        why StructSynth’s advantage over CLLM is not            457
+407   (avg. rank 9.83). StructSynth achieves the                 merely incremental: CLLM processes features in          458
+408   best privacy preservation (avg. rank 1.50) while           an arbitrary serialized order, implicitly inducing      459
+409   maintaining competitive statistical fidelity (avg.         dependencies from the input sequence, whereas           460
+410   rank 8.50). Importantly, high pairwise fidelity does       StructSynth encodes dependencies as an explicit         461
+411   not guarantee downstream utility: the Bayesian             DAG so that relationships are discovered rather         462
+412   Sampler ablation achieves the best raw fidelity            than incidentally induced.                              463
+
+
+                                                             6
+  Table 2: Comparison of Models on Privacy Preservation and Statistical Fidelity Error (%). † indicates datasets
+  created post LLM knowledge cutoff. Best results are in bold; second-best are underlined.
+
+      Type             Method             Adult           Anxiety†            Compas                Salary†       Obesity              Churn         Average    Avg. Rank
+      Results for Privacy Preservation. Ranks are computed by deviation from 0.5, i.e., |PrivacyRisk − 0.5|; lower deviation indicates better privacy.
+                       TVAE            50.34±3.91        55.41±4.26         64.50±5.18            55.09±4.38    52.93±7.86           58.70±4.75       56.16        4.50
+                       DDPM            99.95±0.05        66.20±13.17        67.18±18.06           63.32±19.52   71.36±16.88          62.89±24.91      71.82       10.00
+      DGMs             CTGAN           50.70±3.64        56.64±4.72         64.43±4.22            53.59±2.05    53.44±3.89           57.84±2.31       56.11        4.83
+                       NFlow           54.36±1.92        53.52±3.08         62.57±3.66            52.76±2.34    51.74±3.68           52.97±3.33       54.65        3.67
+                       TabSyn          51.64±2.67        70.53±7.45         67.55±5.40            54.66±4.19    63.30±7.19           59.38±3.70       61.18        7.67
+                       GOGGLE          49.15±7.97        43.62±33.49        65.16±17.25           30.94±18.49   44.28±23.83          61.87±18.01      49.17       7.33
+      Structure        BN              53.73±2.36        72.98±4.69         67.78±3.63            61.50±1.48    68.02±2.18           59.68±3.74       63.95        9.00
+      Aware            DECAF           46.23±19.13       58.59±10.37        64.07±19.14           56.91±17.41   50.82±15.49          69.79±18.81      57.74        6.50
+                       SPADA-NF        95.20±0.71        78.76±15.53        57.86±11.26           94.98±0.88    83.08±1.69           92.30±1.49       83.70       10.17
+                       GReaT           99.50±0.35        85.39±2.29         94.10±1.33            86.66±2.45    80.75±2.99           94.51±1.48       90.15       12.50
+      LLMs             CLLM            49.45±3.85        44.37±4.55         64.14±4.22            50.96±5.40    45.36±2.69           48.78±5.82       50.51       3.50
+                       GraDe           97.51±1.60        61.14±1.94         75.11±5.11            65.99±2.60    59.30±4.76           69.07±2.86       71.35        9.83
+      Ours             StructSynth     49.97±5.78        44.74±5.13         62.37±3.86            50.13±4.89    49.80±6.31           48.67±4.84       50.95       1.50
+
+      Results for Statistical Fidelity Error. A lower score indicates higher fidelity.
+                       TVAE            53.71±1.80        46.16±1.28         60.26±1.09            66.93±1.13    58.41±0.52           53.22±1.54       56.45        6.50
+                       DDPM            65.26±1.05        52.76±1.22         64.94±1.79            90.51±0.33    64.44±1.36           64.40±2.90       67.05       11.33
+      DGMs             CTGAN           52.37±1.56        47.14±2.39         59.96±0.90            58.57±0.89    58.71±0.57           52.32±1.75       54.85        5.50
+                       NFlow           50.68±2.71        43.50±1.77         60.62±0.93            52.38±1.10    58.85±0.98           53.98±2.24       53.34       5.50
+                       TabSyn          49.17±1.34        55.31±1.31         57.23±2.24            62.90±3.01    58.08±0.54           53.99±2.08       56.11        6.17
+                       GOGGLE          68.32±1.38        51.58±7.27         66.19±1.13            87.15±1.65    63.80±2.40           65.51±2.16       67.09       11.33
+      Structure        BN              47.46±2.15        38.57±1.01         60.33±0.82            54.39±1.52    57.42±0.75           48.10±1.29       51.05       3.00
+      Aware            DECAF           62.71±3.21        48.53±1.53         63.82±1.34            84.70±2.41    60.93±2.21           60.22±0.88       63.49        9.50
+                       SPADA-NF        83.14±0.73        45.92±1.33         53.62±1.55            61.79±0.55    55.29±0.85           47.85±1.17       57.94        4.50
+                       GReaT           82.71±1.35        40.10±1.64         52.17±1.18            58.75±0.89    56.83±0.87           48.18±2.16       56.46       4.00
+      LLMs             CLLM            61.93±4.43        57.64±1.51         59.74±2.33            78.60±0.98    65.74±1.42           62.20±3.68       64.31       9.83
+                       GraDe           84.30±0.86        42.59±0.93         53.82±2.62            55.85±1.42    57.44±1.43           53.66±1.90       57.94       5.33
+      Ours             StructSynth     57.60±3.13        57.86±1.98         57.23±1.69            64.64±0.96    61.14±1.10           58.63±2.66       59.52       8.50
+
+
+                                 Asia                                                       Child                                                  Insurance
+                                                                70
+            10                                                                                                             80
+                                                                60
+             8                                                  50                                                         70
+
+
+SHD Score
+             6                                                  40                                                         60
+             4                                                  30                                                         50
+             2                                                  20
+                                                                                                                           40
+             0
+                  20   50       100                       200          20     50            100                   200           20       50         100                   200
+                        Number of Samples (n)                                  Number of Samples (n)                                      Number of Samples (n)
+                                                            StructSynth        FCI       GOGGLE         GraDe    NoTears
+
+   Figure 3: SHD of discovered dependency graphs vs. number of training samples on Asia, Child, and Insurance
+   datasets with ground-truth DAGs. Lower SHD indicates better structural recovery.
+
+                                AUC ( )                                               Fidelity ( )                                            Privacy ( ) ( )
+                                                                                                                        0.5
+            0.8                                                 0.8                                                     0.4
+
+                                                                0.7                                                     0.3
+            0.7
+ Score      0.6                                                 0.6
+                                                                                                                        0.2
+                                                                                                                        0.1
+            0.5                                                 0.5                                                     0.0
+                  20   50        100                      200          20     50            100                   200           20      50          100                  200
+                        Number of Samples (n)                                   Number of Samples (n)                                     Number of Samples (n)
+                                           StructSynth          GraDe              TabSyn            CLLM       GOGGLE                Train Only
+
+   Figure 4: Effect of training sample size (n) on downstream utility (AUC↑), statistical fidelity (↓), and privacy risk
+   deviation ∆ (↓) on the Adult dataset.
+
+
+
+
+                                                                                            7
+                      Table 3: Ablation Study on the Adult Dataset.                         4.5    Influence of Training Sample Size                 491
+
+                   Method              AUC Fidelity Privacy                                 To evaluate data efficiency, we vary the training size   492
+                 StructSynth           85.55 57.96   49.97
+                  PC Discovery         84.54 59.69   50.52                                  n from 20 to 200 on the Adult dataset and measure        493
+       Structure NoTears Discovery     84.17 59.49   47.85                                  AUC, Statistical Fidelity Error, and Privacy Risk        494
+       Learning No-Association Scores 84.06 59.10    46.60                                  deviation ∆ = |PrivacyRisk − 0.5| (Figure 4).            495
+                  Pairwise Discovery   85.25 57.37   49.17
+                  No Topological Order 84.41 60.47   51.03                                  StructSynth maintains high AUC, low fidelity             496
+       Generation No Structure         83.95 60.67   49.45                                  error, and near-zero ∆ across all sample sizes.          497
+                  Bayesian Sampler     81.17 48.86   50.02
+                                                                                            The advantage is most pronounced in the low-data         498
+                                                                                            regime (n ≤ 50), where baselines like BN and             499
+                      0.90                                                                  GOGGLE require significantly more samples to             500
+                                                    StructSynth               CLLM
+                      0.88                                                                  become competitive, while StructSynth sustains           501
+
+
+
+
+      AUC Score ( )
+                                                                                            stable performance. This suggests that the gener-        502
+                      0.86
+                                                                                            ation plan acts as a regularizer: it prevents record-    503
+                      0.84                                                                  level overfitting and yields a stable utility-privacy-   504
+                                                                                            fidelity balance independent of sample size.             505
+                      0.82
+                              +0.016 +0.002 +0.006 +0.007 +0.020 +0.028 +0.001 +0.015
+                      0.80                                                                  4.6    Influence of Different Language Models            506
+                             ini   4o     B
+                                         72    32B    out      k
+                                                             ric     V3     R1
+                             -m                      Sc    ve
+                        4o                               Ma                                 To assess generalizability, we benchmark Struct-         507
+                                   GPT     Qwen-2.5 Llama-4 DeepSeek                        Synth against CLLM using a diverse set of open-          508
+                                                                                            source and proprietary LLMs on the Adult dataset         509
+               Figure 5: AUC on Adult across LLM backbones.
+                                                                                            (Figure 5). StructSynth outperforms CLLM                 510
+                                                                                            across every tested architecture. The gain is            511
+464      The above gains generalize beyond the XGBoost                                      most pronounced for models with moderate native          512
+465   evaluator used in our main experiments: across                                        capabilities (e.g., Maverick: +0.028 AUC), demon-        513
+466   four downstream models (XGBoost, Random                                               strating that structural guidance can substantially      514
+467   Forest, Logistic Regression/Ridge, MLP) on four                                       boost weaker models. Even top-tier models like           515
+468   representative datasets, StructSynth wins 14 out                                      GPT-4o show measurable improvement, indicating           516
+469   of 16 cells (Table 6 in Appendix H).                                                  that the benefit is complementary to model scale.        517
+                                                                                            Appendix I provides a token usage analysis               518
+470   4.4               Structural Fidelity under Ground-Truth                              showing that StructSynth incurs a modest +31%            519
+471                     Graphs                                                              overhead over CLLM.                                      520
+
+472   We evaluate structure discovery quality on three
+473   bnlearn benchmarks with known ground-truth                                            5     Conclusion                                         521
+474   DAGs—Asia (8 nodes), Child (20 nodes), and In-
+475   surance (27 nodes)—using the Structural Hamming                                       We presented StructSynth, a framework that treats        522
+476   Distance (SHD), which counts the edge insertions,                                     a learned dependency graph as a generation plan          523
+477   deletions, or reversals needed to recover the true                                    for LLM-based tabular synthesis. Separating graph        524
+478   graph (lower is better).                                                              induction from data generation lets each stage           525
+479      Figure 3 shows SHD across varying sample                                           leverage complementary signals—semantic priors           526
+480   sizes (n ∈ {20, 50, 100, 200}). StructSynth                                           for structure discovery and the discovered topology      527
+481   achieves the lowest or near-lowest SHD on all three                                   for conditional generation. Experiments on six           528
+482   datasets, with the advantage most pronounced in                                       real-world datasets show that this design achieves       529
+483   low-data settings (n ≤ 50) where baseline graph-                                      state-of-the-art downstream utility and privacy          530
+484   learning methods such as FCI, GOGGLE, and                                             while maintaining competitive statistical fidelity,      531
+485   NoTears produce substantially higher errors. This                                     with gains that generalize across LLM backends.          532
+486   confirms that the LLM’s semantic prior effectively                                    More broadly, our results suggest that explicit          533
+487   complements weak statistical signals, enabling                                        structural guidance is a promising direction for         534
+488   robust structure recovery even from severely                                          tabular synthesis under data scarcity: investing         535
+489   limited samples. Detailed graph visualizations are                                    in a reliable generation plan yields consistent          536
+490   provided in Appendix G.                                                               improvements over unstructured approaches.               537
+
+
+                                                                                        8
+538   Limitations                                                      Biomedical Natural Language Processing, pages 295–       587
+                                                                       317.                                                     588
+539   LLM semantic prior. StructSynth’s structure
+540   discovery quality depends on the LLM’s ability to              Taiyu Ban, Lyuzhou Chen, Derui Lyu, Xiangyu Wang,          589
+                                                                       and Huanhuan Chen. 2023. Causal structure learning       590
+541   interpret feature names and domain context. When                 supervised by large language model. arXiv preprint       591
+542   schemas are opaque (e.g., anonymized identifiers                 arXiv:2311.11689.                                        592
+543   such as V1, V2) or use highly specialized nomen-
+                                                                     Barry Becker and Ronny Kohavi. 1996.             Adult.    593
+544   clature (e.g., genomic locus codes), the semantic                UCI Machine Learning Repository.                DOI:     594
+545   prior weakens considerably. Although statistical                 https://doi.org/10.24432/C5XW20.                         595
+546   association cues can partially compensate, a fully
+                                                                     Wicher Bergsma. 2013. A bias-correction for cramér’s       596
+547   anonymized schema effectively reduces our hybrid                 v and tschuprow’s t. Journal of the Korean Statistical   597
+548   discovery to a purely statistical method, forfeiting             Society, 42(3):323–328.                                  598
+549   the complementary benefit that motivates the
+                                                                     Vadim Borisov, Tobias Leemann, Kathrin Seßler,             599
+550   design.
+                                                                       Johannes Haug, Martin Pawelczyk, and Gjergji             600
+551   DAG assumption. The directed acyclic graph                       Kasneci. 2022. Deep neural networks and tabular          601
+                                                                       data: A survey. IEEE transactions on neural              602
+552   formulation, while well-suited for autoregressive                networks and learning systems, 35(6):7499–7519.          603
+553   generation, cannot directly represent cyclic or
+554   bidirectional dependencies. For data governed                  Vadim Borisov, Kathrin Sessler, Tobias Leemann,            604
+                                                                       Martin Pawelczyk, and Gjergji Kasneci. 2023.             605
+555   by genuine feedback loops—such as reciprocal                     Language models are realistic tabular data generators.   606
+556   economic indicators—the framework must ap-                       In The Eleventh International Conference on              607
+557   proximate such relationships with unidirectional                 Learning Representations.                                608
+558   edges, potentially losing part of the underlying               Chengliang Chai, Jiayi Wang, Yuyu Luo, Zeping Niu,         609
+559   dependency structure.                                            and Guoliang Li. 2022. Data management for               610
+                                                                       machine learning: A survey. IEEE Transactions on         611
+560   LLM API dependence. The current implemen-                        Knowledge and Data Engineering, 35(5):4646–4667.         612
+561   tation relies on commercial LLM APIs, raising cost
+562   and reproducibility concerns. While Appendix I                 Nitesh V Chawla, Kevin W Bowyer, Lawrence O                613
+                                                                       Hall, and W Philip Kegelmeyer. 2002. Smote:              614
+563   reports modest token overhead and experiments                    synthetic minority over-sampling technique. Journal      615
+564   across multiple LLM backends confirm robustness                  of artificial intelligence research, 16:321–357.         616
+565   to the specific model choice, API version updates
+                                                                     David Maxwell Chickering. 2002. Optimal structure          617
+566   may still affect exact reproducibility of the discov-            identification with greedy search. Journal of machine    618
+567   ered structures.                                                 learning research, 3(Nov):507–554.                       619
+
+                                                                     Edward Choi, Siddharth Biswal, Bradley Malin, Jon          620
+568   References                                                       Duke, Walter F Stewart, and Jimeng Sun. 2017.            621
+                                                                       Generating multi-label discrete patient records using    622
+569   Alan Agresti and Maria Kateri. 2011. Categorical data            generative adversarial networks.         In Machine      623
+570     analysis. In International encyclopedia of statistical         learning for healthcare conference, pages 286–305.       624
+571     science, pages 206–208. Springer.                              PMLR.                                                    625
+
+572   Julia Angwin, Jeff Larson, Lauren Kirchner, and Surya   Martijn de Jongh and Marek J Druzdzel. 2009. A                    626
+573      Mattu. 2016. Machine Bias — propublica.org.            comparison of structural distance measures for                  627
+574      https://www.propublica.org/article/                    causal bayesian network models. Recent advances                 628
+575      machine-bias-risk-assessments-in-criminal-sentencing.  in intelligent information systems, challenging                 629
+                                                                problems of science, computer science series, pages             630
+576   Ankur Ankan and Abinash Panda. 2015. pgmpy:               443–456.                                                        631
+577      Probabilistic graphical models using python. In
+578      SciPy, pages 6–11.                                   Liancheng Fang, Aiwei Liu, Hengrui Zhang,                         632
+                                                                Henry Peng Zou, Weizhi Zhang, and Philip S.                     633
+579   Alessandro Antonucci, Gregorio Piqué, and Marco           Yu. 2025. TABGEN-ICL: Residual-aware in-context                 634
+580      Zaffalon. 2023. Zero-shot causal graph extrapolation   example selection for tabular data generation. In               635
+581      from text via llms. arXiv preprint arXiv:2312.14670.   Findings of the Association for Computational                   636
+                                                                Linguistics: ACL 2025, pages 20027–20041, Vienna,               637
+582   Vahan Arsenyan, Spartak Bughdaryan, Fadi Shaya,           Austria. Association for Computational Linguistics.             638
+583      Kent Wilson Small, and Davit Shahnazaryan. 2024.
+584      Large language models for biomedical knowledge       Joao Fonseca and Fernando Bacao. 2023. Tabular and                639
+585      graph construction: Information extraction from emr    latent space synthetic data generation: a literature            640
+586      notes. In Proceedings of the 23rd Workshop on          review. Journal of Big Data, 10(1):115.                         641
+
+
+                                                                 9
+642   Liam Henderson, Ethan Callahan, and Charlotte                    non small cell lung cancer. In 2024 IEEE 12th            697
+643     Fraser. 2025. Social Anxiety Dataset — kag-                    International Conference on Healthcare Informatics       698
+644     gle.com. https://www.kaggle.com/datasets/                      (ICHI), pages 688–693. IEEE.                             699
+645     natezhang123/social-anxiety-dataset.
+                                                                     Fabio Mendoza Palechor and Alexis de la Hoz Manotas.       700
+646   Patrik Hoyer, Dominik Janzing, Joris M Mooij, Jonas              2019. Dataset for estimation of obesity levels based     701
+647     Peters, and Bernhard Schölkopf. 2008. Nonlinear                on eating habits and physical condition in individuals   702
+648     causal discovery with additive noise models. Ad-               from colombia, peru and mexico. Data in Brief,           703
+649     vances in neural information processing systems, 21.           25:104344.                                               704
+
+650   Thomas Jiralerspong, Xiaoyin Chen, Yash More, Vedant           George Papamakarios, Eric Nalisnick, Danilo Jimenez        705
+651     Shah, and Yoshua Bengio. 2024. Efficient causal                Rezende, Shakir Mohamed, and Balaji Lakshmi-             706
+652     graph discovery using large language models. arXiv             narayanan. 2021. Normalizing flows for probabilistic     707
+653     preprint arXiv:2402.01207.                                     modeling and inference.      Journal of Machine          708
+                                                                       Learning Research, 22(57):1–64.                          709
+654   A. Keramati, R. Jafari-Marandi, M. Aliannejadi,
+655     I. Ahmadian, M. Mozaffari, and U. Abbasi. 2014.              Neha Patki, Roy Wedge, and Kalyan Veeramachaneni.          710
+656     Improved churn prediction in telecommunication                 2016.     The synthetic data vault.      In 2016         711
+657     industry using data mining techniques. Applied Soft            IEEE international conference on data science and        712
+658     Computing, 24:994–1012.                                        advanced analytics (DSAA), pages 399–410. IEEE.          713
+
+659   Emre Kiciman, Robert Ness, Amit Sharma, and                    Judea Pearl. 2009. Causality: Models, Reasoning, and       714
+660     Chenhao Tan. 2023. Causal reasoning and large                  Inference, 2 edition. Cambridge University Press.        715
+661     language models: Opening a new frontier for
+662     causality. Transactions on Machine Learning                  Zhaozhi Qian, Bogdan-Constantin Cebere, and Mihaela        716
+663     Research.                                                      van der Schaar. 2023. Synthcity: facilitating            717
+                                                                       innovative use cases of synthetic data in different      718
+664   Daphne Koller and Nir Friedman. 2009. Probabilistic              data modalities.                                         719
+665     Graphical Models: Principles and Techniques. MIT
+666     Press.                                                       Francesco Rundo, Francesca Trenta, Agatino Luigi           720
+                                                                       Di Stallo, and Sebastiano Battiato. 2019. Machine        721
+667   Akim Kotelnikov, Dmitry Baranchuk, Ivan Rubachev,                learning for quantitative finance applications: A        722
+668     and Artem Babenko. 2023. Tabddpm: Modelling                    survey. Applied Sciences, 9(24):5574.                    723
+669     tabular data with diffusion models. In International
+670     Conference on Machine Learning, pages 17564–                 Bisma Sajjad. 2025.  Global AI Job Market &                724
+671     17579. PMLR.                                                   Salary Trends 2025 — kaggle.com.    https:               725
+                                                                       //www.kaggle.com/datasets/bismasajjad/                   726
+672   Tennison Liu, Zhaozhi Qian, Jeroen Berrevoets, and               global-ai-job-market-and-salary-trends-2025.             727
+673     Mihaela van der Schaar. 2023. Goggle: Generative
+674     modelling for tabular data by learning relational            Marco Scutari. 1996a. Bayesian network repository:         728
+675     structure. In The Eleventh International Conference           Asia (lung cancer).                                       729
+676     on Learning Representations.                                 Marco Scutari. 1996b. Bayesian network repository:         730
+                                                                      Child.                                                    731
+677   Tianyang Liu, Fei Wang, and Muhao Chen. 2024.
+678     Rethinking tabular data understanding with large             Marco Scutari. 1996c. Bayesian network repository:         732
+679     language models. In Proceedings of the 2024                   Insurance.                                                733
+680     Conference of the North American Chapter of the
+681     Association for Computational Linguistics: Human             Marco Scutari. 2010. Learning bayesian networks with       734
+682     Language Technologies (Volume 1: Long Papers),                the bnlearn r package. Journal of statistical software,   735
+683     pages 450–482.                                                35:1–22.                                                  736
+
+684   Hui Luan and Chin-Chung Tsai. 2021. A review of                Nabeel Seedat, Nicolas Huynh, Boris van Breugel,           737
+685     using machine learning approaches for precision                and Mihaela van der Schaar. 2024. Curated LLM:           738
+686     education. Educational Technology & Society,                   Synergy of LLMs and data curation for tabular            739
+687     24(1):250–266.                                                 augmentation in low-data regimes. In Forty-first         740
+                                                                       International Conference on Machine Learning.            741
+688   Benjamin S Manning, Kehang Zhu, and John Horton.
+689     2024. Automated social science: Language models              Shohei Shimizu, Patrik O Hoyer, Aapo Hyvärinen, Antti      742
+690     as scientist and subjects. Technical report, National          Kerminen, and Michael Jordan. 2006. A linear non-        743
+691     Bureau of Economic Research, Inc.                              Gaussian acyclic model for causal discovery. Journal     744
+                                                                       of Machine Learning Research, 7(10).                     745
+692   Narmada Naik, Ayush Khandelwal, Mohit Joshi,
+693     Madhusudan Atre, Hollis Wright, Kavya Kannan,                Alik Sokolov, Fabrizzio Sabelli, Behzad Azadie Faraz,      746
+694     Scott Hill, Giridhar Mamidipudi, Ganapati Srinivasa,           Wuding Li, and Luis Seco. 2024. Toward Automating        747
+695     Carlo Bifulco, and 1 others. 2024. Applying large              Causal Discovery in Financial Markets and Beyond,        748
+696     language models for causal structure learning in               chapter CHAPTER 14.                                      749
+
+
+                                                                10
+750   Peter Spirtes, Clark N Glymour, Richard Scheines, and            Mingming Zhang, Zhiqing Xiao, Guoshan Lu, Sai Wu,       804
+751     David Heckerman. 2000. Causation, prediction, and                Weiqiang Wang, Xing Fu, Can Yi, and Junbo Zhao.       805
+752     search. MIT press.                                               2025a. Aigt: Ai generative table based on prompt.     806
+                                                                         In Proceedings of the 31st International Conference   807
+753   Peter Spirtes, Christopher Meek, and Thomas Richard-               on Computational Linguistics, pages 9926–9938.        808
+754     son. 1995. Causal inference in the presence of
+755     latent variables and selection bias. In Proceedings of         Tianping Zhang, Shaowen Wang, Shuicheng Yan,            809
+756     the Eleventh conference on Uncertainty in artificial             Li Jian, and Qian Liu. 2023. Generative table pre-    810
+757     intelligence, pages 499–506.                                     training empowers models for tabular prediction. In   811
+                                                                         Proceedings of the 2023 Conference on Empirical       812
+758   Boris Van Breugel, Trent Kyono, Jeroen Berrevoets, and             Methods in Natural Language Processing, pages         813
+759     Mihaela Van der Schaar. 2021. Decaf: Generating                  14836–14854.                                          814
+760     fair synthetic data using causally-aware generative
+761     networks.       Advances in Neural Information                 Zheyu Zhang, Shuo Yang, Bardh Prenkaj, and Gjergji      815
+762     Processing Systems, 34:22221–22233.                              Kasneci. 2025b. Not all features deserve attention:   816
+                                                                         Graph-guided dependency learning for tabular data     817
+763   Boris van Breugel, Hao Sun, Zhaozhi Qian, and Mihaela              generation with language models. In Findings of the   818
+764     van der Schaar. 2023. Membership inference attacks               Association for Computational Linguistics: EMNLP      819
+765     against synthetic data through overfitting detection.            2025, pages 6217–6242, Suzhou, China. Association     820
+766     In International Conference on Artificial Intelligence           for Computational Linguistics.                        821
+767     and Statistics, pages 3493–3514. PMLR.
+                                                                       Xun Zheng, Bryon Aragam, Pradeep K Ravikumar, and       822
+768   Feng Xie, Ruichu Cai, Biwei Huang, Clark Glymour,                  Eric P Xing. 2018. Dags with no tears: Continuous     823
+769     Zhifeng Hao, and Kun Zhang. 2020. Generalized                    optimization for structure learning. Advances in      824
+770     independent noise condition for estimating latent                neural information processing systems, 31.            825
+771     variable causal graphs. In NeurIPS.
+                                                                       Yujia Zheng, Biwei Huang, Wei Chen, Joseph Ramsey,      826
+772   Lei Xu, Maria Skoularidou, Alfredo Cuesta-Infante, and             Mingming Gong, Ruichu Cai, Shohei Shimizu, Peter      827
+773     Kalyan Veeramachaneni. 2019. Modeling tabular                    Spirtes, and Kun Zhang. 2024. Causal-learn: Causal    828
+774     data using conditional gan. Advances in neural                   discovery in python. Journal of Machine Learning      829
+775     information processing systems, 32.                              Research, 25(60):1–8.                                 830
+
+
+776   Peter Xue-Kun Song. 2000. Multivariate dispersion
+777     models generated from gaussian copula. Scandina-
+778     vian Journal of Statistics, 27(2):305–320.
+
+779   Shuo Yang, Zheyu Zhang, Bardh Prenkaj, and
+780     Gjergji Kasneci. 2025. Doubling your data in
+781     minutes: Ultra-fast tabular data generation via LLM-
+782     induced dependency graphs. In Proceedings of the
+783     2025 Conference on Empirical Methods in Natural
+784     Language Processing, pages 10337–10358, Suzhou,
+785     China. Association for Computational Linguistics.
+
+786   Khadija Zanna and Akane Sano. 2025. Fairness-driven
+787     llm-based causal discovery with active learning and
+788     dynamic scoring. arXiv preprint arXiv:2503.17569.
+
+789   Hengrui Zhang, Jiani Zhang, Balasubramaniam Srini-
+790     vasan, Zhengyuan Shen, Xiao Qin, Christos Falout-
+791     sos, Huzefa Rangwala, and George Karypis. 2024.
+792     Mixed-type tabular data synthesis with score-based
+793     diffusion in latent space. In The twelfth International
+794     Conference on Learning Representations.
+
+795   Jun Zhang, Graham Cormode, Cecilia M Procopiuc, Di-
+796     vesh Srivastava, and Xiaokui Xiao. 2017. Privbayes:
+797     Private data release via bayesian networks. ACM
+798     Transactions on Database Systems (TODS), 42(4):1–
+799     41.
+
+800   K Zhang and A Hyvärinen. 2009. On the identifiability
+801     of the post-nonlinear causal model.         In 25th
+802     Conference on Uncertainty in Artificial Intelligence
+803     (UAI 2009), pages 647–655. AUAI Press.
+
+
+                                                                  11
+831   A     Extended Related Work                                 fitting, offering limited interpretability or explicit   880
+                                                                  control over the dependency structure during             881
+832   This section provides an extended discussion of the         generation.                                              882
+833   related work summarized in Section 2, offering ad-
+834   ditional technical details on representative methods        A.3   Structure-Aware Generative Methods                 883
+835   in each line of research.                                   Structure-aware methods explicitly incorporate           884
+                                                                  graphical models of feature dependencies into            885
+836   A.1    Early and Statistical Methods
+                                                                  the generative process. Bayesian Network-based           886
+837   Early tabular data synthesis methods relied on              generators (Ankan and Panda, 2015) learn a               887
+838   statistical techniques. SMOTE (Chawla et al.,               directed acyclic graph over features and sam-            888
+839   2002) generates synthetic minority-class samples            ple from the resulting factorized joint distribu-        889
+840   by interpolating between nearest neighbors in               tion. PrivBayes (Zhang et al., 2017) extends             890
+841   feature space, addressing class imbalance but               this framework with differential privacy guar-           891
+842   limited to local linear combinations. Copula-based          antees by injecting calibrated noise into the            892
+843   methods (Xue-Kun Song, 2000) model the joint                learned conditional distributions, enabling privacy-     893
+844   distribution by separately estimating marginal dis-         preserving synthesis. Among deep-learning ap-            894
+845   tributions and their dependency structure through           proaches, DECAF (Van Breugel et al., 2021)               895
+846   copula functions, providing a principled statistical        leverages a user-specified or learned causal graph       896
+847   framework but struggling to capture complex, non-           to achieve fairness-aware generation by intervening      897
+848   linear inter-feature relationships. These founda-           on sensitive attributes, while GOGGLE (Liu               898
+849   tional approaches established the core objectives           et al., 2023) employs a graph-based VAE that             899
+850   of tabular synthesis—realistic sample generation            jointly learns the dependency structure and the          900
+851   with dependency preservation—but their limited              generative model in an end-to-end differentiable         901
+852   expressiveness motivated the shift toward deep              manner. However, the quality of these methods            902
+853   generative models.                                          is fundamentally tied to the accuracy of the             903
+                                                                  underlying graph, which degrades substantially           904
+854   A.2 Deep Generative Models for Tabular Data                 under limited-sample settings where conditional          905
+855   Deep generative models learn the data distri-               independence tests lack statistical power and score-     906
+856   bution through expressive neural architectures.             based search becomes prone to local optima. More         907
+857   TVAE (Patki et al., 2016) adapts the Variational Au-        recently, SPADA (Yang et al., 2025) employs              908
+858   toencoder framework to mixed-type tabular data by           an LLM to annotate sparse feature dependencies           909
+859   applying mode-specific normalization to continu-            as a directed graph, then synthesizes data by            910
+860   ous columns. CTGAN (Xu et al., 2019) introduces             traversing the graph with kernel density estimation      911
+861   a conditional GAN with a training-by-sampling               or conditional normalizing flows, bypassing LLM-         912
+862   strategy that addresses the imbalanced categorical          based generation entirely to achieve substantial         913
+863   distributions common in tabular datasets. Normal-           sampling speedups.                                       914
+864   izing Flow-based methods (Papamakarios et al.,
+865   2021) learn invertible transformations between a            A.4   LLM-Based Tabular Generation:                      915
+
+866   simple base distribution and the data distribution,               Extended Discussion                                916
+
+867   offering exact likelihood computation. More                 Beyond the prompt-based and structure-aware              917
+868   recently, diffusion-based approaches have achieved          LLM methods discussed in the main text, sev-             918
+869   strong results: TabDDPM (Kotelnikov et al., 2023)           eral fine-tuning approaches have been proposed.          919
+870   applies denoising diffusion probabilistic models to         GReaT (Borisov et al., 2023) serializes each             920
+871   tabular data with separate handling of numerical            table row as a natural-language sentence with            921
+872   and categorical features, while TabSyn (Zhang               randomized column ordering and fine-tunes a pre-         922
+873   et al., 2024) first encodes mixed-type tabular data         trained GPT-2 model for autoregressive row gen-          923
+874   into a continuous latent space via a VAE and                eration. TAPTAP (Zhang et al., 2023) introduces          924
+875   then applies score-based diffusion within that              a table pre-training stage that exposes the LLM          925
+876   space, improving inter-column relation fidelity             to diverse tabular datasets before task-specific         926
+877   while reducing inference steps. Despite these               fine-tuning, improving generalization across do-         927
+878   advances, all DGM-based approaches learn feature            mains. AIGT (Zhang et al., 2025a) further                928
+879   dependencies only as a byproduct of distribution            augments the fine-tuning paradigm with attribute-        929
+
+
+                                                             12
+930   level instruction tuning, enabling the model to              the low-data regimes addressed by our work.              980
+931   follow explicit generation directives for individual
+932   columns. While these fine-tuning methods can                 B.2    LLM-based Structure Learning                      981
+
+933   achieve high fidelity when sufficient training data          Leveraging Large Language Models (LLMs) for              982
+934   is available, they incur substantial computational           structure learning has recently emerged as a             983
+935   costs and their performance degrades markedly in             promising direction due to their inherent reason-        984
+936   low-data regimes (n ≤ 100) where the limited                 ing capabilities. Several paradigms have been            985
+937   training set is insufficient for effective parameter         proposed for integrating LLMs into structure             986
+938   adaptation.                                                  discovery. Initially, methods focused on querying        987
+                                                                   LLMs about pairwise causal relationships, showing        988
+939   B     Structure Learning Background                          strong accuracy in determining causal directions         989
+                                                                   between variable pairs (Kiciman et al., 2023).           990
+940   B.1    Conventional Structure Learning
+                                                                   To overcome the quadratic complexity inherent            991
+941   Conventional approaches to dependency structure              to pairwise approaches, more scalable methods            992
+942   discovery primarily fall into two categories:                employing breadth-first search (BFS) strategies          993
+943   constraint-based and score-based methods.                    have been introduced, reframing structure learn-         994
+944   Constraint-based methods, such as the Peter–Clark            ing as a graph traversal task and significantly          995
+945   (PC) algorithm (Spirtes et al., 2000) and the                reducing the required number of queries to the           996
+946   Fast Causal Inference (FCI) algorithm (Spirtes               LLM (Jiralerspong et al., 2024; Zanna and Sano,          997
+947   et al., 1995), utilize conditional independence              2025). A third paradigm enhances reliability by          998
+948   tests to iteratively prune edges from an initially           integrating an iterative supervision loop, in which      999
+949   fully connected graph.         While PC assumes              traditional structure-learning algorithms propose       1000
+950   causal sufficiency (no hidden confounders),                  initial graphs that are subsequently validated or       1001
+951   FCI is specifically designed to handle latent                corrected by LLMs. This method grounds LLM-             1002
+952   variables. In contrast, score-based methods                  generated structures in empirical evidence, thereby     1003
+953   optimize a global scoring criterion to identify the          reducing hallucination risks (Ban et al., 2023).        1004
+954   most suitable graph structure. A representative              LLM-based structure discovery methods have              1005
+955   example is the Greedy Equivalence Search                     demonstrated notable effectiveness across diverse       1006
+956   (GES) (Chickering, 2002), which searches                     domains, including medicine (Naik et al., 2024;         1007
+957   through equivalence classes to maximize a scoring            Antonucci et al., 2023; Arsenyan et al., 2024),         1008
+958   function. However, both constraint-based and                 economics (Sokolov et al., 2024), and social            1009
+959   score-based approaches typically yield only                  sciences (Manning et al., 2024). Inspired by the        1010
+960   Markov equivalence classes, thereby failing to               success of LLMs in leveraging prior knowledge for       1011
+961   distinguish between structurally distinct graphs             domain-specific reasoning, our work integrates a        1012
+962   that encode identical conditional independencies.            scalable, LLM-driven paradigm for robust structure      1013
+963   To address this limitation, Functional Causal                discovery.                                              1014
+964   Models (FCMs) impose stronger assumptions
+965   regarding the data generation process. FCMs                  C     Structural Formulation: Why a DAG?                1015
+966   model effects explicitly as functions of direct
+                                                                   A central design choice in StructSynth is the           1016
+967   causes combined with independent noise terms,
+                                                                   representation of inter-feature dependencies as a       1017
+968   enabling the identification of causal directions
+                                                                   Directed Acyclic Graph (DAG). Since tabular fea-        1018
+969   since independence between cause and noise
+                                                                   ture relationships are often associative rather than    1019
+970   typically breaks down when reversed (Shimizu
+                                                                   inherently directional, this choice warrants explicit   1020
+971   et al., 2006; Hoyer et al., 2008; Zhang and
+                                                                   justification. We adopt the DAG formulation for         1021
+972   Hyvärinen, 2009). Recent advancements have
+                                                                   three principled reasons.                               1022
+973   generalized this approach, introducing conditions
+974   such as Generalized Independent Noise (GIN)                  Pragmatic Dependency Structure, Not Causal              1023
+975   to manage latent causal variables in linear,                 Claim. We emphasize that our DAG is a gen-              1024
+976   non-Gaussian settings (Xie et al., 2020). However,           erative dependency structure: its edges encode          1025
+977   the statistical power of these traditional algorithms        statistical and probabilistic dependencies inferred     1026
+978   heavily relies on a large number of samples,                 from limited observations, not claims of ground-        1027
+979   making them unreliable for structure discovery in            truth causality. This pragmatic interpretation          1028
+
+
+                                                              13
+1029   aligns with the foundational Bayesian Network               D     Statistical Association Measures                       1079
+1030   (BN) literature (Pearl, 2009; Koller and Friedman,
+1031   2009), where DAGs serve as compact encodings                To quantify the empirical dependencies between               1080
+
+1032   of conditional independence relationships without           attribute pairs, the framework employs three                 1081
+
+1033   necessarily asserting causal direction. The distinc-        association measures, chosen according to the data           1082
+
+1034   tion is important: StructSynth uses the discovered          types of the variables involved.                             1083
+
+1035   DAG to organize the generation process, not to
+                                                                   D.1    Continuous-Continuous: Pearson’s R                    1084
+1036   make ontological claims about the data-generating
+1037   mechanism.                                                  For two continuous variables x =             {xi }ni=1 and   1085
+                                                                   y = {yi }ni=1 , Pearson’s correlation coefficient r is       1086
+1038   Functional Necessity of Directionality. The                 defined as the standardized covariance:                      1087
+1039   Graph-Planned Conditional Synthesis stage (Sec-                              Pn
+       tion 3.2) generates feature values autoregressively:                               (xi − x̄)(yi − ȳ)
+1040                                                                  r = pPn i=1                 pPn                 (6)       1088
+                                                                                                2                  2
+1041   each feature is produced conditioned on values                             i=1 (xi − x̄)      i=1 (yi − ȳ)
+1042   already generated for its parent nodes. This
+1043   autoregressive process inherently requires a total          where x̄ and ȳ denote the sample means. The                 1089
+
+1044   ordering over features to determine which values            value of r ranges from [−1, 1], where the sign               1090
+
+1045   are available as conditioning context at each               indicates the direction of the linear relationship           1091
+
+1046   step. An undirected graph {A—B, B—C} is                     and the absolute value indicates its strength.               1092
+
+1047   ambiguous—it cannot specify whether A should be
+                                                                   D.2    Categorical-Continuous: Correlation                   1093
+1048   generated before C or vice versa. A DAG {A →
+                                                                          Ratio                                                 1094
+1049   B → C} resolves this ambiguity by defining a
+1050   topological order that directly translates into a           The Correlation Ratio, η, measures the relationship          1095
+1051   layer-by-layer generation schedule. Even when               between a categorical variable x and a continuous            1096
+1052   the underlying statistical relationship between two         variable y. It is defined as the square root of the          1097
+1053   features is symmetric (e.g., Age ↔ Income), the             weighted variance of the category means divided              1098
+1054   generation process must select a direction—the              by the total variance:                                       1099
+1055   DAG provides exactly this. The specific direction                               sP
+1056   chosen does not affect whether the dependency                                           n (ȳ − ȳ)2
+                                                                                  η=        Pxn x x                       (7)   1100
+1057   is captured, only the order in which values are                                        i=1 (yi − ȳ)
+                                                                                                            2
+1058   conditioned.
+                                                                   where nx is the number of samples in category                1101
+1059   Acyclicity as a Mathematical Prerequisite. Be-              x, ȳx is the mean of y for samples in category x,           1102
+1060   yond directionality, acyclicity is essential for the        and ȳ is the overall mean. The value of η ranges            1103
+1061   generation process to be well-defined. If cycles            from [0, 1], with values closer to 1 indicating that         1104
+1062   were permitted—e.g., A → B → C → A—the                      the categorical variable provides more information           1105
+1063   generation would encounter circular dependencies:           about the continuous variable.                               1106
+1064   the value of A would depend on C, which depends
+1065   on B, which in turn depends on A, creating an               D.3    Categorical-Categorical: Cramér’s V                   1107
+1066   unresolvable loop. The DAG constraint guarantees
+                                                                   For two categorical variables with a contingency             1108
+1067   the existence of a valid topological ordering over
+                                                                   table of dimensions r × k, Cramér’s V is based on            1109
+1068   nodes, ensuring that every feature can be generated
+                                                                   the χ2 statistic. To ensure robustness, we employ            1110
+1069   exactly once, conditioned only on features whose
+                                                                   the bias correction proposed by Bergsma (2013).              1111
+1070   values have already been determined.
+                                                                      First, the bias-corrected ϕ2 is calculated as:            1112
+1071   Summary. In summary, the DAG in StructSynth
+                                                                                             χ2 (k − 1)(r − 1)
+                                                                                                                    
+1072   serves a functional rather than ontological role: it            ϕ2corr = max       0,   −                          (8)   1113
+1073   imposes a well-defined, acyclic generation order                                      n      n−1
+1074   that enables structure-conditioned autoregressive
+                                                                   where n is the total number of samples. The                  1114
+1075   synthesis. This formulation is consistent with
+                                                                   corrected dimensions are:                                    1115
+1076   decades of probabilistic graphical model research
+1077   and is a natural fit for our graph-as-plan formula-                        (r − 1)2                      (k − 1)2
+1078   tion.                                                        rcorr = r −            ,    kcorr = k −              (9)    1116
+                                                                                   n−1                           n−1
+
+                                                              14
+1117   The final Cramér’s V score is then given by:                 F.4   Evaluation Metrics                                      1159
+
+                       s                                            F.4.1 Downstream Model Performance                            1160
+                                     ϕ2corr                         The Downstream Model Performance metric serves                1161
+1118         Vcorr =                                   (10)
+                           min(kcorr − 1, rcorr − 1)                as the primary measure of the synthetic data’s                1162
+                                                                    practical utility. It evaluates whether the synthetic         1163
+1119   The value ranges from [0, 1], representing the               data, when used to augment the original training set,         1164
+1120   strength of association between the two categorical          can improve the performance of a machine learning             1165
+1121   variables.                                                   model on a real, unseen test set. For each generative         1166
+                                                                    method, we create an augmented training set, Daug ,           1167
+1122   E     Complete Algorithm                                     by combining the original limited training data,              1168
+                                                                    Dtrain , with the generated synthetic data, Dsynth :          1169
+1123   Algorithm 1 provides the complete pseudocode
+1124   for the StructSynth framework, integrating both                            Daug = Dtrain ∪ Dsynth                   (11)   1170
+1125   the Evidence-Grounded Graph Induction and the                A downstream machine learning model (in our                   1171
+1126   Graph-Planned Conditional Synthesis stages.                  experiments, an XGBoost model) is then trained                1172
+                                                                    exclusively on this augmented dataset, Daug , and             1173
+1127   F     Detailed Experimental Setup                            evaluated on the held-out real test set, Dtest . For          1174
+
+1128   F.1   Datasets                                               binary and multi-class classification tasks, we               1175
+                                                                    report the Area Under the Receiver Operating                  1176
+1129   The datasets utilized in this study are summarized           Characteristic Curve (AUC). For regression tasks,             1177
+1130   in Table 4. They differ in tasks, number of features,        we report the R-squared (R2 ) score.                          1178
+1131   and domain. We randomly split each dataset into
+1132   training and test sets using an 8:2 ratio, yielding          F.4.2 Privacy Risk Assessment Metric                          1179
+
+1133   Dtrain-full and Dtest . To simulate data-scarce              The Privacy Risk Assessment metric evaluates the              1180
+1134   settings, we further subsample n instances from              extent to which a generative model overfits or                1181
+1135   Dtrain-full to form the final training set, Dtrain .         memorizes the training data, Dtrain . The complete            1182
+1136   This procedure is repeated ten times with different          set of real data instances is defined as Dreal =              1183
+1137   random seeds (42–51) to ensure robustness.                   Dtrain ∪ Dtest . To ensure an unbiased comparison             1184
+                                                                    where the ideal probability is exactly 0.5, we first          1185
+1138   F.2   Baselines                                              downsample the larger of the two sets (Dtrain or              1186
+                                                                    Dtest ) to match the size of the smaller one.                 1187
+1139   For all baseline methods, with the exception
+                                                                       For any two data points, xi and xj , from the              1188
+1140   of CuratedLLM, we utilize the implementations
+                                                                    mixed-type dataset, we define a distance function             1189
+1141   provided in the SynthCity (Qian et al., 2023)
+                                                                    d(xi , xj ) as the sum of the L1 distance for                 1190
+1142   library. These models were run using their
+                                                                    numerical features and the Hamming distance for               1191
+1143   default hyperparameter configurations to ensure
+                                                                    categorical features:                                         1192
+1144   a standardized comparison. For CuratedLLM,
+                                                                                      X                       X
+1145   we used the official source code provided by the             d(xi , xj ) =            |xi,k −xj,k |+       I(xi,l ̸= xj,l )
+1146   authors, adapting it to our experimental setup. To                        k∈numerical               l∈categorical
+1147   ensure a fair comparison, it was configured with the                                                        (12)           1193
+1148   same Large Language Model (LLM) settings as our              For each synthetic sample x̃ ∈ Dsynth , we identify           1194
+1149   proposed StructSynth, with detailed parameters               its nearest neighbor (N N ) from the entire set of            1195
+1150   provided in Table 5.                                         real data instances, Dreal :                                  1196
+
+
+1151   F.3   Implementation and Hyperparameters                                 N N (x̃) = arg min d(x̃, x)                (13)   1197
+                                                                                               x∈Dreal
+1152   The detailed hyperparameter configurations for the           The Privacy Risk score is then calculated as                  1198
+1153   LLMs in StructSynth, the downstream evaluation               the fraction of synthetic samples whose nearest               1199
+1154   models, and the Peter-Clark algorithm are provided           neighbor is an instance from the training set Dtrain :        1200
+1155   in Table 5. For the software implementation,
+                                                                                       1      X
+1156   we utilize the Langchain library to manage LLM               PrivacyRisk =                  I(N N (x̃) ∈ Dtrain )
+1157   inference and the Causal-Learn library (Zheng                                |Dsynth |
+                                                                                               x̃∈Dsynth
+1158   et al., 2024) for the PC algorithm.                                                                                 (14)   1201
+
+
+                                                               15
+Algorithm 1 StructSynth: Structure-Aware Tabular Data Synthesis
+ 1: Input: Training data Dtrain = (Xtrain , A), number of synthetic samples s
+ 2: Output: Synthetic dataset Dsynth = (Xsynth , A)
+
+    Stage 1: Evidence-Grounded Graph Induction
+    1. Graph Initialization
+ 3: Select a few-shot subset Dfew_shot ⊆ Dtrain
+ 4: Vsource ← fLLM (πsource (Dfew_shot ))
+ 5: G ← (Vsource , ∅)
+ 6: Q ← Vsource                                                                     ▷ Initialize queue for BFS
+ 7: Vvisited ← ∅
+    2. Iterative Expansion, Resolution, and Continuation (BFS)
+ 8: while Q ̸= ∅ do
+         a. Expansion and Reasoned Link Generation
+ 9:     Ai ← Dequeue(Q)
+10:     Vvisited ← Vvisited ∪ {Ai }
+11:     Compute association scores S(Ai ) between Ai and other attributes
+12:     Pi ← fLLM (πgenerate (Ai , G, S(Ai ), Dfew_shot ))
+13:     Eprop,t ← {(Ai → Aj , rij ) | (Aj , rij ) ∈ Pi }
+14:     Vnew,t ← {Aj | (Aj , _) ∈ Pi ∧ Aj ∈ / V}
+         b. LLM-based Cycle Resolution
+15:     Ecandidate ← E ∪ Eprop,t
+16:     Ψ ← DetectCycles(V ∪ Vnew,t , Ecandidate )
+17:     Epruned ← ∅
+18:     for each cycle ψ ∈ Ψ do
+19:         eto_remove ← fLLM (πresolve (ψ))
+20:         Epruned ← Epruned ∪ {eto_remove }
+21:     end for
+         c. Continuation of BFS
+22:     G ← (V ∪ Vnew,t , Ecandidate \ Epruned )                                              ▷ Update graph
+23:     Enqueue unvisited nodes from Vnew,t into Q
+24: end while
+25: Return G = (V, E)
+
+    Stage 2: Graph-Planned Conditional Synthesis
+26: Partition nodes V into topological layers L = (L1 , . . . , Lm )
+27: Xsynth ← ∅
+28: for j ← 1 to s do
+        a. Generating Graph-Based Values
+29:    x̃j,V ← {}
+30:    for i ← 1 to m do
+31:         Li ← L[i]                                                          
+32:         x̃j,Li ← fLLM πdata_gen (x̃j,<i , G[Li ∪ Γ− (Li )], Li , Dfew_shot
+                                                                      i        )
+33:         x̃j,V ← x̃j,V ∪ x̃j,Li
+34:    end for
+        b. Generating Independent Values
+35:    Aiso ← A \ V
+36:                                           iso
+       x̃j,Aiso ← fLLM (πiso (x̃j,V , Aiso , Dfew_shot ))
+        c. Final Assembly
+37:    x̃j ← concat(x̃j,V , x̃j,Aiso )
+38:    Xsynth ← Xsynth ∪ {x̃j }
+39: end for
+40: Return Dsynth = (Xsynth , A)
+
+                                                      16
+                                                    Table 4: Summary of Dataset Characteristics.
+
+        Dataset                                          # Num Feat.   # Cat Feat.   # Classes       Domain           Task        Pre-LLM Knowledge Cutoff
+        Adult (Becker and Kohavi, 1996)                       4            11            2        Social/Census     Binary                   ✗
+        Anxiety (Henderson et al., 2025)                     12             7            3        Medical/Health   Multi-Class               ✓
+        Compas (Angwin et al., 2016)                          5             3            2           Crime          Binary                   ✗
+        Salary (Sajjad, 2025)                                3             15            -          Economy        Regression                ✓
+        Obesity (Palechor and de la Hoz Manotas, 2019)        7             8            -        Medical/Health   Regression                ✗
+        Churn (Keramati et al., 2014)                         8             4            2          Business        Binary                   ✗
+
+
+
+       Table 5: Hyperparameter Settings for Our Experiments.                            ical columns, the difference is the absolute                         1213
+                                                                                        difference between their Pearson correlation                         1214
+        Group                      Hyperparameter Settings                              coefficients (ρ) in the real and synthetic datasets:                 1215
+
+                                   frequency_penalty = 0
+                                                                                        ∆(Ci , Cj ) = |ρ(Ci,real , Cj,real )−ρ(Ci,synth , Cj,synth )|
+                                   presence_penalty = 0
+                                                                                                                                           (15)              1216
+        LLMs                       top_p = 0.95
+                                   temperature = 0.9                                 • Categorical-Categorical Pairs: For two cate-                          1217
+                                   max_tokens = 8000                                   gorical columns, the difference is measured as                        1218
+
+                                   booster = gbtree                                    the Total Variation Distance (TVD) of their joint                     1219
+
+                                   n_estimators = 100                                  probability distributions:                                            1220
+
+                                   learning_rate = 0.1                                                         1X
+                                   max_depth = 6                                          ∆(Ci , Cj ) =              Preal (Ci = u, Cj = v)                  1221
+                                                                                                               2 u,v
+                                   min_child_weight = 1
+        XGBoost
+                                   gamma = 0                                                                         − Psynth (Ci = u, Cj = v)               1222
+                                   subsample = 1                                                                                            (16)
+                                   colsample_bytree = 1
+                                   reg_alpha = 0                                       where u and v iterate over all possible categories                    1223
+
+                                   reg_lambda = 1                                      for columns Ci and Cj , respectively.                                 1224
+
+
+                                   n_estimators = 200               • Numerical-Categorical Pairs: For a mixed pair                                          1225
+        Random Forest                                                 of a numerical column Ci and a categorical col-                                        1226
+                                   n_jobs = −1
+                                                                      umn Cj , the numerical column is first discretized                                     1227
+        Logistic Reg.              max_iter = 1000 (Logistic Reg.)    into a categorical representation, Ci′ , by binning                                    1228
+        / Ridge                    solver = ‘lbfgs’ (Logistic Reg.)   its values into q = 10 quantiles. The difference                                       1229
+                                   hidden_layer_sizes = (100,)        is then calculated using the same TVD method                                           1230
+        MLP                                                           as for categorical-categorical pairs:                                                  1231
+                                   max_iter = 500
+                                   alpha = 0.05                                                           ∆(Ci , Cj ) = ∆(Ci′ , Cj )                  (17)   1232
+        PC algorithm               indep_test = ‘kci’
+                                   stable = True                                        The overall Statistical Fidelity score is the mean                   1233
+                                                                                     of these difference scores computed over all unique                     1234
+                                                                                     pairs of columns in the dataset:                                        1235
+1202   A score approaching 0.5 suggests that the genera-
+1203   tive model has not memorized the training data.                                                                   1         X
+                                                                                         StatisticalFidelity =           K
+                                                                                                                                          ∆(Ci , Cj )
+1204   F.4.3      Statistical Fidelity Metric                                                                             2      1≤i<j≤K
+                                                                                                                                                      (18)   1236
+1205   The Statistical Fidelity metric quantifies how well                           where K is the total number of columns.                                 1237
+1206   the synthetic data, Dsynth , preserves the pairwise
+1207   statistical relationships present in the real data,                           G       Qualitative Graph Analysis                                      1238
+1208   Dreal . For each unique pair of columns (Ci , Cj )
+1209   in the dataset, a difference score, ∆(Ci , Cj ), is                           G.1         Structural Fidelity on Adult Dataset                        1239
+
+1210   calculated. The calculation method varies for the                             To provide a qualitative illustration of our method’s                   1240
+1211   three possible data type combinations:                                        ability to preserve the core dependencies within                        1241
+                                                                                     the data in the absence of a ground-truth graph, we                     1242
+1212   • Numerical-Numerical Pairs: For two numer-                                   present a case study on the Adult dataset in Figure 6.                  1243
+
+
+                                                                                17
+1244   This visualization compares three distinct graphs:            on attention maps that can conflate indirect           1294
+1245   (a) a reference graph, established by running the PC          associations with direct dependencies.                 1295
+1246   algorithm on the complete dataset and refining the
+1247   output with domain expertise; (b) the dependency            • GOGGLE, while capturing some dependencies,             1296
+1248   graph discovered by StructSynth’s learning stage              suffers from edge reversals (e.g., lung → smoke)       1297
+1249   from Dtrain ; and (c) a graph re-discovered from              and misses critical connections (e.g., bronc is        1298
+1250   Dsynth generated by StructSynth using the PC                  isolated from dysp). This reflects the instability     1299
+1251   algorithm.                                                    of end-to-end differentiable structure learning in     1300
+1252      A visual comparison reveals a strong alignment             low-data regimes.                                      1301
+1253   between our LLM-discovered graph (Figure 6b)
+1254   and the reference graph (Figure 6a), particularly           • NoTears yields a sparse and fragmented graph,          1302
+1255   around the key Salary variable. This demonstrates             failing to identify the relationship between smoke     1303
+1256   the effectiveness of our structure learning phase in          and lung, which are central to the dataset’s           1304
+1257   creating a high-quality dependency graph. More                dependency structure.                                  1305
+1258   importantly, the remarkable structural similarity
+1259   between the re-discovered graph (Figure 6c) and
+1260   the reference graph serves as powerful evidence             • FCI, a constraint-based method, correctly identi-      1306
+
+1261   of our method’s fidelity. The ability of a standard           fies some skeletons but leaves many edges undi-        1307
+
+1262   discovery algorithm to independently recover the              rected (represented by bi-directed or unoriented       1308
+
+1263   essential generative pathways from our synthetic              edges), failing to provide a clear generative order.   1309
+
+1264   data confirms that StructSynth effectively pre-
+1265   serves the underlying dependency structure.                    These visual examples corroborate our quanti-         1310
+                                                                   tative findings in Figure 3, confirming that Struct-     1311
+1266   G.2   Structure Discovery Comparisons on                    Synth’s LLM-guided approach offers superior              1312
+1267         Asia Dataset                                          robustness in discovering interpretable and accurate     1313
+
+1268   To provide a concrete illustration of the structural        dependency structures compared to both traditional       1314
+
+1269   discovery capabilities discussed above, Figure 7            and deep learning-based alternatives.                    1315
+
+1270   presents a visual comparison of the dependency
+1271   graphs learned by StructSynth and four represen-            H    Sensitivity to Downstream Model                     1316
+1272   tative baselines on the Asia dataset (n = 100).                  Choice                                              1317
+1273   Although the Asia benchmark is defined as a
+1274   causal Bayesian network, StructSynth uses the               To verify that the gains reported in the main            1318
+1275   ground-truth DAG only as a reference directed               experiments are not specific to a single evaluation      1319
+1276   dependency structure for SHD evaluation. The                model, we compare StructSynth and CLLM under             1320
+1277   Ground Truth graph represents the reference                 four downstream learners—XGBoost (tree-based),           1321
+1278   dependency structure of the dataset, where, for             Random Forest (ensemble), Logistic Regression            1322
+1279   example, smoke is linked to lung (cancer) and               / Ridge (linear), and MLP (neural)—on four               1323
+1280   bronc (bronchitis), which in turn are linked to dysp        representative datasets spanning classification,         1324
+1281   (dyspnoea).                                                 regression, and post-cutoff settings (Table 6).          1325
+
+1282      StructSynth successfully recovers the majority           StructSynth wins 14 out of 16 cells, outperforming       1326
+
+1283   of these key dependencies, including the V-                 both CLLM and the train-only baseline across all         1327
+
+1284   structure at dysp and the dependency chain from             three classification datasets under every evaluation     1328
+
+1285   smoke to lung. The slight deviations are minimal            model. The two exceptions occur on the Salary            1329
+
+1286   and do not disrupt the global topological ordering,         regression task, where Ridge and MLP favor               1330
+
+1287   ensuring that the subsequent generation process             Dtrain and CLLM respectively, suggesting that            1331
+
+1288   follows a valid dependency path.                            linear and shallow neural models are more sensi-         1332
+
+1289      In contrast, baseline methods exhibit significant        tive to distributional shifts in regression settings.    1333
+
+1290   structural distortions:                                     Across classification datasets, the margin is largest    1334
+                                                                   for MLP (+3.26 AUC on Adult), indicating that            1335
+1291   • GraDe tends to produce an overly dense graph              neural models benefit most from the improved             1336
+1292     with numerous spurious edges (e.g., direct links          distributional quality of StructSynth’s synthetic        1337
+1293     between asia and dysp), likely due to its reliance        data.                                                    1338
+
+
+                                                              18
+                                                                                                                                                               Education
+                          Age                            Race                                     Age
+
+
+                                             Education          Sex             Marital                                                      Education
+                                                                                            Sex                     Education                 Number
+                                                                                                                                                                Country       Occupation
+                                                                                Status
+
+
+                      Marital    Captial
+                                            Workclass    Occupation
+                                                                                                                           Education
+                      Status      Gain                                             Relationship          Workclass
+                                                                                                                            Number
+                                                                                                                                                                                    Captial
+                                                                                                                                            Sex        Age            Hours/week              Workclass
+                                                                                                                                                                                     Gain
+                                                                                           Captial
+                                                                                                                      Occupation
+           Captial                                                                          Gain
+                                           Hours/week                 Country
+            Loss
+
+                                                                                                              Hours/week                                                            Captial
+                                                                                                                                        Relationship         Salary
+                                                                                                                                                                                     Loss
+                                             Salary                                                  Salary
+
+
+                                (a) Reference Graph                                       (b) LLM-Discovered                           (c) Re-discovered from Synthetic Data
+
+                     Figure 6: Visual Analysis of Structural Fidelity on the Adult Dataset with Salary as the Label Column.
+
+
+       Table 6: Downstream performance (%) with different                                                     increase by +2.9K (+2.7%). This pattern is                                                  1359
+       evaluation models on four representative datasets. (C):                                                expected: StructSynth needs additional prompt                                               1360
+       AUC, (R): R2 . Best per cell in bold.
+                                                                                                              context to (i) elicit and refine the dependency                                             1361
+           Dataset  Eval. Model   Dtrain CLLM StructSynth                                                     graph and (ii) condition the synthesis stage on the                                         1362
+                    XGBoost       82.51 83.95    85.55                                                        discovered structure, whereas the corresponding                                             1363
+           Adult    Random Forest 85.03 84.63    87.45
+           (C)      Logistic Reg. 85.68 85.49    87.80
+                                                                                                              model responses (e.g., edge lists / compact graph                                           1364
+                    MLP           83.63 83.59    86.85                                                        representations) are short and the final table                                              1365
+                    XGBoost       85.49 85.17    86.45                                                        synthesis outputs remain comparable in length to                                            1366
+           Anxiety† Random Forest 86.85 85.14    87.04
+           (C)      Logistic Reg. 87.26 85.87    87.82                                                        CLLM.                                                                                       1367
+                    MLP           84.85 82.27    85.76                                                           Importantly, this “input-dominant” overhead                                              1368
+                    XGBoost       49.71 54.53    55.98                                                        implies that the real monetary overhead is often                                            1369
+           Salary† Random Forest 55.16 51.29     57.12
+           (R)      Ridge         59.48 52.58    56.80                                                        smaller than what the raw total-token increase                                              1370
+                    MLP           44.61 46.00    42.64                                                        might suggest, because in many pricing schemes                                              1371
+                    XGBoost       86.86 89.81    90.39                                                        output tokens are priced higher than input tokens.                                          1372
+           Churn    Random Forest 90.78 91.66    92.49
+           (C)      Logistic Reg. 90.61 91.91    92.19                                                        Taken together, the token analysis indicates that                                           1373
+                    MLP           91.71 92.36    93.61                                                        StructSynth achieves structure-aware generation                                             1374
+                                                                                                              with a modest and practically manageable                                                    1375
+                                                                                                              cost increase, largely attributable to additional                                           1376
+1339   I         Efficiency Analysis
+                                                                                                              prompting rather than longer model generations.                                             1377
+1340   A practical concern is the additional cost intro-
+1341   duced by structure discovery. Table 7 reports the                                                      J      Extended Discussion                                                                  1378
+1342   token consumption of CLLM and StructSynth
+1343   under the 100-shot setting, averaged over six real-                                                    In this section, we discuss the broader implications                                        1379
+
+1344   world datasets. Overall, introducing the graph-                                                        of our results, analyze key design decisions, and                                           1380
+
+1345   based structure modeling in StructSynth does not                                                       contextualize StructSynth within the landscape of                                           1381
+
+1346   lead to a prohibitive cost increase: the average                                                       structure-aware generative methods.                                                         1382
+
+1347   total usage rises from 219.8K tokens (CLLM total)
+                                                                                                              J.1      Structure-Blind vs. Structure-Aware                                                1383
+1348   to 287.9K tokens (StructSynth combined total),
+                                                                                                                       Generation                                                                         1384
+1349   corresponding to an absolute overhead of +68.1K
+1350   tokens (about +31.0%). This overhead is relatively                                                     A central question raised by our work is whether                                            1385
+1351   stable across datasets (roughly +19% to +42%                                                           explicit structural guidance provides a qualitative—                                        1386
+1352   in total), suggesting that the additional structure                                                    rather than merely quantitative—advantage over                                              1387
+1353   reasoning introduces a consistent but moderate                                                         structure-blind LLM generation. To address                                                  1388
+1354   computational budget.                                                                                  this, we compare StructSynth against its closest                                            1389
+1355      A key observation is that the overhead is highly                                                    structure-blind counterpart, CLLM, which uses                                               1390
+1356   skewed toward the input side. Concretely,                                                              the same LLM with identical hyperparameters but                                             1391
+1357   StructSynth increases average input tokens by                                                          generates data without any structural generation                                            1392
+1358   +65.1K (+57.1%), while the output tokens only                                                          plan.                                                                                       1393
+
+
+                                                                                                      19
+       Figure 7: Comparison of discovered dependency structures on the Asia dataset (n = 100). Ground Truth: The
+       reference DAG from the bnlearn repository. StructSynth: Our method closely recovers the ground truth. GraDe,
+       GOGGLE, NoTears, FCI: Baseline methods exhibit varying degrees of structural errors, including missing edges,
+       reversed edges, and spurious connections.
+
+
+1394      Our ablation study (Table 3) provides direct              CLLM generates all features in a single pass          1403
+1395   evidence for three distinct dimensions of im-                without constraints, whereas StructSynth follows a    1404
+1396   provement. First, regarding structural modeling:             topological ordering so that each feature is condi-   1405
+1397   CLLM processes features in an arbitrary serialized           tioned on its discovered parent nodes. Removing       1406
+1398   order, implicitly inducing dependencies from the             this ordering alone (No Topological Order variant)    1407
+1399   input sequence. In contrast, StructSynth encodes             degrades AUC by 1.1 points, while removing the        1408
+1400   dependencies as an explicit DAG, ensuring that               graph entirely (No Structure variant, equivalent to   1409
+1401   relationships are discovered rather than incidentally        CLLM) causes a 1.6-point drop. Third, regarding       1410
+1402   induced. Second, regarding generation strategy:              regularization: the DAG serves as a structural        1411
+
+
+
+                                                               20
+       Table 7: Token usage under 100-shot (×103 tokens). We report input/output tokens for CLLM and StructSynth;
+       overhead compares StructSynth combined totals (graph+table) against CLLM totals.
+
+       Method         Component              Adult    Anxiety         Churn     Compas     Obesity    Salary     Avg.
+                      Input                    40.6      142.2           38.3      26.5        70.7     366.1     114.1
+       CLLM           Output                  105.2      175.2          102.6      79.5        13.5     158.6     105.8
+                      Total                  145.8      317.4          140.9     106.0       84.2      524.7     219.8
+                      Graph Input              38.1       89.0          41.4        17.1       43.5     111.1      56.7
+                      Graph Output              1.5        3.1           2.2         1.0        1.7       3.1       2.1
+                      Graph total              39.6       92.1          43.6        18.1       45.3     114.3      58.8
+       StructSynth
+                      Table Input              52.7      168.3          46.0        32.3       61.1     374.3     122.5
+                      Table Output            114.3      177.4         102.7        75.9       12.0     157.1     106.6
+                      Table total             167.0      345.7         148.7       108.2       73.2     531.4     229.0
+                      Combined total         206.6      437.8          192.3     126.3       118.4     645.7     287.9
+       Token overhead of StructSynth vs. CLLM (Combined − Total)
+                     ∆ Input (K)           50.2   115.1    49.1                     22.9       33.9     119.3      65.1
+                     ∆ Output (K)          10.6     5.3      2.3                    −2.6        0.2       1.6       2.9
+                     ∆ Total (K)           60.8   120.4    51.4                     20.3       34.2     121.0      68.1
+                      Relative Input (%)      123.6       80.9         128.2        86.4       48.0      32.6      57.1
+                      Relative Output (%)      10.1        3.0           2.2        −3.3        1.5       1.0       2.7
+                      Relative Total (%)       41.7       37.9          36.5        19.2       40.6      23.1      31.0
+
+
+1412   regularizer that constrains the generation space,           generating novel samples. This high fidelity is         1439
+1413   preventing the LLM from overfitting to spurious             therefore an artifact of overfitting rather than        1440
+1414   patterns in the few available training samples. This        genuine distributional learning. At the other           1441
+1415   regularization effect is evidenced by StructSynth’s         extreme, the Bayesian Sampler in our ablation           1442
+1416   superior privacy preservation (avg. rank 1.50 vs.           achieves the best raw fidelity score (48.86) but the    1443
+1417   CLLM’s 3.50), indicating reduced memorization               lowest AUC (81.17), conclusively demonstrating          1444
+1418   of training records.                                        that high pairwise fidelity does not guarantee          1445
+1419      These results demonstrate that the advantage of          downstream utility.                                     1446
+1420   StructSynth is not merely the result of adding pe-             This discrepancy can be further understood           1447
+1421   ripheral components to an LLM pipeline, but stems           by examining what Statistical Fidelity actually         1448
+1422   from a fundamental shift in how dependencies are            measures. The metric quantifies the preservation        1449
+1423   modeled and enforced during generation.                     of pairwise correlations across all feature pairs. In   1450
+                                                                   contrast, StructSynth’s DAG encodes conditional         1451
+1424   J.2   Understanding the Fidelity-Privacy                    dependencies—the probabilistic relationships be-        1452
+1425         Trade-off                                             tween parent and child nodes. These conditional         1453
+1426   A nuanced finding in our evaluation is that                 dependencies are what drive downstream model            1454
+1427   StructSynth does not achieve the highest Statistical        performance, as they capture the generative mecha-      1455
+1428   Fidelity score (avg. rank 8.50), despite its strong         nisms underlying the data. StructSynth optimizes        1456
+1429   downstream utility (avg. rank 1.00) and privacy             for preserving these conditional structures rather      1457
+1430   preservation (avg. rank 1.50). We argue that                than pairwise statistics, which explains its superior   1458
+1431   this apparent discrepancy is both expected and              utility despite moderate pairwise fidelity scores.      1459
+1432   desirable, reflecting the inherent tension between             In summary, StructSynth’s generation plan acts       1460
+1433   fidelity and privacy.                                       as a principled regularizer: it constrains the          1461
+1434      To understand this trade-off, consider GReaT,            generation process to follow discovered condi-          1462
+1435   which achieves strong Statistical Fidelity (avg.            tional dependencies, which simultaneously pre-          1463
+1436   rank 4.00). However, its Privacy Risk score of              vents memorization (ensuring privacy) and pre-          1464
+1437   90.15% reveals severe memorization—the model                serves the dependency structure that matters most       1465
+1438   essentially reproduces training records rather than         for downstream tasks (ensuring utility), even at        1466
+
+
+                                                              21
+1467   the cost of slightly lower pairwise correlation               identify the true causal data-generating mechanism      1517
+1468   matching.                                                     under specific assumptions (e.g., faithfulness,         1518
+                                                                     sufficiency). Our objective is fundamentally            1519
+1469   J.3   When Does Structural Guidance Help                      different: we seek a dependency structure that          1520
+1470         Most?                                                   enables effective conditional generation, not one       1521
+1471   Our experiments on varying training sample sizes              that supports causal interventions or counterfactual    1522
+1472   (Figure 4) reveal that StructSynth’s advantage is             reasoning.                                              1523
+1473   most pronounced in the low-data regime (n ≤ 50),                 Nevertheless, our SHD evaluations on bench-          1524
+1474   where it maintains high AUC while baselines de-               mark DAGs (Figure 3) demonstrate that the               1525
+1475   teriorate significantly. As n increases toward 200,           structures discovered by StructSynth often closely      1526
+1476   the performance gap narrows, though StructSynth               approximate the ground-truth causal graphs. This is     1527
+1477   remains competitive.                                          not a contradiction: when the true data-generating      1528
+1478      This pattern has an intuitive explanation. When            process follows a DAG, a well-discovered depen-         1529
+1479   data is scarce, statistical methods for structure             dency structure will naturally align with the causal    1530
+1480   discovery (e.g., PC algorithm, NoTears) suffer                structure, even though causal identification is not     1531
+1481   from unstable association estimates, leading to               our explicit goal. This alignment is a desirable side   1532
+1482   unreliable graphs. In this regime, StructSynth’s              effect that contributes to the high fidelity of our     1533
+1483   LLM-guided discovery provides a powerful com-                 generated data.                                         1534
+1484   plement: the model’s semantic prior knowledge
+1485   acts as a structural regularizer, stabilizing the             K    Detailed Prompts for StructSynth                   1535
+
+1486   discovery process by filtering out statistically              This section provides a guide to the prompt             1536
+1487   spurious correlations that would mislead purely               templates used in the StructSynth framework. A          1537
+1488   data-driven approaches. As more data becomes                  key step in our methodology is the textualization of    1538
+1489   available, statistical methods become increasingly            diverse data structures—including statistical scores,   1539
+1490   reliable on their own, diminishing the relative               dependency graphs, and tabular data—to serve as         1540
+1491   advantage of LLM-guided reasoning.                            inputs for the Large Language Model (LLM). Box          1541
+1492      This analysis also reveals StructSynth’s natural           1 shows concrete examples of this process.              1542
+1493   boundary conditions. The method is best suited                   The StructSynth pipeline employs a sequence of       1543
+1494   for scenarios where: (1) the number of training               prompts to complete its tasks. First, the πsource       1544
+1495   samples is severely limited (n ≤ 100); (2)                    prompt initiates graph discovery by identifying         1545
+1496   features have semantically meaningful names and               initial root nodes. During the iterative graph          1546
+1497   relationships that an LLM can reason about; and               construction, the πgenerate prompt proposes new         1547
+1498   (3) the underlying dependency structure is sparse             dependency edges with corresponding rationales.         1548
+1499   enough to be well-represented by a DAG. In                    If a cycle is detected, the πresolve prompt is used     1549
+1500   contrast, for purely numerical datasets with opaque           to analyze the conflict and remove the weakest          1550
+1501   feature names (e.g., anonymized sensor readings),             link. Finally, for data synthesis, the πdata_gen        1551
+1502   the LLM’s semantic prior provides less value, and             prompt generates values for dependent features,         1552
+1503   the framework may offer diminished advantages                 after which the πiso prompt generates values for        1553
+1504   over purely statistical approaches.                           the remaining isolated features.                        1554
+
+1505   J.4   Relationship to Causal Inference
+1506   It is important to clearly distinguish StructSynth’s
+1507   dependency graphs from causal graphs in the
+1508   traditional sense. As established in Appendix C,
+1509   our DAG serves as a generative dependency
+1510   structure—its edges encode statistical and proba-
+1511   bilistic dependencies used to organize the synthesis
+1512   process, not claims of ground-truth causality.
+1513      This distinction separates StructSynth from
+1514   classical causal discovery methods such as the PC
+1515   algorithm (Spirtes et al., 2000), FCI (Spirtes et al.,
+1516   2000), or GES (Chickering, 2002), which aim to
+
+                                                                22
+Examples of Data Textualization for LLM Prompts
+1. Textual Representation of Statistical Evidence (Association Scores):
+Association scores for 'Education', scaled 0 to 1.
+(Levels: >0.8 Very High, >0.6 High, >0.4 Moderate, >0.2 Low, <=0.2 Very Low)
+
+- Occupation: 0.85 (Very High)
+- Salary: 0.72 (High)
+- Marital-Status: 0.55 (Moderate)
+- Hours-per-week: 0.31 (Low)
+- Sex: 0.12 (Very Low)
+
+2. Textual Representation of a Dependency Graph:
+Current dependency graph structure with rationales:
+- Age -> Marital-Status
+Rational: A person's age is a primary factor influencing their marital status.
+
+- Sex -> Relationship:
+Rational: Gender often determines the relationship role within a household.
+
+- Country -> Race:
+Rational: Native country has a strong statistical correlation with a person's race.
+
+- Race -> Education:
+Rational: Statistical data often shows a correlation between a person's race
+and their level of educational attainment.
+
+
+3. Textual Representation of Tabular Data (Markdown):
+| age | education   | occupation      | sex    | hours-per-week | salary |
+|-----|-------------|-----------------|--------|----------------|--------|
+| 39 | Bachelors    | Adm-clerical    | Male   | 40             | <=50K |
+| 50 | Bachelors    | Exec-managerial | Male   | 13             | <=50K |
+| 28 | Assoc-acdm | Prof-specialty | Female | 45                | <=50K |
+
+
+
+
+Prompt for Source Nodes Initialization of Tabular Data (πsource )
+You are an expert data analyst. Based on the following information:
+Task Description:
+Identify the initial "source nodes" for a dependency graph. A source node is a root attribute that is generated without
+conditioning on other attributes in this dataset.
+All Feature Descriptions:
+{all_features}
+
+Example Data:
+{few_shot_data}
+
+Your Task is to Identify the Source Nodes:
+
+• Your only task is to analyze the provided column descriptions and data.
+• Identify the features that are most likely to be source nodes (i.e., fundamental attributes that are not dependent on
+  other features).
+• Provide your answer as a simple list of the identified source node names.
+
+
+
+
+                                                          23
+Prompt for Link Generation in Dependency Discovery (πgenerate )
+
+You are an expert data analyst building a dependency graph. Based on the following information:
+Task Description:
+For the given {current_feature}, your task is to propose its direct successors (dependents) from the list of available
+features. For each proposed dependency, you must provide a brief, evidence-based rationale.
+Current Graph State:
+{structure_graph}
+
+All Candidate Features:
+{all_features}
+
+Statistical Evidence (Association Scores):
+{association_scores}
+
+Example Data:
+{few_shot_data}
+
+Your Task is to Propose and Justify New Links:
+
+• Your focus is on the feature: {current_feature}.
+• Review the Statistical Evidence, which shows the strength of association between {current_feature} and other
+  candidate features {all_features}.
+• Based on the statistical scores, the example data, and the existing graph, identify which other features are most likely
+  to be direct dependents of {current_feature}.
+• For each dependency you propose, you must provide a concise rationale. This rationale should explain why the
+  dependency makes sense (e.g., "Higher Education is strongly correlated with and typically precedes higher Income").
+• Do not propose links that would create an obvious logical contradiction with the existing graph structure.
+• Format your final output as a list of dependency edges and their corresponding rationales.
+
+
+
+
+Prompt for Cycle Resolution in Dependency Discovery (πresolve )
+You are a logical reasoning expert tasked with resolving a contradiction in a dependency graph. Based on the following
+information:
+Task Description:
+Analyze the provided dependencies and their rationales within the cycle. Identify the single dependency with the weakest
+or least plausible rationale and recommend it for removal to break the cycle.
+Conflicting Cycle with Rationales:
+{cycle_with_rationales}
+
+Your Task is to Identify the Weakest Link:
+
+• A logical contradiction (a cycle) has been detected in the graph, detailed in Conflicting Cycle with Rationales.
+• Your task is to carefully evaluate the rationale provided for each edge in this cycle.
+• Based on your analysis of the rationales and any relevant context from the column descriptions or data, identify the
+  single weakest link.
+• The weakest link is the dependency whose rationale is the least plausible, least supported, or most likely to be spurious.
+• Provide your final answer as the single dependency edge that should be removed to resolve the contradiction.
+
+
+
+
+                                                            24
+Prompt for Graph-Planned Conditional Synthesis (πdata_gen )
+
+You are a helpful AI assistant that generates realistic tabular data based on structural dependencies.
+Task Description:
+Generate a realistic synthetic table containing exactly the columns listed in {features_to_generate}. This generation
+must be conditioned on the provided values of their parent features.
+Conditioning Data (Current Results):
+{current_result}
+
+Relevant Dependency Structure:
+{related_structure_graph}
+
+Example Data:
+{related_few_shot_data}
+
+Your Task is to Generate the Synthetic Data:
+
+• Your primary task is to generate realistic data for the features listed in {features_to_generate}.
+• This generation must be conditioned on the data provided in Conditioning Data (Current Results). These are the
+  values of the parent nodes that influence the features you are generating.
+• The Relevant Dependency Structure shows you exactly how the conditioning features relate to the features you
+  need to generate.
+• Use the Example Data to understand the format, range, and statistical properties of the real data.
+• The generated table should contain columns for exactly the features listed in {features_to_generate}.
+• Ensure the generated values are plausible and respect the learned dependencies.
+
+
+
+
+Prompt for Independent Feature Synthesis (πiso )
+You are a helpful AI assistant that completes tabular data records by generating values for remaining features.
+Task Description:
+The core, structurally-dependent features of a dataset have already been generated. Your task is to generate plausible
+values for the remaining isolated features, ensuring they are statistically consistent with the core features.
+Conditioning Data (Generated Graph-Based Features):
+{graph_based_values}
+
+Features to Generate (Isolated Features):
+{isolated_features_to_generate}
+
+Example Data:
+{related_few_shot_data}
+
+Your Task is to Generate the Independent Values:
+
+• Your primary task is to generate realistic data for the features listed in {isolated_features_to_generate}.
+• This generation must be conditioned on the complete set of core features provided in Conditioning Data.
+• The features you are generating do not have direct parent-child dependencies in the learned graph, but their values
+  should still be plausible and consistent in the context of the entire data record.
+• Use the Example Data to understand the typical format and statistical properties of these isolated features.
+• The generated table should contain columns for exactly the features listed in {isolated_features_to_generate}.
+
+
+
+
+                                                           25
+

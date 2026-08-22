@@ -1,0 +1,64 @@
+{
+  "dataset": "obesity_reg",
+  "shot": 100,
+  "seed": 43,
+  "method": "paft_fd_prior_deepseek-v4-flash",
+  "model": "deepseek-v4-flash",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_43/train.csv",
+  "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_43/test.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_43/graph.json",
+  "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+  "graph_edges": 7,
+  "paft_raw_fd_edges": 7,
+  "paft_dropped_edges": 0,
+  "generation_order": [
+    "Age",
+    "Height",
+    "FCVC",
+    "CH2O",
+    "FAF",
+    "TUE",
+    "Weight",
+    "SMOKE"
+  ],
+  "token_usage": {
+    "prompt_tokens": 771000,
+    "completion_tokens": 152670,
+    "total_tokens": 923670
+  },
+  "samples": [
+    {
+      "n_samples": 100,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+      "line_count": 101,
+      "expected_line_count": 101,
+      "passed": true
+    },
+    {
+      "n_samples": 200,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+      "line_count": 201,
+      "expected_line_count": 201,
+      "passed": true
+    },
+    {
+      "n_samples": 500,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+      "line_count": 501,
+      "expected_line_count": 501,
+      "passed": true
+    },
+    {
+      "n_samples": 1000,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+      "line_count": 1001,
+      "expected_line_count": 1001,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

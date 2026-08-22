@@ -1,0 +1,229 @@
+{
+  "nodes": [
+    "Age",
+    "Gender",
+    "Occupation",
+    "Sleep Hours",
+    "Physical Activity (hrs/week)",
+    "Caffeine Intake (mg/day)",
+    "Alcohol Consumption (drinks/week)",
+    "Smoking",
+    "Family History of Anxiety",
+    "Stress Level (1-10)",
+    "Heart Rate (bpm)",
+    "Breathing Rate (breaths/min)",
+    "Sweating Level (1-5)",
+    "Dizziness",
+    "Medication",
+    "Therapy Sessions (per month)",
+    "Recent Major Life Event",
+    "Diet Quality (1-10)",
+    "Anxiety Level"
+  ],
+  "edges": [
+    {
+      "from": "Caffeine Intake (mg/day)",
+      "to": "Smoking",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Caffeine Intake (mg/day)' functionally determines 'Smoking' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "Age": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Gender": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Occupation": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Sleep Hours": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Physical Activity (hrs/week)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Caffeine Intake (mg/day)": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "Smoking"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "Smoking"
+        ],
+        "in_graph": true
+      },
+      "Alcohol Consumption (drinks/week)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Smoking": {
+        "level": 1,
+        "parents": [
+          "Caffeine Intake (mg/day)"
+        ],
+        "children": [],
+        "ancestors": [
+          "Caffeine Intake (mg/day)"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Family History of Anxiety": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Stress Level (1-10)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Heart Rate (bpm)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Breathing Rate (breaths/min)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Sweating Level (1-5)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Dizziness": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Medication": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Therapy Sessions (per month)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Recent Major Life Event": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Diet Quality (1-10)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Anxiety Level": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      }
+    },
+    "levels": {
+      "0": [
+        "Caffeine Intake (mg/day)"
+      ],
+      "1": [
+        "Smoking"
+      ],
+      "others": [
+        "Age",
+        "Gender",
+        "Occupation",
+        "Sleep Hours",
+        "Physical Activity (hrs/week)",
+        "Alcohol Consumption (drinks/week)",
+        "Family History of Anxiety",
+        "Stress Level (1-10)",
+        "Heart Rate (bpm)",
+        "Breathing Rate (breaths/min)",
+        "Sweating Level (1-5)",
+        "Dizziness",
+        "Medication",
+        "Therapy Sessions (per month)",
+        "Recent Major Life Event",
+        "Diet Quality (1-10)",
+        "Anxiety Level"
+      ]
+    },
+    "generation_order": [
+      "Caffeine Intake (mg/day)",
+      "Smoking"
+    ],
+    "max_depth": 1
+  }
+}

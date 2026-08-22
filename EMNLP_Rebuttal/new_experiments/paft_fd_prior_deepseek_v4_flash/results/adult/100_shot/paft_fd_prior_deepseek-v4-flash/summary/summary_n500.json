@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.8017570031493453,
+    "accuracy_std": 0.008292390546061222,
+    "accuracy_n": 5,
+    "f1": 0.6033514619859806,
+    "f1_std": 0.02733843115249441,
+    "f1_n": 5,
+    "auc_roc": 0.8472093120303658,
+    "auc_roc_std": 0.009947451518030144,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7956240676280457,
+            "f1": 0.5942744323790721,
+            "precision": 0.5875081327260898,
+            "recall": 0.6011984021304927,
+            "auc_roc": 0.8396477763335343
+        },
+        "44": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.8098789988397149,
+            "f1": 0.6131534569983137,
+            "precision": 0.621326042378674,
+            "recall": 0.6051930758988016,
+            "auc_roc": 0.8459187499871429
+        },
+        "45": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.813691364163766,
+            "f1": 0.6415816326530612,
+            "precision": 0.6156670746634026,
+            "recall": 0.6697736351531292,
+            "auc_roc": 0.8666445915855296
+        },
+        "42": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7954583126139566,
+            "f1": 0.6097406704617331,
+            "precision": 0.5807228915662651,
+            "recall": 0.6418109187749668,
+            "auc_roc": 0.8429628589086398
+        },
+        "46": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7941322725012432,
+            "f1": 0.5580071174377225,
+            "precision": 0.599388379204893,
+            "recall": 0.521970705725699,
+            "auc_roc": 0.8408725833369823
+        }
+    },
+    "dataset": "adult",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 500
+}

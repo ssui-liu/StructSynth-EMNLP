@@ -1,0 +1,122 @@
+[
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 42,
+    "dcr": 0.804,
+    "pairwise_correlation_diff": 0.50579098758579,
+    "accuracy": 0.7704293054864909,
+    "f1": 0.3713118474807081,
+    "precision": 0.5834522111269614,
+    "recall": 0.27230359520639147,
+    "auc_roc": 0.7755950941303598
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 43,
+    "dcr": 0.694,
+    "pairwise_correlation_diff": 0.5227057379416302,
+    "accuracy": 0.7704293054864909,
+    "f1": 0.6158113730929264,
+    "precision": 0.5278174037089871,
+    "recall": 0.7390146471371505,
+    "auc_roc": 0.8415433582120035
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 44,
+    "dcr": 0.785,
+    "pairwise_correlation_diff": 0.5155436246434447,
+    "accuracy": 0.7783855461627714,
+    "f1": 0.3325012481278083,
+    "precision": 0.6646706586826348,
+    "recall": 0.22170439414114515,
+    "auc_roc": 0.7834486703669734
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 45,
+    "dcr": 0.691,
+    "pairwise_correlation_diff": 0.5194838735995595,
+    "accuracy": 0.7800430963036632,
+    "f1": 0.5977568960290998,
+    "precision": 0.5486922648859209,
+    "recall": 0.6564580559254327,
+    "auc_roc": 0.8245257335103259
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 46,
+    "dcr": 0.782,
+    "pairwise_correlation_diff": 0.5128276580313579,
+    "accuracy": 0.7755677109232554,
+    "f1": 0.2767094017094017,
+    "precision": 0.7,
+    "recall": 0.17243675099866845,
+    "auc_roc": 0.8140424699679468
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 47,
+    "dcr": 0.763,
+    "pairwise_correlation_diff": 0.5462411604124451,
+    "accuracy": 0.7722526106414719,
+    "f1": 0.23920265780730898,
+    "precision": 0.7105263157894737,
+    "recall": 0.14380825565912117,
+    "auc_roc": 0.8353826620049895
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 48,
+    "dcr": 0.8,
+    "pairwise_correlation_diff": 0.5336793002926212,
+    "accuracy": 0.7634675948947456,
+    "f1": 0.15110053539559787,
+    "precision": 0.7094972067039106,
+    "recall": 0.08455392809587217,
+    "auc_roc": 0.7711898738120379
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 49,
+    "dcr": 0.734,
+    "pairwise_correlation_diff": 0.5118894874967099,
+    "accuracy": 0.7865075418531411,
+    "f1": 0.36426456071076013,
+    "precision": 0.7041984732824428,
+    "recall": 0.24567243675099867,
+    "auc_roc": 0.8240675788421293
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 50,
+    "dcr": 0.81,
+    "pairwise_correlation_diff": 0.4924624087704713,
+    "accuracy": 0.7636333499088347,
+    "f1": 0.43946540880503143,
+    "precision": 0.536468330134357,
+    "recall": 0.37217043941411454,
+    "auc_roc": 0.7941760724536784
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_anon_headers",
+    "seed": 51,
+    "dcr": 0.769,
+    "pairwise_correlation_diff": 0.5448051220679145,
+    "accuracy": 0.7951268025857782,
+    "f1": 0.4224299065420561,
+    "precision": 0.7084639498432602,
+    "recall": 0.3009320905459387,
+    "auc_roc": 0.8187349553203688
+  }
+]

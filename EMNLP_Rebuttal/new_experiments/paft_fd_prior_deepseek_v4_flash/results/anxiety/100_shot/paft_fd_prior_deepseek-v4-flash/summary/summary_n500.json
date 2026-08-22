@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.7310909090909091,
+    "accuracy_std": 0.007949218995890609,
+    "accuracy_n": 5,
+    "f1": 0.7310909090909091,
+    "f1_std": 0.007949218995890609,
+    "f1_n": 5,
+    "auc_roc": 0.864767461762374,
+    "auc_roc_std": 0.009161298742534964,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7204545454545455,
+            "f1": 0.7204545454545455,
+            "precision": 0.7204545454545455,
+            "recall": 0.7204545454545455,
+            "auc_roc": 0.850776990107894
+        },
+        "44": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7240909090909091,
+            "f1": 0.7240909090909091,
+            "precision": 0.7240909090909091,
+            "recall": 0.7240909090909091,
+            "auc_roc": 0.863974816788757
+        },
+        "45": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7418181818181818,
+            "f1": 0.7418181818181818,
+            "precision": 0.7418181818181818,
+            "recall": 0.7418181818181818,
+            "auc_roc": 0.8790364974900579
+        },
+        "42": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7318181818181818,
+            "f1": 0.7318181818181818,
+            "precision": 0.7318181818181818,
+            "recall": 0.7318181818181818,
+            "auc_roc": 0.8681508315215986
+        },
+        "46": {
+            "train_size": 600,
+            "task_type": "classification",
+            "accuracy": 0.7372727272727273,
+            "f1": 0.7372727272727273,
+            "precision": 0.7372727272727273,
+            "recall": 0.7372727272727273,
+            "auc_roc": 0.8618981729035623
+        }
+    },
+    "dataset": "anxiety",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 500
+}

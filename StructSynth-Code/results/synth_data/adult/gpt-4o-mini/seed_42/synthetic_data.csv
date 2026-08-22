@@ -1,0 +1,1001 @@
+age,workclass,fnlwgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,country,salary
+36,Private,192837,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,45,US,>50K
+29,State-gov,284569,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+41,Self-emp-not-inc,203456,Some-college,10,Couple,Sales,Husband,Black,Male,Had gains,No losses,50,Non-US,>50K
+50,Federal-gov,176543,HS-grad,9,Couple,Adm-clerical,Wife,White,Female,No gains,No losses,37,US,<=50K
+23,Private,189765,Assoc-voc,11,Single,Craft-repair,Not-in-family,Hispanic,Male,No gains,No losses,40,US,<=50K
+48,Private,210987,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+34,Local-gov,165432,Bachelors,13,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+60,Private,245678,HS-grad,9,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,Non-US,>50K
+27,Private,198765,Some-college,10,Single,Handlers-cleaners,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+45,Self-emp-inc,234567,Bachelors,13,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,US,>50K
+29,Private,183456,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,185639,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+37,Private,234567,Some-college,10,Single,Sales,Not-in-family,Black,Female,No gains,No losses,45,US,<=50K
+50,Federal-gov,198765,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,40,US,>50K
+28,Private,156789,Assoc-voc,11,Single,Craft-repair,Not-in-family,Hispanic,Male,No gains,No losses,38,US,<=50K
+55,Local-gov,145678,HS-grad,9,Couple,Adm-clerical,Wife,White,Female,No gains,No losses,40,Non-US,>50K
+34,Private,234890,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,42,US,<=50K
+60,Self-emp-inc,167890,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,45,US,>50K
+23,Private,134567,Some-college,10,Single,Handlers-cleaners,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+48,State-gov,178901,Bachelors,13,Couple,Tech-support,Husband,White,Male,No gains,No losses,40,Non-US,>50K
+29, Private,198345, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,234721, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+36, Private,123456, Some-college,10,Single, Sales, Not-in-family, Black, Female,No gains,No losses,30,Non-US,<=50K
+55, Federal-gov,245678, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,45,US,>50K
+23, State-gov,167890, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,20,US,<=50K
+48, Local-gov,189234, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,60,US,>50K
+39, Private,278901, Bachelors,13,Single, Prof-specialty, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+50, Self-emp-inc,312567, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+28, Private,234567, Some-college,10,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,35,US,<=50K
+60, Private,345678, HS-grad,9,Couple, Sales, Husband, White, Male,No gains,No losses,40,US,>50K
+28,Private,209642,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,284582,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+35,Local-gov,123456,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,37,US,<=50K
+54,Private,325478,HS-grad,9,Couple,Craft-repair,Husband,Black,Male,No gains,No losses,60,Non-US,>50K
+47,Federal-gov,234567,Doctorate,16,Single,Prof-specialty,Not-in-family,White,Male,Had gains,No losses,45,US,>50K
+29,Private,192837,Some-college,10,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+62,Self-emp-inc,284562,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+33,State-gov,348762,Assoc-voc,11,Couple,Protective-serv,Wife,Black,Female,No gains,No losses,40,US,<=50K
+41,Private,219876,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+50,Federal-gov,256789,Masters,14,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,No gains,No losses,40,US,>50K
+29, Private,187456, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+44, Self-emp-not-inc,215646, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,60,US,>50K
+53, Federal-gov,123456, Masters,14,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,45,Non-US,>50K
+36, State-gov,234567, Assoc-voc,11,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,<=50K
+41, Private,345678, Doctorate,16,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+28, Local-gov,456789, HS-grad,9,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,Non-US,<=50K
+62, Self-emp-inc,567890, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+33, Private,678901, Some-college,10,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,30,US,<=50K
+50, Federal-gov,789012, Masters,14,Couple, Tech-support, Husband, White, Male,No gains,No losses,45,US,>50K
+39, Private,890123, Bachelors,13,Couple, Sales, Wife, White, Female,No gains,No losses,40,US,<=50K
+29,Private,189456,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,38,US,<=50K
+37,Self-emp-not-inc,234567,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+42,Local-gov,145678,Some-college,10,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+50,Private,178345,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+34,Federal-gov,198765,Bachelors,13,Single,Adm-clerical,Not-in-family,Amer-Indian-Eskimo,Female,No gains,No losses,35,US,<=50K
+28,Private,210987,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,45,Non-US,<=50K
+55,Private,234321,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+40,State-gov,223344,Assoc-acdm,12,Couple,Protective-serv,Wife,Black,Female,No gains,No losses,40,US,<=50K
+48,Self-emp-inc,189654,Prof-school,15,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,55,Non-US,>50K
+36,Private,245678,HS-grad,9,Single,Craft-repair,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+29,Private,183456,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+42,Self-emp-not-inc,198765,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,Non-US,>50K
+37,Local-gov,214567,HS-grad,9,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+54,Federal-gov,167890,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,50,US,>50K
+23,Private,102345,Some-college,10,Single,Tech-support,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,20,US,<=50K
+48,State-gov,245678,Bachelors,13,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+36,Private,189765,Assoc-voc,11,Single,Machine-op-inspct,Not-in-family,Black,Female,No gains,No losses,38,US,<=50K
+40,Self-emp-inc,230987,Masters,14,Couple,Sales,Husband,White,Male,No gains,No losses,70,US,>50K
+50,Private,178901,HS-grad,9,Couple,Transport-moving,Husband,White,Male,No gains,No losses,40,US,<=50K
+27,Private,156789,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+29,Private,198765,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+41,Self-emp-not-inc,145523,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,48,US,>50K
+34,Private,210987,Some-college,10,Single,Sales,Not-in-family,Black,Male,No gains,No losses,45,Non-US,<=50K
+52,Federal-gov,177654,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+37,Private,189234,Assoc-voc,11,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Local-gov,234567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,Non-US,>50K
+28,Private,156789,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+50,Self-emp-inc,123456,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+36,State-gov,178654,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+43,Private,234567,HS-grad,9,Couple,Sales,Husband,Black,Male,No gains,No losses,60,US,>50K
+29, Private,215646, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,209642, HS-grad,9,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,50,US,>50K
+37, Local-gov,189778, Some-college,10,Single, Adm-clerical, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,35,Non-US,<=50K
+53, Private,302146, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+48, Federal-gov,180456, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,55,US,>50K
+24, Private,164190, Bachelors,13,Single, Sales, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+50, State-gov,231013, Bachelors,13,Couple, Protective-serv, Husband, White, Male,No gains,No losses,40,US,>50K
+36, Local-gov,264457, 11th,7,Single, Handlers-cleaners, Not-in-family, Black, Female,No gains,No losses,20,US,<=50K
+44, Private,22055, Some-college,10,Couple, Prof-specialty, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,45,US,>50K
+27, Private,208668, Assoc-acdm,12,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,30,US,<=50K
+61, Federal-gov,100931, HS-grad,9,Couple, Adm-clerical, Husband, White, Male,No gains,No losses,40,US,>50K
+55, Self-emp-inc,130454, Some-college,10,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+33, State-gov,350651, 12th,8,Couple, Tech-support, Wife, White, Female,No gains,No losses,40,US,>50K
+39, Private,196554, Prof-school,15,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,35,US,>50K
+32, Private,226696, HS-grad,9,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,50,US,>50K
+47, Private,91608, Bachelors,13,Couple, Adm-clerical, Husband, White, Male,No gains,No losses,40,US,>50K
+41, Private,102953, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,55,US,>50K
+40, Private,266645, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+53, Federal-gov,223206, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,40,Non-US,>50K
+59, Private,300104, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,84,US,>50K
+28, Private,198743, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+54, Self-emp-not-inc,234567, HS-grad,9,Couple, Sales, Husband, Black, Male,No gains,No losses,50,US,>50K
+45, Federal-gov,134567, Masters,14,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,Had gains,No losses,45,Non-US,>50K
+37, Private,289345, Some-college,10,Single, Tech-support, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+29, State-gov,158934, Assoc-voc,11,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,35,US,<=50K
+50, Local-gov,234789, Bachelors,13,Couple, Adm-clerical, Husband, Black, Male,No gains,No losses,55,US,>50K
+41, Private,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,Non-US,>50K
+33, Private,189456, 11th,7,Single, Machine-op-inspct, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+60, Self-emp-inc,245678, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,40,US,>50K
+26, Private,176543, HS-grad,9,Single, Other-service, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,30,US,<=50K
+29, Private,198742, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,125763, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,>50K
+37, Local-gov,287903, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,Non-US,<=50K
+50, Private,158024, Masters,14,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,50,US,>50K
+33, State-gov,192674, Assoc-voc,11,Single, Protective-serv, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+44, Federal-gov,234567, Doctorate,16,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,60,Non-US,>50K
+28, Private,180543, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+61, Self-emp-inc,123456, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+53, Private,276453, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,40,Non-US,<=50K
+36, Local-gov,198765, Some-college,10,Couple, Tech-support, Husband, White, Male,No gains,No losses,35,US,<=50K
+47, Private,213456, Masters,14,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,50,US,>50K
+41, Federal-gov,167890, Bachelors,13,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+55, Private,145678, Some-college,10,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+34, Self-emp-not-inc,189234, HS-grad,9,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+48, Federal-gov,154321, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,Non-US,>50K
+27, State-gov,123987, Some-college,10,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+60, Self-emp-inc,187654, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+32, Local-gov,198765, Bachelors,13,Single, Sales, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+54, Private,234567, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+43, State-gov,154321, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,40,Non-US,<=50K
+49, Federal-gov,167890, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+39, Private,198765, Some-college,10,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+34,Private,215646,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,40,US,>50K
+45,Federal-gov,234721,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+29,Private,145542,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+53,Self-emp-not-inc,178356,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+22,Private,284582,Bachelors,13,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+39,Local-gov,162234,Masters,14,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,45,US,>50K
+31,Private,198773,11th,7,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+44,State-gov,243867,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+50,Self-emp-inc,296873,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+28,Private,145543,HS-grad,9,Single,Machine-op-inspct,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+37,Federal-gov,187452,Some-college,10,Couple,Adm-clerical,Wife,White,Female,No gains,No losses,40,US,>50K
+48,Private,210987,Assoc-voc,11,Couple,Craft-repair,Husband,White,Male,No gains,No losses,45,US,>50K
+36,Local-gov,154789,Masters,14,Single,Prof-specialty,Not-in-family,Black,Female,No gains,No losses,40,US,>50K
+41,Private,190345,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+33,Private,175642,HS-grad,9,Single,Sales,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+40,Self-emp-not-inc,217654,Bachelors,13,Couple,Tech-support,Husband,White,Male,Had gains,No losses,60,US,>50K
+27,Private,168345,Some-college,10,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+52,State-gov,289456,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+30,Private,198765,Assoc-acdm,12,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+56,Self-emp-inc,234567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+42,Federal-gov,194567,Bachelors,13,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,US,>50K
+35,Private,187654,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+47,Local-gov,276543,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+32,Private,145678,Assoc-voc,11,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,35,Non-US,<=50K
+54,Self-emp-not-inc,298765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+38,Federal-gov,187654,Masters,14,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,45,US,>50K
+26,Private,165432,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+49,State-gov,276543,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,50,US,>50K
+43,Local-gov,198765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+24,Private,145678,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+46,Self-emp-inc,210987,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+40,Federal-gov,187654,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+34,Private,198765,Assoc-acdm,12,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+55,Self-emp-not-inc,287654,Doctorate,16,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+39,Federal-gov,198765,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+35,Private,176543,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+51,Local-gov,276543,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+32,Private,145678,Assoc-voc,11,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,35,Non-US,<=50K
+54,Self-emp-not-inc,298765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+38,Federal-gov,187654,Masters,14,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,45,US,>50K
+26,Private,165432,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+49,State-gov,276543,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,50,US,>50K
+43,Local-gov,198765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+24,Private,145678,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+46,Self-emp-inc,210987,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+40,Federal-gov,187654,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+34,Private,198765,Assoc-acdm,12,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+55,Self-emp-not-inc,287654,Doctorate,16,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+39,Federal-gov,198765,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+35,Private,176543,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+51,Local-gov,276543,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+32,Private,145678,Assoc-voc,11,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,35,Non-US,<=50K
+54,Self-emp-not-inc,298765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+38,Federal-gov,187654,Masters,14,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,45,US,>50K
+26,Private,165432,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+49,State-gov,276543,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,50,US,>50K
+43,Local-gov,198765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+24,Private,145678,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+46,Self-emp-inc,210987,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+40,Federal-gov,187654,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+29,Private,209642,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+42,Self-emp-not-inc,187365,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,55,Non-US,>50K
+37,Federal-gov,120987,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,38,US,<=50K
+54,Local-gov,150234,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,Had gains,No losses,40,US,>50K
+23,Private,245678,Assoc-voc,11,Single,Sales,Not-in-family,White,Male,No gains,No losses,30,Non-US,<=50K
+61,Self-emp-inc,134567,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+49,Private,198765,HS-grad,9,Couple,Craft-repair,Husband,Amer-Indian-Eskimo,Male,No gains,No losses,45,US,<=50K
+35,Private,176543,Bachelors,13,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,>50K
+28,State-gov,212345,Some-college,10,Single,Protective-serv,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+60,Private,186543,HS-grad,9,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+37,Private,189781,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+28,Self-emp-not-inc,234721,HS-grad,9,Single,Craft-repair,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+45,Federal-gov,182109,Masters,14,Couple,Prof-specialty,Husband,Black,Male,Had gains,No losses,60,US,>50K
+52,Private,186123,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+34,State-gov,267418,Assoc-voc,11,Couple,Tech-support,Wife,White,Female,No gains,No losses,40,US,>50K
+41,Local-gov,212345,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,55,Non-US,>50K
+23,Private,145678,11th,7,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,30,US,<=50K
+50,Self-emp-inc,198765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+29,Private,223344,HS-grad,9,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+60,Federal-gov,210987,HS-grad,9,Couple,Protective-serv,Husband,White,Male,No gains,No losses,40,US,>50K
+29, Private,194728, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,292175, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+34, Federal-gov,167493, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,50,US,<=50K
+55, Local-gov,125634, HS-grad,9,Couple, Protective-serv, Husband, White, Male,No gains,No losses,40,US,>50K
+37, Private,180987, Doctorate,16,Single, Prof-specialty, Not-in-family, White, Male,Had gains,No losses,45,US,>50K
+48, State-gov,209345, Bachelors,13,Couple, Tech-support, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,>50K
+23, Private,120345, 11th,7,Single, Sales, Not-in-family, Black, Female,No gains,No losses,30,US,<=50K
+50, Self-emp-inc,278634, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+31, Private,234567, Assoc-voc,11,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+44, Federal-gov,198765, Bachelors,13,Couple, Adm-clerical, Husband, Black, Male,No gains,No losses,40,US,>50K
+29, Private,178456, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,45,US,<=50K
+42, Self-emp-not-inc,123456, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+36, Local-gov,234567, Assoc-voc,11,Single, Craft-repair, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+53, Private,345678, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+28, Federal-gov,456789, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+37, State-gov,567890, HS-grad,9,Couple, Protective-serv, Husband, Black, Male,No gains,No losses,40,US,<=50K
+49, Self-emp-inc,678901, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,50,US,>50K
+33, Private,789012, 11th,7,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,890123, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,45,US,>50K
+44, Local-gov,901234, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+29, Private,209642, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,174938, HS-grad,9,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,55,Non-US,>50K
+36, Local-gov,198675, Masters,14,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,US,>50K
+53, Private,234578, Some-college,10,Single, Sales, Not-in-family, White, Male,Had gains,No losses,60,US,>50K
+25, State-gov,185643, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,Non-US,<=50K
+61, Private,120987, Doctorate,16,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,45,US,>50K
+34, Federal-gov,210987, Bachelors,13,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+48, Self-emp-inc,145678, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,65,US,>50K
+28, Private,236789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+37, Private,178954, Some-college,10,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,40,US,<=50K
+29,Private,182901,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+44,Self-emp-not-inc,209642,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+37,Federal-gov,120789,HS-grad,9,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+52,Private,189012,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,Had gains,No losses,45,Non-US,>50K
+23,State-gov,245678,Some-college,10,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+60,Local-gov,134567,Bachelors,13,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+48,Self-emp-inc,178903,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+36,Private,202345,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Amer-Indian-Eskimo,Female,No gains,No losses,40,Non-US,<=50K
+41,Federal-gov,167890,Bachelors,13,Single,Prof-specialty,Not-in-family,Black,Male,No gains,No losses,45,US,<=50K
+54,Private,210987,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+29, Private,184739, Bachelors,13,Single, Sales, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,209642, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+37, Local-gov,162913, Some-college,10,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+55, Federal-gov,294083, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,45,Non-US,>50K
+24, Private,181674, Assoc-voc,11,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+48, State-gov,243563, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,<=50K
+36, Private,212748, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,60,US,>50K
+28, Private,166456, HS-grad,9,Single, Other-service, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+60, Self-emp-inc,185759, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,Non-US,>50K
+40, Private,201879, Some-college,10,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,40,US,<=50K
+29,Private,187420,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,204320,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,Non-US,>50K
+37,Local-gov,256789,Some-college,10,Single,Protective-serv,Not-in-family,Black,Male,No gains,No losses,45,US,<=50K
+54,Federal-gov,178456,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,40,US,>50K
+23,Private,345678,HS-grad,9,Single,Sales,Not-in-family,Hispanic,Female,No gains,No losses,30,US,<=50K
+48,Private,120345,Bachelors,13,Couple,Adm-clerical,Wife,Black,Female,No gains,No losses,40,US,>50K
+60,Self-emp-inc,234567,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,Non-US,>50K
+36,State-gov,289456,Assoc-voc,11,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,50,US,<=50K
+33,Private,312345,Some-college,10,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+41,Private,265432,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,60,US,>50K
+50,Federal-gov,178345,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,40,Non-US,>50K
+27,Private,223456,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Hispanic,Male,No gains,No losses,35,US,<=50K
+45,Self-emp-not-inc,267890,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+31,Local-gov,298765,Assoc-acdm,12,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+39,Private,245678,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,55,US,>50K
+34,State-gov,312345,Some-college,10,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,50,US,<=50K
+38,Private,256789,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+51,Federal-gov,223206,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,40,Non-US,>50K
+57,Private,300104,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,84,US,>50K
+29, Private,185456, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+50, Self-emp-not-inc,209642, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,US,>50K
+41, Local-gov,123456, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+36, Private,278963, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,>50K
+27, State-gov,192837, Bachelors,13,Single, Adm-clerical, Not-in-family, Hispanic, Female,No gains,No losses,40,Non-US,<=50K
+55, Federal-gov,140123, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+42, Private,285761, HS-grad,9,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,40,US,<=50K
+33, Self-emp-inc,198765, Bachelors,13,Single, Exec-managerial, Not-in-family, Black, Male,Had gains,No losses,60,US,>50K
+48, Private,250123, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+24, Private,114567, Some-college,10,Single, Handlers-cleaners, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,30,Non-US,<=50K
+60, Federal-gov,156789, HS-grad,9,Couple, Protective-serv, Husband, Asian-Pac-Islander, Male,No gains,No losses,40,US,>50K
+39, Private,178945, Some-college,10,Single, Other-service, Not-in-family, Black, Male,No gains,No losses,35,US,<=50K
+37, State-gov,245678, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,300123, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,20,US,<=50K
+53, Self-emp-inc,210987, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+45, Local-gov,231234, HS-grad,9,Couple, Adm-clerical, Wife, Hispanic, Female,No gains,No losses,40,US,<=50K
+34, Private,267890, Doctorate,16,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+49, State-gov,280123, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+56, Federal-gov,290987, HS-grad,9,Couple, Protective-serv, Husband, Black, Male,No gains,No losses,40,US,>50K
+30, Private,226789, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+52, Self-emp-not-inc,245678, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+29,Private,209642,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+44,Self-emp-not-inc,145543,Some-college,10,Couple,Sales,Husband,Black,Male,No gains,No losses,55,US,>50K
+53,State-gov,189852,Masters,14,Couple,Exec-managerial,Wife,Asian-Pac-Islander,Female,No gains,No losses,45,Non-US,>50K
+37,Private,233456,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+41,Federal-gov,198653,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,40,US,>50K
+26,Private,256789,Bachelors,13,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+48,Local-gov,154321,Assoc-voc,11,Couple,Craft-repair,Husband,Amer-Indian-Eskimo,Male,No gains,No losses,50,US,>50K
+34,Private,187654,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Male,No gains,No losses,42,Non-US,<=50K
+39,Self-emp-inc,167890,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+50,Private,245678,Some-college,10,Couple,Prof-specialty,Wife,Black,Female,No gains,No losses,40,US,>50K
+37,Private,189123,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,45,US,>50K
+28,Private,123456,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,38,Non-US,<=50K
+45,Self-emp-not-inc,204567,Masters,14,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,US,>50K
+53,Local-gov,154321,HS-grad,9,Couple,Adm-clerical,Wife,Black,Female,No gains,No losses,40,US,<=50K
+40,Private,276890,Doctorate,16,Single,Exec-managerial,Not-in-family,White,Female,Had gains,No losses,55,Non-US,>50K
+29,State-gov,167890,Bachelors,13,Single,Tech-support,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+62,Federal-gov,198765,HS-grad,9,Couple,Protective-serv,Husband,White,Male,No gains,No losses,48,US,>50K
+34,Private,145678,Assoc-voc,11,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,US,<=50K
+50,Self-emp-inc,234567,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,60,US,>50K
+27,Private,178901,Assoc-acdm,12,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+42, Private,189778, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+29, Self-emp-not-inc,243897, Some-college,10,Single, Sales, Not-in-family, Black, Female,No gains,No losses,50,US,<=50K
+37, Local-gov,130767, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,40,Non-US,>50K
+54, Private,167647, HS-grad,9,Single, Craft-repair, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+44, State-gov,209642, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,55,US,>50K
+26, Private,184502, Bachelors,13,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,40,Non-US,<=50K
+48, Self-emp-inc,254879, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+33, Federal-gov,145753, Bachelors,13,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+60, Private,289123, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,65,US,>50K
+39, Self-emp-not-inc,174523, Some-college,10,Single, Sales, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,50,Non-US,<=50K
+28,Private,187654,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+45,Self-emp-not-inc,224786,Some-college,10,Couple,Craft-repair,Husband,White,Male,No gains,No losses,60,US,>50K
+39,State-gov,198765,Masters,14,Couple,Prof-specialty,Wife,Asian-Pac-Islander,Female,Had gains,No losses,40,US,>50K
+23,Private,145678,HS-grad,9,Single,Adm-clerical,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+54,Federal-gov,245987,Doctorate,16,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+37,Private,175432,Assoc-voc,11,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+31,Local-gov,200987,Bachelors,13,Single,Prof-specialty,Not-in-family,Black,Male,No gains,No losses,45,Non-US,<=50K
+43,Self-emp-inc,156789,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,55,US,>50K
+49,Private,183456,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+29,Private,167890,Some-college,10,Single,Craft-repair,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+52,State-gov,204567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,Non-US,>50K
+36,Private,198654,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+40,Federal-gov,234567,Masters,14,Couple,Exec-managerial,Wife,White,Female,Had gains,No losses,45,US,>50K
+33,Private,176543,Bachelors,13,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+47,Self-emp-not-inc,189765,Some-college,10,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+55,Federal-gov,245678,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+41,Private,198765,Masters,14,Couple,Exec-managerial,Wife,White,Female,Had gains,No losses,45,US,>50K
+30,Private,165432,Bachelors,13,Single,Tech-support,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+48,Self-emp-not-inc,193456,Some-college,10,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+53,Federal-gov,243567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+42,Private,198654,Masters,14,Couple,Exec-managerial,Wife,White,Female,Had gains,No losses,45,US,>50K
+32,Private,176543,Bachelors,13,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+29,Private,180321,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,203892,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+37,Federal-gov,128947,Doctorate,16,Single,Prof-specialty,Not-in-family,Black,Female,No gains,No losses,45,US,>50K
+54,Private,245678,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,60,US,>50K
+26,State-gov,152364,Some-college,10,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+48,Local-gov,276543,Assoc-voc,11,Couple,Protective-serv,Husband,White,Male,No gains,No losses,50,US,>50K
+33,Private,190321,Bachelors,13,Single,Sales,Not-in-family,Black,Male,No gains,No losses,40,US,<=50K
+50,Self-emp-inc,214567,Masters,14,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,70,Non-US,>50K
+39,Private,165432,Assoc-acdm,12,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,38,US,<=50K
+44,State-gov,278912,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+28,Private,189654,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+55,Federal-gov,213987,Masters,14,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,US,>50K
+34,Private,172345,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+49,Self-emp-not-inc,198765,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,45,US,>50K
+41,State-gov,199876,Masters,14,Couple,Tech-support,Wife,White,Female,No gains,No losses,50,US,>50K
+36,Federal-gov,176543,Doctorate,16,Single,Prof-specialty,Not-in-family,White,Male,Had gains,No losses,60,US,>50K
+30,Private,187654,Assoc-acdm,12,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+58,Self-emp-inc,209876,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,80,US,>50K
+45,Private,234567,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,60,US,>50K
+32,Local-gov,198765,Some-college,10,Single,Sales,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+53,Federal-gov,214567,Prof-school,15,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,70,US,>50K
+27,Private,176543,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+60,Self-emp-not-inc,198765,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,90,Non-US,>50K
+35,State-gov,187654,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+47,Federal-gov,209876,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,80,US,>50K
+31,Private,176543,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+46,Self-emp-inc,198765,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+38,Private,209876,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+52,Federal-gov,214567,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,75,US,>50K
+29,Private,198765,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+43,Self-emp-not-inc,209876,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+36,State-gov,176543,Masters,14,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+56,Federal-gov,214567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,80,US,>50K
+32,Private,198765,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+49,Self-emp-inc,209876,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+39,Private,198765,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+51,Federal-gov,214567,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,75,US,>50K
+28,Private,198765,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,209876,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+35,State-gov,176543,Masters,14,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+55,Federal-gov,214567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,80,US,>50K
+31,Private,198765,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+48,Self-emp-inc,209876,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+38,Private,198765,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+50,Federal-gov,214567,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,75,US,>50K
+27,Private,198765,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+41,Self-emp-not-inc,209876,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+34,State-gov,176543,Masters,14,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+54,Federal-gov,214567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,80,US,>50K
+30,Private,198765,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+47,Self-emp-inc,209876,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+37,Private,198765,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,Non-US,<=50K
+49,Federal-gov,214567,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,75,US,>50K
+26,Private,198765,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+28,Private,123456,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,98765,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+34,Federal-gov,234567,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+52,Local-gov,345678,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,45,US,>50K
+29,Private,456789,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,50,US,<=50K
+60,State-gov,567890,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,Non-US,>50K
+37,Private,678901,Assoc-voc,11,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,US,<=50K
+42,Self-emp-inc,789012,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,40,US,>50K
+36,Federal-gov,890123,Bachelors,13,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+50,Private,901234,Prof-school,15,Couple,Exec-managerial,Wife,Asian-Pac-Islander,Female,Had gains,No losses,55,Non-US,>50K
+29,Private,324561,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,216789,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,Non-US,>50K
+33,Private,178456,Some-college,10,Single,Sales,Not-in-family,Black,Male,No gains,No losses,45,US,<=50K
+53,Federal-gov,134567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+24,Private,245678,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+47,Local-gov,198765,Bachelors,13,Couple,Adm-clerical,Wife,Black,Female,No gains,No losses,40,US,>50K
+36,Private,301234,Some-college,10,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,50,US,<=50K
+50,State-gov,187654,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+28,Private,276543,Assoc-voc,11,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+45,Self-emp-inc,312345,Bachelors,13,Couple,Sales,Husband,White,Male,Had gains,No losses,60,US,>50K
+29, Private,186453, Bachelors,13,Single, Sales, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+42, State-gov,245123, Masters,14,Couple, Tech-support, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,>50K
+37, Private,123456, HS-grad,9,Single, Craft-repair, Not-in-family, Black, Female,No gains,No losses,30,US,<=50K
+55, Self-emp-not-inc,178965, Some-college,10,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+24, Private,154789, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,Non-US,<=50K
+50, Federal-gov,234567, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+60, Local-gov,198765, HS-grad,9,Couple, Protective-serv, Husband, White, Male,No gains,No losses,40,US,>50K
+33, Private,165432, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+48, Self-emp-inc,210987, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+22, Private,123789, Some-college,10,Single, Handlers-cleaners, Not-in-family, Black, Male,No gains,No losses,20,Non-US,<=50K
+29, Private,198774, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+54, Self-emp-not-inc,120987, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+43, Local-gov,234567, Assoc-voc,11,Single, Craft-repair, Not-in-family, Black, Male,No gains,No losses,38,Non-US,<=50K
+37, Private,186347, Some-college,10,Couple, Sales, Wife, White, Female,No gains,No losses,45,US,<=50K
+60, Federal-gov,167890, HS-grad,9,Couple, Adm-clerical, Husband, Black, Male,No gains,No losses,40,US,>50K
+48, Private,189234, Doctorate,16,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,Had gains,No losses,50,Non-US,>50K
+26, State-gov,145678, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+50, Self-emp-inc,178654, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+35, Private,210987, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+44, Private,239876, Some-college,10,Couple, Craft-repair, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,Non-US,>50K
+29, Private,185492, Bachelors,13,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,212345, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,Non-US,>50K
+36, State-gov,140123, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+50, Federal-gov,300123, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,40,US,>50K
+23, Private,190345, HS-grad,9,Single, Sales, Not-in-family, Black, Male,No gains,No losses,20,Non-US,<=50K
+60, Local-gov,250123, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+45, Private,175234, Assoc-voc,11,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,35,US,<=50K
+37, Self-emp-inc,243567, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,60,US,>50K
+28, Private,210987, Assoc-acdm,12,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+55, Federal-gov,198765, Masters,14,Couple, Prof-specialty, Husband, Black, Male,Had gains,No losses,45,US,>50K
+29, Private,185759, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+42, Self-emp-not-inc,234721, HS-grad,9,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,60,US,>50K
+37, Federal-gov,287356, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,Had gains,No losses,40,Non-US,>50K
+53, Private,123456, Doctorate,16,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+23, State-gov,198765, Some-college,10,Single, Adm-clerical, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+48, Local-gov,245678, Bachelors,13,Couple, Prof-specialty, Wife, Black, Female,No gains,No losses,50,US,>50K
+39, Private,167890, Assoc-voc,11,Single, Sales, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+33, Self-emp-inc,112233, Bachelors,13,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,60,Non-US,>50K
+56, Private,345678, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Male,No gains,Had losses,35,US,<=50K
+45, Federal-gov,287654, Some-college,10,Couple, Protective-serv, Husband, Black, Male,No gains,No losses,40,US,>50K
+29, Private,202345, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,145678, Some-college,10,Couple, Craft-repair, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,>50K
+37, Federal-gov,300123, Masters,14,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,38,US,>50K
+50, Local-gov,189345, HS-grad,9,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,223456, Assoc-voc,11,Single, Tech-support, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,35,Non-US,<=50K
+53, State-gov,156789, Bachelors,13,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,>50K
+39, Private,134567, Doctorate,16,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+28, Private,245678, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+61, Self-emp-inc,178345, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+34, Federal-gov,300567, Bachelors,13,Couple, Protective-serv, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,40,Non-US,>50K
+29, Private,183456, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+54, Self-emp-not-inc,209642, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,60,US,>50K
+37, Private,234721, Masters,14,Single, Prof-specialty, Not-in-family, Black, Male,No gains,No losses,50,US,>50K
+43, Local-gov,156432, Some-college,10,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,Non-US,<=50K
+48, State-gov,192837, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+36, Private,178234, Assoc-voc,11,Single, Sales, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+50, Federal-gov,207945, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,Non-US,>50K
+28, Private,230456, Some-college,10,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,45,US,<=50K
+41, Private,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+35, Self-emp-not-inc,245678, HS-grad,9,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,36,US,<=50K
+55, Private,218764, Masters,14,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+30, Local-gov,176543, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+52, Federal-gov,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+39, Private,187654, Some-college,10,Single, Sales, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+40, Self-emp-not-inc,213456, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,55,US,>50K
+27, Private,176543, Assoc-acdm,12,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,35,Non-US,<=50K
+45, Federal-gov,204567, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+34, Private,187456, HS-grad,9,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+56, Self-emp-inc,219876, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+31, Private,201234, Some-college,10,Single, Sales, Not-in-family, White, Male,No gains,No losses,45,US,<=50K
+49, Local-gov,206789, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+38, Private,192345, HS-grad,9,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+29, Private,209642, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,284582, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+37, Local-gov,186357, Some-college,10,Single, Protective-serv, Not-in-family, Black, Male,No gains,No losses,42,US,<=50K
+54, Private,123456, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+26, Private,148789, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+61, Federal-gov,200123, HS-grad,9,Couple, Adm-clerical, Husband, White, Male,No gains,No losses,35,US,>50K
+33, State-gov,254789, Bachelors,13,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+48, Private,178654, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+39, Self-emp-inc,312345, Assoc-voc,11,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,45,US,<=50K
+50, Private,198765, Bachelors,13,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,40,Non-US,>50K
+29,Private,192835,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+44,Self-emp-not-inc,203456,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+37,Local-gov,145678,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+52,Federal-gov,178234,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,45,US,>50K
+24,Private,210345,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,30,US,<=50K
+60,Self-emp-inc,320456,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+41,Private,187654,Assoc-voc,11,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,US,<=50K
+55,State-gov,234567,Masters,14,Couple,Prof-specialty,Wife,Black,Female,No gains,No losses,50,Non-US,>50K
+36,Private,198765,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+48,Private,221345,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+33,Local-gov,176543,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+47,Federal-gov,189765,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,45,US,>50K
+23,Private,210987,HS-grad,9,Single,Sales,Not-in-family,White,Male,No gains,No losses,30,US,<=50K
+59,Self-emp-inc,310456,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+42,Private,187654,Assoc-voc,11,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,US,<=50K
+54,State-gov,234567,Masters,14,Couple,Prof-specialty,Wife,Black,Female,No gains,No losses,50,Non-US,>50K
+35,Private,198765,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+49,Private,221345,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+29,Private,198123,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,234567,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,55,US,>50K
+37,Federal-gov,187654,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,38,Non-US,<=50K
+50,Local-gov,212345,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,Had gains,No losses,45,US,>50K
+24,Private,123456,Assoc-acdm,12,Single,Sales,Not-in-family,White,Male,No gains,No losses,30,US,<=50K
+55,Self-emp-inc,276543,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+33,Private,198765,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,40,Non-US,<=50K
+40,State-gov,245678,Bachelors,13,Couple,Tech-support,Husband,White,Male,No gains,No losses,40,US,>50K
+47,Private,156789,Some-college,10,Single,Craft-repair,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+60,Federal-gov,298765,HS-grad,9,Couple,Adm-clerical,Husband,White,Male,No gains,No losses,40,US,>50K
+28,Private,215646,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+45,Self-emp-not-inc,187420,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,60,US,>50K
+34,Federal-gov,284582,Doctorate,16,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+50,Local-gov,174120,Some-college,10,Couple,Adm-clerical,Wife,Black,Female,No gains,No losses,40,US,<=50K
+29,Private,109015,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+40,State-gov,154374,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+33,Private,189745,Assoc-voc,11,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+52,Self-emp-inc,203486,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,65,US,>50K
+37,Private,123456,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+48,Federal-gov,187420,Prof-school,15,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+37,Private,187420,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,45,US,>50K
+28,State-gov,284582,Bachelors,13,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+45,Self-emp-not-inc,215646,Doctorate,16,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,Non-US,>50K
+34,Private,154352,Assoc-voc,11,Single,Craft-repair,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+52,Local-gov,197874,HS-grad,9,Couple,Protective-serv,Husband,Black,Male,No gains,No losses,50,US,>50K
+29,Private,116567,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+41,Federal-gov,178303,Bachelors,13,Couple,Tech-support,Husband,White,Male,Had gains,No losses,55,US,>50K
+36,Private,251234,HS-grad,9,Single,Machine-op-inspct,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+50,Self-emp-inc,134567,Masters,14,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+33,Private,223456,Bachelors,13,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+29,Private,123456,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,234567,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+37,State-gov,345678,Assoc-voc,11,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,45,Non-US,<=50K
+54,Federal-gov,456789,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,Had gains,No losses,40,US,>50K
+23,Private,567890,HS-grad,9,Single,Sales,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+48,Local-gov,678901,Bachelors,13,Couple,Adm-clerical,Husband,Asian-Pac-Islander,Male,No gains,No losses,40,Non-US,>50K
+39,Private,789012,Some-college,10,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,60,US,<=50K
+31,Self-emp-inc,890123,Masters,14,Couple,Tech-support,Husband,White,Male,Had gains,No losses,50,US,>50K
+62,Private,901234,HS-grad,9,Single,Transport-moving,Not-in-family,White,Male,No gains,No losses,20,Non-US,<=50K
+44,Federal-gov,112345,Prof-school,15,Couple,Exec-managerial,Wife,White,Female,Had gains,No losses,40,US,>50K
+29,Private,182901,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,212345,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+36,Federal-gov,134567,Doctorate,16,Single,Prof-specialty,Not-in-family,Black,Female,No gains,No losses,45,US,>50K
+50,Private,234567,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,60,US,<=50K
+23,State-gov,198765,Some-college,10,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+45,Local-gov,145678,Bachelors,13,Couple,Prof-specialty,Wife,Black,Female,No gains,No losses,40,US,>50K
+39,Private,256789,Assoc-voc,11,Single,Sales,Not-in-family,White,Male,No gains,No losses,38,Non-US,<=50K
+60,Self-emp-inc,167890,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+28,Private,278901,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+53,Federal-gov,189012,HS-grad,9,Couple,Protective-serv,Husband,White,Male,No gains,No losses,50,US,<=50K
+29, Private,189456, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+44, Self-emp-not-inc,374983, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,65,Non-US,>50K
+38, Private,215646, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,50,US,<=50K
+52, Local-gov,123456, Doctorate,16,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,45,US,>50K
+28, State-gov,154789, Bachelors,13,Single, Adm-clerical, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,Non-US,<=50K
+60, Federal-gov,321456, HS-grad,9,Couple, Protective-serv, Husband, Black, Male,No gains,No losses,40,US,>50K
+33, Private,284321, Assoc-voc,11,Single, Craft-repair, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,35,US,<=50K
+48, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+54, Private,175432, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,40,US,>50K
+23, Private,245678, Some-college,10,Single, Other-service, Not-in-family, Black, Male,No gains,No losses,20,Non-US,<=50K
+41, Local-gov,312345, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,US,>50K
+37, State-gov,167890, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+50, Private,289345, Assoc-acdm,12,Couple, Craft-repair, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,45,US,>50K
+47, Federal-gov,190456, Bachelors,13,Couple, Tech-support, Husband, Black, Male,No gains,No losses,40,US,>50K
+26, Private,324567, HS-grad,9,Single, Farming-fishing, Not-in-family, White, Male,No gains,No losses,30,Non-US,<=50K
+43, Self-emp-not-inc,235678, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,US,>50K
+35, Private,298765, Some-college,10,Single, Sales, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+55, Federal-gov,165432, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,40,US,>50K
+30, Private,276543, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,35,Non-US,<=50K
+49, State-gov,234567, Masters,14,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,50,US,>50K
+36, Private,187654, Some-college,10,Single, Other-service, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,25,US,<=50K
+29, Private,198745, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,120987, HS-grad,9,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,50,US,>50K
+37, Private,234567, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,45,Non-US,>50K
+54, Local-gov,156789, Some-college,10,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+23, Private,215678, Assoc-voc,11,Single, Sales, Not-in-family, White, Male,No gains,No losses,30,US,<=50K
+48, Federal-gov,178900, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,40,Non-US,>50K
+33, State-gov,167890, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+61, Self-emp-inc,132345, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,70,US,>50K
+27, Private,245678, Some-college,10,Single, Other-service, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,20,Non-US,<=50K
+39, Private,178345, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+37,Private,123456,Bachelors,13,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,45,US,>50K
+28,State-gov,234567,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,345678,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,Non-US,>50K
+52,Federal-gov,456789,HS-grad,9,Single,Protective-serv,Not-in-family,White,Female,No gains,No losses,38,US,<=50K
+34,Local-gov,567890,Doctorate,16,Couple,Prof-specialty,Wife,Black,Female,Had gains,No losses,55,US,>50K
+29,Private,678901,Bachelors,13,Single,Tech-support,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,Non-US,<=50K
+41,Self-emp-inc,789012,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+53,Private,890123,HS-grad,9,Single,Craft-repair,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+36,State-gov,901234,Assoc-voc,11,Couple,Sales,Husband,White,Male,No gains,No losses,40,US,>50K
+48,Federal-gov,112233,Some-college,10,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,35,US,<=50K
+29, Private,123456, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+45, Self-emp-not-inc,234567, HS-grad,9,Couple, Sales, Husband, Black, Male,No gains,No losses,50,US,>50K
+39, Federal-gov,345678, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,Had gains,No losses,40,Non-US,>50K
+52, Local-gov,456789, Some-college,10,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+34, Private,567890, Doctorate,16,Single, Exec-managerial, Not-in-family, Black, Male,Had gains,No losses,45,US,>50K
+27, State-gov,678901, Assoc-voc,11,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,40,Non-US,<=50K
+63, Private,789012, HS-grad,9,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,60,US,>50K
+41, Self-emp-inc,890123, Bachelors,13,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,US,>50K
+36, Private,901234, 11th,7,Single, Transport-moving, Not-in-family, Black, Female,No gains,No losses,40,Non-US,<=50K
+55, Private,1234567, Some-college,10,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+29,Private,189456,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+42,Self-emp-not-inc,203487,HS-grad,9,Couple,Craft-repair,Husband,Asian-Pac-Islander,Male,No gains,No losses,60,US,>50K
+36,Local-gov,118372,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+50,State-gov,245456,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,Non-US,>50K
+24,Private,198745,Assoc-voc,11,Single,Sales,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+48,Private,254789,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,40,US,>50K
+33,Federal-gov,134567,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+55,Self-emp-inc,178954,HS-grad,9,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+62,Private,165432,Bachelors,13,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,45,Non-US,>50K
+27,Private,223345,Some-college,10,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+45,Private,210987,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+58,Federal-gov,190234,HS-grad,9,Couple,Adm-clerical,Wife,White,Female,No gains,No losses,40,US,>50K
+41,Private,245678,Bachelors,13,Single,Sales,Not-in-family,White,Female,Had gains,No losses,45,US,>50K
+34,Local-gov,176543,Assoc-acdm,12,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+39,Private,167890,Prof-school,15,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,50,US,>50K
+53,Self-emp-not-inc,245678,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+26,State-gov,198765,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+37,Private,223456,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,55,US,>50K
+31,Private,176543,Some-college,10,Single,Sales,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+49,Private,234567,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,45,US,>50K
+28,Federal-gov,145678,Assoc-voc,11,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+56,Private,245678,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+29,Private,189778,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,209642,Some-college,10,Couple,Craft-repair,Husband,Black,Male,No gains,No losses,45,US,<=50K
+35,Private,120985,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,Had gains,No losses,50,Non-US,>50K
+50,Federal-gov,180231,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,40,US,>50K
+23,Private,145543,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,30,US,<=50K
+60,Private,287923,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+37,Local-gov,203245,Assoc-voc,11,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+48,Self-emp-inc,276512,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+28,Private,110987,Some-college,10,Single,Adm-clerical,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,35,Non-US,<=50K
+55,State-gov,200001,HS-grad,9,Couple,Protective-serv,Husband,White,Male,No gains,No losses,40,US,>50K
+28,Private,234721,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,187654,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+33,Local-gov,123456,Assoc-voc,11,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+52,Federal-gov,267890,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,No gains,No losses,40,Non-US,>50K
+41,Private,192345,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+60,State-gov,178901,HS-grad,9,Couple,Protective-serv,Husband,Black,Male,No gains,No losses,40,US,>50K
+29,Private,234567,Bachelors,13,Single,Prof-specialty,Not-in-family,Amer-Indian-Eskimo,Female,No gains,No losses,40,US,<=50K
+50,Private,345678,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+37,Self-emp-inc,112233,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,Non-US,>50K
+55,Federal-gov,987654,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+43,Private,223344,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+48,Self-emp-not-inc,334455,Assoc-acdm,12,Couple,Tech-support,Wife,White,Female,No gains,No losses,40,US,>50K
+26,Private,556677,Some-college,10,Single,Adm-clerical,Not-in-family,White,Male,No gains,No losses,20,US,<=50K
+62,Federal-gov,667788,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,40,US,>50K
+35,Private,778899,Bachelors,13,Single,Sales,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+53,State-gov,889900,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,60,Non-US,>50K
+39,Private,998877,Some-college,10,Single,Prof-specialty,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+46,Self-emp-inc,112211,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+27,Private,221122,HS-grad,9,Single,Craft-repair,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+58,Federal-gov,332233,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,40,US,>50K
+34,Private,443322,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+29,Private,198742,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+54,Self-emp-not-inc,234721,HS-grad,9,Couple,Craft-repair,Husband,White,Male,Had gains,No losses,50,US,>50K
+37,Private,142345,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,45,Non-US,>50K
+45,Federal-gov,189456,Doctorate,16,Couple,Exec-managerial,Husband,Black,Male,No gains,No losses,60,US,>50K
+22,Private,123456,Some-college,10,Single,Adm-clerical,Not-in-family,White,Male,No gains,No losses,20,US,<=50K
+61,State-gov,178945,Bachelors,13,Couple,Tech-support,Wife,Black,Female,No gains,No losses,40,US,>50K
+33,Private,193456,Assoc-voc,11,Single,Machine-op-inspct,Not-in-family,White,Female,No gains,No losses,35,Non-US,<=50K
+50,Local-gov,234567,HS-grad,9,Couple,Protective-serv,Husband,White,Male,Had gains,No losses,55,US,>50K
+28,Private,145678,Bachelors,13,Single,Sales,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+43,Self-emp-inc,198765,Masters,14,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+29, Private,189476, Bachelors,13,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,172845, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+37, Local-gov,184739, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,32,Non-US,<=50K
+54, Private,236547, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+33, Federal-gov,145678, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+48, Self-emp-inc,201456, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+26, Private,210987, HS-grad,9,Single, Handlers-cleaners, Not-in-family, Black, Female,No gains,No losses,38,Non-US,<=50K
+61, State-gov,167890, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+39, Private,189234, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+45, Private,203456, Bachelors,13,Couple, Tech-support, Husband, White, Male,Had gains,No losses,60,US,>50K
+34,Private,189456,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,123456,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+28,State-gov,240789,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,35,US,<=50K
+52,Federal-gov,284756,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,45,US,>50K
+37,Local-gov,178902,HS-grad,9,Single,Craft-repair,Not-in-family,Amer-Indian-Eskimo,Male,No gains,No losses,40,Non-US,<=50K
+42,Private,312456,Bachelors,13,Couple,Sales,Wife,Black,Female,No gains,No losses,40,US,>50K
+29,Private,150789,Assoc-voc,11,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,38,US,<=50K
+50,Self-emp-inc,196789,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+33,Private,210456,Bachelors,13,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,US,<=50K
+48,Federal-gov,287654,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,40,Non-US,>50K
+29,Private,233123,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+41,Self-emp-not-inc,187456,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+23,Private,312456,Some-college,10,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,30,Non-US,<=50K
+52,Federal-gov,145678,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+36,State-gov,234567,HS-grad,9,Couple,Protective-serv,Wife,White,Female,No gains,No losses,40,US,<=50K
+48,Private,198765,Bachelors,13,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,42,US,<=50K
+39,Local-gov,256789,Assoc-voc,11,Couple,Craft-repair,Husband,Black,Male,No gains,No losses,55,US,>50K
+27,Private,134567,Some-college,10,Single,Handlers-cleaners,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,38,Non-US,<=50K
+54,Self-emp-inc,176543,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,45,US,>50K
+44,Private,289012,Bachelors,13,Single,Sales,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+37, Private,123456, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+29, State-gov,234567, Masters,14,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+42, Self-emp-not-inc,345678, Some-college,10,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,50,US,>50K
+33, Private,456789, Assoc-voc,11,Single, Sales, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+48, Federal-gov,567890, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+26, Private,678901, HS-grad,9,Single, Handlers-cleaners, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+55, Self-emp-inc,789012, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+31, Local-gov,890123, 12th,8,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,30,Non-US,<=50K
+39, Private,901234, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+27, State-gov,123456, Assoc-acdm,12,Single, Protective-serv, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+28, Private,210000, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+45, Self-emp-not-inc,180000, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,>50K
+60, Federal-gov,150000, Masters,14,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,45,US,>50K
+32, Private,250000, Assoc-acdm,12,Single, Craft-repair, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+50, Local-gov,300000, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+41, Private,210500, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+29, State-gov,260000, Bachelors,13,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+55, Self-emp-inc,120000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,70,US,>50K
+37, Private,198000, Some-college,10,Single, Sales, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+43, Private,205000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+34, Federal-gov,150000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+52, Private,230000, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,Non-US,>50K
+27, Local-gov,180000, Some-college,10,Single, Tech-support, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+48, Self-emp-not-inc,175000, Bachelors,13,Couple, Craft-repair, Husband, White, Male,No gains,No losses,60,US,>50K
+36, Private,190000, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,45,US,<=50K
+54, Federal-gov,210000, Masters,14,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+30, Private,195000, HS-grad,9,Single, Sales, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+39, Self-emp-inc,250000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+33, State-gov,190000, Assoc-acdm,12,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+44, Private,220000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+42, Federal-gov,160000, HS-grad,9,Single, Adm-clerical, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+29,Private,184719,Bachelors,13,Single,Tech-support,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+45,Self-emp-not-inc,209642,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+53,Federal-gov,134545,Assoc-voc,11,Couple,Protective-serv,Husband,Black,Male,No gains,No losses,40,US,<=50K
+37,Local-gov,245321,Some-college,10,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,38,US,<=50K
+62,Private,291854,HS-grad,9,Couple,Sales,Husband,White,Male,Had gains,No losses,50,US,>50K
+28,State-gov,176789,Assoc-acdm,12,Single,Prof-specialty,Not-in-family,Black,Female,No gains,No losses,30,US,<=50K
+49,Private,239876,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,45,Non-US,>50K
+34,Self-emp-inc,104568,Bachelors,13,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+55,Private,198765,Prof-school,15,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+41,Federal-gov,178342,HS-grad,9,Single,Handlers-cleaners,Not-in-family,Amer-Indian-Eskimo,Female,No gains,No losses,35,US,<=50K
+29, Private,198742, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+54, Self-emp-not-inc,287903, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,60,US,>50K
+37, Federal-gov,133456, Masters,14,Single, Prof-specialty, Not-in-family, Black, Female,Had gains,No losses,45,Non-US,>50K
+43, Private,245678, Doctorate,16,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+22, State-gov,176543, Some-college,10,Single, Adm-clerical, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,30,US,<=50K
+60, Local-gov,300233, HS-grad,9,Couple, Protective-serv, Husband, White, Male,No gains,No losses,55,US,>50K
+28, Private,110987, Assoc-voc,11,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+40, Self-emp-inc,213456, Bachelors,13,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+35, Private,198765, 12th,8,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+48, State-gov,145678, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+29, Private,202345, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+37, Self-emp-not-inc,145678, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,45,US,>50K
+42, Private,278903, HS-grad,9,Single, Sales, Not-in-family, Black, Female,No gains,No losses,38,Non-US,<=50K
+54, Federal-gov,198765, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,50,US,>50K
+23, State-gov,134567, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+48, Self-emp-inc,160234, Bachelors,13,Couple, Craft-repair, Husband, White, Male,No gains,No losses,60,US,>50K
+39, Private,223456, Bachelors,13,Single, Tech-support, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+50, Local-gov,189765, Assoc-voc,11,Couple, Protective-serv, Husband, White, Male,No gains,No losses,55,US,>50K
+45, Private,300123, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+36, Federal-gov,250987, Masters,14,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,40,US,>50K
+29, Private,184572, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+45, Self-emp-not-inc,231716, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+38, Federal-gov,215646, Masters,14,Single, Exec-managerial, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,45,Non-US,>50K
+52, Local-gov,189123, Some-college,10,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,<=50K
+24, State-gov,123456, Bachelors,13,Single, Tech-support, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+60, Private,287654, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,40,US,>50K
+41, Private,175432, HS-grad,9,Single, Sales, Not-in-family, Black, Female,No gains,No losses,30,US,<=50K
+28, Self-emp-inc,194837, Bachelors,13,Single, Exec-managerial, Not-in-family, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+37, Private,210987, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+62, Federal-gov,145678, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,40,US,>50K
+29,Private,187420,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,38,US,<=50K
+44,Self-emp-not-inc,121772,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,Non-US,>50K
+37,Private,192835,HS-grad,9,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,45,US,<=50K
+52,Federal-gov,109015,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,50,US,>50K
+23,Private,207853,Some-college,10,Single,Sales,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+60,State-gov,287994,Bachelors,13,Couple,Adm-clerical,Husband,White,Male,No gains,No losses,40,US,>50K
+41,Private,184754,Assoc-voc,11,Couple,Machine-op-inspct,Husband,Black,Male,No gains,No losses,48,US,<=50K
+50,Private,123011,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+28,Local-gov,145897,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,42,US,<=50K
+36,Self-emp-inc,210543,Some-college,10,Couple,Sales,Husband,White,Male,Had gains,No losses,50,Non-US,>50K
+36,Private,189489,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,45,US,>50K
+29,State-gov,124983,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,40,Non-US,<=50K
+42,Private,209642,HS-grad,9,Couple,Craft-repair,Husband,Black,Male,No gains,No losses,55,US,>50K
+54,Federal-gov,178421,Doctorate,16,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+23,Private,104521,Some-college,10,Single,Handlers-cleaners,Not-in-family,White,Female,No gains,No losses,20,US,<=50K
+37,Self-emp-not-inc,165234,Bachelors,13,Single,Tech-support,Not-in-family,White,Male,No gains,No losses,45,US,>50K
+50,Local-gov,192837,Assoc-voc,11,Couple,Protective-serv,Husband,Black,Male,No gains,No losses,50,US,>50K
+48,Private,213456,HS-grad,9,Single,Adm-clerical,Not-in-family,Amer-Indian-Eskimo,Female,No gains,No losses,40,US,<=50K
+31,Private,156789,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,60,Non-US,<=50K
+44,Self-emp-inc,245678,Masters,14,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,70,US,>50K
+29, Private,183432, Bachelors,13,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,197987, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+33, Local-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,35,Non-US,<=50K
+54, Private,189432, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,45,US,>50K
+26, State-gov,215432, Assoc-voc,11,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+48, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+39, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+37, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+28, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+44, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+50, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+34, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+55, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+23, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+60, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+45, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+41, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+27, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+46, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+49, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+35, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+56, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+46, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+42, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+27, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+46, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+49, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+35, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+56, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+46, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+42, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+27, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+46, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+49, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+35, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+56, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+46, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+42, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+27, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+46, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+49, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+35, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+56, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+46, Private,134567, Bachelors,13,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,55,US,>50K
+42, Self-emp-inc,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+27, Private,256789, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,Non-US,<=50K
+46, Local-gov,210987, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+49, Private,178654, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+35, State-gov,245678, Some-college,10,Single, Tech-support, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+56, Self-emp-not-inc,198765, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+24, Private,245678, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,Non-US,<=50K
+61, Federal-gov,176543, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,>50K
+29,Private,182901,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,45,US,<=50K
+42,Self-emp-not-inc,123456,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,55,US,>50K
+37,Local-gov,209876,HS-grad,9,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,38,US,<=50K
+50,Federal-gov,150987,Some-college,10,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,40,Non-US,>50K
+28,Private,190234,Assoc-voc,11,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+55,State-gov,234567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,US,>50K
+34,Private,176543,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+39,Self-emp-inc,198765,Masters,14,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,50,US,>50K
+47,Private,145678,HS-grad,9,Couple,Craft-repair,Husband,Hispanic,Male,No gains,No losses,48,Non-US,<=50K
+26,Private,210987,Some-college,10,Single,Handlers-cleaners,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+60,Federal-gov,165432,Bachelors,13,Couple,Adm-clerical,Husband,White,Male,No gains,No losses,40,US,>50K
+36,Local-gov,189012,11th,7,Single,Protective-serv,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+49,Private,134567,Masters,14,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+27,Private,178901,Some-college,10,Single,Sales,Not-in-family,Black,Male,No gains,No losses,35,US,<=50K
+53,State-gov,210123,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,45,US,>50K
+32,Private,194321,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,123890,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+31,Local-gov,209876,HS-grad,9,Single,Adm-clerical,Not-in-family,Black,Female,No gains,No losses,38,US,<=50K
+52,Federal-gov,150987,Some-college,10,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,40,Non-US,>50K
+25,Private,190234,Assoc-voc,11,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+54,State-gov,234567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,60,US,>50K
+33,Private,176543,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+34,Private,189456,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,45,US,>50K
+28,State-gov,123456,Masters,14,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+45,Private,204567,Doctorate,16,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+39,Federal-gov,178345,HS-grad,9,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+52,Self-emp-not-inc,256789,Some-college,10,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,60,US,>50K
+23,Private,198765,Assoc-voc,11,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+60,Local-gov,176543,Bachelors,13,Couple,Prof-specialty,Husband,Black,Male,Had gains,No losses,55,US,>50K
+29,Private,134567,Some-college,10,Single,Sales,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,30,US,<=50K
+47,Self-emp-inc,234567,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,Non-US,>50K
+36,Private,145678,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+29,Private,200000,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,180000,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+35,Federal-gov,210000,Doctorate,16,Couple,Prof-specialty,Wife,Black,Female,No gains,No losses,45,Non-US,>50K
+23,Private,150000,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,30,US,<=50K
+50,Local-gov,230000,HS-grad,9,Couple,Adm-clerical,Husband,White,Male,No gains,No losses,40,US,>50K
+47,State-gov,190000,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+31,Self-emp-inc,250000,Masters,14,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,Non-US,>50K
+28,Private,120000,Assoc-acdm,12,Single,Craft-repair,Not-in-family,Black,Male,No gains,No losses,35,US,<=50K
+54,Federal-gov,260000,Prof-school,15,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,Had gains,No losses,55,US,>50K
+41,Private,170000,HS-grad,9,Single,Handlers-cleaners,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Private,234721,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,40,US,>50K
+28,State-gov,182901,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,50,Non-US,<=50K
+50,Self-emp-not-inc,209642,HS-grad,9,Couple,Craft-repair,Husband,Black,Male,Had gains,No losses,60,US,>50K
+36,Federal-gov,182752,Assoc-voc,11,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+60,Local-gov,284582,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,45,Non-US,>50K
+29,Private,145371,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+42,Self-emp-inc,239104,Bachelors,13,Couple,Exec-managerial,Wife,White,Female,Had gains,No losses,55,US,>50K
+33,Private,190243,11th,7,Single,Handlers-cleaners,Not-in-family,Black,Male,No gains,No losses,45,US,<=50K
+54,Federal-gov,256789,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,No gains,No losses,40,Non-US,>50K
+37,Private,178456,HS-grad,9,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+29, Private,218752, Bachelors,13,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+42, Self-emp-not-inc,184912, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,45,US,>50K
+36, Federal-gov,287756, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+50, Private,122354, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,Non-US,>50K
+23, State-gov,167892, HS-grad,9,Single, Sales, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+48, Local-gov,203456, Bachelors,13,Couple, Protective-serv, Husband, Black, Male,No gains,No losses,40,US,>50K
+31, Private,152345, Assoc-voc,11,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+55, Self-emp-inc,256789, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+40, Private,193245, Some-college,10,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,42,US,<=50K
+37, Federal-gov,104123, Masters,14,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,40,US,>50K
+28, Private,284582, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+43, State-gov,198693, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,US,>50K
+37, Private,123456, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,40,Non-US,<=50K
+52, Self-emp-not-inc,256789, Some-college,10,Couple, Sales, Husband, White, Male,Had gains,No losses,60,US,>50K
+29, Private,145678, Assoc-voc,11,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,38,US,<=50K
+60, Federal-gov,333221, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,45,US,>50K
+48, Local-gov,187654, Bachelors,13,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,>50K
+34, Private,223344, 11th,7,Single, Handlers-cleaners, Not-in-family, Black, Male,No gains,No losses,30,Non-US,<=50K
+45, Self-emp-inc,312456, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,US,>50K
+23, Private,176543, Some-college,10,Single, Other-service, Not-in-family, White, Female,No gains,No losses,20,US,<=50K
+28, Private,215646, Bachelors,13,Single, Tech-support, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+37, Self-emp-not-inc,209642, Masters,14,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,45,US,>50K
+45, State-gov,141297, Assoc-voc,11,Single, Craft-repair, Not-in-family, Black, Female,No gains,No losses,38,Non-US,<=50K
+50, Private,231931, Doctorate,16,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+34, Local-gov,149184, Some-college,10,Single, Adm-clerical, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+29, Private,182148, HS-grad,9,Single, Sales, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+60, Self-emp-inc,245487, Bachelors,13,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+43, Federal-gov,123456, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,Non-US,>50K
+55, Private,189456, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,48,US,<=50K
+41, Local-gov,207460, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+29,Private,209642,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+42,Self-emp-not-inc,193524,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,Non-US,>50K
+50,Federal-gov,184981,Some-college,10,Couple,Adm-clerical,Wife,Black,Female,No gains,No losses,39,US,<=50K
+37,Private,123456,HS-grad,9,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,45,US,<=50K
+55,Local-gov,167493,Doctorate,16,Couple,Prof-specialty,Husband,White,Male,Had gains,No losses,60,US,>50K
+28,State-gov,245678,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,Non-US,<=50K
+31,Private,198765,Assoc-voc,11,Couple,Handlers-cleaners,Husband,Black,Male,No gains,No losses,40,US,<=50K
+60,Self-emp-inc,154321,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,55,US,>50K
+35,Private,124578,Some-college,10,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+48,Federal-gov,234567,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,50,Non-US,>50K
+28, Private,192123, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,45,US,<=50K
+42, Local-gov,233445, Masters,14,Couple, Exec-managerial, Husband, Black, Male,No gains,No losses,50,US,>50K
+37, Private,175000, Some-college,10,Single, Sales, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+55, Self-emp-not-inc,123456, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,60,US,>50K
+29, State-gov,210987, Bachelors,13,Single, Tech-support, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+63, Federal-gov,140000, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,40,US,>50K
+34, Private,198765, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,Non-US,<=50K
+49, Private,250000, Masters,14,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,No gains,No losses,55,US,>50K
+26, Private,178000, Some-college,10,Single, Handlers-cleaners, Other-relative, White, Male,No gains,No losses,40,Non-US,<=50K
+40, Self-emp-inc,300000, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,70,US,>50K
+29,Private,184355,Bachelors,13,Single,Tech-support,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+52,Self-emp-not-inc,209642,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,60,US,>50K
+41,Federal-gov,338409,Masters,14,Single,Exec-managerial,Not-in-family,Asian-Pac-Islander,Female,No gains,No losses,45,Non-US,>50K
+34,Private,140189,Some-college,10,Couple,Sales,Wife,Black,Female,No gains,No losses,40,US,<=50K
+50,Local-gov,120846,Doctorate,16,Single,Prof-specialty,Not-in-family,White,Male,Had gains,No losses,50,US,>50K
+27,State-gov,150345,Assoc-voc,11,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+63,Self-emp-inc,197872,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,70,US,>50K
+45,Private,289145,HS-grad,9,Couple,Machine-op-inspct,Husband,Black,Male,No gains,No losses,40,Non-US,<=50K
+39,Private,190102,Bachelors,13,Single,Prof-specialty,Not-in-family,White,Female,No gains,No losses,30,US,<=50K
+56,Federal-gov,210654,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,55,US,>50K
+28,Private,184355,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+48,Local-gov,167542,Bachelors,13,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,Non-US,<=50K
+60,Self-emp-not-inc,120846,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,50,US,>50K
+35,Federal-gov,338409,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Male,Had gains,No losses,60,US,>50K
+43,Private,209642,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,60,US,>50K
+31,State-gov,150345,Assoc-acdm,12,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+54,Self-emp-inc,197872,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,55,US,>50K
+46,Federal-gov,210654,Masters,14,Single,Prof-specialty,Not-in-family,Asian-Pac-Islander,Female,Had gains,No losses,55,US,>50K
+38,Private,184355,Some-college,10,Single,Sales,Not-in-family,White,Male,No gains,No losses,40,US,<=50K
+49,Local-gov,167542,Bachelors,13,Single,Tech-support,Not-in-family,Black,Female,No gains,No losses,40,Non-US,<=50K
+62,Self-emp-not-inc,120846,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,50,US,>50K
+28,Private,202356,Bachelors,13,Single,Sales,Not-in-family,White,Female,No gains,No losses,40,US,<=50K
+45,Self-emp-not-inc,186742,Masters,14,Couple,Exec-managerial,Husband,Asian-Pac-Islander,Male,Had gains,No losses,50,US,>50K
+34,Private,123456,Some-college,10,Single,Tech-support,Not-in-family,Black,Male,No gains,No losses,35,Non-US,<=50K
+52,Federal-gov,210987,Doctorate,16,Couple,Prof-specialty,Wife,White,Female,Had gains,No losses,45,US,>50K

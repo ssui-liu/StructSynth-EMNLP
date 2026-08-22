@@ -1,0 +1,247 @@
+{
+  "nodes": [
+    "job_title",
+    "experience_level",
+    "employment_type",
+    "company_location",
+    "company_size",
+    "employee_residence",
+    "remote_ratio",
+    "education_required",
+    "years_experience",
+    "industry",
+    "job_description_length",
+    "benefits_score",
+    "company_name",
+    "required_skill_1",
+    "required_skill_2",
+    "required_skill_3",
+    "required_skill_4",
+    "required_skill_5",
+    "salary (k)"
+  ],
+  "edges": [
+    {
+      "from": "years_experience",
+      "to": "experience_level",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'years_experience' functionally determines 'experience_level' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "job_description_length",
+      "to": "required_skill_5",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'job_description_length' functionally determines 'required_skill_5' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "job_title": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "experience_level": {
+        "level": 1,
+        "parents": [
+          "years_experience"
+        ],
+        "children": [],
+        "ancestors": [
+          "years_experience"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "employment_type": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "company_location": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "company_size": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "employee_residence": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "remote_ratio": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "education_required": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "years_experience": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "experience_level"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "experience_level"
+        ],
+        "in_graph": true
+      },
+      "industry": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "job_description_length": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "required_skill_5"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "required_skill_5"
+        ],
+        "in_graph": true
+      },
+      "benefits_score": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "company_name": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "required_skill_1": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "required_skill_2": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "required_skill_3": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "required_skill_4": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "required_skill_5": {
+        "level": 1,
+        "parents": [
+          "job_description_length"
+        ],
+        "children": [],
+        "ancestors": [
+          "job_description_length"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "salary (k)": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      }
+    },
+    "levels": {
+      "0": [
+        "years_experience",
+        "job_description_length"
+      ],
+      "1": [
+        "experience_level",
+        "required_skill_5"
+      ],
+      "others": [
+        "job_title",
+        "employment_type",
+        "company_location",
+        "company_size",
+        "employee_residence",
+        "remote_ratio",
+        "education_required",
+        "industry",
+        "benefits_score",
+        "company_name",
+        "required_skill_1",
+        "required_skill_2",
+        "required_skill_3",
+        "required_skill_4",
+        "salary (k)"
+      ]
+    },
+    "generation_order": [
+      "years_experience",
+      "job_description_length",
+      "experience_level",
+      "required_skill_5"
+    ],
+    "max_depth": 1
+  }
+}

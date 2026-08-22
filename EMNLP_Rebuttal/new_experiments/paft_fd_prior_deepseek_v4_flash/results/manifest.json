@@ -1,0 +1,1843 @@
+{
+  "passed": true,
+  "n_summaries": 30,
+  "datasets": [
+    "adult",
+    "anxiety",
+    "compas",
+    "salary",
+    "obesity_reg",
+    "churn"
+  ],
+  "shot": 100,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "n_samples_list": [
+    100,
+    200,
+    500,
+    1000
+  ],
+  "model": "deepseek-v4-flash",
+  "max_concurrency": 8,
+  "samples_per_call": 20,
+  "output_root": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash",
+  "total_token_usage": {
+    "prompt_tokens": 10485477,
+    "completion_tokens": 3628124,
+    "total_tokens": 14113601
+  },
+  "summaries": [
+    {
+      "dataset": "adult",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 6,
+      "paft_raw_fd_edges": 7,
+      "paft_dropped_edges": 1,
+      "generation_order": [
+        "fnlwgt",
+        "education",
+        "relationship",
+        "race",
+        "sex",
+        "capital-gain",
+        "country",
+        "education-num",
+        "marital-status"
+      ],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "adult",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 1,
+      "paft_raw_fd_edges": 2,
+      "paft_dropped_edges": 1,
+      "generation_order": [
+        "education",
+        "education-num"
+      ],
+      "token_usage": {
+        "prompt_tokens": 186100,
+        "completion_tokens": 134497,
+        "total_tokens": 320597
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "adult",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 9,
+      "paft_raw_fd_edges": 10,
+      "paft_dropped_edges": 1,
+      "generation_order": [
+        "fnlwgt",
+        "education",
+        "occupation",
+        "race",
+        "sex",
+        "capital-gain",
+        "capital-loss",
+        "hours-per-week",
+        "country",
+        "salary",
+        "education-num"
+      ],
+      "token_usage": {
+        "prompt_tokens": 210200,
+        "completion_tokens": 134609,
+        "total_tokens": 344809
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "adult",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 4,
+      "paft_raw_fd_edges": 5,
+      "paft_dropped_edges": 1,
+      "generation_order": [
+        "fnlwgt",
+        "education",
+        "workclass",
+        "race",
+        "sex",
+        "education-num"
+      ],
+      "token_usage": {
+        "prompt_tokens": 197350,
+        "completion_tokens": 131906,
+        "total_tokens": 329256
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "adult",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 1,
+      "paft_raw_fd_edges": 2,
+      "paft_dropped_edges": 1,
+      "generation_order": [
+        "education",
+        "education-num"
+      ],
+      "token_usage": {
+        "prompt_tokens": 186800,
+        "completion_tokens": 135043,
+        "total_tokens": 321843
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "anxiety",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "anxiety",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 352550,
+        "completion_tokens": 204338,
+        "total_tokens": 556888
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "anxiety",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 1,
+      "paft_raw_fd_edges": 1,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Caffeine Intake (mg/day)",
+        "Smoking"
+      ],
+      "token_usage": {
+        "prompt_tokens": 363018,
+        "completion_tokens": 208271,
+        "total_tokens": 571289
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "anxiety",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 352600,
+        "completion_tokens": 208828,
+        "total_tokens": 561428
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "anxiety",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/anxiety/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 352850,
+        "completion_tokens": 207139,
+        "total_tokens": 559989
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "compas",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "compas",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 130400,
+        "completion_tokens": 93569,
+        "total_tokens": 223969
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "compas",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 130150,
+        "completion_tokens": 92098,
+        "total_tokens": 222248
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "compas",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 130900,
+        "completion_tokens": 94097,
+        "total_tokens": 224997
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "compas",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 129750,
+        "completion_tokens": 92689,
+        "total_tokens": 222439
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "salary",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 2,
+      "paft_raw_fd_edges": 2,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "years_experience",
+        "job_description_length",
+        "experience_level",
+        "required_skill_5"
+      ],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "salary",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 3,
+      "paft_raw_fd_edges": 3,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "years_experience",
+        "job_description_length",
+        "experience_level",
+        "employment_type",
+        "required_skill_5"
+      ],
+      "token_usage": {
+        "prompt_tokens": 997509,
+        "completion_tokens": 216521,
+        "total_tokens": 1214030
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "salary",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 2,
+      "paft_raw_fd_edges": 2,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "years_experience",
+        "job_description_length",
+        "experience_level",
+        "required_skill_5"
+      ],
+      "token_usage": {
+        "prompt_tokens": 977000,
+        "completion_tokens": 193931,
+        "total_tokens": 1170931
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "salary",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 6,
+      "paft_raw_fd_edges": 6,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "years_experience",
+        "salary (k)",
+        "experience_level",
+        "remote_ratio",
+        "education_required",
+        "required_skill_1",
+        "required_skill_2",
+        "required_skill_5"
+      ],
+      "token_usage": {
+        "prompt_tokens": 992500,
+        "completion_tokens": 194152,
+        "total_tokens": 1186652
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "salary",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 7,
+      "paft_raw_fd_edges": 7,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "years_experience",
+        "job_description_length",
+        "salary (k)",
+        "experience_level",
+        "education_required",
+        "required_skill_3",
+        "company_size",
+        "required_skill_1",
+        "required_skill_4",
+        "required_skill_5"
+      ],
+      "token_usage": {
+        "prompt_tokens": 997850,
+        "completion_tokens": 194666,
+        "total_tokens": 1192516
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "obesity_reg",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 3,
+      "paft_raw_fd_edges": 3,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Height",
+        "FAVC",
+        "SMOKE",
+        "SCC"
+      ],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "obesity_reg",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 7,
+      "paft_raw_fd_edges": 7,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Age",
+        "Height",
+        "FCVC",
+        "CH2O",
+        "FAF",
+        "TUE",
+        "Weight",
+        "SMOKE"
+      ],
+      "token_usage": {
+        "prompt_tokens": 771000,
+        "completion_tokens": 152670,
+        "total_tokens": 923670
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "obesity_reg",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 2,
+      "paft_raw_fd_edges": 2,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Age",
+        "Height",
+        "SMOKE"
+      ],
+      "token_usage": {
+        "prompt_tokens": 752600,
+        "completion_tokens": 152440,
+        "total_tokens": 905040
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "obesity_reg",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 6,
+      "paft_raw_fd_edges": 6,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Age",
+        "Height",
+        "FCVC",
+        "Weight",
+        "FAVC",
+        "SMOKE",
+        "SCC"
+      ],
+      "token_usage": {
+        "prompt_tokens": 766650,
+        "completion_tokens": 152838,
+        "total_tokens": 919488
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "obesity_reg",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/obesity_reg/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 0,
+      "paft_raw_fd_edges": 0,
+      "paft_dropped_edges": 0,
+      "generation_order": [],
+      "token_usage": {
+        "prompt_tokens": 746850,
+        "completion_tokens": 152004,
+        "total_tokens": 898854
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "churn",
+      "shot": 100,
+      "seed": 42,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_42/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_42/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_42/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42",
+      "graph_edges": 13,
+      "paft_raw_fd_edges": 13,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Customer Value",
+        "Call Failure",
+        "Charge Amount",
+        "Seconds of Use",
+        "Frequency of Use",
+        "Frequency of SMS",
+        "Distinct Called Numbers",
+        "Age Group",
+        "Complains",
+        "Tariff Plan",
+        "Status"
+      ],
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "churn",
+      "shot": 100,
+      "seed": 43,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_43/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_43/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_43/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+      "graph_edges": 14,
+      "paft_raw_fd_edges": 14,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Customer Value",
+        "Seconds of Use",
+        "Frequency of SMS",
+        "Call Failure",
+        "Complains",
+        "Charge Amount",
+        "Frequency of Use",
+        "Distinct Called Numbers",
+        "Tariff Plan"
+      ],
+      "token_usage": {
+        "prompt_tokens": 195100,
+        "completion_tokens": 121478,
+        "total_tokens": 316578
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "churn",
+      "shot": 100,
+      "seed": 44,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_44/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_44/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_44/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44",
+      "graph_edges": 15,
+      "paft_raw_fd_edges": 15,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Customer Value",
+        "Call Failure",
+        "Subscription Length",
+        "Charge Amount",
+        "Seconds of Use",
+        "Frequency of Use",
+        "Frequency of SMS",
+        "Distinct Called Numbers",
+        "Complains",
+        "Tariff Plan",
+        "Status",
+        "Churn"
+      ],
+      "token_usage": {
+        "prompt_tokens": 197300,
+        "completion_tokens": 120205,
+        "total_tokens": 317505
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_44/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "churn",
+      "shot": 100,
+      "seed": 45,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_45/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_45/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_45/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+      "graph_edges": 8,
+      "paft_raw_fd_edges": 8,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Customer Value",
+        "Call Failure",
+        "Charge Amount",
+        "Seconds of Use",
+        "Frequency of Use",
+        "Frequency of SMS",
+        "Distinct Called Numbers",
+        "Tariff Plan"
+      ],
+      "token_usage": {
+        "prompt_tokens": 177550,
+        "completion_tokens": 119605,
+        "total_tokens": 297155
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "dataset": "churn",
+      "shot": 100,
+      "seed": 46,
+      "method": "paft_fd_prior_deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_46/train.csv",
+      "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_46/test.csv",
+      "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_46/graph.json",
+      "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46",
+      "graph_edges": 13,
+      "paft_raw_fd_edges": 13,
+      "paft_dropped_edges": 0,
+      "generation_order": [
+        "Customer Value",
+        "Call Failure",
+        "Seconds of Use",
+        "Frequency of Use",
+        "Frequency of SMS",
+        "Distinct Called Numbers",
+        "Age Group",
+        "Status",
+        "Churn",
+        "Charge Amount",
+        "Tariff Plan"
+      ],
+      "token_usage": {
+        "prompt_tokens": 190900,
+        "completion_tokens": 120530,
+        "total_tokens": 311430
+      },
+      "samples": [
+        {
+          "n_samples": 100,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n100/metrics.json",
+          "line_count": 101,
+          "expected_line_count": 101,
+          "passed": true
+        },
+        {
+          "n_samples": 200,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n200/metrics.json",
+          "line_count": 201,
+          "expected_line_count": 201,
+          "passed": true
+        },
+        {
+          "n_samples": 500,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n500/metrics.json",
+          "line_count": 501,
+          "expected_line_count": 501,
+          "passed": true
+        },
+        {
+          "n_samples": 1000,
+          "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/synthetic_data.csv",
+          "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_46/n1000/metrics.json",
+          "line_count": 1001,
+          "expected_line_count": 1001,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

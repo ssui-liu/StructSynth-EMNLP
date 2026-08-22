@@ -1,0 +1,12 @@
+\section*{Ethical Considerations}
+
+\paragraph{Data and privacy.}
+Our experiments use publicly available tabular datasets and benchmark Bayesian networks; we do not collect new data or conduct human-subject studies.
+Some evaluated datasets involve sensitive human-centered domains, so we use them only as research benchmarks.
+\textsf{StructSynth} is not a formal privacy mechanism, and applying it to confidential data may expose information through prompts, logs, or generated records.
+Privacy-critical uses should therefore require additional disclosure-risk assessment and appropriate access controls.
+
+\paragraph{Bias and misuse.}
+Synthetic data may preserve or amplify biases in the source data, particularly for demographic, medical, legal, or socioeconomic attributes.
+Generated records should not be used for high-stakes decision making without domain review, fairness auditing, and validation on real held-out data.
+When hosted LLMs are used, users should ensure that prompts and example rows comply with provider policies and applicable data-governance requirements.

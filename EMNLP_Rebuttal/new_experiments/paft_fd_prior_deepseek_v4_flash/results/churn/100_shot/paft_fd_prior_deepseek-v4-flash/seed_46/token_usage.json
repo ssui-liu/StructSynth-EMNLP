@@ -1,0 +1,12 @@
+{
+  "total_usage": {
+    "prompt_tokens": 190900,
+    "completion_tokens": 120530,
+    "total_tokens": 311430
+  },
+  "cost_estimate_usd": {
+    "prompt_cost": 0.28635000000000005,
+    "completion_cost": 0.24106,
+    "total_cost": 0.52741
+  }
+}

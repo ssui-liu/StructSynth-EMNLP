@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.8501587301587301,
+    "accuracy_std": 0.027795459225203205,
+    "accuracy_n": 5,
+    "f1": 0.606269782719162,
+    "f1_std": 0.039542586029250044,
+    "f1_n": 5,
+    "auc_roc": 0.8848465825866956,
+    "auc_roc_std": 0.009429483099784324,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 1100,
+            "task_type": "classification",
+            "accuracy": 0.8650793650793651,
+            "f1": 0.6118721461187214,
+            "precision": 0.5583333333333333,
+            "recall": 0.6767676767676768,
+            "auc_roc": 0.8767524586733626
+        },
+        "44": {
+            "train_size": 1100,
+            "task_type": "classification",
+            "accuracy": 0.8317460317460318,
+            "f1": 0.5583333333333333,
+            "precision": 0.475177304964539,
+            "recall": 0.6767676767676768,
+            "auc_roc": 0.8948810135250813
+        },
+        "45": {
+            "train_size": 1100,
+            "task_type": "classification",
+            "accuracy": 0.8047619047619048,
+            "f1": 0.5653710247349824,
+            "precision": 0.43478260869565216,
+            "recall": 0.8080808080808081,
+            "auc_roc": 0.8773136259011965
+        },
+        "42": {
+            "train_size": 1100,
+            "task_type": "classification",
+            "accuracy": 0.8793650793650793,
+            "f1": 0.6346153846153846,
+            "precision": 0.6055045871559633,
+            "recall": 0.6666666666666666,
+            "auc_roc": 0.877494340771177
+        },
+        "46": {
+            "train_size": 1100,
+            "task_type": "classification",
+            "accuracy": 0.8698412698412699,
+            "f1": 0.6611570247933884,
+            "precision": 0.5594405594405595,
+            "recall": 0.8080808080808081,
+            "auc_roc": 0.8977914740626604
+        }
+    },
+    "dataset": "churn",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 1000
+}

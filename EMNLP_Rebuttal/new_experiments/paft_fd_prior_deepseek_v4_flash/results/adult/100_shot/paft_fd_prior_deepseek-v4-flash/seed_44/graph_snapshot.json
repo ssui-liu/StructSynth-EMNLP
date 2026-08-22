@@ -1,0 +1,312 @@
+{
+  "nodes": [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "country",
+    "salary"
+  ],
+  "edges": [
+    {
+      "from": "fnlwgt",
+      "to": "occupation",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'occupation' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "race",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'race' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "sex",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'sex' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "capital-gain",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'capital-gain' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "capital-loss",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'capital-loss' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "hours-per-week",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'hours-per-week' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "country",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'country' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "fnlwgt",
+      "to": "salary",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'fnlwgt' functionally determines 'salary' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "education",
+      "to": "education-num",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'education' functionally determines 'education-num' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "age": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "workclass": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "fnlwgt": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "occupation",
+          "race",
+          "sex",
+          "capital-gain",
+          "capital-loss",
+          "hours-per-week",
+          "country",
+          "salary"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "capital-gain",
+          "capital-loss",
+          "country",
+          "hours-per-week",
+          "occupation",
+          "race",
+          "salary",
+          "sex"
+        ],
+        "in_graph": true
+      },
+      "education": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "education-num"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "education-num"
+        ],
+        "in_graph": true
+      },
+      "education-num": {
+        "level": 1,
+        "parents": [
+          "education"
+        ],
+        "children": [],
+        "ancestors": [
+          "education"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "marital-status": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "occupation": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "relationship": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "race": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "sex": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "capital-gain": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "capital-loss": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "hours-per-week": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "country": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "salary": {
+        "level": 1,
+        "parents": [
+          "fnlwgt"
+        ],
+        "children": [],
+        "ancestors": [
+          "fnlwgt"
+        ],
+        "descendants": [],
+        "in_graph": true
+      }
+    },
+    "levels": {
+      "0": [
+        "fnlwgt",
+        "education"
+      ],
+      "1": [
+        "occupation",
+        "race",
+        "sex",
+        "capital-gain",
+        "capital-loss",
+        "hours-per-week",
+        "country",
+        "salary",
+        "education-num"
+      ],
+      "others": [
+        "age",
+        "workclass",
+        "marital-status",
+        "relationship"
+      ]
+    },
+    "generation_order": [
+      "fnlwgt",
+      "education",
+      "occupation",
+      "race",
+      "sex",
+      "capital-gain",
+      "capital-loss",
+      "hours-per-week",
+      "country",
+      "salary",
+      "education-num"
+    ],
+    "max_depth": 1
+  }
+}

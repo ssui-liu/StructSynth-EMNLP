@@ -1,0 +1,438 @@
+
+=== PAFT-FD prior synthesis: adult/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 9 causal variables
+Generation order: ['fnlwgt', 'education', 'relationship', 'race', 'sex', 'capital-gain', 'country', 'education-num', 'marital-status']
+Non-causal variables: ['age', 'workclass', 'occupation', 'capital-loss', 'hours-per-week', 'salary']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_42/graph.json
+Generation order will be: ['fnlwgt', 'education', 'relationship', 'race', 'sex', 'capital-gain', 'country', 'education-num', 'marital-status']
+Level 0 variables: ['fnlwgt', 'education', 'relationship']
+Level 1 variables: ['race', 'sex', 'capital-gain', 'country', 'education-num', 'marital-status']
+Non-causal variables: ['age', 'workclass', 'occupation', 'capital-loss', 'hours-per-week', 'salary']
+Original column order: ['age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 'hours-per-week', 'country', 'salary']
+Reordered column order: ['fnlwgt', 'education', 'relationship', 'race', 'sex', 'capital-gain', 'country', 'education-num', 'marital-status', 'age', 'workclass', 'occupation', 'capital-loss', 'hours-per-week', 'salary']
+Extracted 2 valid labels from example data: {'>50K', '<=50K'}
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['fnlwgt', 'education', 'relationship', 'race', 'sex', 'capital-gain', 'country', 'education-num', 'marital-status', 'age', 'workclass', 'occupation', 'capital-loss', 'hours-per-week', 'salary']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 'hours-per-week', 'country', 'salary']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=142 total_calls=8
+Generating samples:  14%|█▍        | 142/1000 [01:14<07:27,  1.92it/s][CLLM.generate] iter=1 samples_generated=142/1000 (new=142)
+[CLLM.generate] iter=2 remaining=858 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=120 total_calls=16
+Generating samples:  26%|██▌       | 262/1000 [02:29<07:09,  1.72it/s][CLLM.generate] iter=2 samples_generated=262/1000 (new=120)
+[CLLM.generate] iter=3 remaining=738 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=135 total_calls=24
+Generating samples:  40%|███▉      | 397/1000 [03:41<05:35,  1.80it/s][CLLM.generate] iter=3 samples_generated=397/1000 (new=135)
+[CLLM.generate] iter=4 remaining=603 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=110 total_calls=32
+Generating samples:  51%|█████     | 507/1000 [04:58<04:59,  1.64it/s][CLLM.generate] iter=4 samples_generated=507/1000 (new=110)
+[CLLM.generate] iter=5 remaining=493 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=135 total_calls=40
+Generating samples:  64%|██████▍   | 642/1000 [06:20<03:37,  1.65it/s][CLLM.generate] iter=5 samples_generated=642/1000 (new=135)
+[CLLM.generate] iter=6 remaining=358 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=131 total_calls=48
+Generating samples:  77%|███████▋  | 773/1000 [07:39<02:17,  1.65it/s][CLLM.generate] iter=6 samples_generated=773/1000 (new=131)
+[CLLM.generate] iter=7 remaining=227 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=7 calls+=8 produced_rows=148 total_calls=56
+Generating samples:  92%|█████████▏| 921/1000 [08:50<00:44,  1.78it/s][CLLM.generate] iter=7 samples_generated=921/1000 (new=148)
+[CLLM.generate] iter=8 remaining=79 samples_per_call=20 max_concurrency=8 -> batch_size=4 n_to_generate(per_call)=20
+[CLLM.generate] iter=8 calls+=4 produced_rows=67 total_calls=60
+Generating samples:  99%|█████████▉| 988/1000 [10:11<00:08,  1.46it/s][CLLM.generate] iter=8 samples_generated=988/1000 (new=67)
+[CLLM.generate] iter=9 remaining=12 samples_per_call=20 max_concurrency=8 -> batch_size=1 n_to_generate(per_call)=12
+[CLLM.generate] iter=9 calls+=1 produced_rows=12 total_calls=61
+Generating samples: 100%|██████████| 1000/1000 [11:05<00:00,  1.16it/s][CLLM.generate] iter=9 samples_generated=1000/1000 (new=12)
+Generating samples: 100%|██████████| 1000/1000 [11:05<00:00,  1.50it/s]
+Generated features reordered to original sequence: ['age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 'hours-per-week', 'country']
+
+Token usage for adult/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved adult/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved adult/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved adult/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved adult/seed_42/n1000: lines=1001
+PASS adult/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/adult/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42
+
+=== PAFT-FD prior synthesis: anxiety/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 0 causal variables
+Generation order: []
+Non-causal variables: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/anxiety/shot_100/seed_42/graph.json
+Generation order will be: []
+Non-causal variables: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Original column order: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Reordered column order: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Extracted 3 valid labels from example data: {'Low', 'Medium', 'High'}
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)', 'Anxiety Level']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=160 total_calls=8
+Generating samples:  16%|█▌        | 160/1000 [00:53<04:39,  3.01it/s][CLLM.generate] iter=1 samples_generated=160/1000 (new=160)
+[CLLM.generate] iter=2 remaining=840 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=145 total_calls=16
+Generating samples:  30%|███       | 305/1000 [02:05<04:56,  2.34it/s][CLLM.generate] iter=2 samples_generated=305/1000 (new=145)
+[CLLM.generate] iter=3 remaining=695 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=157 total_calls=24
+Generating samples:  46%|████▌     | 462/1000 [03:01<03:31,  2.54it/s][CLLM.generate] iter=3 samples_generated=462/1000 (new=157)
+[CLLM.generate] iter=4 remaining=538 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=141 total_calls=32
+Generating samples:  60%|██████    | 603/1000 [04:02<02:41,  2.45it/s][CLLM.generate] iter=4 samples_generated=603/1000 (new=141)
+[CLLM.generate] iter=5 remaining=397 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=160 total_calls=40
+Generating samples:  76%|███████▋  | 763/1000 [04:43<01:22,  2.86it/s][CLLM.generate] iter=5 samples_generated=763/1000 (new=160)
+[CLLM.generate] iter=6 remaining=237 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=159 total_calls=48
+Generating samples:  92%|█████████▏| 922/1000 [05:19<00:23,  3.26it/s][CLLM.generate] iter=6 samples_generated=922/1000 (new=159)
+[CLLM.generate] iter=7 remaining=78 samples_per_call=20 max_concurrency=8 -> batch_size=4 n_to_generate(per_call)=20
+[CLLM.generate] iter=7 calls+=4 produced_rows=80 total_calls=52
+Generating samples: 100%|██████████| 1000/1000 [06:15<00:00,  2.58it/s][CLLM.generate] iter=7 samples_generated=1002/1000 (new=80)
+Generating samples: 100%|██████████| 1000/1000 [06:15<00:00,  2.66it/s]
+Generated features reordered to original sequence: ['Age', 'Gender', 'Occupation', 'Sleep Hours', 'Physical Activity (hrs/week)', 'Caffeine Intake (mg/day)', 'Alcohol Consumption (drinks/week)', 'Smoking', 'Family History of Anxiety', 'Stress Level (1-10)', 'Heart Rate (bpm)', 'Breathing Rate (breaths/min)', 'Sweating Level (1-5)', 'Dizziness', 'Medication', 'Therapy Sessions (per month)', 'Recent Major Life Event', 'Diet Quality (1-10)']
+
+Token usage for anxiety/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved anxiety/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved anxiety/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved anxiety/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved anxiety/seed_42/n1000: lines=1001
+PASS anxiety/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/anxiety/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42
+
+=== PAFT-FD prior synthesis: compas/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 0 causal variables
+Generation order: []
+Non-causal variables: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_42/graph.json
+Generation order will be: []
+Non-causal variables: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Original column order: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Reordered column order: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Extracted 2 valid labels from example data: {'No', 'Yes'}
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree', 'two_yr_recidivism']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=135 total_calls=8
+Generating samples:  14%|█▎        | 135/1000 [01:09<07:26,  1.94it/s][CLLM.generate] iter=1 samples_generated=135/1000 (new=135)
+[CLLM.generate] iter=2 remaining=865 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=115 total_calls=16
+Generating samples:  25%|██▌       | 250/1000 [02:29<07:39,  1.63it/s][CLLM.generate] iter=2 samples_generated=250/1000 (new=115)
+[CLLM.generate] iter=3 remaining=750 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=138 total_calls=24
+Generating samples:  39%|███▉      | 388/1000 [03:37<05:40,  1.80it/s][CLLM.generate] iter=3 samples_generated=388/1000 (new=138)
+[CLLM.generate] iter=4 remaining=612 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=160 total_calls=32
+Generating samples:  55%|█████▍    | 548/1000 [04:34<03:30,  2.15it/s][CLLM.generate] iter=4 samples_generated=548/1000 (new=160)
+[CLLM.generate] iter=5 remaining=452 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=160 total_calls=40
+Generating samples:  71%|███████   | 708/1000 [05:33<02:05,  2.33it/s][CLLM.generate] iter=5 samples_generated=708/1000 (new=160)
+[CLLM.generate] iter=6 remaining=292 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=159 total_calls=48
+Generating samples:  87%|████████▋ | 867/1000 [06:43<00:57,  2.31it/s][CLLM.generate] iter=6 samples_generated=867/1000 (new=159)
+[CLLM.generate] iter=7 remaining=133 samples_per_call=20 max_concurrency=8 -> batch_size=7 n_to_generate(per_call)=19
+[CLLM.generate] iter=7 calls+=7 produced_rows=133 total_calls=55
+Generating samples: 100%|██████████| 1000/1000 [07:11<00:00,  2.73it/s][CLLM.generate] iter=7 samples_generated=1000/1000 (new=133)
+Generating samples: 100%|██████████| 1000/1000 [07:11<00:00,  2.32it/s]
+Generated features reordered to original sequence: ['sex', 'age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'race', 'c_charge_degree']
+
+Token usage for compas/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved compas/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved compas/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved compas/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved compas/seed_42/n1000: lines=1001
+PASS compas/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/compas/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42
+
+=== PAFT-FD prior synthesis: salary/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 4 causal variables
+Generation order: ['years_experience', 'job_description_length', 'experience_level', 'required_skill_5']
+Non-causal variables: ['job_title', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'industry', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'salary (k)']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_42/graph.json
+Generation order will be: ['years_experience', 'job_description_length', 'experience_level', 'required_skill_5']
+Level 0 variables: ['years_experience', 'job_description_length']
+Level 1 variables: ['experience_level', 'required_skill_5']
+Non-causal variables: ['job_title', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'industry', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'salary (k)']
+Original column order: ['job_title', 'experience_level', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'years_experience', 'industry', 'job_description_length', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'required_skill_5', 'salary (k)']
+Reordered column order: ['years_experience', 'job_description_length', 'experience_level', 'required_skill_5', 'job_title', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'industry', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'salary (k)']
+Regression task detected - skipping discrete label validation
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['years_experience', 'job_description_length', 'experience_level', 'required_skill_5', 'job_title', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'industry', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'salary (k)']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['job_title', 'experience_level', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'years_experience', 'industry', 'job_description_length', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'required_skill_5', 'salary (k)']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=138 total_calls=8
+Generating samples:  14%|█▍        | 138/1000 [01:21<08:29,  1.69it/s][CLLM.generate] iter=1 samples_generated=138/1000 (new=138)
+[CLLM.generate] iter=2 remaining=862 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=81 total_calls=16
+Generating samples:  22%|██▏       | 219/1000 [02:55<11:05,  1.17it/s][CLLM.generate] iter=2 samples_generated=219/1000 (new=81)
+[CLLM.generate] iter=3 remaining=781 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=101 total_calls=24
+Generating samples:  32%|███▏      | 320/1000 [04:29<10:01,  1.13it/s][CLLM.generate] iter=3 samples_generated=320/1000 (new=101)
+[CLLM.generate] iter=4 remaining=680 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=123 total_calls=32
+Generating samples:  44%|████▍     | 443/1000 [05:50<07:18,  1.27it/s][CLLM.generate] iter=4 samples_generated=443/1000 (new=123)
+[CLLM.generate] iter=5 remaining=557 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=137 total_calls=40
+Generating samples:  58%|█████▊    | 580/1000 [07:12<04:57,  1.41it/s][CLLM.generate] iter=5 samples_generated=580/1000 (new=137)
+[CLLM.generate] iter=6 remaining=420 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=122 total_calls=48
+Generating samples:  70%|███████   | 702/1000 [08:39<03:31,  1.41it/s][CLLM.generate] iter=6 samples_generated=702/1000 (new=122)
+[CLLM.generate] iter=7 remaining=298 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=7 calls+=8 produced_rows=118 total_calls=56
+Generating samples:  82%|████████▏ | 820/1000 [10:08<02:10,  1.38it/s][CLLM.generate] iter=7 samples_generated=820/1000 (new=118)
+[CLLM.generate] iter=8 remaining=180 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=8 calls+=8 produced_rows=119 total_calls=64
+Generating samples:  94%|█████████▍| 939/1000 [11:31<00:43,  1.39it/s][CLLM.generate] iter=8 samples_generated=939/1000 (new=119)
+[CLLM.generate] iter=9 remaining=61 samples_per_call=20 max_concurrency=8 -> batch_size=4 n_to_generate(per_call)=16
+[CLLM.generate] iter=9 calls+=4 produced_rows=32 total_calls=68
+Generating samples:  97%|█████████▋| 971/1000 [12:50<00:26,  1.10it/s][CLLM.generate] iter=9 samples_generated=971/1000 (new=32)
+[CLLM.generate] iter=10 remaining=29 samples_per_call=20 max_concurrency=8 -> batch_size=2 n_to_generate(per_call)=15
+[CLLM.generate] iter=10 calls+=2 produced_rows=26 total_calls=70
+Generating samples: 100%|█████████▉| 997/1000 [13:54<00:03,  1.08s/it][CLLM.generate] iter=10 samples_generated=997/1000 (new=26)
+[CLLM.generate] iter=11 remaining=3 samples_per_call=20 max_concurrency=8 -> batch_size=1 n_to_generate(per_call)=3
+[CLLM.generate] iter=11 calls+=1 produced_rows=3 total_calls=71
+Generating samples: 100%|██████████| 1000/1000 [14:12<00:00,  1.17s/it][CLLM.generate] iter=11 samples_generated=1000/1000 (new=3)
+Generating samples: 100%|██████████| 1000/1000 [14:12<00:00,  1.17it/s]
+Generated features reordered to original sequence: ['job_title', 'experience_level', 'employment_type', 'company_location', 'company_size', 'employee_residence', 'remote_ratio', 'education_required', 'years_experience', 'industry', 'job_description_length', 'benefits_score', 'company_name', 'required_skill_1', 'required_skill_2', 'required_skill_3', 'required_skill_4', 'required_skill_5']
+
+Token usage for salary/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved salary/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved salary/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved salary/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved salary/seed_42/n1000: lines=1001
+PASS salary/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42
+
+=== PAFT-FD prior synthesis: obesity_reg/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 4 causal variables
+Generation order: ['Height', 'FAVC', 'SMOKE', 'SCC']
+Non-causal variables: ['Gender', 'Age', 'family_history_with_overweight', 'FCVC', 'NCP', 'CAEC', 'CH2O', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/obesity_reg/shot_100/seed_42/graph.json
+Generation order will be: ['Height', 'FAVC', 'SMOKE', 'SCC']
+Level 0 variables: ['Height']
+Level 1 variables: ['FAVC', 'SMOKE', 'SCC']
+Non-causal variables: ['Gender', 'Age', 'family_history_with_overweight', 'FCVC', 'NCP', 'CAEC', 'CH2O', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Original column order: ['Gender', 'Age', 'Height', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Reordered column order: ['Height', 'FAVC', 'SMOKE', 'SCC', 'Gender', 'Age', 'family_history_with_overweight', 'FCVC', 'NCP', 'CAEC', 'CH2O', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Regression task detected - skipping discrete label validation
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['Height', 'FAVC', 'SMOKE', 'SCC', 'Gender', 'Age', 'family_history_with_overweight', 'FCVC', 'NCP', 'CAEC', 'CH2O', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['Gender', 'Age', 'Height', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS', 'Weight']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=160 total_calls=8
+Generating samples:  16%|█▌        | 160/1000 [00:56<04:57,  2.82it/s][CLLM.generate] iter=1 samples_generated=160/1000 (new=160)
+[CLLM.generate] iter=2 remaining=840 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=145 total_calls=16
+Generating samples:  30%|███       | 305/1000 [02:03<04:46,  2.42it/s][CLLM.generate] iter=2 samples_generated=305/1000 (new=145)
+[CLLM.generate] iter=3 remaining=695 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=160 total_calls=24
+Generating samples:  46%|████▋     | 465/1000 [03:00<03:27,  2.57it/s][CLLM.generate] iter=3 samples_generated=465/1000 (new=160)
+[CLLM.generate] iter=4 remaining=535 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=144 total_calls=32
+Generating samples:  61%|██████    | 609/1000 [04:13<02:49,  2.31it/s][CLLM.generate] iter=4 samples_generated=609/1000 (new=144)
+[CLLM.generate] iter=5 remaining=391 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=160 total_calls=40
+Generating samples:  77%|███████▋  | 769/1000 [05:14<01:35,  2.42it/s][CLLM.generate] iter=5 samples_generated=769/1000 (new=160)
+[CLLM.generate] iter=6 remaining=231 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=160 total_calls=48
+Generating samples:  93%|█████████▎| 929/1000 [06:20<00:29,  2.43it/s][CLLM.generate] iter=6 samples_generated=929/1000 (new=160)
+[CLLM.generate] iter=7 remaining=71 samples_per_call=20 max_concurrency=8 -> batch_size=4 n_to_generate(per_call)=18
+[CLLM.generate] iter=7 calls+=4 produced_rows=72 total_calls=52
+Generating samples: 100%|██████████| 1000/1000 [07:15<00:00,  2.10it/s][CLLM.generate] iter=7 samples_generated=1001/1000 (new=72)
+Generating samples: 100%|██████████| 1000/1000 [07:15<00:00,  2.30it/s]
+Generated features reordered to original sequence: ['Gender', 'Age', 'Height', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS']
+
+Token usage for obesity_reg/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved obesity_reg/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved obesity_reg/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved obesity_reg/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved obesity_reg/seed_42/n1000: lines=1001
+PASS obesity_reg/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/obesity_reg/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42
+
+=== PAFT-FD prior synthesis: churn/seed_42 ===
+Initializing Naive Hierarchical CLLM...
+Attempting to load graph from: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_42/graph.json
+Successfully loaded hierarchical structure with 11 causal variables
+Generation order: ['Customer Value', 'Call Failure', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Complains', 'Tariff Plan', 'Status']
+Non-causal variables: ['Subscription Length', 'Churn']
+Naive Hierarchical CLLM initialized with graph: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_42/graph.json
+Generation order will be: ['Customer Value', 'Call Failure', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Complains', 'Tariff Plan', 'Status']
+Level 0 variables: ['Customer Value']
+Level 1 variables: ['Call Failure', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group']
+Level 2 variables: ['Complains', 'Tariff Plan', 'Status']
+Non-causal variables: ['Subscription Length', 'Churn']
+Original column order: ['Call Failure', 'Complains', 'Subscription Length', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Tariff Plan', 'Status', 'Customer Value', 'Churn']
+Reordered column order: ['Customer Value', 'Call Failure', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Complains', 'Tariff Plan', 'Status', 'Subscription Length', 'Churn']
+Extracted 2 valid labels from example data: {'No', 'Yes'}
+Naive Hierarchical CLLM fitted.
+Dataframe columns were reordered for prompt generation: ['Customer Value', 'Call Failure', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Complains', 'Tariff Plan', 'Status', 'Subscription Length', 'Churn']
+Column descriptions were also reordered for prompt generation to align with this column order.
+Original column order stored: ['Call Failure', 'Complains', 'Subscription Length', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Tariff Plan', 'Status', 'Customer Value', 'Churn']
+Generating samples:   0%|          | 0/1000 [00:00<?, ?it/s][CLLM.generate] iter=1 remaining=1000 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=1 calls+=8 produced_rows=44 total_calls=8
+Generating samples:   4%|▍         | 44/1000 [01:24<30:36,  1.92s/it][CLLM.generate] iter=1 samples_generated=44/1000 (new=44)
+[CLLM.generate] iter=2 remaining=956 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=2 calls+=8 produced_rows=101 total_calls=16
+Generating samples:  14%|█▍        | 145/1000 [02:55<16:17,  1.14s/it][CLLM.generate] iter=2 samples_generated=145/1000 (new=101)
+[CLLM.generate] iter=3 remaining=855 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=3 calls+=8 produced_rows=140 total_calls=24
+Generating samples:  28%|██▊       | 285/1000 [04:17<09:35,  1.24it/s][CLLM.generate] iter=3 samples_generated=285/1000 (new=140)
+[CLLM.generate] iter=4 remaining=715 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=4 calls+=8 produced_rows=126 total_calls=32
+Generating samples:  41%|████      | 411/1000 [05:26<06:47,  1.45it/s][CLLM.generate] iter=4 samples_generated=411/1000 (new=126)
+[CLLM.generate] iter=5 remaining=589 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=5 calls+=8 produced_rows=111 total_calls=40
+Generating samples:  52%|█████▏    | 522/1000 [06:40<05:26,  1.46it/s][CLLM.generate] iter=5 samples_generated=522/1000 (new=111)
+[CLLM.generate] iter=6 remaining=478 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=6 calls+=8 produced_rows=60 total_calls=48
+Generating samples:  58%|█████▊    | 582/1000 [07:54<05:35,  1.25it/s][CLLM.generate] iter=6 samples_generated=582/1000 (new=60)
+[CLLM.generate] iter=7 remaining=418 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=7 calls+=8 produced_rows=150 total_calls=56
+Generating samples:  73%|███████▎  | 732/1000 [08:59<02:51,  1.56it/s][CLLM.generate] iter=7 samples_generated=732/1000 (new=150)
+[CLLM.generate] iter=8 remaining=268 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=20
+[CLLM.generate] iter=8 calls+=8 produced_rows=116 total_calls=64
+Generating samples:  85%|████████▍ | 848/1000 [09:59<01:31,  1.66it/s][CLLM.generate] iter=8 samples_generated=848/1000 (new=116)
+[CLLM.generate] iter=9 remaining=152 samples_per_call=20 max_concurrency=8 -> batch_size=8 n_to_generate(per_call)=19
+[CLLM.generate] iter=9 calls+=8 produced_rows=94 total_calls=72
+Generating samples:  94%|█████████▍| 942/1000 [11:14<00:38,  1.52it/s][CLLM.generate] iter=9 samples_generated=942/1000 (new=94)
+[CLLM.generate] iter=10 remaining=58 samples_per_call=20 max_concurrency=8 -> batch_size=3 n_to_generate(per_call)=20
+[CLLM.generate] iter=10 calls+=3 produced_rows=36 total_calls=75
+Generating samples:  98%|█████████▊| 978/1000 [12:24<00:18,  1.21it/s][CLLM.generate] iter=10 samples_generated=978/1000 (new=36)
+[CLLM.generate] iter=11 remaining=22 samples_per_call=20 max_concurrency=8 -> batch_size=2 n_to_generate(per_call)=11
+[CLLM.generate] iter=11 calls+=2 produced_rows=11 total_calls=77
+Generating samples:  99%|█████████▉| 989/1000 [13:33<00:12,  1.11s/it][CLLM.generate] iter=11 samples_generated=989/1000 (new=11)
+[CLLM.generate] iter=12 remaining=11 samples_per_call=20 max_concurrency=8 -> batch_size=1 n_to_generate(per_call)=11
+[CLLM.generate] iter=12 calls+=1 produced_rows=11 total_calls=78
+Generating samples: 100%|██████████| 1000/1000 [13:59<00:00,  1.20s/it][CLLM.generate] iter=12 samples_generated=1000/1000 (new=11)
+Generating samples: 100%|██████████| 1000/1000 [13:59<00:00,  1.19it/s]
+Generated features reordered to original sequence: ['Call Failure', 'Complains', 'Subscription Length', 'Charge Amount', 'Seconds of Use', 'Frequency of Use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Tariff Plan', 'Status', 'Customer Value']
+
+Token usage for churn/seed_42 generation:
+- Prompt tokens: 0
+- Completion tokens: 0
+- Total tokens: 0
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n100/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n100.md
+  Saved churn/seed_42/n100: lines=101
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n200/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n200.md
+  Saved churn/seed_42/n200: lines=201
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n500/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n500.md
+  Saved churn/seed_42/n500: lines=501
+
+Saved individual seed report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42/n1000/summary.md
+
+Saved seed summary report to results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/summary/summary_n1000.md
+  Saved churn/seed_42/n1000: lines=1001
+PASS churn/seed_42: out=results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_42

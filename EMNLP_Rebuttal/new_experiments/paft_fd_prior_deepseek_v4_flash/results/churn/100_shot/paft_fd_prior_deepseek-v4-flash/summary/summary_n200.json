@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.8638095238095238,
+    "accuracy_std": 0.01934685585421279,
+    "accuracy_n": 5,
+    "f1": 0.6134372262540441,
+    "f1_std": 0.04480537183483134,
+    "f1_n": 5,
+    "auc_roc": 0.8840761665620421,
+    "auc_roc_std": 0.01556745894971714,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.8714285714285714,
+            "f1": 0.6197183098591549,
+            "precision": 0.5789473684210527,
+            "recall": 0.6666666666666666,
+            "auc_roc": 0.8608305274971941
+        },
+        "44": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.8285714285714286,
+            "f1": 0.5423728813559322,
+            "precision": 0.46715328467153283,
+            "recall": 0.6464646464646465,
+            "auc_roc": 0.8867107991401776
+        },
+        "45": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.8777777777777778,
+            "f1": 0.6778242677824268,
+            "precision": 0.5785714285714286,
+            "recall": 0.8181818181818182,
+            "auc_roc": 0.8860545188228803
+        },
+        "42": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.8825396825396825,
+            "f1": 0.6336633663366337,
+            "precision": 0.6213592233009708,
+            "recall": 0.6464646464646465,
+            "auc_roc": 0.9089957960014458
+        },
+        "46": {
+            "train_size": 300,
+            "task_type": "classification",
+            "accuracy": 0.8587301587301587,
+            "f1": 0.593607305936073,
+            "precision": 0.5416666666666666,
+            "recall": 0.6565656565656566,
+            "auc_roc": 0.8777891913485133
+        }
+    },
+    "dataset": "churn",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 200
+}

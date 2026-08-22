@@ -1,0 +1,62 @@
+[
+  {
+    "dataset": "adult",
+    "variant": "paft_graph_orders",
+    "seed": 42,
+    "dcr": 0.833,
+    "pairwise_correlation_diff": 0.49481046951811714,
+    "accuracy": 0.7813691364163766,
+    "f1": 0.4441635061104088,
+    "precision": 0.6050516647531573,
+    "recall": 0.35086551264980026,
+    "auc_roc": 0.7862353616056984
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_graph_orders",
+    "seed": 43,
+    "dcr": 0.706,
+    "pairwise_correlation_diff": 0.4979030640226079,
+    "accuracy": 0.756340129288911,
+    "f1": 0.6189735614307932,
+    "precision": 0.5067911714770797,
+    "recall": 0.7949400798934754,
+    "auc_roc": 0.831949514235562
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_graph_orders",
+    "seed": 44,
+    "dcr": 0.742,
+    "pairwise_correlation_diff": 0.49327134853894145,
+    "accuracy": 0.7934692524448864,
+    "f1": 0.5485507246376812,
+    "precision": 0.6017488076311606,
+    "recall": 0.503994673768309,
+    "auc_roc": 0.8245446151250991
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_graph_orders",
+    "seed": 45,
+    "dcr": 0.695,
+    "pairwise_correlation_diff": 0.522227286752559,
+    "accuracy": 0.7919774573180839,
+    "f1": 0.5798459993304319,
+    "precision": 0.5831649831649832,
+    "recall": 0.5765645805592543,
+    "auc_roc": 0.8364656732243422
+  },
+  {
+    "dataset": "adult",
+    "variant": "paft_graph_orders",
+    "seed": 46,
+    "dcr": 0.718,
+    "pairwise_correlation_diff": 0.5069714016503837,
+    "accuracy": 0.7669484501906183,
+    "f1": 0.5291359678499665,
+    "precision": 0.532345013477089,
+    "recall": 0.525965379494008,
+    "auc_roc": 0.8058035471574574
+  }
+]

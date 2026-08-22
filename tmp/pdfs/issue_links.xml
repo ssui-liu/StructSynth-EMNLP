@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="26.02.0">
+<page number="2" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="0" size="15" family="FAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="1" size="15" family="CAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="2" size="13" family="KAAAAA+HelveticaNeue" color="#2a2a2a"/>
+	<fontspec id="3" size="13" family="GAAAAA+GLYPHICONSHalflings" color="#000000"/>
+	<fontspec id="4" size="16" family="BAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="5" size="10" family="FAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="6" size="4" family="LAAAAA+PingFangSC-Semibold" color="#000000"/>
+	<fontspec id="7" size="13" family="MAAAAA+ArialMT" color="#000000"/>
+	<fontspec id="8" size="12" family="JAAAAA+Times" color="#000000"/>
+<text top="42" left="42" width="102" height="19" font="0"><b>B3 Elaboration:</b></text>
+<text top="42" left="151" width="664" height="19" font="1">The Ethical Considerations section states that public datasets are used only as research benchmarks, and</text>
+<text top="62" left="42" width="737" height="19" font="1">that generated records should not be used for high-stakes decision making without additional review and validation.</text>
+<text top="83" left="42" width="448" height="19" font="0"><b>B4 Data Contains Personally Identifying Info Or Offensive Content:</b></text>
+<text top="83" left="498" width="18" height="19" font="1">No</text>
+<text top="103" left="42" width="102" height="19" font="0"><b>B4 Elaboration:</b></text>
+<text top="103" left="151" width="643" height="19" font="1">We use publicly available benchmark datasets and do not collect new data. We discuss data sensitivity</text>
+<text top="123" left="42" width="658" height="19" font="1">and privacy risks in Ethical Considerations, but we do not provide a separate PII/offensive-content audit.</text>
+<text top="143" left="42" width="210" height="19" font="0"><b>B5 Documentation Of Artifacts:</b></text>
+<text top="143" left="260" width="21" height="19" font="1">Yes</text>
+<text top="164" left="42" width="102" height="19" font="0"><b>B5 Elaboration:</b></text>
+<text top="164" left="151" width="661" height="19" font="1">Section 4 and Appendix &#34;Detailed Experimental Setup&#34; document the datasets, including domains, tasks,</text>
+<text top="184" left="42" width="227" height="19" font="1">feature types, and evaluation setup.</text>
+<text top="204" left="42" width="147" height="19" font="0"><b>B6 Statistics For Data:</b></text>
+<text top="204" left="196" width="21" height="19" font="1">Yes</text>
+<text top="224" left="42" width="102" height="19" font="0"><b>B6 Elaboration:</b></text>
+<text top="224" left="151" width="661" height="19" font="1">Section 4 and Appendix &#34;Detailed Experimental Setup&#34; report dataset statistics, train/test splits, few-shot</text>
+<text top="245" left="42" width="209" height="19" font="1">sample sizes, and random seeds.</text>
+<text top="265" left="42" width="205" height="19" font="0"><b>C Computational Experiments:</b></text>
+<text top="265" left="254" width="21" height="19" font="1">Yes</text>
+<text top="285" left="42" width="178" height="19" font="0"><b>C1 Model Size And Budget:</b></text>
+<text top="285" left="227" width="21" height="19" font="1">Yes</text>
+<text top="305" left="42" width="101" height="19" font="0"><b>C1 Elaboration:</b></text>
+<text top="305" left="151" width="622" height="19" font="1">Appendix &#34;Implementation and Hyperparameters&#34; reports model settings and downstream model</text>
+<text top="326" left="42" width="766" height="19" font="1">parameters. Appendix &#34;Efficiency Analysis&#34; reports token usage for CLLM and StructSynth, including input/output tokens,</text>
+<text top="346" left="42" width="769" height="19" font="1">total tokens, and relative overhead. Since the main LLMs are hosted/API models, we report token budget rather than GPU</text>
+<text top="366" left="42" width="41" height="19" font="1">hours.</text>
+<text top="386" left="42" width="309" height="19" font="0"><b>C2 Experimental Setup And Hyperparameters:</b></text>
+<text top="386" left="358" width="21" height="19" font="1">Yes</text>
+<text top="407" left="42" width="101" height="19" font="0"><b>C2 Elaboration:</b></text>
+<text top="407" left="151" width="618" height="19" font="1">Section 4 and Appendix &#34;Detailed Experimental Setup&#34; describe the experimental setup, including</text>
+<text top="427" left="42" width="549" height="19" font="1">datasets, baselines, train/test splits, sample sizes, seeds, and hyperparameter settings.</text>
+<text top="447" left="42" width="165" height="19" font="0"><b>C3 Descriptive Statistics:</b></text>
+<text top="447" left="215" width="21" height="19" font="1">Yes</text>
+<text top="467" left="42" width="101" height="19" font="0"><b>C3 Elaboration:</b></text>
+<text top="467" left="151" width="639" height="19" font="1">Section 4 reports results over multiple datasets and random seeds, including mean performance and</text>
+<text top="488" left="42" width="326" height="19" font="1">variability/statistical comparisons where applicable.</text>
+<text top="508" left="42" width="194" height="19" font="0"><b>C4 Parameters For Packages:</b></text>
+<text top="508" left="244" width="21" height="19" font="1">Yes</text>
+<text top="528" left="42" width="101" height="19" font="0"><b>C4 Elaboration:</b></text>
+<text top="528" left="151" width="629" height="19" font="1">Appendix &#34;Detailed Experimental Setup&#34; reports implementation details and parameter settings for</text>
+<text top="548" left="42" width="424" height="19" font="1">baselines, downstream models, LLMs, and evaluation components.</text>
+<text top="569" left="42" width="273" height="19" font="0"><b>D Human Subjects Including Annotators:</b></text>
+<text top="569" left="323" width="18" height="19" font="1">No</text>
+<text top="589" left="42" width="253" height="19" font="0"><b>D1 Instructions Given To Participants:</b></text>
+<text top="589" left="302" width="24" height="19" font="1">N/A</text>
+<text top="609" left="42" width="203" height="19" font="0"><b>D2 Recruitment And Payment:</b></text>
+<text top="609" left="253" width="24" height="19" font="1">N/A</text>
+<text top="629" left="42" width="116" height="19" font="0"><b>D3 Data Consent:</b></text>
+<text top="629" left="165" width="24" height="19" font="1">N/A</text>
+<text top="650" left="42" width="223" height="19" font="0"><b>D4 Ethics Review Board Approval:</b></text>
+<text top="650" left="273" width="24" height="19" font="1">N/A</text>
+<text top="670" left="42" width="257" height="19" font="0"><b>E Ai Assistants In Research Or Writing:</b></text>
+<text top="670" left="307" width="21" height="19" font="1">Yes</text>
+<text top="690" left="42" width="287" height="19" font="0"><b>E1 Information About Use Of Ai Assistants:</b></text>
+<text top="690" left="336" width="18" height="19" font="1">No</text>
+<text top="710" left="42" width="100" height="19" font="0"><b>E1 Elaboration:</b></text>
+<text top="710" left="150" width="582" height="19" font="1">We used AI assistants only for language polishing and editing support. All technical content,</text>
+<text top="731" left="42" width="647" height="19" font="1">experiments, analyses, claims, and final writing decisions were reviewed and approved by the authors.</text>
+<text top="751" left="42" width="196" height="19" font="0"><b>Author Submission Checklist:</b></text>
+<text top="751" left="246" width="21" height="19" font="1">yes</text>
+<text top="771" left="42" width="257" height="19" font="0"><b>EMNLP 2026 AI Reviewing Experiment:</b></text>
+<text top="771" left="307" width="21" height="19" font="1">yes</text>
+<text top="791" left="42" width="38" height="19" font="0"><b>TLDR:</b></text>
+<text top="791" left="106" width="678" height="19" font="1">StructSynth learns a dataset's hidden structure and uses it as a blueprint to guide an LLM, generating more</text>
+<text top="812" left="42" width="279" height="19" font="1">realistic synthetic data from scarce samples.</text>
+<text top="832" left="42" width="59" height="19" font="0"><b>Preprint:</b></text>
+<text top="832" left="127" width="17" height="19" font="1">no</text>
+<text top="852" left="42" width="106" height="19" font="0"><b>Preprint Status:</b></text>
+<text top="852" left="173" width="454" height="19" font="1">There is a non-anonymous preprint (URL specified in the next question).</text>
+<text top="872" left="42" width="123" height="19" font="0"><b>Existing Preprints:</b></text>
+<text top="872" left="191" width="427" height="19" font="1"><a href="https://arxiv.org/abs/2508.02601">https://arxiv.org/abs/2508.02601 (https://arxiv.org/abs/2508.02601)</a></text>
+<text top="893" left="42" width="113" height="19" font="0"><b>Preferred Venue:</b></text>
+<text top="893" left="181" width="45" height="19" font="1">EMNLP</text>
+<text top="913" left="42" width="77" height="19" font="0"><b>Visa Needs:</b></text>
+<text top="913" left="145" width="21" height="19" font="1">yes</text>
+<text top="933" left="42" width="155" height="19" font="0"><b>Consent To Share Data:</b></text>
+<text top="933" left="223" width="21" height="19" font="1">yes</text>
+<text top="953" left="42" width="250" height="19" font="0"><b>Consent To Share Submission Details:</b></text>
+<text top="953" left="318" width="495" height="19" font="1">On behalf of all authors, we agree to the terms above to share our submission</text>
+<text top="974" left="42" width="45" height="19" font="1">details.</text>
+<text top="994" left="42" width="545" height="19" font="0"><b>Association For Computational Linguistics - Blind Submission License Agreement:</b></text>
+<text top="994" left="613" width="201" height="19" font="1">On behalf of all authors, I agree</text>
+<text top="1014" left="42" width="140" height="19" font="0"><b>Submission Number:</b></text>
+<text top="1014" left="189" width="31" height="19" font="1">9229</text>
+<text top="1118" left="441" width="115" height="16" font="2">Search keywords...</text>
+<text top="1117" left="633" width="111" height="19" font="1">Sort: Newest First</text>
+<text top="794" left="88" width="13" height="16" font="3"></text>
+<text top="834" left="109" width="13" height="16" font="3"></text>
+<text top="854" left="155" width="13" height="16" font="3"></text>
+<text top="875" left="173" width="13" height="16" font="3"></text>
+<text top="895" left="163" width="13" height="16" font="3"></text>
+<text top="915" left="127" width="13" height="16" font="3"></text>
+<text top="935" left="205" width="13" height="16" font="3"></text>
+<text top="956" left="300" width="13" height="16" font="3"></text>
+<text top="996" left="595" width="13" height="16" font="3"></text>
+<text top="1071" left="61" width="310" height="21" font="4"><b>Discussion (?id=32AX5rq8ip#discussion)</b></text>
+<text top="1117" left="64" width="128" height="19" font="1">Filter by reply type...</text>
+<text top="1117" left="262" width="106" height="19" font="1">Filter by author...</text>
+<text top="1165" left="210" width="8" height="13" font="5"><b>−</b></text>
+<text top="1171" left="250" width="14" height="5" font="6"><b>＝</b></text>
+<text top="1163" left="346" width="13" height="16" font="3"></text>
+<text top="1162" left="295" width="8" height="17" font="7">≡</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">2/17</text>
+</page>
+<page number="3" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="9" size="16" family="NAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="10" size="16" family="GAAAAA+GLYPHICONSHalflings" color="#000000"/>
+	<fontspec id="11" size="18" family="OAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="12" size="15" family="GAAAAA+GLYPHICONSHalflings" color="#000000"/>
+	<fontspec id="13" size="14" family="MAAAAA+ArialMT" color="#000000"/>
+<text top="47" left="659" width="147" height="21" font="9"><i>13 / 13 replies shown</i></text>
+<text top="174" left="395" width="29" height="19" font="1">Add:</text>
+<text top="174" left="444" width="78" height="19" font="0"><b>Withdrawal</b></text>
+<text top="174" left="556" width="248" height="19" font="0"><b>Author-Editor Confidential Comment</b></text>
+<text top="48" left="52" width="16" height="18" font="10"></text>
+<text top="47" left="85" width="467" height="19" font="1">Everyone Program Chairs Submission9229... Submission9229 Area...</text>
+<text top="80" left="83" width="550" height="19" font="1">Submission9229... Submission9229 Authors Submission9229... Submission9229...</text>
+<text top="114" left="83" width="245" height="19" font="1">Submission9229... Submission9229...</text>
+<text top="116" left="351" width="13" height="16" font="3"></text>
+<text top="231" left="52" width="308" height="24" font="11"><b>General Response to All Reviewers</b></text>
+<text top="259" left="56" width="111" height="19" font="1">Official Comment</text>
+<text top="280" left="56" width="704" height="19" font="1">by Authors ( <a href="https://openreview.net/profile?id=~Yongqi_Zhang2">Yongqi Zhang (/profile?id=~Yongqi_Zhang2),</a><a href="https://openreview.net/profile?id=~Haoyang_LI3"> Haoyang LI (/profile?id=~Haoyang_LI3),</a><a href="https://openreview.net/profile?id=~Yujia_Zheng1"> Yujia Zheng</a></text>
+<text top="296" left="56" width="371" height="19" font="1"><a href="https://openreview.net/profile?id=~Yujia_Zheng1">(/profile?id=~Yujia_Zheng1)</a>, <a href="https://openreview.net/profile?id=~Siyi_Liu1">Siyi Liu (/profile?id=~Siyi_Liu1)</a>)</text>
+<text top="319" left="80" width="110" height="19" font="1">14 Jul 2026, 01:37</text>
+<text top="341" left="80" width="571" height="19" font="1">Program Chairs, Senior Area Chairs, Area Chairs, Reviewers, Reviewers Submitted, Authors</text>
+<text top="1106" left="469" width="29" height="19" font="1">Add:</text>
+<text top="281" left="133" width="15" height="17" font="12"></text>
+<text top="320" left="61" width="15" height="17" font="12"></text>
+<text top="342" left="61" width="15" height="17" font="12"></text>
+<text top="366" left="52" width="70" height="19" font="0"><b>Comment:</b></text>
+<text top="386" left="52" width="674" height="19" font="1">We thank all reviewers for the constructive feedback. The reviews raise five families of concerns: (a) novelty</text>
+<text top="407" left="52" width="655" height="19" font="1">relative to PAFT, (b) reliance on semantic priors, (c) evaluation choices, (d) artifact availability, and (e) the</text>
+<text top="427" left="52" width="253" height="19" font="1">calibration of privacy and fidelity claims.</text>
+<text top="481" left="56" width="9" height="19" font="0"><b>#</b></text>
+<text top="481" left="94" width="171" height="19" font="0"><b>Addresses New evidence</b></text>
+<text top="481" left="343" width="103" height="19" font="0"><b>Headline result</b></text>
+<text top="461" left="687" width="44" height="19" font="0"><b>Where</b></text>
+<text top="481" left="687" width="69" height="19" font="0"><b>addressed</b></text>
+<text top="512" left="56" width="27" height="19" font="1">Exp-</text>
+<text top="533" left="56" width="8" height="19" font="1">1</text>
+<text top="512" left="94" width="16" height="19" font="1">(a)</text>
+<text top="512" left="172" width="79" height="19" font="1">Bidirectional</text>
+<text top="533" left="172" width="112" height="19" font="1">StructSynth×PAFT</text>
+<text top="553" left="172" width="127" height="19" font="1">component transfer</text>
+<text top="512" left="343" width="304" height="19" font="1">The full StructSynth system outperforms the full</text>
+<text top="533" left="343" width="307" height="19" font="1">PAFT system on utility and privacy (AUC 0.830 vs.</text>
+<text top="553" left="343" width="280" height="19" font="1">0.752); the StructSynth graph improves both</text>
+<text top="573" left="343" width="201" height="19" font="1">generators (+0.030/+0.022 AUC)</text>
+<text top="512" left="687" width="61" height="19" font="1">7Wh2-W1</text>
+<text top="604" left="56" width="27" height="19" font="1">Exp-</text>
+<text top="624" left="56" width="8" height="19" font="1">2</text>
+<text top="604" left="94" width="16" height="19" font="1">(b)</text>
+<text top="604" left="172" width="88" height="19" font="1">Task-and-field</text>
+<text top="624" left="172" width="94" height="19" font="1">anonymization</text>
+<text top="604" left="343" width="330" height="19" font="1">Functional under full anonymization — classification</text>
+<text top="624" left="343" width="181" height="19" font="1">within 1.5 AUC points (0.865 </text>
+<text top="625" left="524" width="14" height="16" font="13">→</text>
+<text top="624" left="539" width="92" height="19" font="1"> 0.850), fidelity</text>
+<text top="644" left="343" width="295" height="19" font="1">improves; regression degrades more (R² 0.560 </text>
+<text top="645" left="639" width="14" height="16" font="13">→</text>
+<text top="664" left="343" width="39" height="19" font="1">0.462)</text>
+<text top="604" left="687" width="65" height="19" font="1">7Wh2-W4;</text>
+<text top="624" left="687" width="54" height="19" font="1">iRH3-W3</text>
+<text top="695" left="56" width="27" height="19" font="1">Exp-</text>
+<text top="715" left="56" width="8" height="19" font="1">3</text>
+<text top="695" left="94" width="15" height="19" font="1">(c)</text>
+<text top="695" left="172" width="112" height="19" font="1">Post-cutoff vary-n</text>
+<text top="715" left="172" width="100" height="19" font="1">(Anxiety, Salary)</text>
+<text top="695" left="343" width="290" height="19" font="1">StructSynth leads at every n on both datasets;</text>
+<text top="715" left="343" width="220" height="19" font="1">largest margin +3.31 AUC at n = 20</text>
+<text top="695" left="687" width="52" height="19" font="1">q74j-W2</text>
+<text top="745" left="56" width="27" height="19" font="1">Exp-</text>
+<text top="766" left="56" width="8" height="19" font="1">4</text>
+<text top="745" left="94" width="15" height="19" font="1">(c)</text>
+<text top="745" left="172" width="150" height="19" font="1">Qwen2.5-32B backbone</text>
+<text top="766" left="172" width="36" height="19" font="1">check</text>
+<text top="745" left="343" width="309" height="19" font="1">AUC 0.856 vs. 0.843; R² 0.532 vs. 0.518 (0–1 scale)</text>
+<text top="745" left="687" width="52" height="19" font="1">q74j-W2</text>
+<text top="799" left="52" width="719" height="19" font="1">(d) is addressed in our response to Reviewer q74j (Artifact Checklist); (e) requires wording revisions only — no new</text>
+<text top="820" left="52" width="355" height="19" font="1">experiments (details in our responses to 7Wh2, W2/W3).</text>
+<text top="849" left="52" width="714" height="19" font="1">Together, these results support that StructSynth's improvements arise from the explicit graph-as-generation-plan</text>
+<text top="869" left="52" width="694" height="19" font="1">design rather than LLM memorization, hold across post-cutoff datasets and LLM backbones, and complement</text>
+<text top="889" left="52" width="318" height="19" font="1">rather than duplicate PAFT's fine-tuning approach.</text>
+<text top="930" left="52" width="93" height="19" font="0"><b>Revision plan.</b></text>
+<text top="930" left="145" width="622" height="19" font="1"> We will (1) position PAFT in §1–§2 [7Wh2-W1]; (2) sharpen the contribution statement to inference-</text>
+<text top="950" left="52" width="689" height="19" font="1">time graph execution and include PAFT as a baseline in the main comparison [7Wh2-W1]; (3) correct GraDe in</text>
+<text top="970" left="52" width="697" height="19" font="1">Appendix G.2 and justify baselines in §4.1 [7Wh2-W1; q74j-W1]; (4) replace &#34;privacy preservation&#34; wording with</text>
+<text top="991" left="52" width="670" height="19" font="1">empirical-privacy language in §4.2/Limitations [7Wh2-W2]; (5) report the utility–privacy–fidelity trade-off in</text>
+<text top="1011" left="52" width="704" height="19" font="1">§5/Appendix K.2 [7Wh2-W3]; (6) add Exp-1–4, surface the direction-aware SHD evaluation in §4.4 [iRH3-W1], and</text>
+<text top="1031" left="52" width="697" height="19" font="1">clarify low-data/opaque-schema boundaries in §4.5/Appendix [iRH3-W2/W3; 7Wh2-W4; q74j-W2]; and (7) move</text>
+<text top="1051" left="52" width="680" height="19" font="1">the generation-plan definition earlier, expand the Appendix A artifact checklist, and identify direct structural</text>
+<text top="1072" left="52" width="383" height="19" font="1">metrics as future work [q74j-Minor/Checklist; 7Wh2-W1/W4].</text>
+<text top="1106" left="515" width="248" height="19" font="0"><b>Author-Editor Confidential Comment</b></text>
+<text top="1192" left="52" width="471" height="24" font="11"><b>Official Review of Submission9229 by Reviewer 7Wh2</b></text>
+<text top="1194" left="552" width="13" height="16" font="3"></text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">3/17</text>
+</page>
+<page number="4" position="absolute" top="0" left="0" height="1262" width="892">
+<text top="44" left="56" width="216" height="19" font="1">Official Review by Reviewer 7Wh2</text>
+<text top="44" left="310" width="296" height="19" font="1">06 Jul 2026, 09:53 (modified: 12 Jul 2026, 23:35)</text>
+<text top="67" left="80" width="604" height="19" font="1">Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2</text>
+<text top="89" left="80" width="226" height="19" font="1"><a href="https://openreview.net/revisions?id=6SiIlYQEKB">Revisions (/revisions?id=6SiIlYQEKB)</a></text>
+<text top="45" left="291" width="15" height="17" font="12"></text>
+<text top="68" left="61" width="15" height="17" font="12"></text>
+<text top="90" left="61" width="15" height="17" font="12"></text>
+<text top="114" left="52" width="111" height="19" font="0"><b>Paper Summary:</b></text>
+<text top="134" left="52" width="691" height="19" font="1">This paper focuses on tabular data synthesis using large language models (LLMs). The idea is to first induce a</text>
+<text top="155" left="52" width="716" height="19" font="1">dependency DAG from a small real table using both LLM reasoning and statistical association measures, then use</text>
+<text top="175" left="52" width="713" height="19" font="1">that DAG as a generation plan for black-box LLM calls. Basically the graph is used to determine feature order and</text>
+<text top="195" left="52" width="185" height="19" font="1">prompt conditioning context.</text>
+<text top="224" left="52" width="157" height="19" font="0"><b>Summary Of Strengths:</b></text>
+<text top="245" left="79" width="660" height="19" font="1">The paper does a nice job and is akin to Bayesian network papers that separate structure discovery from</text>
+<text top="265" left="79" width="147" height="19" font="1">conditional generation.</text>
+<text top="285" left="79" width="660" height="19" font="1">The empirical results are strong. The authors demonstrate that their approach has the best downstream</text>
+<text top="305" left="79" width="261" height="19" font="1">performacne on the datasets considered.</text>
+<text top="326" left="79" width="657" height="19" font="1">The ablations are helpful. Replacing the LLM-guided graph discovery, or removing association scores, or</text>
+<text top="346" left="79" width="305" height="19" font="1">ignoring topological order all hurt performance.</text>
+<text top="375" left="52" width="174" height="19" font="0"><b>Summary Of Weaknesses:</b></text>
+<text top="395" left="79" width="659" height="19" font="1">My main concern with this paper is that it is quite close to the paper by S. Xu et al. &#34;Why LLMs Are Bad at</text>
+<text top="416" left="79" width="543" height="19" font="1">Synthetic Table Generation and what to do about it&#34; (<a href="https://arxiv.org/abs/2406.14541">https://arxiv.org/abs/2406.14541</a></text>
+<text top="436" left="79" width="607" height="19" font="1"><a href="https://arxiv.org/abs/2406.14541">(https://arxiv.org/abs/2406.14541))</a>. This paper argues that LLM tabular generation fails because</text>
+<text top="456" left="79" width="672" height="19" font="1">autoregressive generation imposes an order over columns, and that random feature-order fine-tuning will</text>
+<text top="476" left="79" width="660" height="19" font="1">violate functional dependencies. It proposes injecting knowledge of functional relationships. Just like the</text>
+<text top="497" left="79" width="664" height="19" font="1">proposed paper, there is a DAG learning step and then using that DAG information to generate data. As a</text>
+<text top="517" left="79" width="683" height="19" font="1">result, the novelty here is limited and further the experimental results need to be contrasted with this above</text>
+<text top="537" left="79" width="538" height="19" font="1">paper and their PAFT algorithm (in fact they seem to use the same dataset(s) as well).</text>
+<text top="557" left="79" width="692" height="19" font="1">Besides the key related work contrasting and comparison, the privacy evaluation feels underdeveloped and is</text>
+<text top="578" left="79" width="154" height="19" font="1">not quite a contribution.</text>
+<text top="598" left="79" width="688" height="19" font="1">The statistical fidelity results are mixed (the algorithm proposed appears middle of the pack in some of these</text>
+<text top="618" left="79" width="50" height="19" font="1">results).</text>
+<text top="638" left="79" width="647" height="19" font="1">The limitations section acknowledges that opaque schemas such as V1/V2 or genomic locus identifiers</text>
+<text top="659" left="79" width="672" height="19" font="1">weaken the LLM semantic prior (whereas this may not be a problem for the PAFT paper which seems to be</text>
+<text top="679" left="79" width="197" height="19" font="1">discovering the dependencies).</text>
+<text top="708" left="52" width="235" height="19" font="0"><b>Comments Suggestions And Typos:</b></text>
+<text top="728" left="52" width="111" height="19" font="1">Please see above.</text>
+<text top="758" left="52" width="79" height="19" font="0"><b>Confidence:</b></text>
+<text top="758" left="139" width="586" height="19" font="1">5 = Positive that my evaluation is correct. I read the paper very carefully and am familiar with</text>
+<text top="778" left="52" width="83" height="19" font="1">related work.</text>
+<text top="798" left="52" width="76" height="19" font="0"><b>Soundness:</b></text>
+<text top="798" left="136" width="614" height="19" font="1">3 = Acceptable: This study provides sufficient support for its main claims. Some minor points may</text>
+<text top="818" left="52" width="187" height="19" font="1">need extra support or details.</text>
+<text top="839" left="52" width="80" height="19" font="0"><b>Excitement:</b></text>
+<text top="839" left="139" width="19" height="19" font="1">1.5</text>
+<text top="859" left="52" width="136" height="19" font="0"><b>Overall Assessment:</b></text>
+<text top="859" left="196" width="512" height="19" font="1">2 = Resubmit next cycle: I think this paper needs substantial revisions that can be</text>
+<text top="879" left="52" width="208" height="19" font="1">completed by the next ARR cycle.</text>
+<text top="899" left="52" width="115" height="19" font="0"><b>Ethical Concerns:</b></text>
+<text top="920" left="52" width="278" height="19" font="1">There are no concerns with this submission.</text>
+<text top="949" left="52" width="141" height="19" font="0"><b>Needs Ethics Review:</b></text>
+<text top="949" left="201" width="18" height="19" font="1">No</text>
+<text top="969" left="52" width="106" height="19" font="0"><b>Reproducibility:</b></text>
+<text top="969" left="166" width="562" height="19" font="1">4 = They could mostly reproduce the results, but there may be some variation because of</text>
+<text top="989" left="52" width="540" height="19" font="1">sample variance or minor variations in their interpretation of the protocol or method.</text>
+<text top="1010" left="52" width="63" height="19" font="0"><b>Datasets:</b></text>
+<text top="1010" left="123" width="644" height="19" font="1">4 = Useful: I would recommend the new datasets to other researchers or developers for their ongoing</text>
+<text top="1030" left="52" width="35" height="19" font="1">work.</text>
+<text top="1050" left="52" width="64" height="19" font="0"><b>Software:</b></text>
+<text top="1050" left="124" width="645" height="19" font="1">4 = Useful: I would recommend the new software to other researchers or developers for their ongoing</text>
+<text top="1070" left="52" width="35" height="19" font="1">work.</text>
+<text top="1091" left="52" width="355" height="19" font="0"><b>Knowledge Of Or Educated Guess At Author Identity:</b></text>
+<text top="1091" left="414" width="18" height="19" font="1">No</text>
+<text top="1111" left="52" width="140" height="19" font="0"><b>Knowledge Of Paper:</b></text>
+<text top="1111" left="200" width="421" height="19" font="1">N/A, I do not know anything about the paper from outside sources</text>
+<text top="1131" left="52" width="189" height="19" font="0"><b>Knowledge Of Paper Source:</b></text>
+<text top="1131" left="249" width="421" height="19" font="1">N/A, I do not know anything about the paper from outside sources</text>
+<text top="1151" left="52" width="211" height="19" font="0"><b>Impact Of Knowledge Of Paper:</b></text>
+<text top="1151" left="271" width="421" height="19" font="1">N/A, I do not know anything about the paper from outside sources</text>
+<text top="1172" left="52" width="153" height="19" font="0"><b>Reviewer Certification:</b></text>
+<text top="1172" left="213" width="545" height="19" font="1">I certify that the review I entered accurately reflects my assessment of the work. If you</text>
+<text top="1192" left="52" width="674" height="19" font="1">used any type of automated tool to help you craft your review, I hereby certify that its use was restricted to</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">4/17</text>
+</page>
+<page number="5" position="absolute" top="0" left="0" height="1262" width="892">
+<text top="118" left="306" width="29" height="19" font="1">Add:</text>
+<text top="42" left="52" width="652" height="19" font="1">improving grammar and style, and the substance of the review is either my own work or the work of an</text>
+<text top="62" left="52" width="220" height="19" font="1">acknowledged secondary reviewer.</text>
+<text top="83" left="52" width="248" height="19" font="0"><b>Publication Ethics Policy Compliance:</b></text>
+<text top="83" left="308" width="321" height="19" font="1">I did not use any generative AI tools for this review</text>
+<text top="118" left="352" width="248" height="19" font="0"><b>Author-Editor Confidential Comment</b></text>
+<text top="118" left="627" width="136" height="19" font="0"><b>Review Issue Report</b></text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">5/17</text>
+</page>
+<page number="6" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="14" size="25" family="PAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="15" size="14" family="QAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="16" size="16" family="AAAAAA+NotoSans" color="#000000"/>
+<text top="52" left="62" width="312" height="32" font="14"><b>New Review Issue Report</b></text>
+<text top="100" left="62" width="162" height="19" font="1">* denotes a required field</text>
+<text top="130" left="62" width="129" height="24" font="11"><b>I1 Not Specific</b></text>
+<text top="157" left="62" width="293" height="19" font="1">Example: missing references are not specified.</text>
+<text top="224" left="62" width="199" height="24" font="11"><b>I2 Reviewer Heuristics</b></text>
+<text top="250" left="62" width="542" height="19" font="1">Examples: 'not SOTA', 'not novel', 'not suprising', 'too simple'. Note that such criticisms</text>
+<text top="271" left="62" width="26" height="18" font="15"><i>may</i></text>
+<text top="269" left="88" width="470" height="19" font="1"> be legitimate, if the reviewer explains their reasoning and backs it up with</text>
+<text top="289" left="62" width="559" height="19" font="1">arguments/evidence/references. This flag should only be used to report cases where the</text>
+<text top="308" left="62" width="233" height="19" font="1">reviewer has not done due diligence.</text>
+<text top="397" left="62" width="164" height="24" font="11"><b>I3 Score Mismatch</b></text>
+<text top="424" left="62" width="556" height="19" font="1">'Overall assessment' score is a combination of several factors. Two of them are reflected</text>
+<text top="443" left="62" width="539" height="19" font="1">in the 'soundness' and 'reproducibility' scores, which assess the technical merit of the</text>
+<text top="462" left="62" width="520" height="19" font="1">submission. If they are low, this should be backed up by the text of the review. The</text>
+<text top="481" left="62" width="561" height="19" font="1">'excitement' score is subjective and may not be justified in text (e.g. different researchers</text>
+<text top="500" left="62" width="412" height="19" font="1">have different ideas of what is exciting and presentation-worthy).</text>
+<text top="568" left="62" width="205" height="24" font="11"><b>I4 Unprofessional Tone</b></text>
+<text top="593" left="62" width="385" height="19" font="1">Examples: rude reviews, sexist/racist/ageist etc. insinuations.</text>
+<text top="660" left="62" width="106" height="24" font="11"><b>I5 Expertise</b></text>
+<text top="687" left="62" width="560" height="19" font="1">Examples: reviews that are not based on a deep understanding of the submission, or the</text>
+<text top="706" left="62" width="538" height="19" font="1">core methodology used in this research area. This rubric can also be used for reviews</text>
+<text top="725" left="62" width="226" height="19" font="1">suspected of being auto-generated.</text>
+<text top="792" left="62" width="158" height="24" font="11"><b>I6 Type Mismatch</b></text>
+<text top="818" left="62" width="525" height="19" font="1">Example: a short paper expected to provide more experiments than is necessary to</text>
+<text top="838" left="62" width="158" height="19" font="1">support the stated claim.</text>
+<text top="904" left="62" width="230" height="24" font="11"><b>I7 Contribution Mismatch</b></text>
+<text top="931" left="62" width="482" height="19" font="1">Examples: experimental results expected from a paper relying on a different</text>
+<text top="950" left="62" width="88" height="19" font="1">methodology.</text>
+<text top="1017" left="62" width="159" height="24" font="11"><b>I8 Missing Review</b></text>
+<text top="1043" left="62" width="318" height="19" font="1">Example: one-liner reviews with generic criticisms.</text>
+<text top="1110" left="62" width="130" height="24" font="11"><b>I9 Late Review</b></text>
+<text top="1136" left="62" width="473" height="19" font="1">Example: the review came too late to be addressed in the author response.</text>
+<text top="184" left="84" width="248" height="21" font="16">The review is not specific enough.</text>
+<text top="335" left="84" width="651" height="21" font="16">The review exhibits one or more of the reviewer heuristics discussed in the ARR reviewer</text>
+<text top="357" left="84" width="407" height="21" font="16">guidelines: https://aclrollingreview.org/reviewertutorial</text>
+<text top="528" left="84" width="407" height="21" font="16">The review score(s) do not match the text of the review.</text>
+<text top="621" left="84" width="561" height="21" font="16">The tone of the review does not conform to professional conduct standards.</text>
+<text top="752" left="84" width="275" height="21" font="16">The review does not evince expertise.</text>
+<text top="865" left="84" width="332" height="21" font="16">The review does not match the type of paper.</text>
+<text top="977" left="84" width="382" height="21" font="16">The review does not match the type of contribution.</text>
+<text top="1071" left="84" width="305" height="21" font="16">The review is missing or is uninformative.</text>
+<text top="1163" left="84" width="148" height="21" font="16">The review was late.</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">6/17</text>
+</page>
+<page number="7" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="17" size="14" family="RAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="18" size="12" family="SAAAAA+Menlo" color="#000000"/>
+<text top="40" left="62" width="244" height="24" font="11"><b>I10 Unreasonable Requests</b></text>
+<text top="67" left="62" width="560" height="19" font="1">Example: requests for comparisons with the latest 'closed' models when it is not relevant</text>
+<text top="86" left="62" width="164" height="19" font="1">for the research question.</text>
+<text top="153" left="62" width="160" height="24" font="11"><b>I11 Non Response</b></text>
+<text top="178" left="62" width="548" height="19" font="1">The reviewers are volunteers, and are not required to respond to all author comments.</text>
+<text top="199" left="62" width="529" height="19" font="1">Many do not respond in the forum, but do edit their reviews after seeing the author</text>
+<text top="218" left="62" width="542" height="19" font="1">response. You should only use this rubric when there is a critical misunderstanding or</text>
+<text top="237" left="62" width="532" height="19" font="1">unnoticed evidence, which would significantly impact key claims made in the review.</text>
+<text top="303" left="62" width="277" height="24" font="11"><b>I12 Revisions Unacknowledged</b></text>
+<text top="330" left="62" width="493" height="19" font="1">[For revised submissions only:] the review does not acknowledge the revisions</text>
+<text top="349" left="62" width="386" height="19" font="1">documented in revision notes, without sufficient justification.</text>
+<text top="416" left="62" width="85" height="24" font="11"><b>I13 Other</b></text>
+<text top="443" left="62" width="319" height="19" font="1">Please explain your issue in sufficient detail below.</text>
+<text top="509" left="62" width="108" height="24" font="11"><b>Justification</b></text>
+<text top="513" left="173" width="10" height="18" font="17">*</text>
+<text top="535" left="62" width="539" height="19" font="1">Describe the issue(s) with this review, clearly and concisely, with supporting evidence.</text>
+<text top="554" left="62" width="537" height="19" font="1">You can use markdown. Please start the description for each type of issue with a new</text>
+<text top="574" left="62" width="397" height="19" font="1">paragraph that starts with the review issue code. For example: </text>
+<text top="577" left="464" width="117" height="14" font="18">I2. The reviewer</text>
+<text top="596" left="62" width="519" height="14" font="18">states [...]. We believe that this corresponds to review issue type I2,</text>
+<text top="615" left="62" width="95" height="14" font="18">because [...]</text>
+<text top="613" left="161" width="4" height="19" font="1">.</text>
+<text top="633" left="62" width="547" height="19" font="1">In case of reviewers not changing their scores based on the discussion, it is not in your</text>
+<text top="652" left="62" width="519" height="19" font="1">interest to try to present a one-sided view of a reasonable scientific disagreement.</text>
+<text top="671" left="62" width="300" height="19" font="1">Please include the link to the specific comment.</text>
+<text top="1027" left="89" width="461" height="19" font="1"><a href="https://docs.openreview.net/reference/openreview-tex">TeX is supported (https://docs.openreview.net/reference/openreview-tex)</a></text>
+<text top="1083" left="62" width="73" height="24" font="11"><b>Readers</b></text>
+<text top="1087" left="137" width="10" height="18" font="17">*</text>
+<text top="1085" left="190" width="257" height="21" font="16">ACL ARR 2026 May Program Chairs</text>
+<text top="1121" left="190" width="403" height="21" font="16">ACL ARR 2026 May Submission9229 Senior Area Chairs</text>
+<text top="113" left="84" width="656" height="21" font="16">The reviewer requests experiments that are not needed to demonstrate the stated claim.</text>
+<text top="264" left="84" width="548" height="21" font="16">The review does not acknowledge critical evidence in the author response.</text>
+<text top="376" left="84" width="347" height="21" font="16">The review does not acknowledge the revisions</text>
+<text top="470" left="84" width="427" height="21" font="16">Some other technical violation of the peer review process.</text>
+<text top="709" left="81" width="37" height="19" font="0"><a href="issue_links.html#7"><b>Write</b></a></text>
+<text top="709" left="161" width="53" height="19" font="0"><a href=""><b>Preview</b></a></text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">7/17</text>
+</page>
+<page number="8" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="19" size="10" family="CAAAAA+NotoSans" color="#000000"/>
+	<fontspec id="20" size="4" family="TAAAAA+PingFangSC" color="#000000"/>
+<text top="48" left="190" width="351" height="21" font="16">ACL ARR 2026 May Submission9229 Area Chairs</text>
+<text top="84" left="190" width="73" height="21" font="9"><i>signatures</i></text>
+<text top="138" left="62" width="96" height="24" font="11"><b>Signatures</b></text>
+<text top="142" left="160" width="10" height="18" font="17">*</text>
+<text top="140" left="190" width="73" height="21" font="9"><i>signatures</i></text>
+<text top="197" left="62" width="105" height="24" font="11"><b>Edit History</b></text>
+<text top="253" left="62" width="73" height="24" font="11"><b>Readers</b></text>
+<text top="257" left="137" width="10" height="18" font="17">*</text>
+<text top="255" left="190" width="53" height="21" font="9"><i>readers</i></text>
+<text top="309" left="62" width="96" height="24" font="11"><b>Signatures</b></text>
+<text top="313" left="160" width="10" height="18" font="17">*</text>
+<text top="311" left="190" width="325" height="21" font="16">ACL ARR 2026 May Submission9229 Authors</text>
+<text top="383" left="83" width="48" height="19" font="0"><b>Submit</b></text>
+<text top="383" left="179" width="45" height="19" font="0"><b>Cancel</b></text>
+<text top="449" left="107" width="260" height="24" font="11"><b>Official Comment by Authors</b></text>
+<text top="476" left="111" width="111" height="19" font="1">Official Comment</text>
+<text top="497" left="111" width="626" height="19" font="1">by Authors ( <a href="https://openreview.net/profile?id=~Yongqi_Zhang2">Yongqi Zhang (/profile?id=~Yongqi_Zhang2),</a><a href="https://openreview.net/profile?id=~Haoyang_LI3"> Haoyang LI (/profile?id=~Haoyang_LI3),</a></text>
+<text top="514" left="111" width="448" height="19" font="1"><a href="https://openreview.net/profile?id=~Yujia_Zheng1">Yujia Zheng (/profile?id=~Yujia_Zheng1)</a>, <a href="https://openreview.net/profile?id=~Siyi_Liu1">Siyi Liu (/profile?id=~Siyi_Liu1))</a></text>
+<text top="536" left="135" width="110" height="19" font="1">16 Jul 2026, 18:09</text>
+<text top="559" left="135" width="604" height="19" font="1">Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2</text>
+<text top="778" left="459" width="29" height="19" font="1">Add:</text>
+<text top="439" left="77" width="8" height="13" font="19">−</text>
+<text top="460" left="74" width="14" height="5" font="20">＝</text>
+<text top="498" left="188" width="15" height="17" font="12"></text>
+<text top="537" left="116" width="15" height="17" font="12"></text>
+<text top="560" left="116" width="15" height="17" font="12"></text>
+<text top="583" left="107" width="70" height="19" font="0"><b>Comment:</b></text>
+<text top="604" left="107" width="135" height="19" font="1">Dear Reviewer 7Wh2,</text>
+<text top="633" left="107" width="642" height="19" font="1">Thank you again for your thorough review. We wanted to follow up to ensure you had a chance to see</text>
+<text top="653" left="107" width="597" height="19" font="1">our detailed response, which includes new experiments (Exp-1, Exp-2) directly addressing your</text>
+<text top="673" left="107" width="634" height="19" font="1">concerns on novelty relative to PAFT, privacy evaluation, fidelity trade-offs, and opaque schemas. We</text>
+<text top="694" left="107" width="641" height="19" font="1">would greatly appreciate any further feedback during the remaining discussion period and are happy</text>
+<text top="714" left="107" width="230" height="19" font="1">to run additional analyses if needed.</text>
+<text top="743" left="107" width="165" height="19" font="1">Best regards, The Authors</text>
+<text top="778" left="505" width="248" height="19" font="0"><b>Author-Editor Confidential Comment</b></text>
+<text top="855" left="107" width="296" height="24" font="11"><b>Response to Reviewer 7Wh2 (1/2)</b></text>
+<text top="883" left="111" width="111" height="19" font="1">Official Comment</text>
+<text top="903" left="111" width="626" height="19" font="1">by Authors ( <a href="https://openreview.net/profile?id=~Yongqi_Zhang2">Yongqi Zhang (/profile?id=~Yongqi_Zhang2),</a><a href="https://openreview.net/profile?id=~Haoyang_LI3"> Haoyang LI (/profile?id=~Haoyang_LI3),</a></text>
+<text top="920" left="111" width="448" height="19" font="1"><a href="https://openreview.net/profile?id=~Yujia_Zheng1">Yujia Zheng (/profile?id=~Yujia_Zheng1)</a>, <a href="https://openreview.net/profile?id=~Siyi_Liu1">Siyi Liu (/profile?id=~Siyi_Liu1))</a></text>
+<text top="942" left="135" width="110" height="19" font="1">14 Jul 2026, 01:29</text>
+<text top="965" left="135" width="604" height="19" font="1">Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2</text>
+<text top="845" left="77" width="8" height="13" font="19">−</text>
+<text top="866" left="74" width="14" height="5" font="20">＝</text>
+<text top="904" left="188" width="15" height="17" font="12"></text>
+<text top="943" left="116" width="15" height="17" font="12"></text>
+<text top="966" left="116" width="15" height="17" font="12"></text>
+<text top="989" left="107" width="70" height="19" font="0"><b>Comment:</b></text>
+<text top="1010" left="107" width="595" height="19" font="1">We thank Reviewer 7Wh2 for the careful and thorough review. The central question is whether</text>
+<text top="1030" left="107" width="619" height="19" font="1">StructSynth is redundant given PAFT. We show it is not, at three levels: mechanism (inference-time</text>
+<text top="1050" left="107" width="649" height="19" font="1">execution vs. fine-tuning compilation), family-level evidence already in the submission (GraDe, Table 1),</text>
+<text top="1070" left="107" width="627" height="19" font="1">and a new direct comparison (Exp-1); Exp-2 additionally probes the opaque-schema boundary (W4).</text>
+<text top="1100" left="107" width="640" height="19" font="1">Experiment numbering (Exp-1–4) is shared across all responses and defined in the General Response.</text>
+<text top="467" left="77" width="8" height="16" font="13">≡</text>
+<text top="874" left="77" width="8" height="16" font="13">≡</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">8/17</text>
+</page>
+<page number="9" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="21" size="23" family="UAAAAA+NotoSans" color="#000000"/>
+<text top="40" left="107" width="393" height="29" font="21">W1: Relationship to PAFT and Novelty</text>
+<text top="82" left="121" width="618" height="19" font="1">&#34;My main concern with this paper is that it is quite close to the paper by S. Xu et al. 'Why LLMs Are</text>
+<text top="102" left="121" width="626" height="19" font="1">Bad at Synthetic Table Generation and what to do about it' [...] Just like the proposed paper, there is</text>
+<text top="122" left="121" width="623" height="19" font="1">a DAG learning step and then using that DAG information to generate data. As a result, the novelty</text>
+<text top="142" left="121" width="607" height="19" font="1">here is limited and further the experimental results need to be contrasted with this above paper</text>
+<text top="163" left="121" width="186" height="19" font="1">and their PAFT algorithm [...]&#34;</text>
+<text top="197" left="107" width="584" height="19" font="0"><b>Both methods are structure-aware, but the structure plays a different operational role.</b></text>
+<text top="197" left="691" width="34" height="19" font="1"> PAFT</text>
+<text top="218" left="107" width="628" height="19" font="1">mines functional dependencies and compiles them into a global feature order for LoRA fine-tuning;</text>
+<text top="238" left="107" width="646" height="19" font="1">StructSynth builds a DAG from semantic and statistical evidence and executes it at inference to control</text>
+<text top="258" left="107" width="620" height="19" font="1">generation order, conditioning context, and prompt scope for a black-box LLM, without parameter</text>
+<text top="278" left="107" width="163" height="19" font="1">updates (§3.1–§3.2; Eq. 4).</text>
+<text top="308" left="107" width="637" height="19" font="1">We agree both methods follow a &#34;discover structure, then generate&#34; template, and PAFT should have</text>
+<text top="328" left="107" width="651" height="19" font="1">been cited — we will position it in §1–§2. The template, however, is where the operational overlap ends:</text>
+<text top="348" left="107" width="573" height="19" font="1">this distinction is most consequential in our target low-data regime, where semantic priors</text>
+<text top="368" left="107" width="645" height="19" font="1">complement weak association estimates and StructSynth achieves the lowest or near-lowest SHD at n </text>
+<text top="370" left="752" width="8" height="16" font="13">≤</text>
+<text top="389" left="107" width="57" height="19" font="1">50 (§4.4).</text>
+<text top="418" left="107" width="626" height="19" font="1">The family-level contrast the review asks for is already in the submission: GraDe is, like PAFT, an FD-</text>
+<text top="438" left="107" width="646" height="19" font="1">discovery-plus-FD-guided generator trained by fine-tuning, and under identical 100-shot splits and the</text>
+<text top="458" left="107" width="653" height="19" font="1">same evaluation pipeline StructSynth leads it on all six datasets (average utility 75.01 vs. 51.05; Table 1).</text>
+<text top="479" left="107" width="636" height="19" font="1">To our knowledge, no prior method executes a discovered dependency graph as the generation plan</text>
+<text top="499" left="107" width="633" height="19" font="1">for a black-box LLM; structure-aware predecessors (PAFT, GraDe) inject structure at fine-tuning time.</text>
+<text top="528" left="107" width="653" height="19" font="1">Exp-1 now extends the comparison to PAFT itself: we evaluated bidirectional component transfer at 100</text>
+<text top="548" left="107" width="430" height="19" font="1">real rows and 1,000 synthetic rows with a unified XGBoost evaluator.</text>
+<text top="582" left="111" width="198" height="19" font="0"><b>Generator Structural source</b></text>
+<text top="582" left="399" width="217" height="19" font="0"><b>Avg. AUC Avg. R² Fidelity error </b></text>
+<text top="584" left="616" width="7" height="17" font="7">↓</text>
+<text top="582" left="632" width="98" height="19" font="0"><b>DCR deviation </b></text>
+<text top="584" left="730" width="7" height="17" font="7">↓</text>
+<text top="614" left="111" width="31" height="19" font="1">PAFT</text>
+<text top="614" left="194" width="92" height="19" font="1">PAFT FD graph</text>
+<text top="614" left="425" width="35" height="19" font="1">0.752</text>
+<text top="614" left="481" width="35" height="19" font="1">0.360</text>
+<text top="614" left="589" width="35" height="19" font="1">0.537</text>
+<text top="614" left="702" width="35" height="19" font="1">0.154</text>
+<text top="644" left="111" width="31" height="19" font="1">PAFT</text>
+<text top="644" left="194" width="196" height="19" font="1">StructSynth dependency graph</text>
+<text top="644" left="425" width="35" height="19" font="1">0.782</text>
+<text top="644" left="481" width="35" height="19" font="1">0.404</text>
+<text top="644" left="589" width="35" height="19" font="1">0.540</text>
+<text top="644" left="702" width="35" height="19" font="1">0.150</text>
+<text top="674" left="111" width="175" height="19" font="1">StructSynth PAFT FD graph</text>
+<text top="674" left="425" width="35" height="19" font="1">0.808</text>
+<text top="674" left="481" width="35" height="19" font="1">0.550</text>
+<text top="674" left="589" width="35" height="19" font="1">0.580</text>
+<text top="674" left="702" width="35" height="19" font="1">0.053</text>
+<text top="705" left="111" width="278" height="19" font="1">StructSynth StructSynth dependency graph</text>
+<text top="705" left="425" width="35" height="19" font="1">0.830</text>
+<text top="705" left="481" width="35" height="19" font="1">0.591</text>
+<text top="705" left="589" width="35" height="19" font="1">0.595</text>
+<text top="705" left="702" width="35" height="19" font="1">0.032</text>
+<text top="739" left="107" width="634" height="19" font="0"><b>In this descriptive comparison, the full StructSynth system leads the full PAFT system on every</b></text>
+<text top="759" left="107" width="637" height="19" font="0"><b>utility and privacy column (AUC 0.830 vs. 0.752; R² 0.591 vs. 0.360; DCR deviation 0.032 vs. 0.154).</b></text>
+<text top="779" left="107" width="638" height="19" font="1">The component-transfer rows isolate the contribution of the structural source: holding the generator</text>
+<text top="799" left="107" width="632" height="19" font="1">fixed, the StructSynth dependency graph consistently improves downstream utility over the PAFT FD</text>
+<text top="820" left="107" width="487" height="19" font="1">graph. Under the PAFT generator it raises classification AUC by +0.030 (0.752 </text>
+<text top="821" left="594" width="14" height="16" font="13">→</text>
+<text top="820" left="608" width="154" height="19" font="1"> 0.782) and R² by +0.044;</text>
+<text top="840" left="107" width="407" height="19" font="1">under the StructSynth executor the gains are similar (AUC 0.808 </text>
+<text top="841" left="513" width="14" height="16" font="13">→</text>
+<text top="840" left="528" width="100" height="19" font="1"> 0.830; R² 0.550 </text>
+<text top="841" left="628" width="14" height="16" font="13">→</text>
+<text top="840" left="642" width="88" height="19" font="1"> 0.591). Cross-</text>
+<text top="860" left="107" width="611" height="19" font="1">compatibility is preserved in the reverse direction (a PAFT FD graph can still drive the StructSynth</text>
+<text top="880" left="107" width="612" height="19" font="1">executor at AUC 0.808), confirming the two structural representations are interchangeable at the</text>
+<text top="901" left="107" width="343" height="19" font="1">interface level while differing in downstream strength.</text>
+<text top="928" left="107" width="374" height="29" font="21">W2: Scope of the Privacy Evaluation</text>
+<text top="969" left="121" width="549" height="19" font="1">&#34;Besides the key related work contrasting and comparison, the privacy evaluation feels</text>
+<text top="989" left="121" width="308" height="19" font="1">underdeveloped and is not quite a contribution.&#34;</text>
+<text top="1024" left="107" width="651" height="19" font="1">We agree DCR evidence alone should not be read as a standalone privacy contribution; the revision will</text>
+<text top="1045" left="107" width="618" height="19" font="1">replace the &#34;privacy preservation&#34; wording (abstract, §1, §4.2, §5) with empirical-privacy language.</text>
+<text top="1074" left="107" width="648" height="19" font="0"><b>StructSynth pairs the best utility rank (1.00) with the best privacy rank (1.50), which we attribute</b></text>
+<text top="1094" left="107" width="515" height="19" font="0"><b>to conditioning each generation call on a local subgraph (§4.2; Appendix K.2).</b></text>
+<text top="1123" left="107" width="647" height="19" font="1">DCR is not differential privacy; the regularization effect was not designed as a privacy mechanism; and</text>
+<text top="1144" left="107" width="649" height="19" font="1">the submitted Ethics section already states that StructSynth offers no formal privacy guarantee (Ethics,</text>
+<text top="1164" left="107" width="463" height="19" font="1">l.574–578). Appendix K.2 discusses the resulting fidelity–privacy trade-off.</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="835" width="21" height="12" font="8">9/17</text>
+</page>
+<page number="10" position="absolute" top="0" left="0" height="1262" width="892">
+<text top="48" left="459" width="29" height="19" font="1">Add:</text>
+<text top="48" left="505" width="248" height="19" font="0"><b>Author-Editor Confidential Comment</b></text>
+<text top="105" left="162" width="296" height="24" font="11"><b>Response to Reviewer 7Wh2 (2/2)</b></text>
+<text top="133" left="166" width="111" height="19" font="1">Official Comment</text>
+<text top="154" left="166" width="510" height="19" font="1">by Authors ( <a href="https://openreview.net/profile?id=~Yongqi_Zhang2">Yongqi Zhang (/profile?id=~Yongqi_Zhang2),</a> <a href="https://openreview.net/profile?id=~Haoyang_LI3">Haoyang LI (/profile?</a></text>
+<text top="170" left="166" width="569" height="19" font="1"><a href="https://openreview.net/profile?id=~Haoyang_LI3">id=~Haoyang_LI3),</a> <a href="https://openreview.net/profile?id=~Yujia_Zheng1">Yujia Zheng (/profile?id=~Yujia_Zheng1),</a> <a href="https://openreview.net/profile?id=~Siyi_Liu1">Siyi Liu (/profile?id=~Siyi_Liu1)</a>)</text>
+<text top="193" left="190" width="110" height="19" font="1">14 Jul 2026, 01:31</text>
+<text top="213" left="190" width="504" height="19" font="1">Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors,</text>
+<text top="230" left="171" width="97" height="19" font="1">Reviewer 7Wh2</text>
+<text top="95" left="132" width="8" height="13" font="19">−</text>
+<text top="117" left="129" width="14" height="5" font="20">＝</text>
+<text top="155" left="243" width="15" height="17" font="12"></text>
+<text top="194" left="171" width="15" height="17" font="12"></text>
+<text top="214" left="171" width="15" height="17" font="12"></text>
+<text top="255" left="162" width="70" height="19" font="0"><b>Comment:</b></text>
+<text top="273" left="162" width="329" height="29" font="21">W3: Statistical Fidelity Trade-off</text>
+<text top="314" left="177" width="552" height="19" font="1">&#34;The statistical fidelity results are mixed (the algorithm proposed appears middle of the</text>
+<text top="335" left="177" width="197" height="19" font="1">pack in some of these results).&#34;</text>
+<text top="370" left="162" width="306" height="19" font="1">The reviewer is correct about the mixed ranking.</text>
+<text top="399" left="162" width="583" height="19" font="0"><b>Pairwise fidelity and downstream utility are different objectives: the Bayesian-Sampler</b></text>
+<text top="419" left="162" width="546" height="19" font="0"><b>ablation attains the lowest fidelity error (48.86) yet the worst utility (81.17), while</b></text>
+<text top="439" left="162" width="583" height="19" font="0"><b>StructSynth holds utility rank 1.00 — the objective for which augmentation is deployed</b></text>
+<text top="460" left="162" width="60" height="19" font="0"><b>(Table 3).</b></text>
+<text top="489" left="162" width="539" height="19" font="1">Fidelity error measures pairwise-correlation matching, whereas the generation graph</text>
+<text top="509" left="162" width="561" height="19" font="1">encodes conditional parent–child dependencies (§4.2, l.356–359 and l.413–417; Appendix</text>
+<text top="529" left="162" width="565" height="19" font="1">K.2). The same tension appears among the real baselines, where high fidelity often stems</text>
+<text top="550" left="162" width="588" height="19" font="1">from memorization: BN ranks 3.00 on fidelity error but 9.00 on privacy, and GReaT ranks 4.00</text>
+<text top="570" left="162" width="581" height="19" font="1">on fidelity error with the worst privacy risk (90.15%) (§4.2, l.396–404; Table 2). The submitted</text>
+<text top="590" left="162" width="558" height="19" font="1">profile is utility rank 1.00, privacy rank 1.50, fidelity rank 8.50; the revision will report this</text>
+<text top="610" left="162" width="459" height="19" font="1">trade-off explicitly in §5, and we do not claim comprehensive superiority.</text>
+<text top="638" left="162" width="413" height="29" font="21">W4: Opaque and Anonymized Schemas</text>
+<text top="679" left="177" width="549" height="19" font="1">&#34;The limitations section acknowledges that opaque schemas such as V1/V2 or genomic</text>
+<text top="699" left="177" width="556" height="19" font="1">locus identifiers weaken the LLM semantic prior (whereas this may not be a problem for</text>
+<text top="719" left="177" width="423" height="19" font="1">the PAFT paper which seems to be discovering the dependencies).&#34;</text>
+<text top="754" left="162" width="527" height="19" font="1">Opaque schemas do weaken the semantic prior — the submission flags exactly this</text>
+<text top="775" left="162" width="160" height="19" font="1">boundary (Appendix K.3).</text>
+<text top="804" left="162" width="567" height="19" font="0"><b>Under full anonymization of names and descriptions, StructSynth stays functional —</b></text>
+<text top="824" left="162" width="584" height="19" font="0"><b>classification loses 1.5 AUC points while fidelity improves — because association scores</b></text>
+<text top="844" left="162" width="415" height="19" font="0"><b>keep the graph populated when semantics are absent (Exp-2).</b></text>
+<text top="874" left="162" width="542" height="19" font="1">We anonymized all column names and task/column descriptions while keeping values</text>
+<text top="894" left="162" width="122" height="19" font="1">unchanged (Exp-2) </text>
+<text top="895" left="284" width="348" height="18" font="15"><i>(gpt-5-mini, 100 real rows, 1,000 synthetic rows; 0–1 scale)</i></text>
+<text top="894" left="632" width="4" height="19" font="1">.</text>
+<text top="928" left="166" width="127" height="19" font="0"><b>Dataset Condition</b></text>
+<text top="928" left="316" width="42" height="19" font="0"><b>Utility</b></text>
+<text top="928" left="390" width="53" height="19" font="0"><b>Fidelity </b></text>
+<text top="929" left="443" width="7" height="17" font="7">↓</text>
+<text top="928" left="459" width="103" height="19" font="0"><b>DCR (ideal 0.50)</b></text>
+<text top="959" left="166" width="112" height="19" font="1">Anxiety Original</text>
+<text top="959" left="316" width="65" height="19" font="1">AUC 0.865</text>
+<text top="959" left="416" width="35" height="19" font="1">0.579</text>
+<text top="959" left="528" width="35" height="19" font="1">0.447</text>
+<text top="989" left="166" width="214" height="19" font="1">Anxiety Anonymized AUC 0.850</text>
+<text top="989" left="416" width="35" height="19" font="1">0.534</text>
+<text top="989" left="528" width="35" height="19" font="1">0.564</text>
+<text top="1020" left="166" width="39" height="19" font="1">Salary</text>
+<text top="1020" left="228" width="51" height="19" font="1">Original</text>
+<text top="1020" left="330" width="51" height="19" font="1">R² 0.560</text>
+<text top="1020" left="416" width="35" height="19" font="1">0.646</text>
+<text top="1020" left="528" width="35" height="19" font="1">0.501</text>
+<text top="1050" left="166" width="39" height="19" font="1">Salary</text>
+<text top="1050" left="228" width="79" height="19" font="1">Anonymized</text>
+<text top="1050" left="330" width="51" height="19" font="1">R² 0.462</text>
+<text top="1050" left="416" width="35" height="19" font="1">0.615</text>
+<text top="1050" left="528" width="35" height="19" font="1">0.412</text>
+<text top="1084" left="162" width="256" height="19" font="1">Salary's larger regression drop (R² 0.560 </text>
+<text top="1085" left="418" width="14" height="16" font="13">→</text>
+<text top="1084" left="432" width="292" height="19" font="1"> 0.462) shows semantic priors matter most for</text>
+<text top="1104" left="162" width="573" height="19" font="1">fine-grained continuous dependencies (full analysis in our response to Reviewer iRH3, W3).</text>
+<text top="1124" left="162" width="581" height="19" font="1">This limitation is mirrored on the PAFT side: FD discovery plus fine-tuning requires statistical</text>
+<text top="1145" left="162" width="575" height="19" font="1">signal and parameter access — the two resources scarcest in our target regime — whereas</text>
+<text top="1165" left="162" width="588" height="19" font="1">StructSynth runs against black-box APIs and its graph transfers across eight backbones (§4.6,</text>
+<text top="1185" left="162" width="575" height="19" font="1">Figure 5). The two approaches therefore compose rather than compete: when schemas are</text>
+<text top="124" left="132" width="8" height="16" font="13">≡</text>
+<text top="25" left="36" width="79" height="12" font="8">2026/7/18 21:22</text>
+<text top="25" left="208" width="600" height="12" font="8">StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview</text>
+<text top="1229" left="36" width="277" height="12" font="8">https://openreview.net/forum?id=32AX5rq8ip#discussion</text>
+<text top="1229" left="829" width="27" height="12" font="8">10/17</text>
+</page>
+</pdf2xml>

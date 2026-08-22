@@ -1,0 +1,201 @@
+Call Failure,Complains,Subscription Length,Charge Amount,Seconds of Use,Frequency of Use,Frequency of SMS,Distinct Called Numbers,Age Group,Tariff Plan,Status,Customer Value,Churn
+8,No,28,0,11250,145,42,38,younger,Pay as you go,Active,583.2,No
+3,No,45,1,14800,200,275,55,middle-aged,Contractual,Active,1290.45,No
+12,No,35,0,780,14,5,6,older,Pay as you go,Non-Active,85.5,Yes
+7,No,22,0,5200,88,18,25,youngest,Pay as you go,Active,310.25,No
+5,No,33,0,8900,120,95,42,younger,Pay as you go,Active,450.75,No
+10,No,40,0,3100,48,28,16,middle-aged,Pay as you go,Non-Active,120.0,Yes
+4,No,50,1,13200,175,160,60,older,Contractual,Active,725.6,No
+9,No,29,0,620,10,2,3,younger,Pay as you go,Non-Active,55.8,Yes
+6,No,18,0,4450,70,35,20,younger,Pay as you go,Active,210.9,No
+2,No,42,0,14100,190,220,48,middle-aged,Contractual,Active,980.3,No
+14,No,37,0,900,18,11,5,oldest,Pay as you go,Non-Active,75.15,Yes
+3,No,26,0,6800,100,50,30,youngest,Pay as you go,Active,375.4,No
+8,Yes,34,0,3600,55,22,14,middle-aged,Pay as you go,Non-Active,165.2,Yes
+5,No,20,0,10500,135,80,35,older,Pay as you go,Active,600.0,No
+15,No,39,0,450,8,0,1,younger,Pay as you go,Non-Active,42.3,Yes
+1,No,48,1,12500,165,130,50,middle-aged,Contractual,Active,850.9,No
+9,No,30,0,4800,75,45,28,younger,Pay as you go,Active,250.65,No
+11,Yes,41,0,2200,35,15,10,older,Pay as you go,Non-Active,95.0,Yes
+4,No,24,0,9500,130,60,40,youngest,Pay as you go,Active,510.4,No
+7,No,36,0,2800,50,30,12,middle-aged,Pay as you go,Non-Active,140.55,Yes
+8,No,28,1,11200,175,45,42,younger,Pay as you go,Active,524.18,No
+5,No,42,0,780,14,2,4,older,Pay as you go,Non-Active,87.33,Yes
+3,No,33,0,14200,190,200,55,middle-aged,Contractual,Active,1200.45,No
+7,No,14,0,3400,58,18,25,youngest,Pay as you go,Active,215.6,No
+6,No,45,1,16200,210,280,70,older,Contractual,Active,1560.88,No
+12,Yes,36,0,450,8,0,3,middle-aged,Pay as you go,Non-Active,45.9,Yes
+1,No,20,0,6200,102,35,28,younger,Pay as you go,Active,350.25,No
+4,No,29,0,9800,160,95,48,younger,Pay as you go,Active,780.5,No
+8,No,34,0,1850,32,12,14,younger,Pay as you go,Non-Active,132.18,Yes
+2,No,38,1,11500,170,110,52,middle-aged,Contractual,Active,950.0,No
+9,Yes,41,0,600,12,5,5,oldest,Pay as you go,Non-Active,67.8,Yes
+5,No,18,0,7800,130,55,35,youngest,Pay as you go,Active,410.33,No
+0,No,46,1,18500,240,320,80,middle-aged,Contractual,Active,2300.0,No
+6,No,27,0,2600,48,22,20,older,Pay as you go,Active,175.4,No
+10,Yes,35,0,1200,20,8,9,younger,Pay as you go,Non-Active,99.99,Yes
+3,No,24,0,8800,145,75,38,younger,Pay as you go,Active,680.75,No
+4,No,16,0,4000,70,30,22,middle-aged,Pay as you go,Active,295.1,No
+7,No,39,0,320,6,0,2,oldest,Pay as you go,Non-Active,55.2,Yes
+1,No,31,1,10500,155,130,45,younger,Pay as you go,Active,850.0,No
+6,No,30,0,2200,38,16,16,middle-aged,Pay as you go,Non-Active,148.6,Yes
+8,No,28,1,11200,175,45,40,younger,Pay as you go,Active,543.21,No
+5,No,35,0,2400,45,12,18,middle-aged,Pay as you go,Non-Active,125.75,Yes
+3,No,42,0,13500,210,200,55,older,Contractual,Active,890.4,No
+9,No,33,0,880,14,5,5,youngest,Pay as you go,Non-Active,67.89,Yes
+2,No,19,0,7200,120,30,28,younger,Pay as you go,Active,312.5,No
+1,No,48,0,16000,195,180,70,middle-aged,Contractual,Active,1500.0,No
+12,Yes,29,0,1300,22,9,10,older,Pay as you go,Non-Active,95.2,Yes
+4,No,22,0,9800,150,85,38,younger,Pay as you go,Active,784.6,No
+7,No,40,0,600,10,2,3,oldest,Pay as you go,Non-Active,45.3,Yes
+0,No,36,0,14500,230,120,60,middle-aged,Contractual,Active,1050.8,No
+6,No,30,0,4500,80,18,25,youngest,Pay as you go,Active,220.0,No
+10,Yes,34,0,1100,18,4,7,younger,Pay as you go,Non-Active,78.4,Yes
+5,No,27,1,10500,165,55,45,older,Pay as you go,Active,630.0,No
+3,No,38,0,3200,55,25,20,middle-aged,Pay as you go,Non-Active,180.9,Yes
+2,No,44,0,15000,200,90,50,younger,Contractual,Active,1200.0,No
+8,No,31,0,750,12,3,4,older,Pay as you go,Non-Active,56.7,Yes
+1,No,24,0,8100,140,40,35,youngest,Pay as you go,Active,450.0,No
+7,No,33,0,5600,95,20,22,middle-aged,Pay as you go,Active,300.25,No
+4,Yes,37,0,2800,48,15,16,younger,Pay as you go,Non-Active,140.0,Yes
+0,No,30,0,0,0,0,0,oldest,Pay as you go,Non-Active,0.0,Yes
+12,No,28,0,11200,180,45,55,younger,Pay as you go,Active,523.45,No
+3,No,42,1,18500,250,200,70,middle-aged,Contractual,Active,1200.8,No
+15,Yes,35,0,1200,20,5,5,older,Pay as you go,Non-Active,85.2,Yes
+7,No,20,0,7200,100,30,25,younger,Pay as you go,Active,345.6,No
+5,No,36,1,14000,200,120,60,middle-aged,Contractual,Active,789.12,No
+10,No,40,0,800,12,2,3,youngest,Pay as you go,Non-Active,55.5,Yes
+8,No,30,0,13500,160,80,45,older,Pay as you go,Active,620.3,No
+6,No,25,0,3500,55,15,20,middle-aged,Pay as you go,Active,150.75,No
+2,No,48,1,16000,220,180,80,younger,Contractual,Active,950.4,No
+14,Yes,33,0,1500,18,0,7,older,Pay as you go,Non-Active,78.9,Yes
+4,No,22,0,9800,140,60,35,youngest,Pay as you go,Active,480.25,No
+9,No,18,0,4200,70,25,28,younger,Pay as you go,Active,200.1,No
+12,No,45,0,600,10,3,1,middle-aged,Pay as you go,Non-Active,60.3,Yes
+1,No,40,2,17000,240,150,65,older,Contractual,Active,1100.5,No
+6,No,15,0,6000,85,35,30,younger,Pay as you go,Active,280.45,No
+10,Yes,38,0,1800,25,8,10,middle-aged,Pay as you go,Non-Active,95.6,Yes
+4,No,34,1,15000,190,100,50,older,Pay as you go,Active,750.35,No
+7,No,26,0,2800,40,12,15,youngest,Pay as you go,Active,125.8,No
+16,No,42,0,900,14,1,4,younger,Pay as you go,Non-Active,70.15,Yes
+5,No,29,0,8500,120,50,40,middle-aged,Pay as you go,Active,430.9,No
+7,No,24,1,8923,128,45,35,middle-aged,Pay as you go,Active,523.45,No
+5,No,36,0,2340,42,12,18,older,Pay as you go,Non-Active,120.3,Yes
+3,No,42,1,12450,195,180,55,younger,Contractual,Active,890.75,No
+8,Yes,33,0,890,14,5,6,youngest,Pay as you go,Non-Active,67.2,Yes
+4,No,19,0,5670,88,22,28,younger,Pay as you go,Active,345.8,No
+1,No,48,2,18900,210,250,70,middle-aged,Contractual,Active,1500.25,No
+9,No,40,0,1450,28,18,12,older,Pay as you go,Non-Active,95.6,Yes
+6,No,28,1,9870,145,65,40,younger,Pay as you go,Active,670.9,No
+7,Yes,35,0,3200,55,30,22,middle-aged,Pay as you go,Non-Active,210.4,Yes
+2,No,38,1,15600,175,120,50,older,Contractual,Active,1100.3,No
+4,No,29,0,600,9,3,4,youngest,Pay as you go,Non-Active,45.0,Yes
+5,No,22,0,7450,110,55,32,younger,Pay as you go,Active,480.6,No
+3,No,30,1,11000,160,90,45,middle-aged,Pay as you go,Active,780.2,No
+10,No,44,0,2600,40,20,16,older,Pay as you go,Non-Active,150.8,Yes
+6,No,16,0,4800,75,35,25,youngest,Pay as you go,Active,320.0,No
+0,No,50,3,22000,240,300,80,middle-aged,Contractual,Active,1800.5,No
+7,Yes,42,0,1100,18,8,8,younger,Pay as you go,Non-Active,85.3,Yes
+4,No,26,1,8200,120,48,30,younger,Pay as you go,Active,550.7,No
+8,No,34,0,4000,65,25,20,oldest,Pay as you go,Non-Active,260.4,Yes
+5,No,20,0,6500,95,40,28,middle-aged,Pay as you go,Active,430.2,No
+12,No,28,1,11200,160,45,38,younger,Pay as you go,Active,525.34,No
+7,No,35,0,4200,70,18,20,middle-aged,Pay as you go,Non-Active,185.2,Yes
+5,No,42,0,18500,250,200,55,youngest,Contractual,Active,890.45,No
+3,Yes,33,0,800,14,5,6,older,Pay as you go,Non-Active,62.15,Yes
+8,No,20,1,9200,130,90,28,younger,Pay as you go,Active,410.75,No
+14,No,39,0,3100,50,25,16,middle-aged,Pay as you go,Non-Active,150.9,Yes
+2,No,48,0,22000,300,320,70,youngest,Contractual,Active,1200.0,No
+9,Yes,30,0,1250,22,0,10,older,Pay as you go,Non-Active,78.56,Yes
+6,No,25,1,14200,190,110,45,younger,Pay as you go,Active,650.3,No
+15,No,34,0,6800,100,40,25,middle-aged,Pay as you go,Active,300.25,No
+4,Yes,29,0,500,8,2,3,older,Pay as you go,Non-Active,45.0,Yes
+1,No,45,2,16000,210,140,50,younger,Contractual,Active,780.55,No
+10,No,36,0,5200,80,35,22,middle-aged,Pay as you go,Non-Active,225.8,Yes
+3,No,40,1,20000,270,250,60,youngest,Pay as you go,Active,950.6,No
+7,No,31,0,2400,38,12,14,older,Pay as you go,Non-Active,110.35,Yes
+9,No,22,0,10500,150,80,35,younger,Pay as you go,Active,490.4,No
+5,Yes,37,0,680,12,6,4,middle-aged,Pay as you go,Non-Active,55.2,Yes
+4,No,50,0,17800,230,180,48,youngest,Contractual,Active,870.15,No
+11,No,26,0,6100,95,28,26,older,Pay as you go,Active,270.9,No
+6,No,32,0,1800,30,9,11,middle-aged,Pay as you go,Non-Active,95.6,Yes
+15,No,36,1,16320,195,42,55,younger,Pay as you go,Active,825.43,No
+5,No,42,0,2340,38,12,14,middle-aged,Pay as you go,Non-Active,120.75,Yes
+4,No,28,0,14200,170,210,48,youngest,Contractual,Active,1500.66,No
+12,Yes,33,0,780,14,0,5,older,Pay as you go,Non-Active,45.32,Yes
+7,No,30,0,11050,145,88,35,middle-aged,Pay as you go,Active,520.88,No
+3,No,39,0,6750,90,25,22,younger,Pay as you go,Active,300.15,No
+9,No,44,0,1020,20,5,8,youngest,Pay as you go,Non-Active,67.84,Yes
+2,No,25,1,18000,200,145,60,younger,Contractual,Active,1100.25,No
+6,No,34,0,4400,70,30,28,middle-aged,Pay as you go,Active,198.5,No
+10,No,29,1,9800,130,55,42,older,Pay as you go,Active,850.9,No
+8,No,40,0,3200,50,18,18,oldest,Pay as you go,Non-Active,150.2,Yes
+1,No,31,0,8200,110,100,33,younger,Pay as you go,Active,430.6,No
+14,Yes,37,0,650,12,9,4,middle-aged,Pay as you go,Non-Active,75.1,Yes
+5,No,27,0,13400,160,72,38,youngest,Pay as you go,Active,600.35,No
+16,No,38,0,4600,65,40,25,older,Pay as you go,Active,260.8,No
+7,No,45,0,400,8,3,3,oldest,Pay as you go,Non-Active,55.6,Yes
+3,No,22,0,15000,180,130,50,younger,Contractual,Active,720.4,No
+11,No,35,0,2800,42,20,16,middle-aged,Pay as you go,Non-Active,180.9,Yes
+8,No,26,1,17050,190,170,52,youngest,Pay as you go,Active,950.55,No
+18,Yes,41,0,510,10,2,6,older,Pay as you go,Non-Active,33.44,Yes
+8,No,24,0,9000,150,120,40,middle-aged,Pay as you go,Active,500.0,No
+5,No,36,1,15000,200,200,60,younger,Contractual,Active,1200.0,No
+12,Yes,12,0,500,10,5,5,older,Pay as you go,Non-Active,50.0,Yes
+4,No,30,0,6000,100,60,30,youngest,Pay as you go,Active,300.0,No
+2,No,48,0,12000,180,180,50,middle-aged,Contractual,Active,800.0,No
+10,No,20,0,800,15,10,8,younger,Pay as you go,Non-Active,75.0,Yes
+6,No,28,0,7500,130,80,35,older,Pay as you go,Active,450.0,No
+7,No,35,0,2500,45,25,20,middle-aged,Pay as you go,Non-Active,150.0,Yes
+3,No,42,1,13000,190,250,55,younger,Contractual,Active,900.0,No
+15,Yes,8,0,200,5,0,2,oldest,Pay as you go,Non-Active,25.0,Yes
+5,No,33,0,10000,160,140,45,middle-aged,Pay as you go,Active,600.0,No
+9,No,40,0,1200,20,15,10,youngest,Pay as you go,Non-Active,100.0,Yes
+4,No,45,0,11000,170,160,48,younger,Contractual,Active,750.0,No
+13,Yes,18,0,300,8,2,3,older,Pay as you go,Non-Active,35.0,Yes
+6,No,26,0,8500,140,100,38,middle-aged,Pay as you go,Active,550.0,No
+8,No,38,0,3500,65,40,25,younger,Pay as you go,Active,200.0,No
+2,No,50,1,14000,210,220,58,middle-aged,Contractual,Active,1000.0,No
+11,Yes,22,0,600,12,8,6,oldest,Pay as you go,Non-Active,60.0,Yes
+5,No,29,0,7000,120,90,33,youngest,Pay as you go,Active,400.0,No
+7,No,34,0,2800,50,30,18,older,Pay as you go,Non-Active,180.0,Yes
+8,No,28,1,11200,150,45,35,middle-aged,Pay as you go,Active,512.3,No
+3,No,42,2,18900,200,120,55,younger,Contractual,Active,895.2,No
+12,Yes,35,0,1200,22,5,6,older,Pay as you go,Non-Active,78.4,Yes
+1,No,50,4,22000,300,250,70,youngest,Contractual,Active,1500.0,No
+7,No,22,0,5000,80,30,25,middle-aged,Pay as you go,Non-Active,250.1,No
+15,Yes,40,0,450,8,2,3,older,Pay as you go,Non-Active,45.9,Yes
+2,No,33,2,17500,220,180,48,younger,Pay as you go,Active,1100.5,No
+5,No,18,0,6500,100,15,28,youngest,Pay as you go,Active,320.0,No
+10,Yes,37,0,800,14,0,5,middle-aged,Pay as you go,Non-Active,56.7,Yes
+4,No,45,1,13000,170,55,42,older,Pay as you go,Active,620.8,No
+9,No,29,0,1800,35,25,12,younger,Pay as you go,Non-Active,95.3,Yes
+0,No,48,5,25000,350,300,80,younger,Contractual,Active,1800.0,No
+6,No,26,0,9000,130,40,33,middle-aged,Pay as you go,Active,410.2,No
+14,Yes,34,0,2500,40,12,10,older,Pay as you go,Non-Active,135.6,Yes
+2,No,39,1,16000,190,90,50,youngest,Contractual,Active,750.0,No
+7,No,21,0,3500,55,8,20,younger,Pay as you go,Active,180.2,No
+18,Yes,43,0,600,10,1,2,middle-aged,Pay as you go,Non-Active,38.5,Yes
+1,No,36,3,20000,260,200,65,older,Contractual,Active,1300.0,No
+3,No,15,0,5500,85,20,30,youngest,Pay as you go,Non-Active,290.7,No
+13,Yes,41,0,950,18,7,4,younger,Pay as you go,Non-Active,68.9,Yes
+12,No,24,1,12015,178,45,55,younger,Pay as you go,Active,856.23,No
+7,No,42,0,3200,48,18,20,older,Pay as you go,Non-Active,150.45,Yes
+3,No,18,2,18000,250,200,80,middle-aged,Contractual,Active,2340.78,No
+9,Yes,35,0,780,12,5,5,youngest,Pay as you go,Non-Active,78.9,Yes
+5,No,29,0,9800,140,88,42,younger,Pay as you go,Active,512.36,No
+10,No,40,0,4500,70,30,25,older,Pay as you go,Non-Active,225.8,Yes
+2,No,12,1,14500,210,120,70,middle-aged,Contractual,Active,1670.5,No
+4,No,33,0,500,8,2,3,youngest,Pay as you go,Non-Active,45.2,Yes
+8,No,26,0,13500,165,75,48,younger,Pay as you go,Active,1100.9,No
+14,Yes,44,0,2100,35,12,15,middle-aged,Pay as you go,Non-Active,195.6,Yes
+6,No,20,0,11000,155,55,60,older,Pay as you go,Active,680.4,No
+11,No,39,0,6200,90,40,28,younger,Pay as you go,Active,310.75,No
+5,No,37,0,600,10,0,4,middle-aged,Pay as you go,Non-Active,55.3,Yes
+1,No,14,3,16000,230,180,90,youngest,Contractual,Active,1890.0,No
+13,Yes,41,0,1500,25,20,10,older,Pay as you go,Non-Active,128.45,Yes
+4,No,22,1,12500,190,95,50,younger,Pay as you go,Active,940.6,No
+7,No,34,0,7500,110,60,35,middle-aged,Pay as you go,Active,400.15,No
+8,No,43,0,850,14,6,6,youngest,Pay as you go,Non-Active,85.5,Yes
+5,No,16,2,15000,200,130,75,older,Contractual,Active,1450.25,No
+10,No,36,0,2800,45,25,18,younger,Pay as you go,Non-Active,180.9,Yes

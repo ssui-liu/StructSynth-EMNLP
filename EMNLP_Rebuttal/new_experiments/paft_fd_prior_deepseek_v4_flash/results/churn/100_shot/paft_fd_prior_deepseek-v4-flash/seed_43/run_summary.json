@@ -1,0 +1,65 @@
+{
+  "dataset": "churn",
+  "shot": 100,
+  "seed": 43,
+  "method": "paft_fd_prior_deepseek-v4-flash",
+  "model": "deepseek-v4-flash",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_43/train.csv",
+  "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_43/test.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_43/graph.json",
+  "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43",
+  "graph_edges": 14,
+  "paft_raw_fd_edges": 14,
+  "paft_dropped_edges": 0,
+  "generation_order": [
+    "Customer Value",
+    "Seconds of Use",
+    "Frequency of SMS",
+    "Call Failure",
+    "Complains",
+    "Charge Amount",
+    "Frequency of Use",
+    "Distinct Called Numbers",
+    "Tariff Plan"
+  ],
+  "token_usage": {
+    "prompt_tokens": 195100,
+    "completion_tokens": 121478,
+    "total_tokens": 316578
+  },
+  "samples": [
+    {
+      "n_samples": 100,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n100/metrics.json",
+      "line_count": 101,
+      "expected_line_count": 101,
+      "passed": true
+    },
+    {
+      "n_samples": 200,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n200/metrics.json",
+      "line_count": 201,
+      "expected_line_count": 201,
+      "passed": true
+    },
+    {
+      "n_samples": 500,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n500/metrics.json",
+      "line_count": 501,
+      "expected_line_count": 501,
+      "passed": true
+    },
+    {
+      "n_samples": 1000,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/churn/100_shot/paft_fd_prior_deepseek-v4-flash/seed_43/n1000/metrics.json",
+      "line_count": 1001,
+      "expected_line_count": 1001,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

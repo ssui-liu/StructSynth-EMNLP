@@ -1,0 +1,1001 @@
+age,workclass,fnlwgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,country,salary
+38, Private,172345, HS-grad,9,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,40,US,<=50K
+29, Private,65421, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+34, Private,98723, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+42, Private,245000, HS-grad,9,Single, Craft-repair, Not-in-family, Black, Male,No gains,No losses,50,US,<=50K
+52, Local-gov,32000, Assoc-acdm,12,Single, Exec-managerial, Unmarried, White, Female,No gains,Had losses,40,US,>50K
+19, Private,189000, 9th,5,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+45, Self-emp-inc,150000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+63, Private,78000, 7th-8th,4,Single, Handlers-cleaners, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+39, Private,210000, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,48,US,<=50K
+24, State-gov,55000, Bachelors,13,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,20,US,<=50K
+37, Private,295000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+31, Private,123000, Assoc-voc,11,Single, Machine-op-inspct, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+44, Private,180000, 11th,7,Couple, Transport-moving, Husband, White, Male,Had gains,No losses,55,US,>50K
+48, Private,90000, HS-grad,9,Single, Handlers-cleaners, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+17, Private,42000, 10th,6,Single, Farming-fishing, Own-child, Amer-Indian-Eskimo, Male,No gains,No losses,15,US,<=50K
+53, Self-emp-not-inc,310000, Some-college,10,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+27, Private,140000, Bachelors,13,Single, Sales, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+41, Private,225000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,50,US,>50K
+33, Private,87000, HS-grad,9,Single, Craft-repair, Unmarried, White, Male,No gains,Had losses,40,US,<=50K
+49, Federal-gov,175000, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,42,Non-US,>50K
+34, Private,182345, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+27, Private,98756, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+43, Private,214780, Some-college,10,Single, Machine-op-inspct, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+22, Private,45211, Assoc-acdm,12,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+53, Self-emp-not-inc,310099, 9th,9,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,50,US,<=50K
+35, State-gov,157432, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,US,>50K
+32, Private,68923, HS-grad,9,Single, Sales, Not-in-family, White, Male,Had gains,No losses,60,US,>50K
+48, Private,275491, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+38, Private,134567, Some-college,10,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,35,Non-US,<=50K
+20, Private,201234, Assoc-voc,11,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,30,US,<=50K
+62, Private,298765, 7th-8th,8,Couple, Transport-moving, Husband, White, Male,No gains,Had losses,40,US,<=50K
+42, Private,54321, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,48,US,>50K
+30, Local-gov,176890, 11th,11,Single, Other-service, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,25,US,<=50K
+50, Self-emp-inc,225678, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+28, Private,124356, HS-grad,9,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,42,US,<=50K
+46, Federal-gov,354678, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,42,US,>50K
+55, Private,78901, Some-college,10,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,55,US,>50K
+37, State-gov,145678, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+41, Private,223344, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,48,US,>50K
+19, Private,99765, HS-grad,9,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+35, Private,120000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,250000, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,50,US,>50K
+32, State-gov,180000, Some-college,10,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+45, Self-emp-inc,90000, Prof-school,15,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,55,US,>50K
+19, Private,320000, 11th,11,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+30, Private,145000, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+38, Private,220000, Masters,14,Couple, Sales, Wife, White, Female,No gains,Had losses,45,US,>50K
+52, Local-gov,78000, 7th-8th,7,Couple, Farming-fishing, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,30,US,<=50K
+42, Private,310000, Bachelors,13,Single, Exec-managerial, Not-in-family, White, Male,No gains,No losses,60,US,>50K
+25, Private,165000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+48, Self-emp-not-inc,197000, Some-college,10,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,50,US,>50K
+17, Private,135000, 9th,9,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,15,US,<=50K
+55, Private,280000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,40,Non-US,>50K
+33, Local-gov,105000, Assoc-voc,11,Single, Transport-moving, Unmarried, White, Male,No gains,Had losses,42,US,<=50K
+40, Private,240000, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+22, Private,65000, Some-college,10,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,25,US,<=50K
+50, Federal-gov,175000, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,48,US,>50K
+60, State-gov,130000, HS-grad,9,Couple, Handlers-cleaners, Husband, White, Male,No gains,No losses,35,US,<=50K
+34, Private,123456, Some-college,10,Single, Sales, Not-in-family, White, Male,No gains,No losses,38,US,<=50K
+42, Private,234567, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+52, State-gov,345678, HS-grad,9,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+38, Private,456789, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,55,US,>50K
+18, Private,567890, 9th,5,Single, Other-service, Own-child, White, Male,No gains,No losses,16,US,<=50K
+29, Private,678901, Assoc-acdm,12,Single, Machine-op-inspct, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,<=50K
+48, Self-emp-inc,789012, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,Had losses,60,US,>50K
+35, Private,890123, Some-college,10,Couple, Craft-repair, Wife, White, Female,No gains,No losses,40,US,<=50K
+27, Local-gov,901234, Bachelors,13,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+55, Private,112233, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,>50K
+33, Private,223344, Prof-school,15,Single, Prof-specialty, Unmarried, White, Male,Had gains,No losses,50,US,>50K
+17, Private,334455, 7th-8th,4,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,20,US,<=50K
+41, Private,445566, Assoc-voc,11,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+39, Self-emp-not-inc,556677, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,Had losses,45,Non-US,>50K
+25, Private,667788, Some-college,10,Single, Farming-fishing, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+50, Federal-gov,778899, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,40,US,>50K
+22, Private,889900, 11th,7,Single, Machine-op-inspct, Unmarried, Black, Male,No gains,No losses,35,US,<=50K
+46, Self-emp-not-inc,990011, HS-grad,9,Couple, Craft-repair, Wife, White, Female,No gains,No losses,30,US,<=50K
+44, Private,100200, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,55,US,>50K
+20, Private,200300, Some-college,10,Single, Handlers-cleaners, Own-child, White, Male,No gains,Had losses,40,US,<=50K
+35, Private,123456, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+30, Private,234567, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+50, Self-emp-inc,345678, Some-college,10,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,50,US,>50K
+25, Private,456789, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+45, State-gov,567890, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,60,Non-US,>50K
+35, Private,678901, Masters,14,Single, Prof-specialty, Unmarried, White, Male,No gains,No losses,40,US,>50K
+55, Private,789012, HS-grad,9,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,20,US,<=50K
+19, Private,890123, 11th,7,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,30,US,<=50K
+28, Private,901234, 9th,5,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+42, Private,112233, Some-college,10,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,55,US,>50K
+38, Federal-gov,223344, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,40,US,>50K
+32, Private,334455, Assoc-voc,11,Single, Sales, Not-in-family, Black, Male,No gains,No losses,45,US,<=50K
+60, Self-emp-not-inc,445566, HS-grad,9,Couple, Farming-fishing, Husband, White, Male,No gains,Had losses,50,US,<=50K
+29, Private,556677, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,>50K
+23, Private,667788, Some-college,10,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,35,US,<=50K
+48, Private,778899, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male,No gains,No losses,45,US,>50K
+36, Private,889900, Some-college,10,Couple, Adm-clerical, Wife, White, Female,Had gains,No losses,40,US,>50K
+52, Private,990011, 7th-8th,4,Couple, Transport-moving, Husband, Other, Male,No gains,No losses,40,US,<=50K
+55, Self-emp-inc,100100, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,Had losses,60,US,>50K
+18, Private,200200, HS-grad,9,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+34, Private,112233, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,445566, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,50,US,<=50K
+45, Private,778899, Some-college,10,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,30,US,<=50K
+50, Self-emp-inc,990011, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+32, Private,223344, Assoc-acdm,12,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+19, Private,556677, HS-grad,9,Single, Handlers-cleaners, Own-child, Amer-Indian-Eskimo, Male,No gains,No losses,20,US,<=50K
+30, State-gov,889900, Masters,14,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+55, Private,112244, Some-college,10,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,50,US,<=50K
+25, Private,335577, 9th,5,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+62, Private,668800, Assoc-voc,11,Single, Exec-managerial, Unmarried, White, Female,No gains,Had losses,40,Non-US,<=50K
+38, Private,991122, Bachelors,13,Couple, Sales, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,US,>50K
+48, Self-emp-not-inc,224466, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+44, Private,557799, Some-college,10,Couple, Transport-moving, Husband, White, Male,Had gains,No losses,50,US,>50K
+70, Private,880011, 7th-8th,4,Single, Other-service, Other-relative, White, Female,No gains,No losses,20,US,<=50K
+36, Private,113355, Prof-school,15,Single, Prof-specialty, Unmarried, Black, Male,No gains,No losses,60,US,>50K
+29, Local-gov,446688, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+47, Private,779900, Assoc-acdm,12,Couple, Machine-op-inspct, Husband, White, Male,No gains,Had losses,40,US,<=50K
+18, Private,112211, 11th,7,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,15,US,<=50K
+41, Private,334455, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+33, Private,667788, Some-college,10,Single, Craft-repair, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,38,US,<=50K
+35, Private,120456, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+28, Private,198732, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+32, State-gov,54321, Bachelors,13,Couple, Prof-specialty, Wife, Black, Female,No gains,No losses,35,US,>50K
+45, Self-emp-not-inc,305698, HS-grad,9,Couple, Exec-managerial, Husband, White, Male,Had gains,Had losses,60,US,>50K
+50, Private,87654, Some-college,10,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,45,US,<=50K
+22, Private,221345, 9th,9,Single, Other-service, Own-child, White, Male,No gains,No losses,20,Non-US,<=50K
+40, Private,156789, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+55, Local-gov,98765, 7th-8th,7,Single, Farming-fishing, Not-in-family, White, Male,No gains,No losses,55,US,<=50K
+48, Private,345678, Prof-school,15,Couple, Prof-specialty, Husband, White, Female,Had gains,Had losses,50,US,>50K
+30, Private,123456, Masters,14,Single, Sales, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,42,US,>50K
+38, Self-emp-inc,234567, HS-grad,9,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,48,US,>50K
+27, Private,111111, Some-college,10,Single, Transport-moving, Unmarried, White, Female,No gains,No losses,30,US,<=50K
+35, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,200000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+45, Self-emp-inc,50000, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male,No gains,No losses,50,US,>50K
+55, Private,300000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+33, State-gov,80000, Assoc-acdm,12,Single, Prof-specialty, Unmarried, White, Female,No gains,No losses,40,US,<=50K
+42, Private,120000, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,US,>50K
+19, Private,250000, 9th,5,Single, Other-service, Own-child, White, Female,No gains,No losses,20,Non-US,<=50K
+29, Private,60000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,Had losses,40,US,<=50K
+38, Local-gov,140000, Some-college,10,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+36, Self-emp-not-inc,90000, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,>50K
+31, Private,180000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,35,US,<=50K
+50, Private,220000, HS-grad,9,Couple, Transport-moving, Husband, White, Male,Had gains,No losses,55,US,>50K
+35, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+28, Private,200000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+40, Private,120000, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+35, Private,50000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,120000, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+32, Private,250000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+50, Self-emp-inc,180000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+22, Private,90000, HS-grad,9,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+44, State-gov,300000, Assoc-acdm,12,Single, Sales, Not-in-family, White, Female,No gains,Had losses,50,US,>50K
+18, Private,75000, 11th,11,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+48, Private,200000, Masters,14,Couple, Prof-specialty, Husband, Black, Male,No gains,No losses,55,US,>50K
+38, Private,140000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+55, Self-emp-not-inc,400000, Assoc-voc,11,Single, Transport-moving, Unmarried, Amer-Indian-Eskimo, Male,Had gains,No losses,40,US,>50K
+25, Private,60000, 9th,9,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,38,US,<=50K
+42, Private,220000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,48,US,>50K
+21, Private,170000, Bachelors,13,Single, Sales, Own-child, White, Female,No gains,No losses,30,US,<=50K
+45, Federal-gov,310000, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,50,Non-US,>50K
+60, Private,85000, 7th-8th,7,Single, Farming-fishing, Other-relative, Black, Male,No gains,No losses,40,US,<=50K
+36, Private,150000, HS-grad,9,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,42,US,<=50K
+29, Private,280000, Some-college,10,Single, Exec-managerial, Not-in-family, White, Female,No gains,No losses,50,US,>50K
+19, Private,50000, 11th,11,Single, Other-service, Unmarried, White, Female,No gains,No losses,25,US,<=50K
+52, Private,350000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,Had losses,60,US,>50K
+33, Local-gov,100000, Assoc-acdm,12,Couple, Adm-clerical, Wife, Black, Female,No gains,No losses,40,US,<=50K
+28, Private,112345, HS-grad,9,Single, Sales, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+35, Private,223456, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+32, Private,334567, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,Had gains,No losses,50,US,>50K
+41, State-gov,445678, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,38,US,<=50K
+44, Self-emp-not-inc,556789, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,Non-US,>50K
+19, Private,667890, 11th,7,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+30, Private,778901, Masters,14,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,42,US,>50K
+39, Private,889012, 9th,5,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,48,US,<=50K
+47, Private,990123, Some-college,10,Single, Transport-moving, Unmarried, Black, Male,Had gains,No losses,40,US,>50K
+52, Private,101234, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,Had losses,35,US,<=50K
+25, Local-gov,112345, Assoc-voc,11,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,36,US,<=50K
+38, Private,123456, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,60,US,>50K
+17, Private,134567, 7th-8th,4,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,20,US,<=50K
+40, Private,145678, Prof-school,15,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,No gains,No losses,45,US,>50K
+33, Federal-gov,156789, Some-college,10,Single, Adm-clerical, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+55, Self-emp-inc,167890, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,Had losses,50,US,>50K
+22, Private,178901, 10th,6,Single, Other-service, Not-in-family, White, Female,No gains,No losses,25,US,<=50K
+48, Private,189012, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+29, Local-gov,190123, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, White, Female,No gains,No losses,42,US,<=50K
+16, Private,201234, 9th,5,Single, Farming-fishing, Own-child, Black, Male,No gains,No losses,15,US,<=50K
+30, Private,37215, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+45, Private,158685, Some-college,10,Couple, Craft-repair, Husband, White, Female,No gains,No losses,50,US,>50K
+25, Private,45857, Assoc-acdm,12,Single, Adm-clerical, Unmarried, White, Female,No gains,No losses,35,US,<=50K
+55, Private,194590, Prof-school,15,Couple, Exec-managerial, Wife, Black, Female,No gains,No losses,48,US,>50K
+22, Private,83756, HS-grad,9,Single, Sales, Own-child, White, Male,No gains,No losses,20,US,<=50K
+33, State-gov,31449, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+29, Private,308709, Bachelors,13,Single, Sales, Unmarried, White, Female,No gains,No losses,55,US,<=50K
+40, Private,252257, Some-college,10,Couple, Exec-managerial, Husband, White, Female,No gains,No losses,50,US,>50K
+62, State-gov,199198, Assoc-acdm,12,Single, Exec-managerial, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+34, Private,169583, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+49, Self-emp-not-inc,328216, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,52,US,>50K
+38, Private,219266, Some-college,10,Single, Sales, Not-in-family, White, Male,Had gains,No losses,48,US,>50K
+46, Private,162187, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+28, Private,158685, Assoc-voc,11,Couple, Adm-clerical, Wife, White, Female,No gains,Had losses,38,US,<=50K
+51, Self-emp-inc,53197, Some-college,10,Single, Transport-moving, Unmarried, White, Male,No gains,No losses,40,US,>50K
+59, Private,354037, Prof-school,15,Couple, Prof-specialty, Husband, Black, Male,Had gains,No losses,50,US,>50K
+27, Private,103651, HS-grad,9,Single, Farming-fishing, Own-child, White, Male,No gains,No losses,30,US,<=50K
+41, Private,38312, Bachelors,13,Couple, Craft-repair, Husband, White, Male,No gains,No losses,55,US,>50K
+32, Private,102343, Some-college,10,Single, Machine-op-inspct, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,44,Non-US,<=50K
+37, State-gov,37215, Prof-school,15,Single, Exec-managerial, Unmarried, White, Male,No gains,Had losses,70,US,>50K
+35, Private,100000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+32, Private,150000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+45, Self-emp-inc,200000, Some-college,10,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+28, Local-gov,250000, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+25, Private,300000, HS-grad,9,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+50, Private,350000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,60,US,>50K
+42, State-gov,400000, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,Non-US,>50K
+22, Private,80000, Some-college,10,Single, Sales, Own-child, White, Female,No gains,No losses,20,US,<=50K
+30, Private,120000, Assoc-voc,11,Single, Craft-repair, Not-in-family, White, Male,No gains,Had losses,40,US,<=50K
+38, Private,180000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+41, Self-emp-not-inc,220000, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,48,US,>50K
+36, Private,270000, Some-college,10,Single, Transport-moving, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+33, Local-gov,310000, Assoc-acdm,12,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,42,US,<=50K
+52, Private,360000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,<=50K
+55, Private,420000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+24, Private,90000, Bachelors,13,Single, Prof-specialty, Own-child, White, Female,No gains,No losses,30,US,<=50K
+39, Private,130000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+48, Private,170000, HS-grad,9,Single, Other-service, Not-in-family, White, Female,No gains,Had losses,35,US,<=50K
+44, Federal-gov,210000, Some-college,10,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,40,US,<=50K
+47, Private,260000, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,US,>50K
+35, Private,123456, HS-grad,9,Couple, Craft-repair, Husband, White, Male, No gains, No losses,40,US,<=50K
+28, Private,234567, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female, No gains, No losses,35,US,<=50K
+32, Private,345678, Bachelors,13,Couple, Prof-specialty, Wife, White, Female, No gains, No losses,45,US,>50K
+19, Private,456789, 9th,5,Single, Handlers-cleaners, Own-child, White, Male, No gains, No losses,20,US,<=50K
+45, Self-emp-inc,567890, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male, Had gains, No losses,60,Non-US,>50K
+25, State-gov,678901, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, White, Female, No gains, No losses,40,US,<=50K
+50, Federal-gov,789012, Masters,14,Couple, Prof-specialty, Husband, White, Male, No gains, Had losses,50,US,>50K
+22, Private,890123, 7th-8th,4,Single, Transport-moving, Not-in-family, White, Male, No gains, No losses,30,US,<=50K
+40, Private,901234, HS-grad,9,Single, Other-service, Unmarried, White, Female, No gains, No losses,40,US,<=50K
+38, Self-emp-not-inc,111111, Some-college,10,Couple, Sales, Husband, White, Male, No gains, No losses,48,US,>50K
+30, Private,222222, Bachelors,13,Single, Exec-managerial, Not-in-family, Black, Female, No gains, No losses,50,US,>50K
+17, Private,333333, 11th,7,Single, Farming-fishing, Own-child, White, Female, No gains, Had losses,15,US,<=50K
+55, Private,444444, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male, Had gains, No losses,40,US,>50K
+48, Private,555555, HS-grad,9,Couple, Adm-clerical, Wife, White, Female, No gains, No losses,38,US,<=50K
+42, State-gov,666666, Prof-school,15,Single, Prof-specialty, Unmarried, White, Male, No gains, No losses,55,US,>50K
+33, Private,777777, Some-college,10,Single, Sales, Not-in-family, Asian-Pac-Islander, Male, No gains, No losses,40,US,<=50K
+52, Self-emp-inc,888888, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male, Had gains, No losses,70,US,>50K
+35, Private,112233, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+30, Private,223344, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+42, Private,334455, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male,No gains,No losses,45,US,>50K
+50, Self-emp-inc,445566, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+27, Private,556677, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+48, State-gov,667788, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,42,US,>50K
+22, Private,778899, HS-grad,9,Single, Handlers-cleaners, Unmarried, White, Male,No gains,No losses,35,US,<=50K
+19, Private,889900, Assoc-voc,11,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,20,US,<=50K
+36, Private,990011, Some-college,10,Couple, Machine-op-inspct, Husband, Black, Male,No gains,No losses,40,US,<=50K
+44, Private,111111, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,40,US,>50K
+52, Private,222222, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,Non-US,>50K
+33, Private,123456, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, White, Male,No gains,No losses,45,US,<=50K
+25, Private,234567, Some-college,10,Single, Other-service, Unmarried, White, Female,No gains,No losses,30,US,<=50K
+55, Self-emp-inc,345678, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,Had losses,48,US,>50K
+60, Private,456789, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,40,US,<=50K
+29, Private,567890, Bachelors,13,Couple, Sales, Wife, Black, Female,No gains,No losses,40,US,>50K
+41, Private,678901, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+18, Private,789012, Assoc-voc,11,Single, Other-service, Own-child, White, Female,No gains,No losses,15,US,<=50K
+38, Private,890123, HS-grad,9,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+47, State-gov,901234, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+38, Private,145000, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,234000, HS-grad,9,Single, Sales, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+22, Private,98000, Some-college,10,Single, Craft-repair, Own-child, White, Male,No gains,No losses,35,US,<=50K
+55, Self-emp-inc,310000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+32, State-gov,175000, 11th,11,Single, Adm-clerical, Not-in-family, Black, Female,No gains,Had losses,40,US,<=50K
+19, Private,22000, 9th,9,Single, Handlers-cleaners, Unmarried, White, Male,No gains,No losses,20,US,<=50K
+29, Private,120000, Assoc-acdm,12,Couple, Machine-op-inspct, Wife, White, Female,No gains,No losses,40,US,<=50K
+48, Private,287000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+41, Self-emp-not-inc,167000, HS-grad,9,Couple, Farming-fishing, Husband, White, Male,Had gains,No losses,45,US,>50K
+36, Local-gov,195000, Some-college,10,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+17, Private,145500, 7th-8th,8,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,15,US,<=50K
+44, Private,332000, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,55,US,>50K
+33, Private,96000, Assoc-voc,11,Single, Sales, Unmarried, White, Female,No gains,No losses,40,US,<=50K
+27, State-gov,202000, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,30,US,<=50K
+35, Private,134567, HS-grad,9,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+42, Private,200000, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,<=50K
+30, Private,95000, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+22, Private,300000, 9th,5,Single, Handlers-cleaners, Own-child, Black, Male,No gains,No losses,30,US,<=50K
+55, Self-emp-inc,45000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+28, Private,180000, 11th,7,Single, Other-service, Unmarried, White, Female,No gains,No losses,35,US,<=50K
+38, State-gov,250000, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,US,<=50K
+48, Private,120000, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,Had losses,55,US,>50K
+52, Private,75000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,<=50K
+60, Self-emp-not-inc,350000, Some-college,10,Couple, Transport-moving, Husband, Black, Male,Had gains,No losses,50,US,>50K
+25, Private,50000, Bachelors,13,Single, Sales, Not-in-family, White, Male,No gains,No losses,38,US,<=50K
+65, Private,220000, 7th-8th,4,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,45,US,<=50K
+19, Private,60000, Assoc-acdm,12,Single, Machine-op-inspct, Own-child, White, Female,No gains,No losses,20,US,<=50K
+44, Private,280000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,48,US,>50K
+41, State-gov,100000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,Non-US,>50K
+33, Private,320000, HS-grad,9,Single, Craft-repair, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+27, Private,140000, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+40, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+28, Private,200000, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+35, Private,80000, Some-college,10,Single, Machine-op-inspct, Unmarried, Black, Male,No gains,No losses,50,US,<=50K
+55, Self-emp-inc,350000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+32, Private,120000, Assoc-acdm,12,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+48, Self-emp-not-inc,250000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,Had losses,50,US,>50K
+18, Private,30000, 11th,7,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+60, Federal-gov,400000, Doctorate,16,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,40,US,>50K
+33, Private,180000, Some-college,10,Single, Transport-moving, Not-in-family, Black, Male,No gains,No losses,55,US,<=50K
+38, Local-gov,220000, Bachelors,13,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+29, Private,90000, HS-grad,9,Single, Farming-fishing, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,50,US,<=50K
+44, Private,310000, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,48,US,>50K
+16, Private,50000, 9th,5,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,25,US,<=50K
+30, Private,175000, Masters,14,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,>50K
+50, Self-emp-inc,100000, Some-college,10,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+41, Private,65000, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,Had losses,40,US,<=50K
+49, Private,280000, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,>50K
+27, Private,140000, Assoc-acdm,12,Single, Machine-op-inspct, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+52, State-gov,360000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,45,US,>50K
+22, Private,75000, 7th-8th,4,Single, Handlers-cleaners, Unmarried, Other, Male,No gains,No losses,35,US,<=50K
+35, Private,120000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+32, Private,210000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+28, Private,90000, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+45, Self-emp-inc,175000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+22, Private,250000, Assoc-acdm,12,Single, Sales, Own-child, White, Female,No gains,No losses,20,US,<=50K
+38, Private,210345, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+25, Private,89560, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+34, Private,152874, Some-college,10,Couple, Sales, Wife, White, Female,No gains,No losses,40,US,<=50K
+52, Self-emp-inc,34210, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,US,>50K
+41, State-gov,275000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,38,US,<=50K
+18, Private,60780, 9th,5,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+45, Private,188200, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+29, Private,120345, Some-college,10,Single, Craft-repair, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+33, Private,43280, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+50, Private,310000, HS-grad,9,Couple, Machine-op-inspct, Husband, Black, Male,No gains,Had losses,42,US,<=50K
+36, Private,185000, Assoc-voc,11,Single, Transport-moving, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,48,US,<=50K
+21, Private,67000, 11th,7,Single, Other-service, Own-child, White, Female,No gains,No losses,30,US,<=50K
+55, State-gov,225000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,60,Non-US,>50K
+27, Private,95000, Bachelors,13,Single, Sales, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,44,US,>50K
+39, Private,41000, Some-college,10,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,40,US,<=50K
+48, Self-emp-not-inc,178500, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,36,US,>50K
+63, Private,130000, 7th-8th,4,Single, Farming-fishing, Other-relative, White, Male,No gains,No losses,45,US,<=50K
+44, Local-gov,260000, Assoc-acdm,12,Single, Exec-managerial, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+31, Private,88000, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,>50K
+20, Private,55000, Some-college,10,Single, Other-service, Own-child, White, Female,No gains,No losses,25,US,<=50K
+35, Private,125000, HS-grad,9, Couple, Craft-repair, Husband, White, Male, No gains, No losses,40, US,<=50K
+32, Private,200000, Bachelors,13, Couple, Prof-specialty, Wife, White, Female, No gains, No losses,45, US,>50K
+28, Private,85000, Some-college,10, Single, Sales, Not-in-family, Black, Male, No gains, No losses,38, US,<=50K
+45, State-gov,300000, Assoc-acdm,12, Single, Adm-clerical, Unmarried, White, Female, No gains, No losses,40, US,<=50K
+50, Self-emp-inc,45000, Prof-school,15, Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male, Had gains, No losses,55, Non-US,>50K
+20, Private,180000, HS-grad,9, Single, Other-service, Own-child, White, Female, No gains, No losses,20, US,<=50K
+38, Private,250000, Masters,14, Couple, Prof-specialty, Wife, White, Female, No gains, No losses,40, US,>50K
+60, Private,95000, 9th,5, Single, Farming-fishing, Not-in-family, White, Male, No gains, No losses,50, US,<=50K
+42, Federal-gov,320000, Bachelors,13, Couple, Exec-managerial, Husband, Black, Male, No gains, No losses,45, US,>50K
+36, Private,120000, Some-college,10, Single, Machine-op-inspct, Unmarried, White, Female, No gains, Had losses,35, US,<=50K
+22, Private,60000, Assoc-voc,11, Single, Handlers-cleaners, Own-child, Amer-Indian-Eskimo, Male, No gains, No losses,30, US,<=50K
+48, Self-emp-not-inc,275000, HS-grad,9, Couple, Sales, Wife, White, Female, Had gains, No losses,50, US,>50K
+29, Private,140000, 11th,7, Single, Transport-moving, Not-in-family, Black, Male, No gains, No losses,40, US,<=50K
+55, State-gov,170000, Prof-school,15, Couple, Prof-specialty, Husband, White, Male, No gains, No losses,60, US,>50K
+65, Private,80000, 7th-8th,4, Couple, Craft-repair, Husband, White, Male, No gains, No losses,40, US,<=50K
+27, Private,220000, Bachelors,13, Single, Adm-clerical, Not-in-family, Asian-Pac-Islander, Female, No gains, No losses,35, US,<=50K
+44, Self-emp-inc,350000, Some-college,10, Couple, Exec-managerial, Husband, White, Male, No gains, No losses,50, US,>50K
+33, Private,100000, Masters,14, Couple, Prof-specialty, Wife, White, Female, No gains, No losses,40, Non-US,>50K
+18, Private,55000, 9th,5, Single, Other-service, Own-child, White, Male, No gains, No losses,25, US,<=50K
+39, Private,260000, HS-grad,9, Single, Adm-clerical, Unmarried, Black, Female, No gains, Had losses,40, US,<=50K
+35, Private,145000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,210000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+22, Private,78000, Bachelors,13,Single, Prof-specialty, Own-child, Asian-Pac-Islander, Female,No gains,No losses,25,US,<=50K
+55, Self-emp-inc,320000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+30, Private,95000, HS-grad,9,Single, Machine-op-inspct, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+32, Private,180000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+45, Private,260000, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,>50K
+60, Private,140000, 9th,9,Single, Farming-fishing, Not-in-family, White, Male,No gains,Had losses,40,US,<=50K
+40, State-gov,200000, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+18, Private,55000, 7th-8th,7,Single, Other-service, Own-child, Amer-Indian-Eskimo, Female,No gains,No losses,20,US,<=50K
+48, Private,310000, Bachelors,13,Single, Exec-managerial, Not-in-family, Black, Female,Had gains,No losses,55,US,>50K
+36, Local-gov,175000, Assoc-voc,11,Single, Craft-repair, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+38, Private,225000, HS-grad,9,Couple, Sales, Wife, White, Female,No gains,No losses,30,US,<=50K
+50, Self-emp-not-inc,120000, Some-college,10,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,>50K
+25, Private,280000, 11th,11,Single, Handlers-cleaners, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+44, Private,165000, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,42,Non-US,>50K
+27, Private,50000, HS-grad,9,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,35,US,<=50K
+33, Private,190000, Some-college,10,Couple, Craft-repair, Husband, Black, Male,No gains,No losses,50,US,<=50K
+42, Self-emp-inc,240000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+29, Private,110000, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+38, Private,210345, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+29, Private,125000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+45, State-gov,315000, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,>50K
+22, Private,180000, Some-college,10,Single, Craft-repair, Own-child, White, Male,No gains,No losses,30,US,<=50K
+35, Local-gov,250000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+50, Private,95000, 9th,5,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,48,US,<=50K
+55, Self-emp-inc,400000, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+25, Private,140000, 7th-8th,4,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+42, Private,220000, Some-college,10,Couple, Transport-moving, Husband, Black, Male,No gains,Had losses,50,US,<=50K
+33, Private,160000, Bachelors,13,Single, Sales, Unmarried, White, Female,No gains,No losses,45,US,<=50K
+48, Self-emp-not-inc,330000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+27, Private,75000, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Female,No gains,No losses,38,US,<=50K
+52, Private,200000, HS-grad,9,Couple, Other-service, Wife, White, Female,No gains,No losses,32,US,<=50K
+60, Federal-gov,500000, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,40,US,>50K
+18, Private,100000, 11th,7,Single, Farming-fishing, Own-child, White, Male,No gains,No losses,20,US,<=50K
+41, Private,280000, Some-college,10,Single, Craft-repair, Unmarried, White, Male,No gains,No losses,55,US,<=50K
+36, State-gov,120000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,40,US,>50K
+44, Private,195000, HS-grad,9,Couple, Transport-moving, Husband, Black, Male,No gains,No losses,42,US,<=50K
+39, Self-emp-not-inc,260000, Bachelors,13,Single, Prof-specialty, Unmarried, White, Female,Had gains,No losses,50,Non-US,>50K
+29, Private,125000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+45, Private,200350, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+38, Self-emp-inc,95000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+18, Private,180000, 9th,5,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+42, State-gov,145000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,60,Non-US,>50K
+33, Private,210000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,<=50K
+55, Private,115000, 7th-8th,4,Single, Machine-op-inspct, Unmarried, White, Male,No gains,Had losses,40,US,<=50K
+28, Private,165000, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,48,US,>50K
+46, Private,255000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+22, Local-gov,88000, 11th,7,Single, Handlers-cleaners, Own-child, Black, Female,No gains,No losses,30,US,<=50K
+34, Private,175000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+49, Self-emp-inc,135000, HS-grad,9,Couple, Sales, Wife, White, Female,No gains,No losses,45,US,>50K
+62, State-gov,190000, Assoc-voc,11,Single, Exec-managerial, Unmarried, Black, Female,No gains,No losses,40,US,>50K
+27, Private,220000, 10th,6,Single, Transport-moving, Not-in-family, White, Male,No gains,No losses,50,US,<=50K
+40, Private,105000, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+51, Private,150000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,>50K
+59, Private,240000, Prof-school,15,Couple, Transport-moving, Husband, Black, Male,Had gains,No losses,50,US,>50K
+45, Private,170000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,28,US,<=50K
+30, Private,185000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,40,US,>50K
+20, Private,100000, 9th,5,Single, Farming-fishing, Other-relative, Amer-Indian-Eskimo, Male,No gains,No losses,35,US,<=50K
+35, Private,178234, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,95421, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+44, State-gov,310567, Some-college,10,Single, Prof-specialty, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+52, Self-emp-inc,45678, Masters,14,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+22, Private,202345, Assoc-acdm,12,Single, Craft-repair, Own-child, White, Male,No gains,No losses,20,US,<=50K
+38, Private,58900, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,US,>50K
+29, Private,143256, 11th,7,Single, Other-service, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+48, Self-emp-not-inc,276543, HS-grad,9,Couple, Farming-fishing, Husband, White, Male,No gains,Had losses,55,US,<=50K
+33, Private,124789, Bachelors,13,Single, Sales, Unmarried, White, Male,No gains,No losses,50,US,<=50K
+41, Private,350001, Some-college,10,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,>50K
+19, Private,88765, Assoc-voc,11,Single, Handlers-cleaners, Own-child, Black, Female,No gains,No losses,25,US,<=50K
+39, State-gov,210456, Masters,14,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,40,US,>50K
+55, Private,165432, 9th,5,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,42,US,<=50K
+46, Private,287654, Prof-school,15,Couple, Prof-specialty, Husband, Black, Male,No gains,No losses,60,US,>50K
+31, Private,123456, Some-college,10,Single, Adm-clerical, Unmarried, White, Female,No gains,Had losses,30,US,<=50K
+50, Federal-gov,198765, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,Non-US,>50K
+24, Private,76543, HS-grad,9,Single, Sales, Not-in-family, White, Female,No gains,No losses,20,US,<=50K
+36, Private,312456, Assoc-acdm,12,Couple, Sales, Wife, White, Female,No gains,No losses,35,US,<=50K
+62, Private,234567, 7th-8th,4,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+44, Private,147890, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,55,Non-US,>50K
+35, Private,182345, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,<=50K
+28, Private,104712, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+42, Private,254689, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+19, Private,79532, 11th,7,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+55, Self-emp-inc,321456, Masters,14,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+47, Private,168324, HS-grad,9,Single, Machine-op-inspct, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+22, Private,43123, 9th,5,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+38, Private,210098, Assoc-acdm,12,Couple, Sales, Husband, White, Male,No gains,No losses,45,US,<=50K
+48, State-gov,277890, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,Non-US,>50K
+33, Private,154321, Some-college,10,Couple, Adm-clerical, Wife, White, Female,No gains,Had losses,40,US,<=50K
+29, Private,98765, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,44,US,<=50K
+41, Private,345678, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,>50K
+17, Private,112233, 7th-8th,4,Single, Other-service, Own-child, White, Male,No gains,No losses,15,US,<=50K
+52, Local-gov,198765, Assoc-voc,11,Single, Exec-managerial, Unmarried, Black, Female,No gains,No losses,40,US,>50K
+36, Private,239001, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,<=50K
+31, Private,145678, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,50,US,>50K
+54, Self-emp-not-inc,309876, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+44, Private,178943, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Male,No gains,Had losses,38,US,<=50K
+50, Private,265432, Assoc-acdm,12,Couple, Sales, Husband, Black, Male,No gains,No losses,52,US,>50K
+27, Private,87234, 10th,6,Single, Other-service, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+35, Private,200031, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,150234, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+42, Private,300876, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+19, Private,80012, 9th,5,Single, Other-service, Own-child, Black, Female,No gains,No losses,20,US,<=50K
+38, State-gov,180456, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,45,US,>50K
+50, Self-emp-inc,220987, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+55, Private,90045, 7th-8th,4,Single, Machine-op-inspct, Unmarried, White, Male,No gains,Had losses,40,US,<=50K
+33, Private,400102, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,Non-US,<=50K
+45, Federal-gov,120567, Some-college,10,Couple, Transport-moving, Husband, Black, Male,Had gains,No losses,40,US,>50K
+22, Private,250789, Bachelors,13,Single, Sales, Own-child, White, Female,No gains,No losses,25,US,<=50K
+40, Local-gov,170345, HS-grad,9,Single, Craft-repair, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+48, Private,350678, Assoc-voc,11,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+27, Private,60023, 11th,7,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,38,US,<=50K
+55, Self-emp-not-inc,275432, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,Had losses,55,US,>50K
+31, Private,140987, Some-college,10,Single, Other-service, Other-relative, Other, Female,No gains,No losses,32,US,<=50K
+37, Private,190234, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+17, Private,75001, 9th,5,Single, Other-service, Own-child, Black, Male,No gains,No losses,15,US,<=50K
+44, Private,260876, Masters,14,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,50,US,>50K
+60, Private,100123, HS-grad,9,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,40,US,<=50K
+29, State-gov,320567, Assoc-acdm,12,Single, Machine-op-inspct, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,40,Non-US,<=50K
+35, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+30, Private,200000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+25, Private,80000, Some-college,10,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,50,US,<=50K
+55, Self-emp-inc,350000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+28, State-gov,120000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, White, Female,No gains,No losses,35,US,<=50K
+42, Private,250000, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,48,US,>50K
+18, Private,90000, 9th,5,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+33, Private,180000, Assoc-voc,11,Single, Craft-repair, Not-in-family, Black, Male,No gains,Had losses,40,US,<=50K
+38, Private,220000, HS-grad,9,Couple, Sales, Wife, White, Female,No gains,No losses,55,US,>50K
+22, Local-gov,50000, 11th,7,Single, Adm-clerical, Unmarried, White, Female,No gains,No losses,30,US,<=50K
+50, Self-emp-not-inc,300000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+29, Private,140000, Some-college,10,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,45,US,<=50K
+44, Private,160000, Assoc-acdm,12,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+36, State-gov,270000, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,US,>50K
+48, Private,75000, 7th-8th,4,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,50,US,<=50K
+27, Private,320000, Bachelors,13,Single, Prof-specialty, Unmarried, White, Male,No gains,No losses,40,Non-US,<=50K
+32, Private,190000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+41, Local-gov,110000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,35,US,<=50K
+20, Private,65000, Some-college,10,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,25,US,<=50K
+55, Self-emp-inc,280000, Assoc-voc,11,Couple, Exec-managerial, Husband, White, Male,No gains,Had losses,45,US,>50K
+35, Private,180000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,95000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+45, Self-emp-inc,220000, Some-college,10,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,50,US,>50K
+30, State-gov,145000, Assoc-acdm,12,Single, Prof-specialty, Unmarried, Asian-Pac-Islander, Female,No gains,No losses,38,Non-US,<=50K
+50, Private,310000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+19, Private,60000, 9th,5,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+55, Self-emp-not-inc,175000, Prof-school,15,Couple, Prof-specialty, Husband, Black, Male,No gains,Had losses,60,US,>50K
+33, Private,120000, Some-college,10,Single, Craft-repair, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+42, Private,250000, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,No losses,55,US,>50K
+36, Private,80000, Assoc-voc,11,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+35, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,200000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+17, Private,80000, 11th,11,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+65, Private,300000, 7th-8th,8,Single, Handlers-cleaners, Not-in-family, Black, Male,No gains,No losses,30,US,<=50K
+40, Private,120000, Some-college,10,Single, Machine-op-inspct, Unmarried, White, Female,No gains,No losses,40,US,<=50K
+50, Private,90000, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,45,US,<=50K
+30, Local-gov,250000, Assoc-acdm,12,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+22, Private,70000, Some-college,10,Single, Sales, Not-in-family, White, Male,No gains,No losses,30,US,<=50K
+55, Self-emp-not-inc,180000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+42, Private,350000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+38, Private,45000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,60,US,>50K
+33, Private,220000, Some-college,10,Single, Machine-op-inspct, Not-in-family, Black, Female,No gains,No losses,40,US,<=50K
+19, Private,160000, 9th,9,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,25,US,<=50K
+48, State-gov,280000, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+55, Self-emp-inc,400000, Prof-school,15,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Male,Had gains,No losses,70,Non-US,>50K
+36, Private,100000, Assoc-voc,11,Single, Adm-clerical, Unmarried, White, Female,No gains,No losses,35,US,<=50K
+29, Private,320000, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,20,US,<=50K
+52, Private,50000, HS-grad,9,Couple, Adm-clerical, Wife, Black, Female,No gains,Had losses,40,US,<=50K
+44, Private,175000, Some-college,10,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,50,US,>50K
+62, Self-emp-not-inc,60000, 7th-8th,8,Single, Farming-fishing, Not-in-family, White, Female,No gains,No losses,20,US,<=50K
+35, Private,120000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,250000, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,45,US,>50K
+22, Private,80000, Some-college,10,Single, Handlers-cleaners, Own-child, Black, Male,No gains,No losses,30,US,<=50K
+50, Self-emp-inc,350000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+34, Private,150000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+19, Private,50000, 9th,5,Single, Other-service, Unmarried, White, Male,No gains,No losses,25,US,<=50K
+41, State-gov,200000, Masters,14,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,40,US,>50K
+55, Self-emp-not-inc,300000, Some-college,10,Couple, Farming-fishing, Husband, Black, Male,No gains,Had losses,50,US,<=50K
+17, Private,175000, HS-grad,9,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,20,US,<=50K
+38, Private,220000, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,50,US,>50K
+33, Local-gov,90000, Assoc-voc,11,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+52, Federal-gov,400000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+25, Private,75000, 11th,7,Single, Transport-moving, Not-in-family, Black, Male,No gains,No losses,35,US,<=50K
+29, Private,180000, Some-college,10,Couple, Sales, Wife, White, Female,No gains,No losses,32,US,<=50K
+44, State-gov,290000, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,48,Non-US,>50K
+16, Private,130000, 7th-8th,4,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,15,US,<=50K
+48, Private,500000, Bachelors,13,Single, Exec-managerial, Not-in-family, White, Female,No gains,No losses,50,US,>50K
+31, Private,45000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+37, Local-gov,260000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,Had losses,40,US,<=50K
+60, Self-emp-inc,320000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,70,US,>50K
+35, Private,145678, HS-grad,9, Couple, Craft-repair, Husband, White, Male, No gains, No losses,40, US,<=50K
+28, Private,98765, Some-college,10, Single, Adm-clerical, Not-in-family, Black, Female, No gains, No losses,35, US,<=50K
+32, State-gov,250000, Bachelors,13, Couple, Prof-specialty, Wife, White, Female, No gains, No losses,45, US,>50K
+55, Self-emp-not-inc,32000, HS-grad,9, Single, Exec-managerial, Unmarried, White, Male, Had gains, No losses,50, US,>50K
+22, Private,180000, Assoc-acdm,12, Single, Sales, Own-child, Asian-Pac-Islander, Female, No gains, No losses,20, Non-US,<=50K
+48, Private,405678, Prof-school,15, Couple, Prof-specialty, Husband, White, Male, No gains, No losses,55, US,>50K
+19, Private,55000, 9th,5, Single, Other-service, Not-in-family, Black, Male, No gains, No losses,30, US,<=50K
+40, Private,210000, Masters,14, Couple, Exec-managerial, Wife, White, Female, Had gains, No losses,60, US,>50K
+38, Private,78000, Some-college,10, Couple, Machine-op-inspct, Husband, Amer-Indian-Eskimo, Male, No gains, No losses,40, US,<=50K
+29, Local-gov,310000, Bachelors,13, Single, Prof-specialty, Not-in-family, White, Female, No gains, No losses,38, US,<=50K
+44, Private,112233, HS-grad,9, Single, Adm-clerical, Unmarried, White, Female, No gains, Had losses,30, US,<=50K
+52, Self-emp-inc,275000, Assoc-voc,11, Couple, Craft-repair, Husband, White, Male, No gains, No losses,50, US,>50K
+17, Private,43210, 11th,7, Single, Handlers-cleaners, Own-child, Black, Male, No gains, No losses,20, US,<=50K
+33, Private,165432, Some-college,10, Single, Sales, Not-in-family, White, Male, No gains, No losses,45, US,<=50K
+42, Private,198765, Bachelors,13, Couple, Exec-managerial, Husband, White, Male, No gains, No losses,50, US,>50K
+39, State-gov,88000, Prof-school,15, Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female, No gains, No losses,40, Non-US,>50K
+25, Private,220000, HS-grad,9, Single, Transport-moving, Not-in-family, White, Male, Had gains, No losses,40, US,<=50K
+50, Federal-gov,140000, Masters,14, Couple, Prof-specialty, Husband, Black, Male, No gains, No losses,35, US,>50K
+60, Private,60000, 7th-8th,4, Single, Farming-fishing, Unmarried, Other, Female, No gains, No losses,20, US,<=50K
+47, Private,295000, Assoc-acdm,12, Couple, Machine-op-inspct, Husband, White, Male, No gains, Had losses,50, US,>50K
+32, Private,185432, Some-college,10,Single, Sales, Not-in-family, White, Male,No gains,No losses,42,US,<=50K
+44, Private,125678, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+38, Private,243900, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+50, Self-emp-inc,198000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+29, State-gov,160500, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,No losses,35,US,<=50K
+42, Private,300000, Masters,14,Single, Prof-specialty, Not-in-family, White, Male,No gains,No losses,48,US,>50K
+22, Private,85000, HS-grad,9,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,25,US,<=50K
+55, Self-emp-not-inc,210000, Some-college,10,Couple, Farming-fishing, Husband, White, Male,No gains,Had losses,40,US,<=50K
+35, Private,140000, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Black, Male,No gains,No losses,44,US,<=50K
+48, Federal-gov,270000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+27, Private,95000, Some-college,10,Single, Other-service, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+41, Private,230000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,50,US,>50K
+62, Self-emp-not-inc,175000, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,55,US,>50K
+30, Private,120000, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+45, Private,200000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+19, Private,155000, Assoc-acdm,12,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+52, Local-gov,280000, Some-college,10,Single, Adm-clerical, Unmarried, Black, Female,Had gains,No losses,40,US,>50K
+36, Private,135000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,Had losses,38,US,<=50K
+39, State-gov,220000, Prof-school,15,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,70,Non-US,>50K
+34, Private,170000, Bachelors,13,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+38, Private,185000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+30, Private,145000, Bachelors,13,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,45,US,>50K
+50, Self-emp-inc,220000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+22, Private,90000, HS-grad,9,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+45, State-gov,310000, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,Non-US,>50K
+35, Private,120000, Some-college,10,Single, Sales, Unmarried, White, Male,No gains,No losses,48,US,>50K
+40, Private,250000, Masters,14,Couple, Sales, Wife, White, Female,No gains,No losses,45,US,>50K
+29, Local-gov,175000, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, Black, Male,No gains,No losses,35,US,<=50K
+55, Private,205000, HS-grad,9,Single, Handlers-cleaners, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,30,US,<=50K
+19, Private,130000, Some-college,10,Single, Other-service, Own-child, White, Female,No gains,No losses,15,US,<=50K
+52, Self-emp-inc,280000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+33, Private,160000, Bachelors,13,Single, Sales, Not-in-family, Black, Male,No gains,No losses,50,US,>50K
+28, Private,95000, Assoc-voc,11,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+48, State-gov,330000, Doctorate,16,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,>50K
+25, Private,115000, 9th,5,Single, Farming-fishing, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+52, Private,179432, HS-grad,9,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+34, Private,92115, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+38, Private,254678, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+19, Private,49820, 11th,7,Single, Other-service, Own-child, Black, Male,No gains,No losses,20,US,<=50K
+55, Self-emp-inc,310456, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+29, Private,68742, 9th,5,Single, Handlers-cleaners, Unmarried, White, Female,No gains,No losses,38,US,<=50K
+41, Local-gov,201834, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+48, Private,45011, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,Had losses,40,Non-US,>50K
+33, State-gov,172340, Masters,14,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,35,US,>50K
+22, Private,85629, HS-grad,9,Single, Machine-op-inspct, Own-child, White, Male,No gains,No losses,40,US,<=50K
+47, Private,124785, Assoc-voc,11,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,42,US,<=50K
+39, Private,295123, Some-college,10,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,>50K
+58, Private,53320, 7th-8th,4,Single, Farming-fishing, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,30,US,<=50K
+31, Private,168999, Bachelors,13,Single, Sales, Not-in-family, White, Female,No gains,No losses,44,US,<=50K
+60, Self-emp-not-inc,387650, Prof-school,15,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,50,US,>50K
+43, Local-gov,77421, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,Had losses,40,US,<=50K
+17, Private,210543, 11th,7,Single, Other-service, Own-child, White, Male,No gains,No losses,16,US,<=50K
+49, Private,145302, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,US,>50K
+63, Private,98765, 9th,5,Single, Machine-op-inspct, Unmarried, Black, Female,No gains,No losses,35,US,<=50K
+36, Federal-gov,264512, Assoc-acdm,12,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,42,US,>50K
+35, Private,100000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+22, Private,250000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+28, Private,50000, Some-college,10,Single, Sales, Unmarried, Black, Female,No gains,No losses,35,US,<=50K
+50, Self-emp-inc,180000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+19, Private,70000, Assoc-acdm,12,Single, Craft-repair, Own-child, White, Male,No gains,No losses,20,US,<=50K
+42, State-gov,320000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,Had losses,50,US,>50K
+55, Private,90000, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,40,US,<=50K
+17, Private,45000, 9th,9,Single, Other-service, Own-child, White, Female,No gains,No losses,15,US,<=50K
+33, Private,150000, Some-college,10,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+45, Federal-gov,200000, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+29, Private,120000, Assoc-voc,11,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+62, Self-emp-not-inc,280000, 7th-8th,8,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,48,US,<=50K
+20, Private,60000, 11th,11,Single, Handlers-cleaners, Unmarried, White, Female,No gains,No losses,30,US,<=50K
+34, Private,160000, Bachelors,13,Couple, Sales, Wife, White, Female,No gains,No losses,40,US,>50K
+48, Federal-gov,220000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,70,Non-US,>50K
+25, Private,85000, HS-grad,9,Single, Craft-repair, Other-relative, White, Male,No gains,No losses,40,US,<=50K
+52, Self-emp-inc,190000, Masters,14,Couple, Exec-managerial, Husband, Black, Male,Had gains,Had losses,45,US,>50K
+27, Local-gov,75000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+39, Private,300000, Assoc-acdm,12,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+60, Private,130000, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,50,US,<=50K
+35,Private,200000,Some-college,10,Couple,Craft-repair,Husband,White,Male,No gains,No losses,40,US,<=50K
+28,Private,150000,HS-grad,9,Single,Adm-clerical,Not-in-family,White,Female,No gains,No losses,35,US,<=50K
+45,Self-emp-inc,250000,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,Had gains,No losses,50,US,>50K
+32,Private,180000,Assoc-acdm,12,Single,Machine-op-inspct,Unmarried,Black,Female,No gains,No losses,40,US,<=50K
+50,Private,300000,Prof-school,15,Couple,Prof-specialty,Husband,White,Male,No gains,No losses,45,US,>50K
+22,Private,120000,Some-college,10,Single,Sales,Own-child,White,Female,No gains,No losses,20,US,<=50K
+48,State-gov,350000,Masters,14,Couple,Prof-specialty,Husband,Asian-Pac-Islander,Male,No gains,No losses,60,Non-US,>50K
+38,Private,100000,HS-grad,9,Couple,Adm-clerical,Wife,White,Female,No gains,Had losses,40,US,<=50K
+55,Self-emp-not-inc,400000,Bachelors,13,Couple,Transport-moving,Husband,Black,Male,Had gains,No losses,50,US,>50K
+29,Private,220000,Some-college,10,Single,Craft-repair,Not-in-family,White,Male,No gains,No losses,55,US,<=50K
+62,State-gov,170000,Assoc-voc,11,Single,Exec-managerial,Unmarried,White,Female,No gains,No losses,40,US,<=50K
+34,Private,190000,Bachelors,13,Couple,Exec-managerial,Husband,White,Male,No gains,No losses,40,US,>50K
+30,Private,160000,Prof-school,15,Couple,Exec-managerial,Wife,White,Female,No gains,No losses,40,US,>50K
+40,Private,280000,HS-grad,9,Couple,Craft-repair,Husband,White,Male,No gains,No losses,50,US,>50K
+45,Private,240000,Some-college,10,Single,Sales,Not-in-family,Black,Female,No gains,No losses,40,US,<=50K
+33,Private,310000,Assoc-acdm,12,Single,Machine-op-inspct,Unmarried,Amer-Indian-Eskimo,Female,No gains,No losses,40,US,<=50K
+42,Private,260000,Bachelors,13,Couple,Sales,Husband,White,Male,No gains,No losses,52,US,>50K
+49,Self-emp-inc,140000,HS-grad,9,Couple,Adm-clerical,Wife,White,Female,No gains,Had losses,40,US,>50K
+59,Private,360000,Prof-school,15,Couple,Transport-moving,Husband,Asian-Pac-Islander,Male,No gains,No losses,50,Non-US,>50K
+39,Private,130000,Some-college,10,Single,Craft-repair,Unmarried,White,Male,No gains,No losses,40,US,<=50K
+44, Private,123456, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+29, Private,98765, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,32,US,<=50K
+52, Self-emp-inc,250000, Some-college,10,Couple, Sales, Husband, White, Male,Had gains,No losses,60,US,>50K
+22, Private,45000, Assoc-acdm,12,Single, Other-service, Own-child, Asian-Pac-Islander, Female,No gains,No losses,20,US,<=50K
+38, Private,175000, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+35, Private,80000, Some-college,10,Single, Craft-repair, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+48, State-gov,320000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,Non-US,>50K
+41, Federal-gov,62000, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,Had losses,30,US,<=50K
+33, Private,110000, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,48,US,>50K
+25, Private,90000, 11th,7,Single, Machine-op-inspct, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,38,US,<=50K
+36, Private,140000, Assoc-voc,11,Couple, Transport-moving, Husband, White, Male,No gains,No losses,42,US,<=50K
+55, Self-emp-not-inc,220000, Some-college,10,Couple, Farming-fishing, Husband, White, Male,No gains,Had losses,50,US,<=50K
+18, Private,50000, HS-grad,9,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,25,US,<=50K
+47, Private,285000, Masters,14,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,Had gains,No losses,55,Non-US,>50K
+30, Private,75000, 9th,5,Single, Other-service, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+43, Private,165000, Bachelors,13,Couple, Prof-specialty, Husband, Black, Male,No gains,No losses,45,US,>50K
+61, Private,40000, 7th-8th,4,Single, Handlers-cleaners, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+28, Private,195000, Some-college,10,Couple, Sales, Wife, White, Female,No gains,No losses,40,US,<=50K
+50, Private,310000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,60,US,>50K
+27, Local-gov,135000, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, Other, Female,No gains,No losses,38,Non-US,<=50K
+35, Private,123456, HS-grad,9,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,234567, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+32, State-gov,345678, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,38,US,>50K
+55, Self-emp-inc,456789, Prof-school,15,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,50,US,>50K
+18, Private,567890, 9th,8,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+40, Private,678901, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,<=50K
+50, Private,789012, 7th-8th,7,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+45, Private,890123, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+33, State-gov,901234, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Male,No gains,No losses,35,US,<=50K
+60, Self-emp-not-inc,112233, HS-grad,9,Single, Farming-fishing, Unmarried, White, Male,No gains,Had losses,50,US,<=50K
+30, Private,221144, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,55,US,>50K
+19, Private,332211, 11th,10,Single, Other-service, Own-child, White, Female,No gains,No losses,25,US,<=50K
+48, Private,443322, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,60,US,>50K
+38, Local-gov,554433, Assoc-voc,11,Single, Transport-moving, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+42, Private,665544, Some-college,10,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,48,US,>50K
+27, Private,776655, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+23, Federal-gov,887766, Bachelors,13,Single, Prof-specialty, Unmarried, White, Female,No gains,No losses,40,US,>50K
+52, Self-emp-not-inc,998877, 9th,8,Couple, Machine-op-inspct, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,45,US,<=50K
+41, Private,101010, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+36, Local-gov,202020, Some-college,10,Single, Craft-repair, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+35, Private,101234, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,145678, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+32, State-gov,189012, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+41, Private,212345, HS-grad,9,Single, Transport-moving, Unmarried, Black, Male,No gains,No losses,50,US,<=50K
+44, Self-emp-inc,276543, Assoc-acdm,12,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+22, Private,301234, Some-college,10,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+38, Private,334567, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,48,Non-US,>50K
+50, Private,367890, HS-grad,9,Single, Sales, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+29, Private,401234, Bachelors,13,Single, Machine-op-inspct, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+52, Self-emp-not-inc,434567, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,Had losses,60,US,>50K
+18, Private,467890, 11th,7,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,25,US,<=50K
+36, Private,501234, Some-college,10,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+47, Federal-gov,534567, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,>50K
+33, Private,567890, HS-grad,9,Single, Adm-clerical, Other-relative, White, Female,No gains,No losses,35,US,<=50K
+27, Private,601234, Bachelors,13,Single, Sales, Not-in-family, White, Male,No gains,No losses,50,US,<=50K
+55, Private,634567, 9th,5,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,48,US,<=50K
+40, Self-emp-not-inc,667890, Some-college,10,Single, Exec-managerial, Unmarried, White, Male,No gains,No losses,50,US,>50K
+31, Local-gov,701234, Masters,14,Couple, Prof-specialty, Wife, Black, Female,No gains,No losses,40,Non-US,>50K
+62, Private,734567, HS-grad,9,Single, Other-service, Not-in-family, White, Female,No gains,Had losses,20,US,<=50K
+43, State-gov,767890, Bachelors,13,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,55,US,>50K
+35, Private,142356, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,<=50K
+48, Private,287654, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+29, Private,98765, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+33, Private,310452, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+41, State-gov,175000, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, White, Male,No gains,Had losses,40,US,<=50K
+52, Self-emp-not-inc,225800, Masters,14,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,Non-US,>50K
+19, Private,85000, 7th-8th,4,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,35,US,<=50K
+62, Local-gov,420000, 9th,5,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,28,US,<=50K
+44, Private,168500, Some-college,10,Couple, Sales, Husband, White, Male,No gains,No losses,48,US,<=50K
+38, Private,275000, Assoc-voc,11,Single, Adm-clerical, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+25, Private,130000, Bachelors,13,Single, Exec-managerial, Not-in-family, White, Female,No gains,No losses,50,US,>50K
+40, Self-emp-inc,199500, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,40,US,>50K
+17, Private,50000, 11th,7,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+55, Private,340000, Masters,14,Couple, Transport-moving, Husband, White, Male,No gains,No losses,60,US,>50K
+30, Private,118000, HS-grad,9,Single, Craft-repair, Not-in-family, Black, Female,No gains,Had losses,40,US,<=50K
+36, Local-gov,210000, Bachelors,13,Single, Sales, Unmarried, White, Male,No gains,No losses,42,US,<=50K
+39, Private,96000, Some-college,10,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,No gains,No losses,44,US,>50K
+21, Private,265000, 11th,7,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,30,US,<=50K
+46, Federal-gov,155000, Assoc-acdm,12,Single, Adm-clerical, Not-in-family, Black, Male,No gains,No losses,40,US,<=50K
+58, Self-emp-inc,405000, 9th,5,Couple, Farming-fishing, Husband, Other, Male,Had gains,No losses,72,Non-US,>50K
+35, Private,155000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+42, Self-emp-inc,210000, Bachelors,13,Single, Exec-managerial, Not-in-family, White, Male,Had gains,No losses,50,US,>50K
+29, Private,180500, Some-college,10,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+33, Private,95000, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, Black, Female,No gains,Had losses,40,US,<=50K
+48, State-gov,250000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,55,Non-US,>50K
+22, Private,130000, HS-grad,9,Single, Sales, Own-child, White, Female,No gains,No losses,20,US,<=50K
+55, Self-emp-not-inc,300000, Some-college,10,Couple, Transport-moving, Husband, Black, Male,Had gains,No losses,50,US,>50K
+30, Private,175000, Bachelors,13,Single, Prof-specialty, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+45, State-gov,220000, Assoc-voc,11,Single, Exec-managerial, Not-in-family, White, Female,No gains,No losses,42,US,<=50K
+60, Private,140000, HS-grad,9,Single, Other-service, Unmarried, Amer-Indian-Eskimo, Female,No gains,Had losses,35,US,<=50K
+52, Federal-gov,190000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,48,US,>50K
+42, Private,152340, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,45,US,<=50K
+29, Private,189567, Bachelors,13,Single, Exec-managerial, Not-in-family, White, Female,No gains,No losses,50,US,>50K
+35, Private,234001, Some-college,10,Single, Sales, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+22, State-gov,110975, Assoc-acdm,12,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,20,US,<=50K
+55, Self-emp-inc,302450, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+27, Private,85000, 11th,11,Single, Other-service, Unmarried, White, Female,No gains,No losses,35,US,<=50K
+38, Local-gov,210000, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+50, Private,175300, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Male,No gains,Had losses,38,US,<=50K
+18, Private,95000, 9th,9,Single, Handlers-cleaners, Own-child, Black, Male,No gains,No losses,25,US,<=50K
+47, Self-emp-not-inc,280000, Some-college,10,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,55,US,<=50K
+33, Private,160000, Bachelors,13,Single, Sales, Not-in-family, White, Female,Had gains,No losses,48,US,>50K
+41, Private,125000, Assoc-voc,11,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,42,US,<=50K
+58, Private,330000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,Non-US,>50K
+44, Private,145000, HS-grad,9,Single, Transport-moving, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+36, Private,205000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,60,US,<=50K
+31, State-gov,198000, Bachelors,13,Single, Prof-specialty, Not-in-family, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,>50K
+17, Private,78000, 7th-8th,6,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+46, Private,260000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,Had losses,40,US,>50K
+52, Local-gov,135000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+53, Private,310450, Some-college,10,Couple, Transport-moving, Husband, White, Male,Had gains,No losses,55,US,>50K
+38, Private,284567, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+26, Private,112450, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+20, Private,65421, HS-grad,9,Single, Other-service, Own-child, White, Male,No gains,No losses,25,US,<=50K
+52, Self-emp-inc,395012, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,US,>50K
+35, State-gov,178900, Assoc-acdm,12,Single, Prof-specialty, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+29, Private,52000, 7th-8th,4,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+42, Private,210000, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+18, Private,86000, 11th,7,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,20,US,<=50K
+33, Private,145000, Some-college,10,Single, Transport-moving, Unmarried, Black, Male,No gains,No losses,48,US,<=50K
+44, Self-emp-not-inc,302100, Bachelors,13,Couple, Sales, Husband, White, Male,Had gains,Had losses,55,US,>50K
+36, Private,95000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,35,US,<=50K
+30, Federal-gov,234567, Assoc-voc,11,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+46, Private,175000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,<=50K
+55, Private,400000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,70,Non-US,>50K
+17, Private,68900, 9th,5,Single, Other-service, Own-child, Other, Male,No gains,No losses,16,US,<=50K
+41, State-gov,321000, Masters,14,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,No gains,No losses,45,US,>50K
+28, Private,133000, HS-grad,9,Single, Sales, Not-in-family, White, Female,No gains,No losses,30,US,<=50K
+50, Private,256000, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male,No gains,Had losses,50,US,>50K
+24, Private,75000, Some-college,10,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+48, Self-emp-inc,410000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,55,US,>50K
+47, Private,245678, HS-grad,9,Couple, Transport-moving, Husband, White, Male,No gains,No losses,50,US,>50K
+28, Private,98765, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+33, Private,134567, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,Had losses,45,US,>50K
+18, Private,345789, 9th,9,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+41, State-gov,221456, Assoc-acdm,12,Single, Exec-managerial, Unmarried, Black, Female,No gains,No losses,38,US,<=50K
+52, Self-emp-inc,178901, Masters,14,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+30, Private,456123, HS-grad,9,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,55,Non-US,<=50K
+48, Private,324567, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,US,>50K
+38, Private,112233, Some-college,10,Couple, Machine-op-inspct, Husband, White, Male,No gains,No losses,40,US,<=50K
+22, Private,289012, Bachelors,13,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,25,US,<=50K
+35, Private,398765, 11th,11,Single, Other-service, Unmarried, White, Female,No gains,No losses,30,US,<=50K
+55, Local-gov,150987, Assoc-voc,11,Couple, Craft-repair, Husband, Black, Male,Had gains,No losses,40,US,>50K
+62, Private,210987, 7th-8th,8,Couple, Farming-fishing, Husband, White, Male,No gains,Had losses,48,US,<=50K
+27, Private,287654, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,35,US,<=50K
+31, Private,345123, Bachelors,13,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,No gains,No losses,42,Non-US,>50K
+19, Private,198765, HS-grad,9,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,15,US,<=50K
+44, Private,412345, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+57, Private,167890, 9th,9,Single, Other-service, Not-in-family, Black, Female,No gains,No losses,20,US,<=50K
+39, Self-emp-not-inc,234567, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+36, Private,378901, Some-college,10,Single, Craft-repair, Unmarried, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+35, Private,150000, HS-grad,9,Couple, Craft-repair, Husband, White, Male, No gains, No losses,45,US,<=50K
+40, State-gov,180000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female, No gains, No losses,40,US,>50K
+28, Private,210000, Some-college,10,Single, Adm-clerical, Not-in-family, Black, Female, No gains, No losses,38,US,<=50K
+19, Private,90000, 9th,9,Single, Other-service, Own-child, White, Male, No gains, No losses,20,US,<=50K
+50, Self-emp-inc,320000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male, Had gains, No losses,55,US,>50K
+33, Local-gov,45000, Assoc-acdm,12,Single, Machine-op-inspct, Unmarried, White, Female, No gains, No losses,40,US,<=50K
+45, Private,275000, Masters,14,Couple, Exec-managerial, Wife, White, Female, No gains, No losses,48,US,>50K
+25, Private,140000, 11th,11,Single, Sales, Not-in-family, White, Male, No gains, No losses,35,US,<=50K
+55, Private,360000, Bachelors,13,Couple, Prof-specialty, Husband, White, Male, No gains, Had losses,50,US,>50K
+48, Self-emp-not-inc,200000, Some-college,10,Couple, Craft-repair, Husband, Black, Male, No gains, No losses,42,US,<=50K
+22, Private,75000, Assoc-voc,11,Single, Farming-fishing, Own-child, White, Female, No gains, No losses,30,US,<=50K
+42, State-gov,290000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female, No gains, No losses,60,Non-US,>50K
+38, Private,110000, 7th-8th,8,Couple, Transport-moving, Husband, White, Male, No gains, No losses,40,US,<=50K
+41, Private,185000, Some-college,10,Single, Handlers-cleaners, Unmarried, Amer-Indian-Eskimo, Male, Had gains, No losses,44,US,<=50K
+34, Private,250000, Bachelors,13,Couple, Sales, Husband, White, Male, No gains, No losses,50,US,>50K
+26, Private,34000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female, No gains, No losses,35,US,<=50K
+58, Self-emp-inc,400000, Masters,14,Couple, Exec-managerial, Husband, Black, Male, Had gains, No losses,65,US,>50K
+30, Private,175000, 9th,9,Single, Machine-op-inspct, Other-relative, White, Male, No gains, Had losses,40,US,<=50K
+35, Private,120345, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,45,US,>50K
+28, Private,85000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+50, Self-emp-inc,250000, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+19, Private,45000, Some-college,10,Single, Other-service, Own-child, Black, Female,No gains,No losses,20,US,<=50K
+45, State-gov,190000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, White, Female,No gains,Had losses,38,US,<=50K
+22, Private,60000, 11th,7,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+40, Private,175000, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+17, Private,32000, 9th,5,Single, Other-service, Own-child, Amer-Indian-Eskimo, Male,No gains,No losses,15,US,<=50K
+55, Self-emp-not-inc,200000, Some-college,10,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,60,US,<=50K
+33, Private,95000, Assoc-voc,11,Single, Machine-op-inspct, Unmarried, Black, Female,No gains,No losses,40,US,<=50K
+30, Private,130000, Bachelors,13,Single, Sales, Not-in-family, White, Male,Had gains,No losses,48,US,>50K
+25, Local-gov,77000, HS-grad,9,Single, Handlers-cleaners, Other-relative, Other, Male,No gains,No losses,40,US,<=50K
+62, Self-emp-inc,310000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,70,Non-US,>50K
+16, Private,50000, 10th,6,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+48, Federal-gov,165000, Masters,14,Couple, Prof-specialty, Wife, Black, Female,No gains,Had losses,45,US,>50K
+26, Private,88000, Assoc-acdm,12,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+38, Private,140000, Some-college,10,Couple, Transport-moving, Husband, Asian-Pac-Islander, Male,No gains,No losses,50,Non-US,<=50K
+41, State-gov,210000, Bachelors,13,Single, Exec-managerial, Unmarried, White, Female,No gains,No losses,55,US,>50K
+52, Private,67000, 7th-8th,4,Couple, Machine-op-inspct, Husband, Black, Male,No gains,No losses,40,US,<=50K
+36, Private,115000, HS-grad,9,Couple, Sales, Wife, White, Female,No gains,No losses,38,US,<=50K
+47, Private,184567, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,55,US,>50K
+29, Private,98231, HS-grad,9,Single, Adm-clerical, Not-in-family, Black, Female,No gains,No losses,38,US,<=50K
+22, Private,220345, Some-college,10,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+52, State-gov,310500, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+33, Private,145600, 11th,7,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,42,US,<=50K
+41, Private,267890, Masters,14,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+19, Private,50000, 9th,5,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+55, Local-gov,198750, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,Had losses,40,US,<=50K
+36, Self-emp-not-inc,334210, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,60,US,>50K
+44, Private,125000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,48,US,>50K
+17, Private,78000, HS-grad,9,Single, Other-service, Own-child, White, Male,No gains,No losses,20,US,<=50K
+48, Private,290100, Prof-school,15,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,55,US,>50K
+30, Federal-gov,162000, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,40,US,<=50K
+59, Self-emp-inc,45000, 7th-8th,4,Couple, Farming-fishing, Husband, Amer-Indian-Eskimo, Male,No gains,Had losses,40,US,>50K
+38, Private,215000, Some-college,10,Single, Transport-moving, Unmarried, Black, Male,Had gains,No losses,42,US,>50K
+25, Private,110000, Bachelors,13,Single, Prof-specialty, Own-child, White, Female,No gains,No losses,35,US,<=50K
+53, Private,280000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+62, Local-gov,75000, HS-grad,9,Single, Handlers-cleaners, Unmarried, White, Female,No gains,No losses,25,US,<=50K
+43, State-gov,340000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,Had gains,No losses,45,US,>50K
+27, Private,130000, 11th,7,Single, Craft-repair, Not-in-family, White, Male,No gains,No losses,40,US,<=50K
+40, Private,200000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male, No gains, No losses,45,US,>50K
+28, Private,150000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female, No gains, No losses,38,US,<=50K
+20, Private,80000, Some-college,10,Single, Machine-op-inspct, Own-child, Black, Male, No gains, No losses,30,US,<=50K
+52, Self-emp-inc,300000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male, Had gains, No losses,55,US,>50K
+32, Private,180000, Assoc-acdm,12,Couple, Prof-specialty, Wife, White, Female, No gains, No losses,40,US,>50K
+45, Private,120000, HS-grad,9,Single, Craft-repair, Unmarried, Black, Male, No gains, Had losses,45,US,<=50K
+36, Private,250000, Some-college,10,Couple, Sales, Husband, White, Male, No gains, No losses,50,US,>50K
+25, State-gov,90000, Assoc-voc,11,Single, Adm-clerical, Not-in-family, White, Female, No gains, No losses,35,US,<=50K
+48, Private,400000, Masters,14,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male, No gains, No losses,55,US,>50K
+17, Private,60000, 9th,5,Single, Handlers-cleaners, Own-child, White, Female, No gains, No losses,20,US,<=50K
+30, Private,320000, Bachelors,13,Single, Sales, Not-in-family, White, Male, No gains, No losses,42,US,<=50K
+60, Self-emp-not-inc,140000, 7th-8th,4,Couple, Farming-fishing, Husband, White, Male, No gains, No losses,40,US,<=50K
+35, Federal-gov,220000, Some-college,10,Couple, Adm-clerical, Wife, Black, Female, No gains, No losses,40,US,<=50K
+41, Private,170000, Prof-school,15,Single, Prof-specialty, Unmarried, White, Female, No gains, No losses,50,Non-US,>50K
+33, Private,100000, HS-grad,9,Single, Machine-op-inspct, Other-relative, White, Male, No gains, No losses,45,US,<=50K
+55, Self-emp-inc,280000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male, Had gains, No losses,60,US,>50K
+22, Private,75000, 11th,7,Single, Handlers-cleaners, Unmarried, White, Female, No gains, No losses,25,US,<=50K
+44, Local-gov,350000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female, No gains, No losses,38,US,<=50K
+19, Private,50000, Some-college,10,Single, Other-service, Own-child, Amer-Indian-Eskimo, Male, No gains, No losses,15,US,<=50K
+49, Private,190000, HS-grad,9,Couple, Craft-repair, Husband, White, Male, No gains, No losses,48,US,>50K
+35, Private,120000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+42, Private,245000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+28, Private,85000, Some-college,10,Single, Sales, Not-in-family, Black, Male,No gains,No losses,35,US,<=50K
+55, Self-emp-inc,310000, Prof-school,15,Couple, Exec-managerial, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+22, Private,45000, 9th,9,Single, Other-service, Own-child, White, Female,No gains,No losses,30,US,<=50K
+48, Private,195000, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,45,US,>50K
+33, State-gov,67000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Black, Female,No gains,Had losses,40,US,<=50K
+50, Self-emp-not-inc,280000, Some-college,10,Couple, Farming-fishing, Husband, White, Male,Had gains,No losses,55,US,>50K
+29, Private,140000, HS-grad,9,Single, Machine-op-inspct, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+52, Private,400000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,50,US,>50K
+18, Private,55000, 11th,11,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+39, Local-gov,220000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,48,US,>50K
+30, Private,95000, Some-college,10,Single, Transport-moving, Unmarried, Black, Male,No gains,No losses,40,US,<=50K
+47, Private,175000, Assoc-voc,11,Couple, Craft-repair, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,42,US,<=50K
+44, Private,300000, Masters,14,Couple, Exec-managerial, Wife, White, Female,Had gains,No losses,50,US,>50K
+60, Private,75000, 7th-8th,8,Single, Other-service, Not-in-family, White, Female,No gains,No losses,25,US,<=50K
+36, Private,260000, Some-college,10,Couple, Machine-op-inspct, Husband, Black, Male,No gains,Had losses,40,US,<=50K
+27, Private,150000, Bachelors,13,Single, Sales, Not-in-family, White, Male,No gains,No losses,38,Non-US,<=50K
+58, Self-emp-inc,380000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,70,US,>50K
+41, Private,100000, HS-grad,9,Single, Craft-repair, Unmarried, Other, Male,No gains,No losses,35,US,<=50K
+36, Private,102343, Bachelors,13,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,No gains,No losses,45,Non-US,>50K
+45, Private,162187, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,<=50K
+30, Private,31449, Some-college,10,Single, Adm-clerical, Unmarried, Amer-Indian-Eskimo, Female,No gains,No losses,40,US,<=50K
+50, Self-emp-inc,53197, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+40, Private,219266, Some-college,10,Couple, Sales, Husband, White, Male,Had gains,No losses,40,US,>50K
+34, Private,158685, Assoc-acdm,12,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+22, Private,37215, 9th,5,Single, Handlers-cleaners, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+19, Private,252257, 11th,7,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+37, State-gov,38312, Masters,14,Single, Prof-specialty, Unmarried, White, Male,No gains,No losses,40,US,>50K
+55, Private,354037, Assoc-voc,11,Couple, Transport-moving, Husband, Black, Male,Had gains,No losses,50,US,>50K
+35, Private,123456, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,234567, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,45,US,>50K
+42, State-gov,345678, Some-college,10,Single, Exec-managerial, Unmarried, Black, Male,No gains,No losses,50,US,>50K
+22, Private,456789, Assoc-acdm,12,Single, Adm-clerical, Own-child, White, Female,No gains,No losses,35,US,<=50K
+48, Self-emp-not-inc,567890, 9th,5,Couple, Farming-fishing, Husband, White, Male,No gains,No losses,60,US,<=50K
+38, Self-emp-inc,678901, Prof-school,15,Couple, Prof-specialty, Wife, Asian-Pac-Islander, Female,Had gains,No losses,55,Non-US,>50K
+30, Private,789012, Masters,14,Single, Sales, Not-in-family, White, Male,No gains,No losses,42,US,>50K
+55, Local-gov,890123, HS-grad,9,Single, Handlers-cleaners, Unmarried, White, Female,No gains,Had losses,40,US,<=50K
+36, Private,901234, Some-college,10,Couple, Transport-moving, Husband, Black, Male,No gains,No losses,48,US,<=50K
+19, Private,112233, Assoc-voc,11,Single, Machine-op-inspct, Own-child, White, Male,No gains,No losses,25,US,<=50K
+33, Private,223344, Bachelors,13,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,40,US,>50K
+25, Private,334455, 11th,7,Single, Other-service, Not-in-family, White, Male,No gains,No losses,30,US,<=50K
+50, Private,445566, HS-grad,9,Couple, Craft-repair, Husband, White, Male,Had gains,No losses,50,US,>50K
+60, Private,556677, 7th-8th,4,Couple, Farming-fishing, Husband, Amer-Indian-Eskimo, Male,No gains,No losses,40,US,<=50K
+44, Self-emp-not-inc,667788, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,60,US,>50K
+29, Private,778899, Some-college,10,Single, Adm-clerical, Unmarried, White, Female,No gains,No losses,38,US,<=50K
+32, Local-gov,889900, Bachelors,13,Single, Prof-specialty, Not-in-family, Black, Female,No gains,No losses,40,US,>50K
+41, Private,990011, Assoc-acdm,12,Couple, Sales, Husband, White, Male,No gains,No losses,45,US,<=50K
+37, Private,100001, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,50,US,>50K
+17, Private,200002, 9th,5,Single, Handlers-cleaners, Own-child, White, Female,No gains,No losses,20,US,<=50K
+35, Private,125000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,200000, Bachelors,13,Single, Prof-specialty, Not-in-family, White, Female,No gains,No losses,45,US,>50K
+22, Private,85000, Some-college,10,Single, Sales, Own-child, Black, Male,No gains,No losses,20,US,<=50K
+50, Self-emp-inc,300000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+34, Private,175000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,38,US,<=50K
+45, Private,220000, 9th,9,Single, Machine-op-inspct, Unmarried, White, Male,No gains,No losses,40,US,<=50K
+60, State-gov,95000, 7th-8th,8,Single, Other-service, Not-in-family, Amer-Indian-Eskimo, Female,No gains,Had losses,30,US,<=50K
+42, Private,150000, Masters,14,Couple, Prof-specialty, Husband, White, Male,No gains,No losses,50,US,>50K
+18, Private,50000, Some-college,10,Single, Handlers-cleaners, Own-child, Black, Female,No gains,No losses,25,US,<=50K
+55, Private,280000, Assoc-voc,11,Single, Transport-moving, Unmarried, White, Male,No gains,No losses,48,US,<=50K
+33, Private,180000, Bachelors,13,Couple, Exec-managerial, Wife, Asian-Pac-Islander, Female,No gains,No losses,40,Non-US,>50K
+29, Local-gov,60000, HS-grad,9,Single, Farming-fishing, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+48, Self-emp-not-inc,320000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,55,US,>50K
+20, Private,110000, 11th,11,Single, Sales, Own-child, White, Female,No gains,No losses,30,US,<=50K
+38, Private,240000, Bachelors,13,Couple, Exec-managerial, Husband, Black, Male,No gains,Had losses,45,US,>50K
+41, Private,78000, Some-college,10,Single, Craft-repair, Unmarried, White, Female,No gains,No losses,40,US,<=50K
+36, Private,190000, Assoc-acdm,12,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,<=50K
+52, Private,350000, Masters,14,Couple, Exec-managerial, Husband, White, Male,No gains,No losses,50,US,>50K
+25, Private,130000, HS-grad,9,Single, Machine-op-inspct, Not-in-family, Other, Male,No gains,No losses,44,US,<=50K
+44, Private,270000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+35, Private,85000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,120000, Some-college,10,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+42, State-gov,250000, Bachelors,13,Couple, Prof-specialty, Wife, Black, Female,No gains,No losses,45,US,>50K
+50, Self-emp-inc,180000, Prof-school,15,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,60,US,>50K
+19, Private,60000, 9th,5,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+34, Private,320000, Masters,14,Single, Prof-specialty, Unmarried, White, Female,No gains,No losses,50,US,>50K
+27, Private,95000, Assoc-acdm,12,Single, Machine-op-inspct, Not-in-family, Amer-Indian-Eskimo, Female,No gains,Had losses,40,US,<=50K
+35, Private,120000, HS-grad,9,Couple, Craft-repair, Husband, White, Male,No gains,No losses,40,US,<=50K
+28, Private,200000, Some-college,10,Single, Sales, Not-in-family, White, Female,No gains,No losses,45,US,<=50K
+32, State-gov,90000, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,38,US,>50K
+45, Self-emp-inc,250000, Masters,14,Couple, Exec-managerial, Husband, Black, Male,Had gains,No losses,50,US,>50K
+19, Private,60000, 11th,7,Single, Handlers-cleaners, Own-child, White, Male,No gains,No losses,20,US,<=50K
+36, Private,180000, Assoc-acdm,12,Single, Adm-clerical, Unmarried, Asian-Pac-Islander, Female,No gains,No losses,35,Non-US,<=50K
+55, Private,350000, Prof-school,15,Couple, Prof-specialty, Husband, White, Male,Had gains,No losses,60,US,>50K
+25, Local-gov,45000, 9th,5,Single, Other-service, Not-in-family, Black, Male,No gains,Had losses,30,US,<=50K
+42, Private,300000, Some-college,10,Couple, Transport-moving, Husband, White, Male,No gains,No losses,48,US,<=50K
+38, Private,140000, HS-grad,9,Couple, Adm-clerical, Wife, White, Female,No gains,No losses,40,US,<=50K
+29, Private,80000, Bachelors,13,Single, Sales, Unmarried, White, Male,No gains,No losses,44,US,>50K
+50, Self-emp-not-inc,220000, Assoc-voc,11,Couple, Craft-repair, Husband, White, Male,No gains,No losses,55,US,>50K
+17, Private,70000, 7th-8th,4,Single, Farming-fishing, Own-child, Amer-Indian-Eskimo, Male,No gains,No losses,15,US,<=50K
+41, State-gov,400000, Masters,14,Single, Exec-managerial, Not-in-family, Asian-Pac-Islander, Female,Had gains,No losses,50,Non-US,>50K
+33, Private,100000, Some-college,10,Couple, Machine-op-inspct, Husband, Black, Male,No gains,No losses,40,US,<=50K
+44, Private,280000, Prof-school,15,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,45,US,>50K
+22, Private,50000, 11th,7,Single, Other-service, Unmarried, White, Female,No gains,No losses,25,US,<=50K
+48, Self-emp-inc,260000, Bachelors,13,Couple, Exec-managerial, Husband, White, Male,Had gains,No losses,55,US,>50K
+35, Local-gov,150000, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+53, Federal-gov,330000, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,50,US,>50K
+35, Private,123456, Some-college,10,Couple, Craft-repair, Husband, White, Male,No gains,No losses,42,US,<=50K
+28, Private,234567, HS-grad,9,Single, Adm-clerical, Not-in-family, White, Female,No gains,No losses,38,US,<=50K
+32, State-gov,345678, Bachelors,13,Couple, Prof-specialty, Wife, White, Female,No gains,No losses,40,US,>50K
+22, Private,456789, Assoc-acdm,12,Single, Machine-op-inspct, Own-child, Black, Male,No gains,No losses,30,US,<=50K
+45, Private,567890, 9th,5,Single, Handlers-cleaners, Unmarried, White, Male,No gains,No losses,50,US,<=50K
+55, Self-emp-not-inc,678901, Prof-school,15,Couple, Prof-specialty, Husband, Asian-Pac-Islander, Male,Had gains,No losses,60,Non-US,>50K
+38, Private,789012, Masters,14,Couple, Exec-managerial, Wife, White, Female,No gains,No losses,45,US,>50K
+29, Local-gov,890123, 11th,7,Single, Other-service, Not-in-family, White, Male,No gains,No losses,35,US,<=50K
+41, Private,901234, Some-college,10,Couple, Transport-moving, Husband, Black, Male,No gains,Had losses,44,US,<=50K
+33, Private,112233, Bachelors,13,Couple, Sales, Husband, White, Male,No gains,No losses,48,US,>50K
+18, Private,223344, HS-grad,9,Single, Other-service, Own-child, White, Female,No gains,No losses,20,US,<=50K
+50, Self-emp-inc,334455, Assoc-voc,11,Single, Craft-repair, Unmarried, White, Male,No gains,No losses,50,US,>50K

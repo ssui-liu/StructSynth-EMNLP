@@ -1,0 +1,112 @@
+[
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 42,
+    "dcr": 0.643,
+    "pairwise_correlation_diff": 0.5673265975437121,
+    "mae": 17.672958006937517,
+    "mse": 501.53143115857773,
+    "rmse": 22.394897435768215,
+    "r2": 0.2887198200703307
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 43,
+    "dcr": 0.471,
+    "pairwise_correlation_diff": 0.5507411663156532,
+    "mae": 15.009891594410277,
+    "mse": 404.06951829653104,
+    "rmse": 20.101480500115684,
+    "r2": 0.41753012874328777
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 44,
+    "dcr": 0.571,
+    "pairwise_correlation_diff": 0.569540122296763,
+    "mae": 17.203925791028897,
+    "mse": 459.77350671054165,
+    "rmse": 21.442329787374824,
+    "r2": 0.3383400086407081
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 45,
+    "dcr": 0.554,
+    "pairwise_correlation_diff": 0.5632848879592471,
+    "mae": 17.175247700796138,
+    "mse": 468.95722909858995,
+    "rmse": 21.65542031683038,
+    "r2": 0.2598251548950876
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 46,
+    "dcr": 0.597,
+    "pairwise_correlation_diff": 0.562515522610721,
+    "mae": 16.15522188906896,
+    "mse": 405.16758234633284,
+    "rmse": 20.12877498374734,
+    "r2": 0.40289862819770117
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 47,
+    "dcr": 0.515,
+    "pairwise_correlation_diff": 0.5673172695477944,
+    "mae": 15.794569910404432,
+    "mse": 383.4079971820772,
+    "rmse": 19.58080685727933,
+    "r2": 0.4434987889085463
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 48,
+    "dcr": 0.518,
+    "pairwise_correlation_diff": 0.5967604739736737,
+    "mae": 15.333567815502409,
+    "mse": 362.8200898632406,
+    "rmse": 19.047836881473984,
+    "r2": 0.4556856688058404
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 49,
+    "dcr": 0.658,
+    "pairwise_correlation_diff": 0.5946820527784477,
+    "mae": 16.028006312832446,
+    "mse": 457.9673695885602,
+    "rmse": 21.400172185955892,
+    "r2": 0.30083568927910165
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 50,
+    "dcr": 0.499,
+    "pairwise_correlation_diff": 0.562382651827775,
+    "mae": 16.0454781353324,
+    "mse": 390.92586014874894,
+    "rmse": 19.771845137688818,
+    "r2": 0.43695317064270456
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_full",
+    "seed": 51,
+    "dcr": 0.682,
+    "pairwise_correlation_diff": 0.56580113180481,
+    "mae": 17.401963448393406,
+    "mse": 483.96753027440786,
+    "rmse": 21.999262039314132,
+    "r2": 0.2571439741813044
+  }
+]

@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.8069285595889276,
+    "accuracy_std": 0.004868120636706286,
+    "accuracy_n": 5,
+    "f1": 0.5945307923650633,
+    "f1_std": 0.0116326199608921,
+    "f1_n": 5,
+    "auc_roc": 0.8462016509437428,
+    "auc_roc_std": 0.0077757401789965265,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.8059008785015747,
+            "f1": 0.5991098938719617,
+            "precision": 0.616631430584919,
+            "recall": 0.5825565912117177,
+            "auc_roc": 0.8318662000287412
+        },
+        "44": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.8161776893751036,
+            "f1": 0.5775238095238096,
+            "precision": 0.6749777382012466,
+            "recall": 0.5046604527296937,
+            "auc_roc": 0.8496940443713539
+        },
+        "45": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.8059008785015747,
+            "f1": 0.6110926602457655,
+            "precision": 0.6096752816434725,
+            "recall": 0.6125166444740346,
+            "auc_roc": 0.8548201456396988
+        },
+        "42": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.8017570031493453,
+            "f1": 0.5989268947015426,
+            "precision": 0.6033783783783784,
+            "recall": 0.5945406125166445,
+            "auc_roc": 0.8492958406667958
+        },
+        "46": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.8049063484170396,
+            "f1": 0.5860007034822371,
+            "precision": 0.6211782252050708,
+            "recall": 0.5545938748335553,
+            "auc_roc": 0.845332024012124
+        }
+    },
+    "dataset": "adult",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 100
+}

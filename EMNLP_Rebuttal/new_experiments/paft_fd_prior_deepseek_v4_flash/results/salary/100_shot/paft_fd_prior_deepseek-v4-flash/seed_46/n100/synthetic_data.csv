@@ -1,0 +1,101 @@
+job_title,experience_level,employment_type,company_location,company_size,employee_residence,remote_ratio,education_required,years_experience,industry,job_description_length,benefits_score,company_name,required_skill_1,required_skill_2,required_skill_3,required_skill_4,required_skill_5,salary (k)
+Data Scientist,Mid,Full-time,Germany,Medium,Germany,Hybrid,Bachelor,4,Finance,1452,7.8,Smart Analytics,Python,Tableau,Docker,Spark,Hadoop,95.23
+Head of AI,Executive,Full-time,United States,Large,United States,Hybrid,PhD,12,Healthcare,1890,8.5,DeepTech Ventures,AWS,Kubernetes,MLOps,PyTorch,Docker,210.45
+Machine Learning Engineer,Entry,Contract,Singapore,Small,Singapore,No remote,Associate,1,Manufacturing,1105,6.2,Cloud AI Solutions,Linux,Scala,Git,Statistics,,55.8
+Deep Learning Engineer,Senior,Part-time,Switzerland,Medium,Switzerland,Fully remote,Master,8,Technology,720,9.1,AI Innovations,PyTorch,TensorFlow,Linux,GCP,,135.6
+AI Research Scientist,Entry,Freelance,France,Small,France,Hybrid,Bachelor,0,Gaming,980,7.0,DataVision Ltd,R,Docker,SQL,Deep Learning,Java,48.15
+Principal Data Scientist,Executive,Full-time,Denmark,Large,Denmark,No remote,Master,15,Energy,1600,6.8,Future Systems,GCP,Spark,Tableau,NLP,,280.3
+ML Ops Engineer,Senior,Contract,United Kingdom,Medium,United Kingdom,Hybrid,PhD,6,Consulting,2100,8.0,Machine Intelligence Group,Scala,Data Visualization,Hadoop,Azure,Python,110.75
+Computer Vision Engineer,Mid,Part-time,Sweden,Large,Finland,Fully remote,Associate,3,Automotive,1350,7.3,Autonomous Tech,Docker,Git,PyTorch,Mathematics,R,88.4
+AI Consultant,Executive,Freelance,Ireland,Small,Ireland,No remote,Bachelor,18,Media,840,5.9,Predictive Systems,Kubernetes,AWS,Data Visualization,SQL,,160.9
+AI Specialist,Mid,Full-time,Netherlands,Medium,Netherlands,Hybrid,Master,2,Education,1700,8.8,TechCorp Inc,Java,MLOps,Deep Learning,TensorFlow,,72.0
+Research Scientist,Senior,Contract,Australia,Large,Australia,Fully remote,PhD,10,Telecommunications,1950,7.5,Cognitive Computing,SQL,Python,Spark,Computer Vision,Azure,185.5
+Data Analyst,Entry,Part-time,China,Small,China,No remote,Associate,0,Government,620,6.5,Digital Transformation LLC,Hadoop,PyTorch,R,Linux,,42.5
+Autonomous Systems Engineer,Senior,Full-time,Canada,Medium,Canada,Hybrid,Bachelor,5,Real Estate,1530,7.9,Advanced Robotics,Git,Kubernetes,Computer Vision,Docker,Tableau,120.25
+NLP Engineer,Executive,Freelance,Norway,Large,Norway,No remote,Associate,14,Transportation,1280,6.1,Quantum Computing Inc,TensorFlow,Statistics,NLP,Scala,,235.8
+AI Product Manager,Senior,Contract,Israel,Small,Israel,Fully remote,Master,7,Retail,1850,8.2,Neural Networks Co,Data Visualization,R,Azure,Git,Hadoop,145.3
+Robotics Engineer,Entry,Full-time,Austria,Medium,Austria,Hybrid,Bachelor,1,Energy,1420,9.0,Algorithmic Solutions,Mathematics,Java,Python,AWS,Docker,65.4
+AI Architect,Senior,Part-time,South Korea,Large,South Korea,No remote,Associate,9,Finance,900,6.9,DeepTech Ventures,Deep Learning,Linux,Statistics,Kubernetes,,175.2
+Machine Learning Researcher,Executive,Full-time,Japan,Medium,Japan,Hybrid,PhD,16,Manufacturing,2200,8.9,Future Systems,Spark,PyTorch,Java,MLOps,GCP,300.0
+Data Engineer,Executive,Contract,India,Large,India,No remote,Master,11,Consulting,1150,7.2,DataVision Ltd,Tableau,Docker,Scala,Python,,195.65
+AI Software Engineer,Mid,Freelance,United Kingdom,Small,Canada,Fully remote,PhD,3,Gaming,2500,9.5,Machine Intelligence Group,Kubernetes,Hadoop,TensorFlow,Data Visualization,,105.0
+Head of AI,Executive,Full-time,United States,Large,United States,Hybrid,Master,12,Finance,1562,8.1,Cognitive Computing,Python,AWS,Spark,TensorFlow,Docker,198.45
+AI Research Scientist,Mid,Contract,Germany,Small,Germany,No remote,Associate,3,Automotive,901,7.4,Neural Networks Co,PyTorch,Tableau,Git,Statistics,,88.32
+Principal Data Scientist,Senior,Freelance,Canada,Medium,Canada,Fully remote,PhD,8,Healthcare,1890,6.9,Predictive Systems,R,Deep Learning,AWS,NLP,Azure,155.67
+Data Analyst,Entry,Full-time,Netherlands,Large,Netherlands,Hybrid,Bachelor,1,Media,1150,8.5,Digital Transformation LLC,Linux,GCP,Data Visualization,SQL,,62.15
+Machine Learning Researcher,Executive,Part-time,Switzerland,Small,Switzerland,Hybrid,Master,15,Technology,1340,7.8,Advanced Robotics,Kubernetes,Java,Scala,PyTorch,Hadoop,265.8
+Computer Vision Engineer,Senior,Contract,Israel,Medium,Israel,No remote,Bachelor,5,Real Estate,720,8.2,Algorithmic Solutions,Docker,MLOps,Linux,Mathematics,,132.54
+Robotics Engineer,Entry,Freelance,Finland,Small,Finland,No remote,Associate,0,Gaming,820,6.5,Smart Analytics,Scala,SQL,Computer Vision,,,48.9
+AI Architect,Senior,Full-time,United Kingdom,Large,United Kingdom,Hybrid,PhD,10,Consulting,2120,7.0,Machine Intelligence Group,AWS,Kubernetes,MLOps,Deep Learning,R,178.22
+Data Scientist,Mid,Part-time,France,Medium,France,Fully remote,Master,2,Energy,1455,9.1,DataVision Ltd,Git,TensorFlow,Hadoop,GCP,,72.8
+NLP Engineer,Executive,Contract,Australia,Medium,Australia,No remote,Bachelor,14,Transportation,1780,6.2,Cloud AI Solutions,Hadoop,Computer Vision,PyTorch,Spark,Statistics,220.35
+AI Specialist,Mid,Full-time,Sweden,Large,Sweden,No remote,Associate,4,Manufacturing,1098,8.9,TechCorp Inc,Tableau,Python,Docker,Azure,,105.9
+Deep Learning Engineer,Senior,Freelance,Norway,Small,Norway,Hybrid,Master,7,Telecommunications,1675,7.6,DeepTech Ventures,SQL,Docker,Java,MLOps,Linux,145.1
+Machine Learning Engineer,Entry,Part-time,Singapore,Medium,Singapore,Fully remote,Bachelor,0,Education,950,7.2,Future Systems,Data Visualization,Spark,R,,,55.3
+AI Consultant,Senior,Contract,Ireland,Large,Ireland,No remote,Bachelor,6,Retail,1320,8.0,Autonomous Tech,Python,AWS,Tableau,Git,Scala,120.75
+AI Product Manager,Executive,Full-time,Denmark,Small,Denmark,Hybrid,Associate,11,Government,1430,6.8,Quantum Computing Inc,GCP,Data Visualization,SQL,Kubernetes,TensorFlow,185.4
+Research Scientist,Mid,Freelance,China,Medium,China,Hybrid,PhD,3,Media,2030,5.8,AI Innovations,Azure,Linux,Deep Learning,NLP,,96.4
+Head of AI,Executive,Part-time,Japan,Large,Japan,No remote,Master,18,Automotive,990,7.3,Predictive Systems,PyTorch,Tableau,Kubernetes,Scala,Java,280.55
+ML Ops Engineer,Senior,Contract,South Korea,Small,South Korea,Fully remote,Master,9,Finance,1850,9.5,DataVision Ltd,Docker,Hadoop,Mathematics,AWS,,138.9
+Data Engineer,Mid,Full-time,India,Medium,India,Hybrid,Bachelor,2,Consulting,1110,6.7,Machine Intelligence Group,Spark,R,Statistics,PyTorch,Git,78.6
+Autonomous Systems Engineer,Executive,Freelance,Switzerland,Medium,Switzerland,Fully remote,PhD,16,Technology,1610,8.8,Digital Transformation LLC,Computer Vision,Mathematics,TensorFlow,Deep Learning,Azure,310.25
+Head of AI,Executive,Full-time,United States,Large,United States,Hybrid,Bachelor,11,Finance,1574,8.2,DeepTech Ventures,Python,TensorFlow,SQL,PyTorch,Hadoop,215.47
+Data Analyst,Mid,Contract,India,Small,India,Fully remote,Associate,2,Retail,812,7.5,Smart Analytics,R,Tableau,Git,Spark,,62.15
+Principal Data Scientist,Executive,Part-time,Switzerland,Large,Switzerland,No remote,Master,18,Healthcare,2187,9.1,Cognitive Computing,AWS,Kubernetes,MLOps,Deep Learning,Scala,298.34
+Machine Learning Researcher,Entry,Freelance,Denmark,Small,Denmark,Hybrid,Bachelor,0,Education,1315,6.8,Future Systems,Git,Linux,Docker,Data Visualization,,51.23
+AI Specialist,Senior,Full-time,Canada,Medium,Canada,No remote,PhD,5,Technology,1688,7.2,Machine Intelligence Group,PyTorch,Docker,Tableau,GCP,Azure,148.9
+AI Architect,Senior,Part-time,United Kingdom,Large,United Kingdom,Hybrid,Bachelor,7,Consulting,2049,6.5,Algorithmic Solutions,Scala,Spark,Linux,NLP,Computer Vision,175.32
+Robotics Engineer,Entry,Contract,Austria,Small,Austria,No remote,Associate,1,Manufacturing,943,8.1,TechCorp Inc,SQL,Hadoop,PyTorch,,,44.78
+AI Product Manager,Executive,Freelance,Ireland,Medium,Ireland,Fully remote,Associate,14,Energy,703,5.8,Digital Transformation LLC,GCP,Java,Spark,Linux,R,187.62
+Data Scientist,Mid,Part-time,Japan,Medium,Canada,No remote,Master,3,Gaming,1868,9.5,Cloud AI Solutions,Docker,PyTorch,Java,Azure,Statistics,91.05
+Computer Vision Engineer,Senior,Full-time,Australia,Large,Australia,Hybrid,PhD,10,Automotive,2234,7.8,Autonomous Tech,Kubernetes,Mathematics,AWS,,,202.11
+AI Software Engineer,Entry,Freelance,Finland,Small,Sweden,No remote,Associate,0,Government,685,7.1,DataVision Ltd,Linux,GCP,Data Visualization,MLOps,,42.56
+NLP Engineer,Senior,Contract,Sweden,Large,Norway,Fully remote,Master,6,Media,1761,7.9,Neural Networks Co,Python,Tableau,Linux,TensorFlow,,155.73
+Deep Learning Engineer,Executive,Full-time,Denmark,Medium,Denmark,Hybrid,Associate,17,Transportation,744,6.3,Advanced Robotics,Hadoop,AWS,NLP,Python,Docker,269.44
+ML Ops Engineer,Mid,Full-time,Netherlands,Medium,Netherlands,Hybrid,Bachelor,4,Finance,1161,8.7,Quantum Computing Inc,PyTorch,Docker,Statistics,,,107.84
+AI Consultant,Senior,Full-time,United States,Medium,United States,Hybrid,Master,9,Real Estate,986,5.9,Predictive Systems,Java,R,SQL,Azure,PyTorch,119.45
+Research Scientist,Entry,Contract,Ireland,Large,Ireland,Fully remote,Bachelor,1,Telecommunications,1488,6.7,Digital Transformation LLC,SQL,Data Visualization,Scala,,,56.33
+Autonomous Systems Engineer,Senior,Freelance,Netherlands,Large,United Kingdom,Hybrid,PhD,8,Consulting,2473,8.3,AI Innovations,Spark,MLOps,Data Visualization,R,,167.88
+Machine Learning Engineer,Senior,Full-time,Norway,Medium,Norway,No remote,PhD,5,Automotive,966,6.9,Machine Intelligence Group,Linux,Git,Python,TensorFlow,,163.45
+Head of AI,Executive,Part-time,Switzerland,Large,Israel,Fully remote,Master,15,Technology,1627,7.4,DataVision Ltd,Computer Vision,Azure,Deep Learning,Spark,Kubernetes,311.5
+AI Research Scientist,Mid,Freelance,Singapore,Small,Singapore,No remote,PhD,3,Education,2070,6.1,Future Systems,Data Visualization,Tableau,Python,Mathematics,,78.46
+Machine Learning Engineer,Senior,Full-time,United States,Medium,United States,Hybrid,Bachelor,5,Technology,1450,8.5,Cloud AI Solutions,Python,Kubernetes,Docker,TensorFlow,NaN,135.2
+Head of AI,Executive,Full-time,Switzerland,Large,Switzerland,No remote,Master,12,Finance,1920,9.1,DeepTech Ventures,AWS,Scala,MLOps,PyTorch,Spark,210.45
+Data Scientist,Mid,Contract,Germany,Small,Germany,Fully remote,PhD,2,Automotive,810,6.0,Algorithmic Solutions,R,Git,Statistics,GCP,NaN,65.9
+AI Research Scientist,Entry,Freelance,France,Medium,France,No remote,Bachelor,0,Gaming,1150,7.8,Neural Networks Co,Java,Hadoop,Linux,Deep Learning,NaN,48.3
+Computer Vision Engineer,Senior,Full-time,Canada,Large,United States,Hybrid,Master,8,Healthcare,1780,7.2,Machine Intelligence Group,PyTorch,SQL,Git,Computer Vision,Azure,170.15
+AI Consultant,Executive,Part-time,India,Small,India,Fully remote,Associate,15,Energy,700,5.5,TechCorp Inc,Docker,Data Visualization,Hadoop,NaN,NaN,95.0
+AI Specialist,Mid,Contract,Singapore,Medium,Singapore,No remote,Bachelor,3,Government,2200,8.0,Predictive Systems,Linux,TensorFlow,Scala,Spark,R,88.75
+Principal Data Scientist,Executive,Full-time,United Kingdom,Large,Australia,Hybrid,PhD,11,Telecommunications,1300,9.3,DataVision Ltd,Statistics,Kubernetes,NLP,NaN,NaN,280.3
+Robotics Engineer,Entry,Freelance,Japan,Small,Japan,No remote,Associate,1,Manufacturing,1650,9.9,Autonomous Tech,Scala,PyTorch,Tableau,MLOps,Docker,72.4
+ML Ops Engineer,Senior,Part-time,Netherlands,Medium,Netherlands,Fully remote,Master,7,Real Estate,920,6.5,Smart Analytics,GCP,Java,Computer Vision,NaN,NaN,112.8
+AI Product Manager,Mid,Part-time,Denmark,Large,Denmark,No remote,Bachelor,4,Media,2000,8.2,Future Systems,SQL,Linux,Deep Learning,Azure,NaN,98.6
+Deep Learning Engineer,Executive,Contract,Sweden,Small,Norway,Hybrid,Bachelor,18,Retail,1550,7.1,Cognitive Computing,Kubernetes,R,PyTorch,Python,NaN,145.5
+NLP Engineer,Senior,Freelance,Australia,Medium,Australia,Fully remote,PhD,6,Education,1880,6.8,Digital Transformation LLC,Data Visualization,Docker,AWS,NLP,NaN,156.4
+Data Analyst,Entry,Full-time,Austria,Small,Austria,No remote,Associate,0,Consulting,500,7.0,AI Innovations,Hadoop,Tableau,Azure,NaN,NaN,35.1
+Research Scientist,Senior,Full-time,Ireland,Large,Ireland,Hybrid,Master,10,Transportation,1100,9.0,Quantum Computing Inc,TensorFlow,MLOps,Spark,Mathematics,NaN,230.0
+AI Software Engineer,Mid,Contract,Israel,Medium,Israel,No remote,Bachelor,3,Consulting,2400,8.8,Advanced Robotics,Git,GCP,SQL,NaN,NaN,105.9
+Autonomous Systems Engineer,Executive,Part-time,China,Medium,China,Fully remote,Associate,14,Finance,750,6.2,Future Systems,PyTorch,Deep Learning,Python,Tableau,NaN,175.25
+AI Architect,Senior,Freelance,Norway,Small,Finland,Hybrid,PhD,9,Energy,2100,5.8,Digital Transformation LLC,R,AWS,Data Visualization,Git,NaN,96.7
+Data Engineer,Mid,Full-time,South Korea,Medium,South Korea,No remote,Master,2,Gaming,1350,7.4,Neural Networks Co,Python,Linux,Kubernetes,NaN,NaN,80.5
+Head of AI,Executive,Full-time,United States,Large,United States,Hybrid,Bachelor,16,Technology,1600,9.5,DeepTech Ventures,Scala,Spark,Java,R,NaN,320.0
+Head of AI,Executive,Full-time,Germany,Medium,Germany,Hybrid,Master,12,Automotive,1532,7.8,DeepTech Ventures,PyTorch,Kubernetes,Spark,GCP,Docker,198.45
+Data Analyst,Mid,Contract,France,Small,France,No remote,Associate,2,Retail,876,6.2,Smart Analytics,R,Tableau,Git,SQL,Hadoop,68.35
+Machine Learning Engineer,Entry,Freelance,Singapore,Large,Singapore,Fully remote,Bachelor,0,Technology,1145,7.1,Cloud AI Solutions,Python,Docker,Linux,Deep Learning,Java,52.1
+AI Architect,Executive,Part-time,United States,Medium,United States,Hybrid,PhD,18,Finance,2203,8.9,Cognitive Computing,AWS,Scala,MLOps,TensorFlow,Kubernetes,270.55
+AI Consultant,Senior,Full-time,Switzerland,Small,Switzerland,No remote,Associate,6,Consulting,690,7.5,Algorithmic Solutions,GCP,PyTorch,Docker,NLP,Statistics,143.2
+Data Scientist,Mid,Contract,Canada,Large,Canada,Fully remote,Master,4,Media,1921,9.5,Future Systems,Linux,Spark,Tableau,Python,Azure,95.75
+Principal Data Scientist,Executive,Freelance,Australia,Large,Australia,No remote,Bachelor,15,Healthcare,1344,6.0,DataVision Ltd,Docker,Hadoop,Computer Vision,Mathematics,R,185.6
+Robotics Engineer,Entry,Part-time,Japan,Medium,Japan,Hybrid,Associate,1,Manufacturing,1598,8.1,TechCorp Inc,SQL,MLOps,PyTorch,Data Visualization,Git,76.88
+AI Research Scientist,Senior,Full-time,South Korea,Small,South Korea,No remote,PhD,9,Energy,1789,7.0,Neural Networks Co,Scala,Deep Learning,Hadoop,Azure,Docker,110.22
+AI Product Manager,Mid,Contract,Sweden,Medium,Sweden,Fully remote,Bachelor,3,Transportation,2450,8.8,Predictive Systems,Java,Git,Deep Learning,AWS,Tableau,88.41
+NLP Engineer,Executive,Freelance,Ireland,Large,Ireland,No remote,Master,20,Gaming,823,5.8,Machine Intelligence Group,Kubernetes,Linux,SQL,Computer Vision,Spark,215.33
+ML Ops Engineer,Senior,Part-time,United Kingdom,Medium,United Kingdom,Hybrid,Bachelor,7,Telecommunications,1067,6.9,Autonomous Tech,TensorFlow,Docker,Statistics,R,PyTorch,134.56
+Computer Vision Engineer,Entry,Full-time,Netherlands,Small,Netherlands,Fully remote,Master,0,Education,1432,9.2,Digital Transformation LLC,Hadoop,Python,Data Visualization,Statistics,GCP,62.99
+Autonomous Systems Engineer,Executive,Contract,China,Large,China,No remote,PhD,11,Real Estate,2195,7.4,Advanced Robotics,Mathematics,NLP,Java,MLOps,Scala,149.87
+Deep Learning Engineer,Senior,Full-time,Denmark,Medium,Denmark,Hybrid,Associate,5,Government,778,6.5,AI Innovations,Azure,Computer Vision,MLOps,Tableau,Git,107.68
+AI Specialist,Entry,Freelance,Austria,Small,Austria,No remote,Bachelor,1,Consulting,1860,8.3,Quantum Computing Inc,R,Data Visualization,PyTorch,AWS,Kubernetes,54.22
+Research Scientist,Senior,Part-time,Norway,Large,Norway,Fully remote,Bachelor,8,Manufacturing,955,9.8,Cognitive Computing,Git,Spark,Docker,Linux,TensorFlow,171.44
+Research Scientist,Executive,Full-time,Israel,Medium,Israel,No remote,Master,14,Automotive,2011,7.7,DeepTech Ventures,Python,SQL,Linux,PyTorch,Tableau,232.1
+AI Software Engineer,Mid,Contract,India,Medium,India,Fully remote,Associate,3,Gaming,1210,6.3,Future Systems,Tableau,Docker,SQL,Java,Hadoop,82.15
+AI Specialist,Executive,Part-time,Finland,Small,Finland,Hybrid,PhD,17,Healthcare,1743,8.0,DataVision Ltd,Deep Learning,Statistics,GCP,R,Azure,156.33

@@ -1,0 +1,482 @@
+{
+  "nodes": [
+    "age",
+    "education",
+    "marital-status",
+    "relationship",
+    "salary",
+    "workclass",
+    "education-num",
+    "occupation",
+    "hours-per-week",
+    "sex"
+  ],
+  "edges": [
+    {
+      "from": "age",
+      "to": "education",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Age likely influences education level due to life stage progression, but other factors may also play a role.",
+      "association_value": 0.42865366967436
+    },
+    {
+      "from": "age",
+      "to": "marital-status",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Age likely influences marital status due to life stage transitions, but other factors may also play a role.",
+      "association_value": 0.3180764003949879
+    },
+    {
+      "from": "age",
+      "to": "relationship",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Age likely influences relationship roles (e.g., 'Husband' or 'Wife' more common in older individuals).",
+      "association_value": 0.5276428991341622
+    },
+    {
+      "from": "age",
+      "to": "salary",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Age likely influences earning potential (salary), supported by correlation_ratio and domain knowledge.",
+      "association_value": 0.2578495676972161
+    },
+    {
+      "from": "education",
+      "to": "workclass",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Higher education levels often influence employment opportunities and workclass, but the Cramer value suggests a weak association.",
+      "association_value": 0.2740709645639634
+    },
+    {
+      "from": "education",
+      "to": "education-num",
+      "confidence": "Very High",
+      "basis": "Knowledge",
+      "reasoning": "'education-num' is a numerical representation of 'education', implying a direct mapping from categorical to numerical.",
+      "association_value": 1.0
+    },
+    {
+      "from": "education",
+      "to": "occupation",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Higher education levels often influence occupation choices, but the Cramer value suggests a weak association.",
+      "association_value": 0.18575354154782622
+    },
+    {
+      "from": "education",
+      "to": "hours-per-week",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Higher education may lead to jobs with standardized hours, but other factors like job type also influence hours worked.",
+      "association_value": 0.39915502292795235
+    },
+    {
+      "from": "education",
+      "to": "salary",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Higher education often leads to higher earning potential, supported by the Cramer value indicating a moderate association.",
+      "association_value": 0.37091015626877033
+    },
+    {
+      "from": "marital-status",
+      "to": "relationship",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Marital status (1) logically determines relationship (2) (e.g., 'Couple' implies 'Husband/Wife'). High Cramer's V supports strong association.",
+      "association_value": 0.9793792286287206
+    },
+    {
+      "from": "marital-status",
+      "to": "salary",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Marital status may influence financial stability and thus salary, but other factors could also play a role.",
+      "association_value": 0.5005629483952267
+    },
+    {
+      "from": "relationship",
+      "to": "hours-per-week",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Relationship status likely influences work hours (e.g., spouses may work more), but other factors could also play a role.",
+      "association_value": 0.4084942507056425
+    },
+    {
+      "from": "relationship",
+      "to": "salary",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Relationship status likely influences income (e.g., married individuals may have higher dual incomes), but other factors could also play a role.",
+      "association_value": 0.4978423956517518
+    },
+    {
+      "from": "workclass",
+      "to": "occupation",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Workclass likely influences occupation due to employment status shaping job opportunities, but other factors may also play a role.",
+      "association_value": 0.30958263021488563
+    },
+    {
+      "from": "education-num",
+      "to": "occupation",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Higher education levels (education-num) likely influence occupation type due to skill requirements and job qualifications.",
+      "association_value": 0.6329193252586243
+    },
+    {
+      "from": "education-num",
+      "to": "salary",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Higher education often leads to higher earning potential, supported by the correlation ratio.",
+      "association_value": 0.26493879105655893
+    },
+    {
+      "from": "occupation",
+      "to": "hours-per-week",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Occupation likely influences hours worked due to job demands and industry standards, supported by moderate correlation.",
+      "association_value": 0.4060684031332362
+    },
+    {
+      "from": "occupation",
+      "to": "salary",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Occupation likely influences salary due to varying income levels across job types, supported by moderate Cramer's V association.",
+      "association_value": 0.38512174188671583
+    },
+    {
+      "from": "hours-per-week",
+      "to": "salary",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Higher hours-per-week may lead to higher salary due to increased productivity or overtime pay, but correlation is weak (0.11).",
+      "association_value": 0.11160055256606681
+    },
+    {
+      "from": "sex",
+      "to": "relationship",
+      "confidence": "High",
+      "basis": "Knowledge",
+      "reasoning": "Gender (sex) likely influences relationship roles (e.g., 'Husband' vs. 'Wife'), supported by high Cramer's V (0.66).",
+      "association_value": 0.6586599137547283
+    },
+    {
+      "from": "sex",
+      "to": "hours-per-week",
+      "confidence": "Medium",
+      "basis": "Knowledge",
+      "reasoning": "Gender may influence societal roles or expectations, leading to differences in working hours, but other factors could also play a role.",
+      "association_value": 0.38344446597624543
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "age": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "education",
+          "marital-status",
+          "relationship",
+          "salary"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "education",
+          "relationship",
+          "marital-status",
+          "hours-per-week",
+          "workclass",
+          "occupation",
+          "salary",
+          "education-num"
+        ],
+        "in_graph": true
+      },
+      "workclass": {
+        "level": 2,
+        "parents": [
+          "education"
+        ],
+        "children": [
+          "occupation"
+        ],
+        "ancestors": [
+          "age",
+          "education"
+        ],
+        "descendants": [
+          "occupation",
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "fnlwgt": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "education": {
+        "level": 1,
+        "parents": [
+          "age"
+        ],
+        "children": [
+          "workclass",
+          "education-num",
+          "occupation",
+          "hours-per-week",
+          "salary"
+        ],
+        "ancestors": [
+          "age"
+        ],
+        "descendants": [
+          "hours-per-week",
+          "workclass",
+          "occupation",
+          "salary",
+          "education-num"
+        ],
+        "in_graph": true
+      },
+      "education-num": {
+        "level": 2,
+        "parents": [
+          "education"
+        ],
+        "children": [
+          "occupation",
+          "salary"
+        ],
+        "ancestors": [
+          "age",
+          "education"
+        ],
+        "descendants": [
+          "occupation",
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "marital-status": {
+        "level": 1,
+        "parents": [
+          "age"
+        ],
+        "children": [
+          "relationship",
+          "salary"
+        ],
+        "ancestors": [
+          "age"
+        ],
+        "descendants": [
+          "relationship",
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "occupation": {
+        "level": 2,
+        "parents": [
+          "education",
+          "workclass",
+          "education-num"
+        ],
+        "children": [
+          "hours-per-week",
+          "salary"
+        ],
+        "ancestors": [
+          "workclass",
+          "age",
+          "education-num",
+          "education"
+        ],
+        "descendants": [
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "relationship": {
+        "level": 1,
+        "parents": [
+          "age",
+          "marital-status",
+          "sex"
+        ],
+        "children": [
+          "hours-per-week",
+          "salary"
+        ],
+        "ancestors": [
+          "sex",
+          "marital-status",
+          "age"
+        ],
+        "descendants": [
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "race": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "sex": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "relationship",
+          "hours-per-week"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "relationship",
+          "salary",
+          "hours-per-week"
+        ],
+        "in_graph": true
+      },
+      "capital-gain": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "capital-loss": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "hours-per-week": {
+        "level": 1,
+        "parents": [
+          "education",
+          "relationship",
+          "occupation",
+          "sex"
+        ],
+        "children": [
+          "salary"
+        ],
+        "ancestors": [
+          "education",
+          "age",
+          "workclass",
+          "sex",
+          "relationship",
+          "occupation",
+          "marital-status",
+          "education-num"
+        ],
+        "descendants": [
+          "salary"
+        ],
+        "in_graph": true
+      },
+      "country": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "salary": {
+        "level": 1,
+        "parents": [
+          "age",
+          "education",
+          "marital-status",
+          "relationship",
+          "occupation",
+          "education-num",
+          "hours-per-week"
+        ],
+        "children": [],
+        "ancestors": [
+          "education",
+          "age",
+          "workclass",
+          "sex",
+          "hours-per-week",
+          "relationship",
+          "occupation",
+          "marital-status",
+          "education-num"
+        ],
+        "descendants": [],
+        "in_graph": true
+      }
+    },
+    "levels": {
+      "0": [
+        "age",
+        "sex"
+      ],
+      "2": [
+        "workclass",
+        "education-num",
+        "occupation"
+      ],
+      "others": [
+        "fnlwgt",
+        "race",
+        "capital-gain",
+        "capital-loss",
+        "country"
+      ],
+      "1": [
+        "education",
+        "marital-status",
+        "relationship",
+        "hours-per-week",
+        "salary"
+      ]
+    },
+    "generation_order": [
+      "age",
+      "sex",
+      "education",
+      "marital-status",
+      "workclass",
+      "education-num",
+      "relationship",
+      "occupation",
+      "hours-per-week",
+      "salary"
+    ],
+    "max_depth": 2
+  }
+}

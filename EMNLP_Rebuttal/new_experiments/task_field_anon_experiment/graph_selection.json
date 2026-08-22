@@ -1,0 +1,55 @@
+{
+  "description": "Selected causal graphs for downstream synthesis experiments. For each dataset x condition, we pick the threshold whose density is moderate (~0.05-0.18, avg_degree ~2-6), avoiding overly dense graphs (noise) and overly sparse graphs (insufficient structure).",
+  "created": "2026-07-09",
+  "selection_criteria": {
+    "target_density_range": [0.05, 0.18],
+    "target_avg_degree_range": [2.0, 6.0],
+    "rationale": "Moderate density balances structural guidance (enough edges for the synthesizer to follow causal order) against noise (too many low-confidence edges dilute signal). We aim for avg_degree 2-6, which gives each variable ~1-3 parents on average."
+  },
+  "selections": {
+    "anxiety": {
+      "field_anon": {
+        "threshold": "Medium_Plus",
+        "graph_path": "llmcd_causal_results_task_field_anon/anxiety/shot_100/seed_42/Medium_Plus/graph.json",
+        "nodes": 19,
+        "edges": 19,
+        "density": 0.056,
+        "avg_degree": 2.0,
+        "confidence_dist": {"Very High": 1, "High": 4, "Medium": 14},
+        "rationale": "All/Low_Plus (density=0.108) is borderline acceptable but half the edges are Low/VeryLow. Medium_Plus (0.056, 19 edges) retains all Medium+ edges, giving a cleaner structural prior. High_Plus (0.015, 5 edges) is too sparse."
+      },
+      "no_anon": {
+        "threshold": "Medium_Plus",
+        "graph_path": "llmcd_causal_results_bfs_no_anon/anxiety/shot_100/seed_42/Medium_Plus/graph.json",
+        "nodes": 19,
+        "edges": 62,
+        "density": 0.181,
+        "avg_degree": 6.5,
+        "confidence_dist": {"Very High": 6, "High": 15, "Medium": 41},
+        "rationale": "All/Low_Plus (density=0.254-0.269) is too dense. Medium_Plus (0.181, 62 edges) is at the upper boundary but retains the rich structure from domain knowledge. High_Plus (0.064, 22 edges) would also work as a sparser alternative."
+      }
+    },
+    "salary": {
+      "field_anon": {
+        "threshold": "Medium_Plus",
+        "graph_path": "llmcd_causal_results_task_field_anon/salary/shot_100/seed_42/Medium_Plus/graph.json",
+        "nodes": 19,
+        "edges": 47,
+        "density": 0.137,
+        "avg_degree": 4.9,
+        "confidence_dist": {"Very High": 4, "High": 9, "Medium": 34},
+        "rationale": "All/Low_Plus (density=0.205) is somewhat dense. Medium_Plus (0.137, 47 edges) is well within the target range. High_Plus (0.038, 13 edges) is sparse but viable as an alternative."
+      },
+      "no_anon": {
+        "threshold": "Medium_Plus",
+        "graph_path": "llmcd_causal_results_bfs_no_anon/salary/shot_100/seed_42/Medium_Plus/graph.json",
+        "nodes": 19,
+        "edges": 56,
+        "density": 0.164,
+        "avg_degree": 5.9,
+        "confidence_dist": {"Very High": 5, "High": 11, "Medium": 40},
+        "rationale": "All/Low_Plus (density=0.234-0.254) too dense. Medium_Plus (0.164, 56 edges) well within target range. High_Plus (0.047, 16 edges) viable but may lose important structure."
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+dataset,variant,shot,n_samples,num_seeds,dcr_mean,dcr_std,pairwise_correlation_diff_mean,pairwise_correlation_diff_std
+adult,paft_fd_prior,100,1000,5,0.4408,0.032738,0.472377,0.014654
+anxiety,paft_fd_prior,100,1000,5,0.4696,0.070831,0.620687,0.027504
+compas,paft_fd_prior,100,1000,5,0.6214,0.039409,0.584356,0.020497
+churn,paft_fd_prior,100,1000,5,0.4862,0.086956,0.654594,0.024646
+obesity_reg,paft_fd_prior,100,1000,5,0.5588,0.019641,0.603578,0.008697
+salary,paft_fd_prior,100,1000,5,0.5366,0.025757,0.543482,0.024605

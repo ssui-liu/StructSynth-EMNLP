@@ -1,0 +1,122 @@
+[
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 42,
+    "dcr": 0.631,
+    "pairwise_correlation_diff": 0.41321657686780533,
+    "accuracy": 0.5504545454545454,
+    "f1": 0.5504545454545454,
+    "precision": 0.5504545454545454,
+    "recall": 0.5504545454545454,
+    "auc_roc": 0.7211203968657077
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 43,
+    "dcr": 0.625,
+    "pairwise_correlation_diff": 0.4422818560325448,
+    "accuracy": 0.5513636363636364,
+    "f1": 0.5513636363636364,
+    "precision": 0.5513636363636364,
+    "recall": 0.5513636363636364,
+    "auc_roc": 0.7131105015542955
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 44,
+    "dcr": 0.557,
+    "pairwise_correlation_diff": 0.4348260982210021,
+    "accuracy": 0.5418181818181819,
+    "f1": 0.5418181818181819,
+    "precision": 0.5418181818181819,
+    "recall": 0.5418181818181819,
+    "auc_roc": 0.7147589413807206
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 45,
+    "dcr": 0.626,
+    "pairwise_correlation_diff": 0.4390606365863296,
+    "accuracy": 0.58,
+    "f1": 0.58,
+    "precision": 0.58,
+    "recall": 0.58,
+    "auc_roc": 0.7529257400330297
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 46,
+    "dcr": 0.622,
+    "pairwise_correlation_diff": 0.4550996504038741,
+    "accuracy": 0.7413636363636363,
+    "f1": 0.7413636363636363,
+    "precision": 0.7413636363636363,
+    "recall": 0.7413636363636363,
+    "auc_roc": 0.8663688710476153
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 47,
+    "dcr": 0.615,
+    "pairwise_correlation_diff": 0.4574134772883002,
+    "accuracy": 0.5127272727272727,
+    "f1": 0.5127272727272727,
+    "precision": 0.5127272727272727,
+    "recall": 0.5127272727272727,
+    "auc_roc": 0.6973900172277067
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 48,
+    "dcr": 0.651,
+    "pairwise_correlation_diff": 0.43969307735503327,
+    "accuracy": 0.5168181818181818,
+    "f1": 0.5168181818181818,
+    "precision": 0.5168181818181818,
+    "recall": 0.5168181818181818,
+    "auc_roc": 0.6834433167193156
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 49,
+    "dcr": 0.601,
+    "pairwise_correlation_diff": 0.4226291958868292,
+    "accuracy": 0.5568181818181818,
+    "f1": 0.5568181818181818,
+    "precision": 0.5568181818181818,
+    "recall": 0.5568181818181818,
+    "auc_roc": 0.7264263392496751
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 50,
+    "dcr": 0.546,
+    "pairwise_correlation_diff": 0.4242208909839286,
+    "accuracy": 0.5577272727272727,
+    "f1": 0.5577272727272727,
+    "precision": 0.5577272727272727,
+    "recall": 0.5577272727272727,
+    "auc_roc": 0.7186083588966601
+  },
+  {
+    "dataset": "anxiety",
+    "variant": "paft_anon_headers",
+    "seed": 51,
+    "dcr": 0.621,
+    "pairwise_correlation_diff": 0.42284893285411695,
+    "accuracy": 0.5522727272727272,
+    "f1": 0.5522727272727272,
+    "precision": 0.5522727272727272,
+    "recall": 0.5522727272727272,
+    "auc_roc": 0.7099181827656947
+  }
+]

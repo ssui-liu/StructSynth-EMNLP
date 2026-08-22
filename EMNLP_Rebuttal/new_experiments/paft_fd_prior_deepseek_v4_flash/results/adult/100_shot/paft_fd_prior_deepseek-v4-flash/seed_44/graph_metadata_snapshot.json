@@ -1,0 +1,61 @@
+{
+  "source": "paft_metadata.fd_edges",
+  "paft_dataset": "adult",
+  "paft_seed": 44,
+  "paft_order_source": "local_fd",
+  "paft_feature_order": [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "relationship",
+    "occupation",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "country",
+    "salary"
+  ],
+  "raw_fd_edge_count": 10,
+  "kept_edge_count": 9,
+  "dropped_edge_count": 1,
+  "invalid_edge_count": 0,
+  "dropped_edges": [
+    {
+      "from": "education-num",
+      "to": "education",
+      "reason": "removed_to_make_dag_using_paft_feature_order"
+    }
+  ],
+  "invalid_edges": [],
+  "topological_order_complete_dag": true,
+  "generation_order": [
+    "fnlwgt",
+    "education",
+    "occupation",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "country",
+    "salary",
+    "education-num"
+  ],
+  "non_graph_variables": [
+    "age",
+    "workclass",
+    "marital-status",
+    "relationship"
+  ],
+  "dataset": "adult",
+  "shot": 100,
+  "seed": 44,
+  "paft_metadata_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/results/paft_full/adult/100_shot/paft/seed_44/paft_metadata.json",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/adult/100_shot/seed_44/train.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/adult/shot_100/seed_44/graph.json"
+}

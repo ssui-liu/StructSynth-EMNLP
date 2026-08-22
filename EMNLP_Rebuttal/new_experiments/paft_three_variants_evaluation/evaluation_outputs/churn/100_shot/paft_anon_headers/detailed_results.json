@@ -1,0 +1,122 @@
+[
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 42,
+    "dcr": 0.665,
+    "pairwise_correlation_diff": 0.5528653771295067,
+    "accuracy": 0.9031746031746032,
+    "f1": 0.6432748538011696,
+    "precision": 0.7638888888888888,
+    "recall": 0.5555555555555556,
+    "auc_roc": 0.913884608799863
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 43,
+    "dcr": 0.7,
+    "pairwise_correlation_diff": 0.5534979582633679,
+    "accuracy": 0.8507936507936508,
+    "f1": 0.5104166666666666,
+    "precision": 0.5268817204301075,
+    "recall": 0.494949494949495,
+    "auc_roc": 0.8378226711560044
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 44,
+    "dcr": 0.638,
+    "pairwise_correlation_diff": 0.5739508584741271,
+    "accuracy": 0.8555555555555555,
+    "f1": 0.5081081081081081,
+    "precision": 0.5465116279069767,
+    "recall": 0.47474747474747475,
+    "auc_roc": 0.8869295592459434
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 45,
+    "dcr": 0.614,
+    "pairwise_correlation_diff": 0.5672079594387437,
+    "accuracy": 0.8984126984126984,
+    "f1": 0.6235294117647059,
+    "precision": 0.7464788732394366,
+    "recall": 0.5353535353535354,
+    "auc_roc": 0.9085392531720216
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 46,
+    "dcr": 0.622,
+    "pairwise_correlation_diff": 0.5474724259734263,
+    "accuracy": 0.8952380952380953,
+    "f1": 0.6526315789473685,
+    "precision": 0.6813186813186813,
+    "recall": 0.6262626262626263,
+    "auc_roc": 0.9138941201088093
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 47,
+    "dcr": 0.622,
+    "pairwise_correlation_diff": 0.5750500489677807,
+    "accuracy": 0.8952380952380953,
+    "f1": 0.5769230769230769,
+    "precision": 0.7894736842105263,
+    "recall": 0.45454545454545453,
+    "auc_roc": 0.9432269968993133
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 48,
+    "dcr": 0.609,
+    "pairwise_correlation_diff": 0.5586402055394838,
+    "accuracy": 0.8666666666666667,
+    "f1": 0.5757575757575758,
+    "precision": 0.5757575757575758,
+    "recall": 0.5757575757575758,
+    "auc_roc": 0.8862827902375925
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 49,
+    "dcr": 0.656,
+    "pairwise_correlation_diff": 0.5545717963747412,
+    "accuracy": 0.8476190476190476,
+    "f1": 0.5051546391752577,
+    "precision": 0.5157894736842106,
+    "recall": 0.494949494949495,
+    "auc_roc": 0.7847971237801746
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 50,
+    "dcr": 0.558,
+    "pairwise_correlation_diff": 0.5582657893440898,
+    "accuracy": 0.861904761904762,
+    "f1": 0.5492227979274611,
+    "precision": 0.5638297872340425,
+    "recall": 0.5353535353535354,
+    "auc_roc": 0.8982765508189238
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_anon_headers",
+    "seed": 51,
+    "dcr": 0.583,
+    "pairwise_correlation_diff": 0.5516596916805558,
+    "accuracy": 0.9222222222222223,
+    "f1": 0.7379679144385026,
+    "precision": 0.7840909090909091,
+    "recall": 0.696969696969697,
+    "auc_roc": 0.9360935151895603
+  }
+]

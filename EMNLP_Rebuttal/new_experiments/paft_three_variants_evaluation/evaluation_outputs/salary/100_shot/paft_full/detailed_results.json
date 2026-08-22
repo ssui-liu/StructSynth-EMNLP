@@ -1,0 +1,112 @@
+[
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 42,
+    "dcr": 0.623,
+    "pairwise_correlation_diff": 0.6212064768583433,
+    "mae": 30.38871092488607,
+    "mse": 1825.9885595045662,
+    "rmse": 42.73158737403241,
+    "r2": 0.49934373095859674
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 43,
+    "dcr": 0.557,
+    "pairwise_correlation_diff": 0.6209570931735167,
+    "mae": 33.280071987457276,
+    "mse": 2022.5786393158578,
+    "rmse": 44.97308794507953,
+    "r2": 0.4215786787102338
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 44,
+    "dcr": 0.643,
+    "pairwise_correlation_diff": 0.6237443338064653,
+    "mae": 31.255388536834715,
+    "mse": 1846.9273710982905,
+    "rmse": 42.975892906352634,
+    "r2": 0.49331013061263607
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 45,
+    "dcr": 0.617,
+    "pairwise_correlation_diff": 0.6204441813852327,
+    "mae": 35.44994150924683,
+    "mse": 2373.281060788474,
+    "rmse": 48.716332587628905,
+    "r2": 0.3492175269500859
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 46,
+    "dcr": 0.602,
+    "pairwise_correlation_diff": 0.6076658708676634,
+    "mae": 38.944204140116376,
+    "mse": 2528.146471664878,
+    "rmse": 50.28067692130723,
+    "r2": 0.3109996981792964
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 47,
+    "dcr": 0.591,
+    "pairwise_correlation_diff": 0.642162096232495,
+    "mae": 33.87517840245565,
+    "mse": 2172.0067828322653,
+    "rmse": 46.604793560665684,
+    "r2": 0.43272504107918375
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 48,
+    "dcr": 0.622,
+    "pairwise_correlation_diff": 0.6138607568974295,
+    "mae": 32.12278366297404,
+    "mse": 1839.6358752217088,
+    "rmse": 42.89097661771889,
+    "r2": 0.4898111732485768
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 49,
+    "dcr": 0.587,
+    "pairwise_correlation_diff": 0.6279866750223709,
+    "mae": 30.31823211786906,
+    "mse": 1827.77324204617,
+    "rmse": 42.75246474820101,
+    "r2": 0.4953553571660557
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 50,
+    "dcr": 0.588,
+    "pairwise_correlation_diff": 0.6180620548059609,
+    "mae": 30.99731255126953,
+    "mse": 1762.6895863885936,
+    "rmse": 41.98439693967979,
+    "r2": 0.49976341089062193
+  },
+  {
+    "dataset": "salary",
+    "variant": "paft_full",
+    "seed": 51,
+    "dcr": 0.598,
+    "pairwise_correlation_diff": 0.6259319225845494,
+    "mae": 31.686563688964846,
+    "mse": 1866.1112887839545,
+    "rmse": 43.19851026116473,
+    "r2": 0.48392164388120207
+  }
+]

@@ -1,0 +1,63 @@
+{
+    "n_seeds": 5,
+    "accuracy": 0.653219696969697,
+    "accuracy_std": 0.018011353678740512,
+    "accuracy_n": 5,
+    "f1": 0.6321336684896064,
+    "f1_std": 0.031456121151771224,
+    "f1_n": 5,
+    "auc_roc": 0.6919085172933845,
+    "auc_roc_std": 0.02212141863065144,
+    "auc_roc_n": 5,
+    "seed_results": {
+        "43": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.6799242424242424,
+            "f1": 0.675,
+            "precision": 0.6464088397790055,
+            "recall": 0.7062374245472837,
+            "auc_roc": 0.7239861350572127
+        },
+        "44": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.6335227272727273,
+            "f1": 0.60790273556231,
+            "precision": 0.6122448979591837,
+            "recall": 0.6036217303822937,
+            "auc_roc": 0.6856415775511746
+        },
+        "45": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.6325757575757576,
+            "f1": 0.5898520084566596,
+            "precision": 0.621380846325167,
+            "recall": 0.5613682092555332,
+            "auc_roc": 0.6562325653383629
+        },
+        "42": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.6609848484848485,
+            "f1": 0.659047619047619,
+            "precision": 0.6256781193490054,
+            "recall": 0.6961770623742455,
+            "auc_roc": 0.7021844843659453
+        },
+        "46": {
+            "train_size": 200,
+            "task_type": "classification",
+            "accuracy": 0.6590909090909091,
+            "f1": 0.6288659793814433,
+            "precision": 0.6448202959830867,
+            "recall": 0.613682092555332,
+            "auc_roc": 0.6914978241542277
+        }
+    },
+    "dataset": "compas",
+    "model": "paft_fd_prior_cllm",
+    "shot": 100,
+    "n_samples": 100
+}

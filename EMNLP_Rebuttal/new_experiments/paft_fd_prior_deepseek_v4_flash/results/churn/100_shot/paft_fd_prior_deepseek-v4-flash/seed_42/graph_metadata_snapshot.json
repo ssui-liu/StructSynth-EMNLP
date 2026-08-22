@@ -1,0 +1,51 @@
+{
+  "source": "paft_metadata.fd_edges",
+  "paft_dataset": "churn",
+  "paft_seed": 42,
+  "paft_order_source": "local_fd",
+  "paft_feature_order": [
+    "Subscription Length",
+    "Customer Value",
+    "Churn",
+    "Call Failure",
+    "Charge Amount",
+    "Seconds of Use",
+    "Frequency of Use",
+    "Frequency of SMS",
+    "Distinct Called Numbers",
+    "Age Group",
+    "Complains",
+    "Tariff Plan",
+    "Status"
+  ],
+  "raw_fd_edge_count": 13,
+  "kept_edge_count": 13,
+  "dropped_edge_count": 0,
+  "invalid_edge_count": 0,
+  "dropped_edges": [],
+  "invalid_edges": [],
+  "topological_order_complete_dag": true,
+  "generation_order": [
+    "Customer Value",
+    "Call Failure",
+    "Charge Amount",
+    "Seconds of Use",
+    "Frequency of Use",
+    "Frequency of SMS",
+    "Distinct Called Numbers",
+    "Age Group",
+    "Complains",
+    "Tariff Plan",
+    "Status"
+  ],
+  "non_graph_variables": [
+    "Subscription Length",
+    "Churn"
+  ],
+  "dataset": "churn",
+  "shot": 100,
+  "seed": 42,
+  "paft_metadata_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/results/paft_full/churn/100_shot/paft/seed_42/paft_metadata.json",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/churn/100_shot/seed_42/train.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_42/graph.json"
+}

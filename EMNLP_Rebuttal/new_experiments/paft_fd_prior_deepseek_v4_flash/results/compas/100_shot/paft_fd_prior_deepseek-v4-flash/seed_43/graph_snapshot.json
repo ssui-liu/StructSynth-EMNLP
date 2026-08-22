@@ -1,0 +1,105 @@
+{
+  "nodes": [
+    "sex",
+    "age",
+    "juv_fel_count",
+    "juv_misd_count",
+    "juv_other_count",
+    "priors_count",
+    "race",
+    "c_charge_degree",
+    "two_yr_recidivism"
+  ],
+  "edges": [],
+  "hierarchical_structure": {
+    "variable_info": {
+      "sex": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "age": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "juv_fel_count": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "juv_misd_count": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "juv_other_count": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "priors_count": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "race": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "c_charge_degree": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "two_yr_recidivism": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      }
+    },
+    "levels": {
+      "others": [
+        "sex",
+        "age",
+        "juv_fel_count",
+        "juv_misd_count",
+        "juv_other_count",
+        "priors_count",
+        "race",
+        "c_charge_degree",
+        "two_yr_recidivism"
+      ]
+    },
+    "generation_order": [],
+    "max_depth": -1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source": "paft_metadata.fd_edges",
+  "paft_dataset": "compas",
+  "paft_seed": 45,
+  "paft_order_source": "local_fd_empty_random",
+  "paft_feature_order": [
+    "c_charge_degree",
+    "two_yr_recidivism",
+    "age",
+    "priors_count",
+    "sex",
+    "juv_fel_count",
+    "juv_misd_count",
+    "race",
+    "juv_other_count"
+  ],
+  "raw_fd_edge_count": 0,
+  "kept_edge_count": 0,
+  "dropped_edge_count": 0,
+  "invalid_edge_count": 0,
+  "dropped_edges": [],
+  "invalid_edges": [],
+  "topological_order_complete_dag": true,
+  "generation_order": [],
+  "non_graph_variables": [
+    "sex",
+    "age",
+    "juv_fel_count",
+    "juv_misd_count",
+    "juv_other_count",
+    "priors_count",
+    "race",
+    "c_charge_degree",
+    "two_yr_recidivism"
+  ],
+  "dataset": "compas",
+  "shot": 100,
+  "seed": 45,
+  "paft_metadata_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/results/paft_full/compas/100_shot/paft/seed_45/paft_metadata.json",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/compas/100_shot/seed_45/train.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/compas/shot_100/seed_45/graph.json"
+}

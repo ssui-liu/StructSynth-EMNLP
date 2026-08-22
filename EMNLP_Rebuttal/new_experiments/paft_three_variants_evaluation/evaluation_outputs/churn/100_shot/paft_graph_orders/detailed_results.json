@@ -1,0 +1,62 @@
+[
+  {
+    "dataset": "churn",
+    "variant": "paft_graph_orders",
+    "seed": 42,
+    "dcr": 0.571,
+    "pairwise_correlation_diff": 0.554294902149079,
+    "accuracy": 0.9047619047619048,
+    "f1": 0.5714285714285714,
+    "precision": 0.975609756097561,
+    "recall": 0.40404040404040403,
+    "auc_roc": 0.8962030854686223
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_graph_orders",
+    "seed": 43,
+    "dcr": 0.685,
+    "pairwise_correlation_diff": 0.5445557379900916,
+    "accuracy": 0.8492063492063492,
+    "f1": 0.5454545454545454,
+    "precision": 0.5181818181818182,
+    "recall": 0.5757575757575758,
+    "auc_roc": 0.8395156841484526
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_graph_orders",
+    "seed": 44,
+    "dcr": 0.639,
+    "pairwise_correlation_diff": 0.5329700635226728,
+    "accuracy": 0.8698412698412699,
+    "f1": 0.6019417475728155,
+    "precision": 0.5794392523364486,
+    "recall": 0.6262626262626263,
+    "auc_roc": 0.8748692195019879
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_graph_orders",
+    "seed": 45,
+    "dcr": 0.7,
+    "pairwise_correlation_diff": 0.5239961808429382,
+    "accuracy": 0.9031746031746032,
+    "f1": 0.6473988439306358,
+    "precision": 0.7567567567567568,
+    "recall": 0.5656565656565656,
+    "auc_roc": 0.8972303068348266
+  },
+  {
+    "dataset": "churn",
+    "variant": "paft_graph_orders",
+    "seed": 46,
+    "dcr": 0.662,
+    "pairwise_correlation_diff": 0.5587562683651547,
+    "accuracy": 0.8873015873015873,
+    "f1": 0.6502463054187192,
+    "precision": 0.6346153846153846,
+    "recall": 0.6666666666666666,
+    "auc_roc": 0.9165858205406229
+  }
+]

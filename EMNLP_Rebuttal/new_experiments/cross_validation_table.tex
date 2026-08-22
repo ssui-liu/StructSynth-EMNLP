@@ -1,0 +1,74 @@
+% StructSynth x PAFT bidirectional component-transfer experiments.
+% n_train=100, n_synth=1000. See cross_validation_comparison.md for details.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lllccrrrrrrrr}
+\toprule
+Method & Direction & Generator & Learner & Seeds
+  & Adult & Anxiety$^\dagger$ & Compas & Churn & \textit{Avg. AUC}$\uparrow$
+  & Salary$^\dagger$ & Obesity & \textit{Avg. R$^2$}$\uparrow$ \\
+\midrule
+StructSynth (paper)
+  & --- & GPT-4o-mini & XGB & 10
+  & .856 & .865 & .694 & .904 & .829 & .560 & .623 & .591 \\
+PAFT full
+  & --- & DistilGPT2 & XGB & 10
+  & .787 & .722 & .601 & .899 & .752 & .448 & .360 & .404 \\
+PAFT + SS graph orders
+  & SS$\to$PAFT & DistilGPT2 & XGB & 5
+  & .817 & .839 & .587 & .885 & .782 & .358 & .361 & .360 \\
+SS + PAFT-FD prior
+  & PAFT$\to$SS & DS-V4-Flash & XGB & 5
+  & .850 & .867 & .709 & .885 & .828 & .529 & .611 & .570 \\
+\bottomrule
+\end{tabular}
+\caption{Downstream results for bidirectional StructSynth--PAFT component transfer at
+$n_{\mathrm{train}}=100$ and $n_{\mathrm{synth}}=1000$; classification columns are AUC
+and regression columns are $R^2$. $^\dagger$Post-cutoff datasets. All utility values
+use the same StructSynth-aligned XGBoost protocol. The complete-system rows retain
+their methods' original generators, while the reverse transfer also changes the
+generator backbone and is therefore a compatibility check rather than a controlled
+ablation.}
+\label{tab:cross-validation}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Method & Fidelity$\downarrow$ & Best on & Avg. DCR & Mean $|\mathrm{DCR}-.5|\downarrow$ \\
+\midrule
+StructSynth (paper)   & .595 & 0/6 & .510 & \textbf{.032} \\
+PAFT full             & \textbf{.537} & 3/6 & .654 & .154 \\
+PAFT + SS graph orders& .540 & 1/6 & .650 & .150 \\
+SS + PAFT-FD prior    & .580 & 2/6 & .519 & .053 \\
+\bottomrule
+\end{tabular}
+\caption{Fidelity and privacy. Fidelity is mean pairwise correlation error. Privacy is
+reported as the mean absolute deviation of DCR from its ideal value 0.50; averaging
+absolute deviations avoids cancellation across datasets. FD-prior fidelity and DCR
+were evaluated with the same shared evaluator used for PAFT.}
+\label{tab:cross-fidelity-privacy}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Transfer & $\Delta$ Avg. AUC & $\Delta$ Avg. R$^2$ & $\Delta$ Fidelity & Privacy summary \\
+\midrule
+SS$\to$PAFT & +.0299 & -.0186 & +.0081 & DCR distance $-.0056$ \\
+PAFT$\to$SS & -.0015 & -.0215 & -.0154 & Mean $|\mathrm{DCR}-.5|=.0534$ \\
+\bottomrule
+\end{tabular}
+\caption{Transfer summary. SS$\to$PAFT differences use matched seeds 42--46.
+PAFT$\to$SS differences use the StructSynth paper as a cross-configuration reference;
+they do not isolate the effect of the FD prior. Positive utility differences and
+negative fidelity/privacy differences are favorable.}
+\label{tab:cross-transfer-summary}
+\end{table}

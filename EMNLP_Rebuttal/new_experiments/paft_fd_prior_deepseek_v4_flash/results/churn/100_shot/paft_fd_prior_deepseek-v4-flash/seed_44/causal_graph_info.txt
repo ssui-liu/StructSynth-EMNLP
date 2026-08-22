@@ -1,0 +1,6 @@
+Causal Prior: PAFT FD graph
+Graph File: /Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/churn/shot_100/seed_44/graph.json
+Nodes: 13
+Edges: 15
+Raw PAFT FD Edges: 15
+Dropped PAFT Edges: 0

@@ -1,0 +1,47 @@
+% Task-and-Field Anonymization Results (n=1000, seed=42, Medium_Plus graph threshold)
+% Copy into rebuttal response or appendix directly.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Task-and-field anonymization ablation on two post-cutoff datasets.
+\textbf{field\_anon}: column names replaced with \texttt{feature\_01}\dots\texttt{target},
+task/column descriptions replaced with generic text.
+\textbf{no\_anon}: original field names and descriptions visible.
+Fidelity = mean pairwise correlation difference ($\downarrow$);
+DCR = probability nearest neighbor is from train ($\rightarrow 0.5$).}
+\label{tab:anon-ablation}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Dataset} & \textbf{Condition} & \textbf{Graph Edges} & \textbf{Downstream} & \textbf{Fidelity} ($\downarrow$) & \textbf{DCR} ($\rightarrow$0.5) \\
+\midrule
+\multirow{2}{*}{Anxiety}
+  & field\_anon & 19  & Acc=\textbf{0.759} & \textbf{0.490} & 0.870 \\
+  & no\_anon    & 62  & Acc=0.738          & 0.531          & \textbf{0.690} \\
+\midrule
+\multirow{2}{*}{Salary}
+  & field\_anon & 47  & R\textsuperscript{2}=0.470          & \textbf{0.674} & \textbf{0.766} \\
+  & no\_anon    & 56  & R\textsuperscript{2}=\textbf{0.569} & 0.709          & 0.931 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Downstream across sample sizes (optional, for appendix)
+\begin{table}[h]
+\centering
+\small
+\caption{Downstream performance across synthetic sample sizes under anonymization.}
+\label{tab:anon-downstream-n}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{Anxiety} (Accuracy)} & \multicolumn{3}{c}{\textbf{Salary} (R\textsuperscript{2})} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+\textbf{n} & field\_anon & no\_anon & $\Delta$ & field\_anon & no\_anon & $\Delta$ \\
+\midrule
+100  & \textbf{0.743} & 0.728 & +0.015 & 0.475 & 0.470 & +0.005 \\
+200  & \textbf{0.759} & 0.732 & +0.027 & \textbf{0.498} & 0.471 & +0.027 \\
+500  & \textbf{0.758} & 0.742 & +0.016 & \textbf{0.537} & 0.475 & +0.062 \\
+1000 & \textbf{0.759} & 0.738 & +0.021 & 0.470 & \textbf{0.569} & $-$0.099 \\
+\bottomrule
+\end{tabular}
+\end{table}

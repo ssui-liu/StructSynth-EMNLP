@@ -1,0 +1,64 @@
+{
+  "dataset": "salary",
+  "shot": 100,
+  "seed": 45,
+  "method": "paft_fd_prior_deepseek-v4-flash",
+  "model": "deepseek-v4-flash",
+  "train_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_45/train.csv",
+  "test_path": "/Users/apple/PycharmProjects/tabular-synthesis/Permutation-aided-Fine-tuning/data/structsynth/salary/100_shot/seed_45/test.csv",
+  "graph_path": "/Users/apple/PycharmProjects/tabular-synthesis/00_active/StructSynthFull/paft_fd_causal_results/salary/shot_100/seed_45/graph.json",
+  "output_dir": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45",
+  "graph_edges": 6,
+  "paft_raw_fd_edges": 6,
+  "paft_dropped_edges": 0,
+  "generation_order": [
+    "years_experience",
+    "salary (k)",
+    "experience_level",
+    "remote_ratio",
+    "education_required",
+    "required_skill_1",
+    "required_skill_2",
+    "required_skill_5"
+  ],
+  "token_usage": {
+    "prompt_tokens": 992500,
+    "completion_tokens": 194152,
+    "total_tokens": 1186652
+  },
+  "samples": [
+    {
+      "n_samples": 100,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n100/metrics.json",
+      "line_count": 101,
+      "expected_line_count": 101,
+      "passed": true
+    },
+    {
+      "n_samples": 200,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n200/metrics.json",
+      "line_count": 201,
+      "expected_line_count": 201,
+      "passed": true
+    },
+    {
+      "n_samples": 500,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n500/metrics.json",
+      "line_count": 501,
+      "expected_line_count": 501,
+      "passed": true
+    },
+    {
+      "n_samples": 1000,
+      "synthetic_data_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/synthetic_data.csv",
+      "metrics_path": "results/paft_fd_prior_llm_synthesis_deepseek_v4_flash/salary/100_shot/paft_fd_prior_deepseek-v4-flash/seed_45/n1000/metrics.json",
+      "line_count": 1001,
+      "expected_line_count": 1001,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

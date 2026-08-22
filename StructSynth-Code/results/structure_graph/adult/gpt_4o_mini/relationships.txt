@@ -1,0 +1,105 @@
+Identified Causal Relationships:
+1. age -> education
+Confidence: Medium
+Association Value: 0.42865366967436
+Reasoning: Age likely influences education level due to life stage progression, but other factors may also play a role.
+
+2. age -> marital-status
+Confidence: Medium
+Association Value: 0.3180764003949879
+Reasoning: Age likely influences marital status due to life stage transitions, but other factors may also play a role.
+
+3. age -> relationship
+Confidence: High
+Association Value: 0.5276428991341622
+Reasoning: Age likely influences relationship roles (e.g., 'Husband' or 'Wife' more common in older individuals).
+
+4. age -> salary
+Confidence: Medium
+Association Value: 0.2578495676972161
+Reasoning: Age likely influences earning potential (salary), supported by correlation_ratio and domain knowledge.
+
+5. education -> education-num
+Confidence: Very High
+Association Value: 1.0
+Reasoning: 'education-num' is a numerical representation of 'education', implying a direct mapping from categorical to numerical.
+
+6. education -> hours-per-week
+Confidence: Medium
+Association Value: 0.39915502292795235
+Reasoning: Higher education may lead to jobs with standardized hours, but other factors like job type also influence hours worked.
+
+7. education -> occupation
+Confidence: Medium
+Association Value: 0.18575354154782622
+Reasoning: Higher education levels often influence occupation choices, but the Cramer value suggests a weak association.
+
+8. education -> salary
+Confidence: High
+Association Value: 0.37091015626877033
+Reasoning: Higher education often leads to higher earning potential, supported by the Cramer value indicating a moderate association.
+
+9. education -> workclass
+Confidence: Medium
+Association Value: 0.2740709645639634
+Reasoning: Higher education levels often influence employment opportunities and workclass, but the Cramer value suggests a weak association.
+
+10. education-num -> occupation
+Confidence: High
+Association Value: 0.6329193252586243
+Reasoning: Higher education levels (education-num) likely influence occupation type due to skill requirements and job qualifications.
+
+11. education-num -> salary
+Confidence: Medium
+Association Value: 0.26493879105655893
+Reasoning: Higher education often leads to higher earning potential, supported by the correlation ratio.
+
+12. hours-per-week -> salary
+Confidence: Medium
+Association Value: 0.11160055256606681
+Reasoning: Higher hours-per-week may lead to higher salary due to increased productivity or overtime pay, but correlation is weak (0.11).
+
+13. marital-status -> relationship
+Confidence: High
+Association Value: 0.9793792286287206
+Reasoning: Marital status (1) logically determines relationship (2) (e.g., 'Couple' implies 'Husband/Wife'). High Cramer's V supports strong association.
+
+14. marital-status -> salary
+Confidence: Medium
+Association Value: 0.5005629483952267
+Reasoning: Marital status may influence financial stability and thus salary, but other factors could also play a role.
+
+15. occupation -> hours-per-week
+Confidence: Medium
+Association Value: 0.4060684031332362
+Reasoning: Occupation likely influences hours worked due to job demands and industry standards, supported by moderate correlation.
+
+16. occupation -> salary
+Confidence: High
+Association Value: 0.38512174188671583
+Reasoning: Occupation likely influences salary due to varying income levels across job types, supported by moderate Cramer's V association.
+
+17. relationship -> hours-per-week
+Confidence: Medium
+Association Value: 0.4084942507056425
+Reasoning: Relationship status likely influences work hours (e.g., spouses may work more), but other factors could also play a role.
+
+18. relationship -> salary
+Confidence: Medium
+Association Value: 0.4978423956517518
+Reasoning: Relationship status likely influences income (e.g., married individuals may have higher dual incomes), but other factors could also play a role.
+
+19. sex -> hours-per-week
+Confidence: Medium
+Association Value: 0.38344446597624543
+Reasoning: Gender may influence societal roles or expectations, leading to differences in working hours, but other factors could also play a role.
+
+20. sex -> relationship
+Confidence: High
+Association Value: 0.6586599137547283
+Reasoning: Gender (sex) likely influences relationship roles (e.g., 'Husband' vs. 'Wife'), supported by high Cramer's V (0.66).
+
+21. workclass -> occupation
+Confidence: Medium
+Association Value: 0.30958263021488563
+Reasoning: Workclass likely influences occupation due to employment status shaping job opportunities, but other factors may also play a role.

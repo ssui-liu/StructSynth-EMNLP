@@ -1,0 +1,23 @@
+data:
+  base_dir: "../data"
+  dataset_name: "adult"  # or any other dataset name
+  shots: [ 20, 40, 50, 60, 80, 100, 200 ]  # different few-shot settings
+  seeds: [ 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 ]  # seeds for data splitting and model training
+  target_column: "salary"
+  categorical_columns: null  # Will be auto-detected
+
+synthetic:
+  n_samples_list: [100, 200, 500, 1000]  # Different sample sizes to try , 200, 500, 1000
+
+classifier:
+  max_depth: 6
+  learning_rate: 0.1
+  n_estimators: 100
+  seed: 42
+
+model:
+  name: "gpt-4o-mini"  # Model name for synthetic data generation
+  # deepseek-chat/reasoner gpt-4o-mini qwen2.5-72b-instruct llama-4-scout/llama-4-maverick
+  temperature: 0.9  # Temperature parameter for generation
+  max_tokens: 8000  # Maximum tokens for model responses
+  api_key: null  # API key for the model (should be set via environment variable) 

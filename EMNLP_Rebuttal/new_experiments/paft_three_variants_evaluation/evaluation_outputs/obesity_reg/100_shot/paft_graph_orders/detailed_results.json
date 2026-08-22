@@ -1,0 +1,57 @@
+[
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_graph_orders",
+    "seed": 42,
+    "dcr": 0.719,
+    "pairwise_correlation_diff": 0.577760193338913,
+    "mae": 17.106935288485335,
+    "mse": 491.4331158172941,
+    "rmse": 22.168290773474038,
+    "r2": 0.3030414180932942
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_graph_orders",
+    "seed": 43,
+    "dcr": 0.499,
+    "pairwise_correlation_diff": 0.5701548210685989,
+    "mae": 14.756114951607058,
+    "mse": 359.8704623964496,
+    "rmse": 18.97025203829537,
+    "r2": 0.48124346824071473
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_graph_orders",
+    "seed": 44,
+    "dcr": 0.526,
+    "pairwise_correlation_diff": 0.5774670822145686,
+    "mae": 15.742616804147271,
+    "mse": 389.7327631885447,
+    "rmse": 19.74165046769253,
+    "r2": 0.43913563317576654
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_graph_orders",
+    "seed": 45,
+    "dcr": 0.559,
+    "pairwise_correlation_diff": 0.562930499119476,
+    "mae": 17.540758655719582,
+    "mse": 504.0529119913911,
+    "rmse": 22.451122733426743,
+    "r2": 0.20443216799314345
+  },
+  {
+    "dataset": "obesity_reg",
+    "variant": "paft_graph_orders",
+    "seed": 46,
+    "dcr": 0.563,
+    "pairwise_correlation_diff": 0.5937683864004294,
+    "mae": 16.32012002423918,
+    "mse": 423.0023871782544,
+    "rmse": 20.56702183541055,
+    "r2": 0.3766152163578471
+  }
+]

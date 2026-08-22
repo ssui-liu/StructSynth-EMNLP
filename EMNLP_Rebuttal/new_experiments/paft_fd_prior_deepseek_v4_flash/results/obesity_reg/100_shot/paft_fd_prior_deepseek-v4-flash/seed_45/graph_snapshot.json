@@ -1,0 +1,274 @@
+{
+  "nodes": [
+    "Gender",
+    "Age",
+    "Height",
+    "family_history_with_overweight",
+    "FAVC",
+    "FCVC",
+    "NCP",
+    "CAEC",
+    "SMOKE",
+    "CH2O",
+    "SCC",
+    "FAF",
+    "TUE",
+    "CALC",
+    "MTRANS",
+    "Weight"
+  ],
+  "edges": [
+    {
+      "from": "Age",
+      "to": "SMOKE",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Age' functionally determines 'SMOKE' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Height",
+      "to": "SMOKE",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Height' functionally determines 'SMOKE' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "FCVC",
+      "to": "SMOKE",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'FCVC' functionally determines 'SMOKE' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Weight",
+      "to": "FAVC",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Weight' functionally determines 'FAVC' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Weight",
+      "to": "SMOKE",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Weight' functionally determines 'SMOKE' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Weight",
+      "to": "SCC",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Weight' functionally determines 'SCC' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "Gender": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Age": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "SMOKE"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "SMOKE"
+        ],
+        "in_graph": true
+      },
+      "Height": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "SMOKE"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "SMOKE"
+        ],
+        "in_graph": true
+      },
+      "family_history_with_overweight": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "FAVC": {
+        "level": 1,
+        "parents": [
+          "Weight"
+        ],
+        "children": [],
+        "ancestors": [
+          "Weight"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "FCVC": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "SMOKE"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "SMOKE"
+        ],
+        "in_graph": true
+      },
+      "NCP": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "CAEC": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "SMOKE": {
+        "level": 1,
+        "parents": [
+          "Age",
+          "Height",
+          "FCVC",
+          "Weight"
+        ],
+        "children": [],
+        "ancestors": [
+          "Age",
+          "FCVC",
+          "Height",
+          "Weight"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "CH2O": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "SCC": {
+        "level": 1,
+        "parents": [
+          "Weight"
+        ],
+        "children": [],
+        "ancestors": [
+          "Weight"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "FAF": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "TUE": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "CALC": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "MTRANS": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Weight": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "FAVC",
+          "SMOKE",
+          "SCC"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "FAVC",
+          "SCC",
+          "SMOKE"
+        ],
+        "in_graph": true
+      }
+    },
+    "levels": {
+      "0": [
+        "Age",
+        "Height",
+        "FCVC",
+        "Weight"
+      ],
+      "1": [
+        "FAVC",
+        "SMOKE",
+        "SCC"
+      ],
+      "others": [
+        "Gender",
+        "family_history_with_overweight",
+        "NCP",
+        "CAEC",
+        "CH2O",
+        "FAF",
+        "TUE",
+        "CALC",
+        "MTRANS"
+      ]
+    },
+    "generation_order": [
+      "Age",
+      "Height",
+      "FCVC",
+      "Weight",
+      "FAVC",
+      "SMOKE",
+      "SCC"
+    ],
+    "max_depth": 1
+  }
+}

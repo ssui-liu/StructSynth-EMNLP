@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    "Call Failure",
+    "Complains",
+    "Subscription Length",
+    "Charge Amount",
+    "Seconds of Use",
+    "Frequency of Use",
+    "Frequency of SMS",
+    "Distinct Called Numbers",
+    "Age Group",
+    "Tariff Plan",
+    "Status",
+    "Customer Value",
+    "Churn"
+  ],
+  "edges": [
+    {
+      "from": "Seconds of Use",
+      "to": "Charge Amount",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Seconds of Use' functionally determines 'Charge Amount' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Seconds of Use",
+      "to": "Tariff Plan",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Seconds of Use' functionally determines 'Tariff Plan' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Frequency of SMS",
+      "to": "Tariff Plan",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Frequency of SMS' functionally determines 'Tariff Plan' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Call Failure",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Call Failure' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Charge Amount",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Charge Amount' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Seconds of Use",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Seconds of Use' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Frequency of Use",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Frequency of Use' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Frequency of SMS",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Frequency of SMS' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Distinct Called Numbers",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Distinct Called Numbers' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Age Group",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Age Group' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Tariff Plan",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Tariff Plan' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Status",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Status' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Customer Value",
+      "to": "Churn",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Customer Value' functionally determines 'Churn' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "Call Failure": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Complains": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Subscription Length": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Charge Amount": {
+        "level": 2,
+        "parents": [
+          "Seconds of Use",
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value",
+          "Seconds of Use"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Seconds of Use": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [
+          "Charge Amount",
+          "Tariff Plan"
+        ],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [
+          "Charge Amount",
+          "Tariff Plan"
+        ],
+        "in_graph": true
+      },
+      "Frequency of Use": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Frequency of SMS": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [
+          "Tariff Plan"
+        ],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [
+          "Tariff Plan"
+        ],
+        "in_graph": true
+      },
+      "Distinct Called Numbers": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Age Group": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Tariff Plan": {
+        "level": 2,
+        "parents": [
+          "Seconds of Use",
+          "Frequency of SMS",
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value",
+          "Frequency of SMS",
+          "Seconds of Use"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Status": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "Customer Value": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "Call Failure",
+          "Charge Amount",
+          "Seconds of Use",
+          "Frequency of Use",
+          "Frequency of SMS",
+          "Distinct Called Numbers",
+          "Age Group",
+          "Tariff Plan",
+          "Status",
+          "Churn"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "Age Group",
+          "Call Failure",
+          "Charge Amount",
+          "Churn",
+          "Distinct Called Numbers",
+          "Frequency of SMS",
+          "Frequency of Use",
+          "Seconds of Use",
+          "Status",
+          "Tariff Plan"
+        ],
+        "in_graph": true
+      },
+      "Churn": {
+        "level": 1,
+        "parents": [
+          "Customer Value"
+        ],
+        "children": [],
+        "ancestors": [
+          "Customer Value"
+        ],
+        "descendants": [],
+        "in_graph": true
+      }
+    },
+    "levels": {
+      "0": [
+        "Customer Value"
+      ],
+      "1": [
+        "Call Failure",
+        "Seconds of Use",
+        "Frequency of Use",
+        "Frequency of SMS",
+        "Distinct Called Numbers",
+        "Age Group",
+        "Status",
+        "Churn"
+      ],
+      "2": [
+        "Charge Amount",
+        "Tariff Plan"
+      ],
+      "others": [
+        "Complains",
+        "Subscription Length"
+      ]
+    },
+    "generation_order": [
+      "Customer Value",
+      "Call Failure",
+      "Seconds of Use",
+      "Frequency of Use",
+      "Frequency of SMS",
+      "Distinct Called Numbers",
+      "Age Group",
+      "Status",
+      "Churn",
+      "Charge Amount",
+      "Tariff Plan"
+    ],
+    "max_depth": 2
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "task": "Predict whether an individual's income exceeds $50K per year using census data. The labels are binary: '<=50K' and '>50K'.",
+    "description": {
+        "age": "the age of an individual",
+        "workclass": "a general term to represent the employment status of an individual",
+        "fnlwgt": "the number of units in the target population that the responding unit represents",
+        "education": "the highest level of education achieved by an individual",
+        "education-num": "the highest level of education achieved in numerical form",
+        "marital-status": "marital status of an individual",
+        "occupation": "the general type of occupation of an individual",
+        "relationship": "what this individual is relative to others",
+        "race": "race",
+        "sex": "gender",
+        "capital-gain": "capital gain last year",
+        "capital-loss": "capital loss last year",
+        "hours-per-week": "the hours an individual has reported to work per week"
+    },
+    "label_column": "salary"
+}

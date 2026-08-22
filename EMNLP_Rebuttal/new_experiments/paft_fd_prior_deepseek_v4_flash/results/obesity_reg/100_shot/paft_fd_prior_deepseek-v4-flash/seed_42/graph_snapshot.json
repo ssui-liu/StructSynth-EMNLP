@@ -1,0 +1,229 @@
+{
+  "nodes": [
+    "Gender",
+    "Age",
+    "Height",
+    "family_history_with_overweight",
+    "FAVC",
+    "FCVC",
+    "NCP",
+    "CAEC",
+    "SMOKE",
+    "CH2O",
+    "SCC",
+    "FAF",
+    "TUE",
+    "CALC",
+    "MTRANS",
+    "Weight"
+  ],
+  "edges": [
+    {
+      "from": "Height",
+      "to": "FAVC",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Height' functionally determines 'FAVC' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Height",
+      "to": "SMOKE",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Height' functionally determines 'SMOKE' in the prepared few-shot table.",
+      "association_value": 1.0
+    },
+    {
+      "from": "Height",
+      "to": "SCC",
+      "confidence": "High",
+      "basis": "PAFT-FD",
+      "reasoning": "Pairwise exact functional dependency recorded by PAFT metadata; 'Height' functionally determines 'SCC' in the prepared few-shot table.",
+      "association_value": 1.0
+    }
+  ],
+  "hierarchical_structure": {
+    "variable_info": {
+      "Gender": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Age": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Height": {
+        "level": 0,
+        "parents": [],
+        "children": [
+          "FAVC",
+          "SMOKE",
+          "SCC"
+        ],
+        "ancestors": [],
+        "descendants": [
+          "FAVC",
+          "SCC",
+          "SMOKE"
+        ],
+        "in_graph": true
+      },
+      "family_history_with_overweight": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "FAVC": {
+        "level": 1,
+        "parents": [
+          "Height"
+        ],
+        "children": [],
+        "ancestors": [
+          "Height"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "FCVC": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "NCP": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "CAEC": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "SMOKE": {
+        "level": 1,
+        "parents": [
+          "Height"
+        ],
+        "children": [],
+        "ancestors": [
+          "Height"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "CH2O": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "SCC": {
+        "level": 1,
+        "parents": [
+          "Height"
+        ],
+        "children": [],
+        "ancestors": [
+          "Height"
+        ],
+        "descendants": [],
+        "in_graph": true
+      },
+      "FAF": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "TUE": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "CALC": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "MTRANS": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      },
+      "Weight": {
+        "level": null,
+        "parents": [],
+        "children": [],
+        "ancestors": [],
+        "descendants": [],
+        "in_graph": false
+      }
+    },
+    "levels": {
+      "0": [
+        "Height"
+      ],
+      "1": [
+        "FAVC",
+        "SMOKE",
+        "SCC"
+      ],
+      "others": [
+        "Gender",
+        "Age",
+        "family_history_with_overweight",
+        "FCVC",
+        "NCP",
+        "CAEC",
+        "CH2O",
+        "FAF",
+        "TUE",
+        "CALC",
+        "MTRANS",
+        "Weight"
+      ]
+    },
+    "generation_order": [
+      "Height",
+      "FAVC",
+      "SMOKE",
+      "SCC"
+    ],
+    "max_depth": 1
+  }
+}

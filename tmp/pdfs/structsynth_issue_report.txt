@@ -1,0 +1,941 @@
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+
+       OpenReview.net(/)
+         Go to ACL ARR 2026 May homepage (/group?id=aclweb.org/ACL/ARR/2026/May)
+
+
+
+ StructSynth: Dependency Graphs                                                                                                         (/pdf?
+
+ as Generation Plans for Low-Data                                                                                              id=32AX5rq8ip)
+
+
+ Tabular Synthesis with Language
+ Models
+ Siyi Liu (/profile?id=~Siyi_Liu1), Yujia Zheng (/profile?id=~Yujia_Zheng1),
+ Haoyang LI (/profile?id=~Haoyang_LI3),
+ Yongqi Zhang (/profile?id=~Yongqi_Zhang2) 
+  26 May 2026 (modified: 24 Jun 2026)  ACL ARR 2026 May Submission                                                 Edit
+    May, Senior Area Chairs, Area  Chairs, Reviewers,   Authors, Secondary  Reviewers
+  Revisions (/revisions?id=32AX5rq8ip)
+  CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+ Keywords: Tabular Data Synthesis, Dependency Structure Discovery, Structure- Conditioned Generation, Data
+ Augmentation, Low-Data Regimes
+ Abstract:
+ Tabular data derives its value from inter-feature dependencies, yet preserving them during synthesis is fragile when
+ samples are scarce. Existing approaches either learn dependencies implicitly through distribution fitting, rely on statistical
+ graph learning that becomes unstable with few samples, or encode structure through flat text serialization. Recent graph-
+ aware methods use dependency graphs as attention biases or as backbones for non-LLM samplers, but they do not use
+ the graph as a prompt-level plan for organizing the LLM's own generation process. We introduce StructSynth, a framework
+ that treats a dependency graph as a generation plan---determining the generation order, conditioning context, and scope
+ of each black-box LLM call. In Evidence-Grounded Graph Induction, LLM reasoning and statistical association cues jointly
+ construct a Directed Acyclic Graph (DAG) from limited samples. In Graph-Planned Conditional Synthesis, this DAG drives
+ autoregressive synthesis in topological order, conditioning each feature on previously generated values with graph-
+ specified parent structure guiding each step, making the conditioning schedule explicit throughout synthesis.
+ Experiments show that StructSynth achieves state-of-the-art downstream utility and privacy preservation while
+ maintaining competitive statistical fidelity, especially in low-data scenarios.
+ Paper Type: Long
+ Research Area: NLP Applications
+ Research Area Keywords: financial/business NLP, security/privacy, NLP for social good
+ Contribution Types: NLP engineering experiment
+ Languages Studied: English
+ Reassignment Request Area Chair: This is not a resubmission
+ Reassignment Request Reviewers: This is not a resubmission
+ A1 Limitations Section: This paper has a limitations section.
+ A2 Potential Risks: Yes
+ A2 Elaboration: In Ethical Considerations section
+ B Use Or Create Scientific Artifacts: Yes
+ B1 Cite Creators Of Artifacts: Yes
+ B1 Elaboration: Section 4 and Appendix A cite the public datasets, baselines, and software libraries used in the
+ experiments.
+ B2 Discuss The License For Artifacts: No
+ B2 Elaboration: We cite the artifacts used, but we do not provide a detailed license-by-license discussion. The artifacts are
+ used only for research benchmarking.
+ B3 Artifact Use Consistent With Intended Use: Yes
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 1/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+ B3 Elaboration: The Ethical Considerations section states that public datasets are used only as research benchmarks, and
+ that generated records should not be used for high-stakes decision making without additional review and validation.
+ B4 Data Contains Personally Identifying Info Or Offensive Content: No
+ B4 Elaboration: We use publicly available benchmark datasets and do not collect new data. We discuss data sensitivity
+ and privacy risks in Ethical Considerations, but we do not provide a separate PII/offensive-content audit.
+ B5 Documentation Of Artifacts: Yes
+ B5 Elaboration: Section 4 and Appendix "Detailed Experimental Setup" document the datasets, including domains, tasks,
+ feature types, and evaluation setup.
+ B6 Statistics For Data: Yes
+ B6 Elaboration: Section 4 and Appendix "Detailed Experimental Setup" report dataset statistics, train/test splits, few-shot
+ sample sizes, and random seeds.
+ C Computational Experiments: Yes
+ C1 Model Size And Budget: Yes
+ C1 Elaboration: Appendix "Implementation and Hyperparameters" reports model settings and downstream model
+ parameters. Appendix "Efficiency Analysis" reports token usage for CLLM and StructSynth, including input/output tokens,
+ total tokens, and relative overhead. Since the main LLMs are hosted/API models, we report token budget rather than GPU
+ hours.
+ C2 Experimental Setup And Hyperparameters: Yes
+ C2 Elaboration: Section 4 and Appendix "Detailed Experimental Setup" describe the experimental setup, including
+ datasets, baselines, train/test splits, sample sizes, seeds, and hyperparameter settings.
+ C3 Descriptive Statistics: Yes
+ C3 Elaboration: Section 4 reports results over multiple datasets and random seeds, including mean performance and
+ variability/statistical comparisons where applicable.
+ C4 Parameters For Packages: Yes
+ C4 Elaboration: Appendix "Detailed Experimental Setup" reports implementation details and parameter settings for
+ baselines, downstream models, LLMs, and evaluation components.
+ D Human Subjects Including Annotators: No
+ D1 Instructions Given To Participants: N/A
+ D2 Recruitment And Payment: N/A
+ D3 Data Consent: N/A
+ D4 Ethics Review Board Approval: N/A
+ E Ai Assistants In Research Or Writing: Yes
+ E1 Information About Use Of Ai Assistants: No
+ E1 Elaboration: We used AI assistants only for language polishing and editing support. All technical content,
+ experiments, analyses, claims, and final writing decisions were reviewed and approved by the authors.
+ Author Submission Checklist: yes
+ EMNLP 2026 AI Reviewing Experiment: yes
+ TLDR:  StructSynth learns a dataset's hidden structure and uses it as a blueprint to guide an LLM, generating more
+ realistic synthetic data from scarce samples.
+ Preprint:  no
+ Preprint Status:  There is a non-anonymous preprint (URL specified in the next question).
+ Existing Preprints:  https://arxiv.org/abs/2508.02601 (https://arxiv.org/abs/2508.02601)
+ Preferred Venue:  EMNLP
+ Visa Needs:  yes
+ Consent To Share Data:  yes
+ Consent To Share Submission Details:  On behalf of all authors, we agree to the terms above to share our submission
+ details.
+ Association For Computational Linguistics - Blind Submission License Agreement:  On behalf of all authors, I agree
+ Submission Number: 9229
+
+
+    Discussion (?id=32AX5rq8ip#discussion)
+
+     Filter by reply type...               Filter by author...              Search keywords...                   Sort: Newest First
+
+                                 −      ＝        ≡        
+
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 2/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+        Everyone Program Chairs Submission9229... Submission9229 Area...                                             13 / 13 replies shown
+         Submission9229... Submission9229 Authors Submission9229... Submission9229...
+
+         Submission9229... Submission9229...               
+
+
+
+                                                                   Add:      Withdrawal           Author-Editor Confidential Comment
+
+
+   General Response to All Reviewers
+   Official Comment
+   by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3), Yujia Zheng
+   (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+     14 Jul 2026, 01:37
+     Program Chairs, Senior Area Chairs, Area Chairs, Reviewers, Reviewers Submitted, Authors
+   Comment:
+   We thank all reviewers for the constructive feedback. The reviews raise five families of concerns: (a) novelty
+   relative to PAFT, (b) reliance on semantic priors, (c) evaluation choices, (d) artifact availability, and (e) the
+   calibration of privacy and fidelity claims.
+
+                                                                                                                           Where
+   #       Addresses New evidence                        Headline result                                                   addressed
+   Exp- (a)               Bidirectional                  The full StructSynth system outperforms the full                  7Wh2-W1
+   1                      StructSynth×PAFT               PAFT system on utility and privacy (AUC 0.830 vs.
+                          component transfer             0.752); the StructSynth graph improves both
+                                                         generators (+0.030/+0.022 AUC)
+   Exp- (b)               Task-and-field                 Functional under full anonymization — classification 7Wh2-W4;
+   2                      anonymization                  within 1.5 AUC points (0.865 → 0.850), fidelity      iRH3-W3
+                                                         improves; regression degrades more (R² 0.560 →
+                                                         0.462)
+   Exp- (c)               Post-cutoff vary-n             StructSynth leads at every n on both datasets;                    q74j-W2
+   3                      (Anxiety, Salary)              largest margin +3.31 AUC at n = 20
+   Exp- (c)               Qwen2.5-32B backbone           AUC 0.856 vs. 0.843; R² 0.532 vs. 0.518 (0–1 scale)               q74j-W2
+   4                      check
+
+   (d) is addressed in our response to Reviewer q74j (Artifact Checklist); (e) requires wording revisions only — no new
+   experiments (details in our responses to 7Wh2, W2/W3).
+   Together, these results support that StructSynth's improvements arise from the explicit graph-as-generation-plan
+   design rather than LLM memorization, hold across post-cutoff datasets and LLM backbones, and complement
+   rather than duplicate PAFT's fine-tuning approach.
+
+   Revision plan. We will (1) position PAFT in §1–§2 [7Wh2-W1]; (2) sharpen the contribution statement to inference-
+   time graph execution and include PAFT as a baseline in the main comparison [7Wh2-W1]; (3) correct GraDe in
+   Appendix G.2 and justify baselines in §4.1 [7Wh2-W1; q74j-W1]; (4) replace "privacy preservation" wording with
+   empirical-privacy language in §4.2/Limitations [7Wh2-W2]; (5) report the utility–privacy–fidelity trade-off in
+   §5/Appendix K.2 [7Wh2-W3]; (6) add Exp-1–4, surface the direction-aware SHD evaluation in §4.4 [iRH3-W1], and
+   clarify low-data/opaque-schema boundaries in §4.5/Appendix [iRH3-W2/W3; 7Wh2-W4; q74j-W2]; and (7) move
+   the generation-plan definition earlier, expand the Appendix A artifact checklist, and identify direct structural
+   metrics as future work [q74j-Minor/Checklist; 7Wh2-W1/W4].
+
+                                                                                  Add:    Author-Editor Confidential Comment
+
+
+
+
+   Official Review of Submission9229 by Reviewer 7Wh2                                            
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 3/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+   Official Review by Reviewer 7Wh2  06 Jul 2026, 09:53 (modified: 12 Jul 2026, 23:35)
+    Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2
+    Revisions (/revisions?id=6SiIlYQEKB)
+   Paper Summary:
+   This paper focuses on tabular data synthesis using large language models (LLMs). The idea is to first induce a
+   dependency DAG from a small real table using both LLM reasoning and statistical association measures, then use
+   that DAG as a generation plan for black-box LLM calls. Basically the graph is used to determine feature order and
+   prompt conditioning context.
+   Summary Of Strengths:
+      The paper does a nice job and is akin to Bayesian network papers that separate structure discovery from
+      conditional generation.
+      The empirical results are strong. The authors demonstrate that their approach has the best downstream
+      performacne on the datasets considered.
+      The ablations are helpful. Replacing the LLM-guided graph discovery, or removing association scores, or
+      ignoring topological order all hurt performance.
+   Summary Of Weaknesses:
+      My main concern with this paper is that it is quite close to the paper by S. Xu et al. "Why LLMs Are Bad at
+      Synthetic Table Generation and what to do about it" (https://arxiv.org/abs/2406.14541
+      (https://arxiv.org/abs/2406.14541)). This paper argues that LLM tabular generation fails because
+      autoregressive generation imposes an order over columns, and that random feature-order fine-tuning will
+      violate functional dependencies. It proposes injecting knowledge of functional relationships. Just like the
+      proposed paper, there is a DAG learning step and then using that DAG information to generate data. As a
+      result, the novelty here is limited and further the experimental results need to be contrasted with this above
+      paper and their PAFT algorithm (in fact they seem to use the same dataset(s) as well).
+      Besides the key related work contrasting and comparison, the privacy evaluation feels underdeveloped and is
+      not quite a contribution.
+      The statistical fidelity results are mixed (the algorithm proposed appears middle of the pack in some of these
+      results).
+      The limitations section acknowledges that opaque schemas such as V1/V2 or genomic locus identifiers
+      weaken the LLM semantic prior (whereas this may not be a problem for the PAFT paper which seems to be
+      discovering the dependencies).
+   Comments Suggestions And Typos:
+   Please see above.
+   Confidence: 5 = Positive that my evaluation is correct. I read the paper very carefully and am familiar with
+   related work.
+   Soundness: 3 = Acceptable: This study provides sufficient support for its main claims. Some minor points may
+   need extra support or details.
+   Excitement: 1.5
+   Overall Assessment: 2 = Resubmit next cycle: I think this paper needs substantial revisions that can be
+   completed by the next ARR cycle.
+   Ethical Concerns:
+   There are no concerns with this submission.
+   Needs Ethics Review: No
+   Reproducibility: 4 = They could mostly reproduce the results, but there may be some variation because of
+   sample variance or minor variations in their interpretation of the protocol or method.
+   Datasets: 4 = Useful: I would recommend the new datasets to other researchers or developers for their ongoing
+   work.
+   Software: 4 = Useful: I would recommend the new software to other researchers or developers for their ongoing
+   work.
+   Knowledge Of Or Educated Guess At Author Identity: No
+   Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Knowledge Of Paper Source: N/A, I do not know anything about the paper from outside sources
+   Impact Of Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Reviewer Certification: I certify that the review I entered accurately reflects my assessment of the work. If you
+   used any type of automated tool to help you craft your review, I hereby certify that its use was restricted to
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 4/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+   improving grammar and style, and the substance of the review is either my own work or the work of an
+   acknowledged secondary reviewer.
+   Publication Ethics Policy Compliance: I did not use any generative AI tools for this review
+
+                                                   Add:    Author-Editor Confidential Comment                   Review Issue Report
+
+
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 5/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+
+    New Review Issue Report
+    * denotes a required field
+
+    I1 Not Specific
+    Example: missing references are not specified.
+         The review is not specific enough.
+
+    I2 Reviewer Heuristics
+    Examples: 'not SOTA', 'not novel', 'not suprising', 'too simple'. Note that such criticisms
+    may be legitimate, if the reviewer explains their reasoning and backs it up with
+    arguments/evidence/references. This flag should only be used to report cases where the
+    reviewer has not done due diligence.
+         The review exhibits one or more of the reviewer heuristics discussed in the ARR reviewer
+         guidelines: https://aclrollingreview.org/reviewertutorial
+
+    I3 Score Mismatch
+    'Overall assessment' score is a combination of several factors. Two of them are reflected
+    in the 'soundness' and 'reproducibility' scores, which assess the technical merit of the
+    submission. If they are low, this should be backed up by the text of the review. The
+    'excitement' score is subjective and may not be justified in text (e.g. different researchers
+    have different ideas of what is exciting and presentation-worthy).
+         The review score(s) do not match the text of the review.
+
+    I4 Unprofessional Tone
+    Examples: rude reviews, sexist/racist/ageist etc. insinuations.
+         The tone of the review does not conform to professional conduct standards.
+
+    I5 Expertise
+    Examples: reviews that are not based on a deep understanding of the submission, or the
+    core methodology used in this research area. This rubric can also be used for reviews
+    suspected of being auto-generated.
+         The review does not evince expertise.
+
+    I6 Type Mismatch
+    Example: a short paper expected to provide more experiments than is necessary to
+    support the stated claim.
+         The review does not match the type of paper.
+
+    I7 Contribution Mismatch
+    Examples: experimental results expected from a paper relying on a different
+    methodology.
+         The review does not match the type of contribution.
+
+    I8 Missing Review
+    Example: one-liner reviews with generic criticisms.
+         The review is missing or is uninformative.
+
+    I9 Late Review
+    Example: the review came too late to be addressed in the author response.
+         The review was late.
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 6/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+    I10 Unreasonable Requests
+    Example: requests for comparisons with the latest 'closed' models when it is not relevant
+    for the research question.
+         The reviewer requests experiments that are not needed to demonstrate the stated claim.
+
+    I11 Non Response
+    The reviewers are volunteers, and are not required to respond to all author comments.
+    Many do not respond in the forum, but do edit their reviews after seeing the author
+    response. You should only use this rubric when there is a critical misunderstanding or
+    unnoticed evidence, which would significantly impact key claims made in the review.
+         The review does not acknowledge critical evidence in the author response.
+
+    I12 Revisions Unacknowledged
+    [For revised submissions only:] the review does not acknowledge the revisions
+    documented in revision notes, without sufficient justification.
+         The review does not acknowledge the revisions
+
+    I13 Other
+    Please explain your issue in sufficient detail below.
+         Some other technical violation of the peer review process.
+
+    Justification *
+    Describe the issue(s) with this review, clearly and concisely, with supporting evidence.
+    You can use markdown. Please start the description for each type of issue with a new
+    paragraph that starts with the review issue code. For example: I2. The reviewer
+    states [...]. We believe that this corresponds to review issue type I2,
+    because [...] .
+    In case of reviewers not changing their scores based on the discussion, it is not in your
+    interest to try to present a one-sided view of a reasonable scientific disagreement.
+    Please include the link to the specific comment.
+
+        Write          Preview
+
+
+
+
+          TeX is supported (https://docs.openreview.net/reference/openreview-tex)
+
+
+    Readers *                ACL ARR 2026 May Program Chairs
+                             ACL ARR 2026 May Submission9229 Senior Area Chairs
+
+
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 7/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+                             ACL ARR 2026 May Submission9229 Area Chairs
+                             signatures
+
+    Signatures * signatures
+
+    Edit History
+
+    Readers *                readers
+
+    Signatures * ACL ARR 2026 May Submission9229 Authors
+
+
+        Submit             Cancel
+
+
+       −
+       ＝     Official Comment by Authors
+       ≡
+              Official Comment
+              by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3),
+              Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                16 Jul 2026, 18:09
+                Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2
+             Comment:
+             Dear Reviewer 7Wh2,
+             Thank you again for your thorough review. We wanted to follow up to ensure you had a chance to see
+             our detailed response, which includes new experiments (Exp-1, Exp-2) directly addressing your
+             concerns on novelty relative to PAFT, privacy evaluation, fidelity trade-offs, and opaque schemas. We
+             would greatly appreciate any further feedback during the remaining discussion period and are happy
+             to run additional analyses if needed.
+             Best regards, The Authors
+
+                                                                                Add:    Author-Editor Confidential Comment
+
+
+       −
+       ＝     Response to Reviewer 7Wh2 (1/2)
+       ≡
+              Official Comment
+              by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3),
+              Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                14 Jul 2026, 01:29
+                Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer 7Wh2
+             Comment:
+             We thank Reviewer 7Wh2 for the careful and thorough review. The central question is whether
+             StructSynth is redundant given PAFT. We show it is not, at three levels: mechanism (inference-time
+             execution vs. fine-tuning compilation), family-level evidence already in the submission (GraDe, Table 1),
+             and a new direct comparison (Exp-1); Exp-2 additionally probes the opaque-schema boundary (W4).
+             Experiment numbering (Exp-1–4) is shared across all responses and defined in the General Response.
+
+
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 8/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+             W1: Relationship to PAFT and Novelty
+                  "My main concern with this paper is that it is quite close to the paper by S. Xu et al. 'Why LLMs Are
+                  Bad at Synthetic Table Generation and what to do about it' [...] Just like the proposed paper, there is
+                  a DAG learning step and then using that DAG information to generate data. As a result, the novelty
+                  here is limited and further the experimental results need to be contrasted with this above paper
+                  and their PAFT algorithm [...]"
+
+             Both methods are structure-aware, but the structure plays a different operational role. PAFT
+             mines functional dependencies and compiles them into a global feature order for LoRA fine-tuning;
+             StructSynth builds a DAG from semantic and statistical evidence and executes it at inference to control
+             generation order, conditioning context, and prompt scope for a black-box LLM, without parameter
+             updates (§3.1–§3.2; Eq. 4).
+             We agree both methods follow a "discover structure, then generate" template, and PAFT should have
+             been cited — we will position it in §1–§2. The template, however, is where the operational overlap ends:
+             this distinction is most consequential in our target low-data regime, where semantic priors
+             complement weak association estimates and StructSynth achieves the lowest or near-lowest SHD at n ≤
+             50 (§4.4).
+             The family-level contrast the review asks for is already in the submission: GraDe is, like PAFT, an FD-
+             discovery-plus-FD-guided generator trained by fine-tuning, and under identical 100-shot splits and the
+             same evaluation pipeline StructSynth leads it on all six datasets (average utility 75.01 vs. 51.05; Table 1).
+             To our knowledge, no prior method executes a discovered dependency graph as the generation plan
+             for a black-box LLM; structure-aware predecessors (PAFT, GraDe) inject structure at fine-tuning time.
+             Exp-1 now extends the comparison to PAFT itself: we evaluated bidirectional component transfer at 100
+             real rows and 1,000 synthetic rows with a unified XGBoost evaluator.
+
+              Generator Structural source                           Avg. AUC Avg. R² Fidelity error ↓ DCR deviation ↓
+              PAFT            PAFT FD graph                              0.752      0.360               0.537                 0.154
+              PAFT            StructSynth dependency graph               0.782      0.404               0.540                 0.150
+              StructSynth PAFT FD graph                                  0.808      0.550               0.580                 0.053
+              StructSynth StructSynth dependency graph                   0.830      0.591               0.595                 0.032
+
+             In this descriptive comparison, the full StructSynth system leads the full PAFT system on every
+             utility and privacy column (AUC 0.830 vs. 0.752; R² 0.591 vs. 0.360; DCR deviation 0.032 vs. 0.154).
+             The component-transfer rows isolate the contribution of the structural source: holding the generator
+             fixed, the StructSynth dependency graph consistently improves downstream utility over the PAFT FD
+             graph. Under the PAFT generator it raises classification AUC by +0.030 (0.752 → 0.782) and R² by +0.044;
+             under the StructSynth executor the gains are similar (AUC 0.808 → 0.830; R² 0.550 → 0.591). Cross-
+             compatibility is preserved in the reverse direction (a PAFT FD graph can still drive the StructSynth
+             executor at AUC 0.808), confirming the two structural representations are interchangeable at the
+             interface level while differing in downstream strength.
+
+             W2: Scope of the Privacy Evaluation
+                  "Besides the key related work contrasting and comparison, the privacy evaluation feels
+                  underdeveloped and is not quite a contribution."
+
+             We agree DCR evidence alone should not be read as a standalone privacy contribution; the revision will
+             replace the "privacy preservation" wording (abstract, §1, §4.2, §5) with empirical-privacy language.
+             StructSynth pairs the best utility rank (1.00) with the best privacy rank (1.50), which we attribute
+             to conditioning each generation call on a local subgraph (§4.2; Appendix K.2).
+             DCR is not differential privacy; the regularization effect was not designed as a privacy mechanism; and
+             the submitted Ethics section already states that StructSynth offers no formal privacy guarantee (Ethics,
+             l.574–578). Appendix K.2 discusses the resulting fidelity–privacy trade-off.
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 9/17
+2026/7/18 21:22                  StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+                                                                                 Add:    Author-Editor Confidential Comment
+
+                  −
+                  ＝     Response to Reviewer 7Wh2 (2/2)
+                  ≡
+                        Official Comment
+                        by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?
+                        id=~Haoyang_LI3), Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                          14 Jul 2026, 01:31
+                          Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors,
+                         Reviewer 7Wh2
+                        Comment:
+                        W3: Statistical Fidelity Trade-off
+                          "The statistical fidelity results are mixed (the algorithm proposed appears middle of the
+                          pack in some of these results)."
+
+                        The reviewer is correct about the mixed ranking.
+                        Pairwise fidelity and downstream utility are different objectives: the Bayesian-Sampler
+                        ablation attains the lowest fidelity error (48.86) yet the worst utility (81.17), while
+                        StructSynth holds utility rank 1.00 — the objective for which augmentation is deployed
+                        (Table 3).
+                        Fidelity error measures pairwise-correlation matching, whereas the generation graph
+                        encodes conditional parent–child dependencies (§4.2, l.356–359 and l.413–417; Appendix
+                        K.2). The same tension appears among the real baselines, where high fidelity often stems
+                        from memorization: BN ranks 3.00 on fidelity error but 9.00 on privacy, and GReaT ranks 4.00
+                        on fidelity error with the worst privacy risk (90.15%) (§4.2, l.396–404; Table 2). The submitted
+                        profile is utility rank 1.00, privacy rank 1.50, fidelity rank 8.50; the revision will report this
+                        trade-off explicitly in §5, and we do not claim comprehensive superiority.
+
+                        W4: Opaque and Anonymized Schemas
+                          "The limitations section acknowledges that opaque schemas such as V1/V2 or genomic
+                          locus identifiers weaken the LLM semantic prior (whereas this may not be a problem for
+                          the PAFT paper which seems to be discovering the dependencies)."
+
+                        Opaque schemas do weaken the semantic prior — the submission flags exactly this
+                        boundary (Appendix K.3).
+                        Under full anonymization of names and descriptions, StructSynth stays functional —
+                        classification loses 1.5 AUC points while fidelity improves — because association scores
+                        keep the graph populated when semantics are absent (Exp-2).
+                        We anonymized all column names and task/column descriptions while keeping values
+                        unchanged (Exp-2) (gpt-5-mini, 100 real rows, 1,000 synthetic rows; 0–1 scale).
+
+                        Dataset Condition               Utility      Fidelity ↓ DCR (ideal 0.50)
+                        Anxiety Original                AUC 0.865        0.579                0.447
+                        Anxiety Anonymized AUC 0.850                     0.534                0.564
+                        Salary      Original              R² 0.560       0.646                0.501
+                        Salary      Anonymized            R² 0.462       0.615                0.412
+
+                        Salary's larger regression drop (R² 0.560 → 0.462) shows semantic priors matter most for
+                        fine-grained continuous dependencies (full analysis in our response to Reviewer iRH3, W3).
+                        This limitation is mirrored on the PAFT side: FD discovery plus fine-tuning requires statistical
+                        signal and parameter access — the two resources scarcest in our target regime — whereas
+                        StructSynth runs against black-box APIs and its graph transfers across eight backbones (§4.6,
+                        Figure 5). The two approaches therefore compose rather than compete: when schemas are
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                  10/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+                        opaque, a statistically discovered FD graph plugs directly into StructSynth's executor — Exp-
+                        1's transfer cell (StructSynth generator + PAFT graph, AUC 0.808) already demonstrates this
+                        fallback.
+
+                        Revision plan. We will: (1) cite/position PAFT §1–§2 (W1); (2) sharpen the contribution
+                        statement to inference-time graph execution, add Exp-1, and include PAFT as a baseline in
+                        the main comparison (W1); (3) correct GraDe description in Appendix G.2 (W1); (4) empirical-
+                        privacy wording in the abstract, §1, §4.2, §5, and Limitations (W2); (5) three-dimensional
+                        profile §5/Appendix K.2 (W3); (6) add Exp-2, opaque-schema boundary + statistical-graph
+                        fallback (W4); (7) direct structural metrics as future work (W1/W4).
+                        We hope these results address your concerns — in particular the novelty assessment, in light
+                        of the two-step differentiation, the family-level GraDe comparison already in Table 1, and the
+                        direct PAFT study (Exp-1). We would be glad to run further analyses during the discussion
+                        period.
+
+                                                                              Add:    Author-Editor Confidential Comment
+
+
+
+
+   Official Review of Submission9229 by Reviewer q74j
+   Official Review by Reviewer q74j  29 Jun 2026, 17:05 (modified: 14 Jul 2026, 20:18)
+    Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer q74j
+    Revisions (/revisions?id=OY4fiQT2uE)
+   Paper Summary:
+   This paper proposes a method for generating additional tabular data in scarce data scenarios. They decouple the
+   extraction task in which a DAG is extracted from the existing tabular data using an LLM, and the generation task,
+   where additional data is generated using the extracted DAG as guidance.
+   Summary Of Strengths:
+   The paper is very well-written The experimental design is sound. The method is evaluated on six downstream
+   tasks and the extracted graph is evaluated for its quality as well. They show with extensive experiments that
+   method is suitable for the task at hand The ablations further strengthen the claims and show the contribution of
+   the different elements in the design
+   Summary Of Weaknesses:
+   It is not clear whether the baselines used are the best available methods in their respective categories. As the
+   authors explain in l.052-l.055, deep generative models' performance varies across architectures and some may
+   require many more examples to train. I expected a little explanation in the experiments section that motivates the
+   choice for the particular models used as baselines. It is not always clear why you select a particular dataset to
+   show results. In Section 4.5 and 4.6 why did you choose the Adult dataset and not one of the datasets that are
+   created after the knowledge cutoff for LLMs?
+   Comments Suggestions And Typos:
+   The goal of the paper only became fully clear to me in l. 197. This description could feature earlier in the
+   introduction.
+   Confidence: 4 = Quite sure. I tried to check the important points carefully. It's unlikely, though conceivable, that I
+   missed something that should affect my ratings.
+   Soundness: 4.5
+   Excitement: 3.5
+   Overall Assessment: 4 = Conference: I think this paper could be accepted to an *ACL conference.
+   Limitations And Societal Impact:
+   The limitation section is insightful and to the point. The paper also discusses ethical considerations well.
+   Ethical Concerns:
+   The authors describe ethical considerations well.
+   Needs Ethics Review: No
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 11/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+   Reproducibility: 4 = They could mostly reproduce the results, but there may be some variation because of
+   sample variance or minor variations in their interpretation of the protocol or method.
+   Datasets: 4 = Useful: I would recommend the new datasets to other researchers or developers for their ongoing
+   work.
+   Software: 3 = Potentially useful: Someone might find the new software useful for their work.
+   Knowledge Of Or Educated Guess At Author Identity: No
+   Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Knowledge Of Paper Source: N/A, I do not know anything about the paper from outside sources
+   Impact Of Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Reviewer Certification: I certify that the review I entered accurately reflects my assessment of the work. If you
+   used any type of automated tool to help you craft your review, I hereby certify that its use was restricted to
+   improving grammar and style, and the substance of the review is either my own work or the work of an
+   acknowledged secondary reviewer.
+   Publication Ethics Policy Compliance: I did not use any generative AI tools for this review
+
+                                                   Add:    Author-Editor Confidential Comment                   Review Issue Report
+
+       −
+       ＝     Response to Reviewer q74j
+       ≡
+              Official Comment
+              by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3),
+              Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                14 Jul 2026, 01:35
+                Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer q74j
+             Comment:
+             We thank Reviewer q74j for the careful and constructive review, and especially for recognizing the
+             paper's writing, experimental design, and ablations. Below, we address each point in order. Experiment
+             numbering (Exp-1–4) is shared across all responses and defined in the General Response.
+
+             W1: Baseline Selection
+                  "It is not clear whether the baselines used are the best available methods in their respective
+                  categories. [...] I expected a little explanation in the experiments section that motivates the choice
+                  for the particular models used as baselines."
+
+             We selected twelve baselines to cover three paradigms — DGMs, structure-aware, and LLM-based
+             — with a foundational method and a recent representative in each, under the same low-data
+             setting (§4.1, l.334–348).
+             The suite covers DGMs (TVAE/CTGAN, TabDDPM, NFlow, TabSyn), structure-aware methods (BN,
+             GOGGLE, DECAF, SPADA-NF), and LLM-based methods (GReaT, CLLM, GraDe). TabSyn (2024), SPADA-NF
+             (2025), and GraDe (2025) ensure that every category includes a recent method, while the established
+             methods provide recognizable anchors. Evaluating all methods at n = 100 is deliberate because data
+             scarcity is the paper's target condition; Table 1 reports average scores of 63.69 for TabDDPM and 68.04
+             for TabSyn in this regime — large-sample reputation alone does not identify the best method under
+             data scarcity.
+
+             W2: Adult versus Post-Cutoff Datasets
+                  "In Section 4.5 and 4.6 why did you choose the Adult dataset and not one of the datasets that are
+                  created after the knowledge cutoff for LLMs?"
+
+             Adult was chosen for comparability with prior work and consistency with the Table 3 ablation; we
+             now complement it with Anxiety and Salary, both released after the LLM knowledge cutoff (Exp-
+             3, Exp-4).
+             The submission already identifies Anxiety and Salary as post-cutoff datasets (§4.1, l.321–325; §4.3, Table
+             3), while using Adult across the ablation, vary-n, and backbone analyses enables a controlled analytical
+             thread. We compared CLLM and StructSynth on both post-cutoff datasets for n = 20, 50, 100, 200 (Exp-
+             3):
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 12/17
+2026/7/18 21:22                  StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+             (gpt-5-mini, 1,000 synthetic rows per run) (AUC / R² × 100)
+
+              Dataset / Method                 n = 20 n = 50 n = 100 n = 200
+              Anxiety AUC / CLLM                77.52 81.87         85.17     85.44
+              Anxiety AUC / StructSynth 80.83 83.50                 86.45     87.23
+              Salary R² / CLLM                  48.16 52.34         54.53     61.39
+              Salary R² / StructSynth           50.56 54.90         55.98     63.54
+
+             StructSynth leads at every n on both datasets; the largest margin is +3.31 AUC at n = 20.
+             We also ran a Qwen2.5-32B backbone check on both post-cutoff datasets (Exp-4) (n = 100, 1,000
+             synthetic rows per run; 0–1 scale):
+
+              Dataset Metric CLLM                       StructSynth
+              Anxiety AUC           0.843 ± 0.012 0.856 ± 0.014
+              Salary       R²       0.518 ± 0.037 0.532 ± 0.036
+
+             The advantage holds in the same direction on both post-cutoff datasets under Qwen2.5-32B,
+             suggesting that the gain is not specific to the GPT backbone.
+
+             Minor: Earlier Goal Description
+                  "The goal of the paper only became fully clear to me in l. 197. This description could feature earlier
+                  in the introduction."
+
+             We appreciate this presentation suggestion. The three-part definition of a generation plan (generation
+             order, conditioning context, prompt scope) will move to the Introduction immediately after the research
+             question at l.085–087.
+
+             Artifact Checklist
+                  "Reproducibility: 1 [...] Datasets: 1 [...] Software: 1"
+
+             The anonymous software artifact was already part of the original submission (Appendix A, l.855–
+             859); the checklist below makes the remaining data-to-result path explicit.
+
+              Artifact                       Status and evidence
+              Code and instructions          Anonymous repository and usage instructions included in the original
+                                             submission (Appendix A, l.855–859).
+              Dataset provenance and All six datasets are public and cited; Appendix G.1 specifies the 8:2 split and
+              protocol               seeds 42–51 (§4.1; Appendix G.1, Table 4).
+              Exact replication inputs       We will add preprocessed datasets, exact split files, and configurations.
+              Preprocessing and              We will add the preprocessing scripts and an artifact index mapping each
+              evaluation                     reported result to its command/configuration.
+
+             Revision plan. We will: (1) add paradigm-coverage and low-data criteria to §4.1 (W1); (2) explain Adult
+             choice, add Exp-3 to §4.5 and Exp-4 to §4.6 (W2); (3) move generation-plan definition after l.085–087
+             (Minor); (4) expand Appendix A into an artifact checklist with replication assets (Checklist).
+             We hope these clarifications address your concerns, including the Reproducibility, Datasets, and
+             Software assessments. We would be glad to provide any additional information during the discussion
+             period.
+
+                                                                                 Add:    Author-Editor Confidential Comment
+
+                   −
+                   ＝     response to author response
+                   ≡
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                  13/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+                        Official Comment by Reviewer q74j  14 Jul 2026, 20:22
+                         Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors,
+                        Reviewer q74j
+                        Comment:
+                        I thanks the authors for their explanations and additions. I would be happy for these to
+                        appear in the camera-ready version. I have changed the scores for reproducibility, dataset
+                        and software. I am sorry for not having noticed these contributions. I leave my other scores
+                        unchanged.
+
+                                                                              Add:    Author-Editor Confidential Comment
+
+
+                  −
+                  ＝      Replying to response to author response
+                  ≡
+                        Official Comment by Authors
+                        Official Comment
+                        by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?
+                        id=~Haoyang_LI3), Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                          16 Jul 2026, 18:10
+                          Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors,
+                         Reviewer q74j
+                        Comment:
+                        Dear Reviewer q74j,
+                        Thank you very much for reading our response and for the updated scores. We appreciate
+                        the constructive exchange and will incorporate everything in the camera-ready version.
+                        Best regards, The Authors
+
+                                                                              Add:    Author-Editor Confidential Comment
+
+
+
+
+   Official Review of Submission9229 by Reviewer iRH3
+   Official Review by Reviewer iRH3  24 Jun 2026, 16:38 (modified: 18 Jul 2026, 15:07)
+    Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer iRH3
+    Revisions (/revisions?id=54FM9gJXkT)
+   Paper Summary:
+   This paper proposes StructSynth, a tabular data generation and augmentation method that first constructs a
+   dependency graph among features using an LLM and then generates synthetic samples based on the learned
+   graph structure. Learning dependencies among features is a central challenge in this setting and has been
+   studied from various perspectives, including Bayesian networks, causal discovery, and statistical approaches. The
+   key contribution of this work is to use the semantic knowledge of LLMs to infer the dependency graph,
+   particularly in small sample size scenarios where purely data-driven approaches may struggle.
+   Summary Of Strengths:
+     1. The paper addresses an important problem in tabular data generation and augmentation, particularly under
+        small sample size regimes where existing methods often face difficulties.
+     2. Experimental results are convincing, especially in terms of downstream model performance. The proposed
+        method consistently performs well when the available sample size is small, suggesting that it may be
+        practically useful across a range of applications.
+     3. The paper goes beyond reporting aggregate performance metrics and also presents examples of the learned
+        dependency graphs. These qualitative results provide useful insights into the behavior of the method and
+        help readers better understand the learned structures.
+   Summary Of Weaknesses:
+     1. Since the proposed method infers not only the existence of dependencies but also the directions of edges,
+        the evaluation should assess more than statistical fidelity. While the paper reports measures such as
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 14/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+        Statistical Fidelity Error, it would also be valuable to evaluate the correctness of the learned graph structure,
+        particularly edge directions, on datasets where ground-truth dependency structures are available.
+     2. The method is specifically motivated by small sample size scenarios, and the experiments focus on sample
+        sizes up to n = 200. However, it is important to understand how the method behaves as more data become
+        available. Experiments with larger sample sizes would help clarify the trade-off between the advantages of
+        LLM-based graph construction and purely data-driven alternatives.
+     3. As acknowledged in the limitations section, the proposed approach exploits semantic information contained
+        in feature names and descriptions, whereas most non-LLM baselines cannot use such information. This raises
+        questions about the fairness of the comparison. An informative additional experiment would be to
+        anonymize feature names (e.g., replacing them with V1, V2, ...) and evaluate how much the performance
+        depends on semantic information provided by the feature names.
+   Comments Suggestions And Typos:
+   Please address the weaknesses discussed above.
+   Confidence: 3 = Pretty sure, but there's a chance I missed something. Although I have a good feel for this area
+   in general, I did not carefully check the paper's details, e.g., the math or experimental design.
+   Soundness: 3.5
+   Excitement: 3 = Interesting: I might mention some points of this paper to others and/or attend its presentation
+   in a conference if there's time.
+   Overall Assessment: 3.5 = Borderline Conference
+   Ethical Concerns:
+   There are no concerns with this submission
+   Needs Ethics Review: No
+   Reproducibility: 4 = They could mostly reproduce the results, but there may be some variation because of
+   sample variance or minor variations in their interpretation of the protocol or method.
+   Datasets: 3 = Potentially useful: Someone might find the new datasets useful for their work.
+   Software: 4 = Useful: I would recommend the new software to other researchers or developers for their ongoing
+   work.
+   Knowledge Of Or Educated Guess At Author Identity: No
+   Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Knowledge Of Paper Source: N/A, I do not know anything about the paper from outside sources
+   Impact Of Knowledge Of Paper: N/A, I do not know anything about the paper from outside sources
+   Reviewer Certification: I certify that the review I entered accurately reflects my assessment of the work. If you
+   used any type of automated tool to help you craft your review, I hereby certify that its use was restricted to
+   improving grammar and style, and the substance of the review is either my own work or the work of an
+   acknowledged secondary reviewer.
+   Publication Ethics Policy Compliance: I used a privacy-preserving tool exclusively for the use case(s) approved
+   by PEC policy, such as language edits
+
+                                                   Add:    Author-Editor Confidential Comment                   Review Issue Report
+
+       −
+       ＝     Official Comment by Authors
+       ≡
+              Official Comment
+              by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3),
+              Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                16 Jul 2026, 18:10
+                Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer iRH3
+             Comment:
+             Dear Reviewer iRH3,
+             Thank you for your constructive review. We wanted to gently follow up in case you had not yet had a
+             chance to review our response, which addresses each of your concerns on direction-aware structural
+             evaluation, behavior beyond the low-data regime, and the semantic-prior boundary with a new
+             anonymization ablation (Exp-2). We would value any further comments or questions during the
+             discussion period.
+             Best regards, The Authors
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 15/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+
+                                                                                Add:    Author-Editor Confidential Comment
+
+
+       −
+       ＝     Response to Reviewer iRH3
+       ≡
+              Official Comment
+              by Authors ( Yongqi Zhang (/profile?id=~Yongqi_Zhang2), Haoyang LI (/profile?id=~Haoyang_LI3),
+              Yujia Zheng (/profile?id=~Yujia_Zheng1), Siyi Liu (/profile?id=~Siyi_Liu1))
+                14 Jul 2026, 01:36
+                Program Chairs, Senior Area Chairs, Area Chairs, Reviewers Submitted, Authors, Reviewer iRH3
+             Comment:
+             We thank Reviewer iRH3 for the careful and constructive review. We respond to each weakness in order,
+             foregrounding (i) the direction-aware structural evaluation already in the submission (§4.4) and (ii) a
+             new task-and-field anonymization ablation (Exp-2).
+             Experiment numbering (Exp-1–4) is shared across all responses and defined in the General Response.
+
+             W1: Direction-Aware Structural Recovery
+                  "It would also be valuable to evaluate the correctness of the learned graph structure, particularly
+                  edge directions, on datasets where ground-truth dependency structures are available."
+
+             This is an important criterion that deserved greater visibility. Section 4.4 already includes this
+             evaluation: SHD against three ground-truth DAGs (Asia, Child, Insurance), where every reversed
+             edge is explicitly penalized (§4.4, Figure 3, l.470–490).
+                                                                                        ∈
+             We evaluate Asia (8 nodes), Child (20), and Insurance (27) for n {20, 50, 100, 200}. Structural Hamming
+             Distance counts the edge insertions, deletions, and reversals needed to recover the reference DAG;
+             StructSynth attains the lowest or near-lowest SHD on all three, with its clearest advantage at n ≤ 50.
+             Directionality is functionally necessary because the DAG defines the topological generation schedule,
+             but it is not an ontological or causal claim (Appendix D). Consistent with this functional role, removing
+             topological order alone lowers AUC by 1.1 points (Table 3). Replacing the StructSynth graph with PC- or
+             NoTears-discovered alternatives — which differ in both edge set and orientation — lowers it by 1.0 and
+             1.4 points respectively.
+
+             W2: Behavior Beyond the Low-Data Regime
+                  "Experiments with larger sample sizes would help clarify the trade-off between the advantages of
+                  LLM-based graph construction and purely data-driven alternatives."
+                      About OpenReview (/about)                                                       Contact (/contact)
+             From n = 20 to 200, StructSynth remains stable across utility, fidelity, and privacy, with its largest
+           FAQ (https://docs.openreview.net/getting-                         Hosting a Venue (/group?
+            advantage at n ≤ 50; the convergence trend the reviewer anticipates is already measurable in
+              started/frequently-asked-questions)
+            range (§4.5, Figure 4; §4.4, Figure 3).                        id=OpenReview.net/Support)
+                         Sponsors
+             n ≤ 200 is the designed(/sponsors)
+                                      operating range (§1, l.040–047). TheTerms       of Use
+                                                                             utility gap      (/legal/terms)
+                                                                                         narrows                  / Privacy
+                                                                                                    toward n = 200,  and FCIPolicy
+             and NoTears approach StructSynth's SHD as n increases (§4.4, Figure 3) — exactly  (/legal/privacy)
+                                                                                                      the trade-off the
+             reviewer asks   about. The paper
+                         All Venues (/venues)  already identifies the method   as  best suited  to severely
+                                                                                             Donate (/donate)limited data
+             (especially n ≤ 100) and notes diminished advantages when statistical structure learning becomes
+             reliable (Appendix K.3).
+                         OpenReview (/about) is a long-term project to advance science through improved peer
+             These observations   motivate
+                            review with legalthe hypothesis
+                                              nonprofit     thatWe
+                                                        status.   beyond  n = 200,
+                                                                    gratefully      stronger the
+                                                                               acknowledge    association   estimates
+                                                                                                    support of  the will
+             reduce the relative value of the  LLM semantic
+                                         OpenReview   Sponsorsprior while StructSynth's
+                                                                 (/sponsors). ©          absolute performance remains
+                                                                                 2026 OpenReview
+             competitive.
+
+             W3: Task-and-Field Anonymization
+                  "An informative additional experiment would be to anonymize feature names [...] and evaluate how
+                  much the performance depends on semantic information provided by the feature names."
+
+             StructSynth remains functional without semantic headers — statistical association scores
+             compensate — with a task-dependent contribution from semantic priors (Exp-2).
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 16/17
+2026/7/18 21:22                 StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models | OpenReview
+             StructSynth pairs semantic reasoning with observed association scores (Cramér's V, |r|, and correlation
+             ratio), so the statistical channel remains available when names are opaque (§3.1.2, l.249–258). We
+             anonymized all column names and task/column descriptions while keeping values unchanged (Exp-2)
+             (gpt-5-mini, 100 real rows, 1,000 synthetic rows; 0–1 scale).
+
+              Dataset Condition            Utility      Fidelity ↓ DCR (ideal 0.50)
+              Anxiety Original             AUC 0.865         0.579                0.447
+              Anxiety Anonymized AUC 0.850                   0.534                0.564
+              Salary      Original           R² 0.560        0.646                0.501
+              Salary      Anonymized         R² 0.462        0.615                0.412
+
+             On Anxiety, anonymization costs 1.5 AUC points (0.865 → 0.850) but improves fidelity (0.579 → 0.534),
+             suggesting the two channels play complementary roles: association-only graphs track pairwise
+             statistics more tightly, while semantic edges add utility-relevant structure. On Salary, the original
+             retains a larger advantage (R² 0.560 → 0.462), indicating that semantic priors contribute more to
+             regression tasks involving fine-grained continuous dependencies.
+
+             Revision plan. We will: (1) rename §4.4 to surface SHD's edge-reversal penalty and direction-aware
+             evaluation (W1); (2) state the operating range, convergence evidence, and clearly qualified n > 200
+             hypothesis in Limitations (W2); (3) add the anonymization ablation and semantic-prior boundary
+             conditions to the appendix (W3).
+             We hope these results address your concerns; we would be glad to run further analyses during the
+             discussion period.
+
+                                                                                Add:     Author-Editor Confidential Comment
+
+
+
+
+   Author-Editor Confidential Comment by Program Chairs
+   Author-Editor Confidential Comment by Program Chairs  13 Jun 2026, 14:41
+     Program Chairs, Senior Area Chairs, Area Chairs, Authors
+   Comment:
+   Dear authors,
+   In your submission you have some captions that are positioned above the tables instead of positioned below.
+   Your submission will not be desk rejected for that, but please make sure to fix it according to the formatting
+   guidelines at https://acl-org.github.io/ACLPUB/formatting.html (https://acl-
+   org.github.io/ACLPUB/formatting.html) during re-submission or camera-ready stage.
+   Yours Sincerely, ARR Editors
+
+                                                                                  Add:    Author-Editor Confidential Comment
+
+
+
+
+https://openreview.net/forum?id=32AX5rq8ip#discussion                                                                                                 17/17
+

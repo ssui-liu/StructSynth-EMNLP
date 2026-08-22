@@ -1,0 +1,26 @@
+{
+  "data_config": {
+    "data_base_dir": "datasets/",
+    "dataset_name": "adult",
+    "num_shots": [100],
+    "seed": [42, 43, 44, 45, 46, 47],
+    "train_file_name": "train.csv",
+    "metadata_file_name": "dataset_info.json"
+  },
+  "llm_config": {
+    "provider_type": "deepseek",
+    "model_name": "deepseek-chat",
+    "api_key": null,
+    "temperature": 0.2
+  },
+  "evaluation": {
+    "ground_truth_path": null,
+    "save_visualizations": true,
+    "visualization_path": "results/visualizations/"
+  },
+  "output": {
+    "save_graph": true,
+    "save_report": true,
+    "output_dir": "results/"
+  }
+} 

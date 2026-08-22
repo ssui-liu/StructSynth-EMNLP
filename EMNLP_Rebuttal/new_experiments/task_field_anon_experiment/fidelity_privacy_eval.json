@@ -1,0 +1,22 @@
+[
+  {
+    "experiment": "anxiety / field_anon",
+    "pairwise_correlation_diff": 0.4897514776880548,
+    "dcr": 0.87
+  },
+  {
+    "experiment": "anxiety / no_anon",
+    "pairwise_correlation_diff": 0.5310151111298815,
+    "dcr": 0.69
+  },
+  {
+    "experiment": "salary / field_anon",
+    "pairwise_correlation_diff": 0.6735779889329853,
+    "dcr": 0.766
+  },
+  {
+    "experiment": "salary / no_anon",
+    "pairwise_correlation_diff": 0.7087500695367638,
+    "dcr": 0.931
+  }
+]
