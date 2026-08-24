@@ -1,9 +1,7 @@
 \section*{Limitations}
 
-\paragraph{LLM semantic prior.}
-\textsf{StructSynth}'s structure discovery quality depends on the LLM's ability to interpret feature names and domain context.
-When schemas are opaque (e.g., anonymized identifiers such as \texttt{V1, V2}) or use highly specialized nomenclature (e.g., genomic locus codes), the semantic prior weakens considerably.
-Although statistical association cues can partially compensate, a fully anonymized schema effectively reduces our hybrid discovery to a purely statistical method, forfeiting the complementary benefit that motivates the design.
+\paragraph{\textcolor{blue}{Evaluation range.}}
+\textcolor{blue}{Our evaluation focuses on low-data settings with $n\leq 200$; whether \textsf{StructSynth}'s advantages over baselines persist at larger sample sizes remains untested.}
 
 \paragraph{DAG assumption.}
 The directed acyclic graph formulation, while well-suited for autoregressive generation, cannot directly represent cyclic or bidirectional dependencies.

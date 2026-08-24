@@ -171,7 +171,7 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 \small
 \begin{tabular}{lcccccc}
 \toprule
-\textbf{Dataset} & \textbf{\# Num Feat.} & \textbf{\# Cat Feat.} & \textbf{\# Classes} & \textbf{Domain} & \textbf{Task} & \textbf{Pre-LLM Knowledge Cutoff} \\
+\textbf{Dataset} & \textbf{\# Num Feat.} & \textbf{\# Cat Feat.} & \textbf{\# Classes} & \textbf{Domain} & \textbf{Task} & \textbf{Post-LLM Knowledge Cutoff} \\
 \midrule
 Adult~\cite{adult_2} & 4 & 11 & 2 & Social/Census & Binary & \textcolor{darksalmon}{\XSolidBrush} \\
 Anxiety~\cite{kaggleSocialAnxiety} & 12 & 7 & 3 & Medical/Health & Multi-Class & \textcolor{green(pigment)}{\Checkmark} \\
@@ -189,7 +189,7 @@ The datasets utilized in this study are summarized in Table~\ref{tab:dataset_sum
 
 \subsection{Baselines}
 \label{app:baselines}
-For all baseline methods, with the exception of CuratedLLM, we utilize the implementations provided in the SynthCity~\cite{qian2023synthcity} library. These models were run using their default hyperparameter configurations to ensure a standardized comparison. For CuratedLLM, we used the official source code provided by the authors, adapting it to our experimental setup. To ensure a fair comparison, it was configured with the same Large Language Model (LLM) settings as our proposed \textsf{StructSynth}, with detailed parameters provided in Table~\ref{tab:hyperparameters}.
+\textcolor{blue}{For baselines available in SynthCity~\cite{qian2023synthcity}, we use the provided implementations with their default hyperparameters. We evaluate GraDe using the authors' official implementation, including HyFD-based functional-dependency extraction, dynamic sparse attention, and the FD-alignment objective. We use the official CLLM implementation with the same LLM settings as \textsf{StructSynth}. For PAFT, we use the official implementation with its DistilGPT2 fine-tuning setup; its outputs are evaluated under the same 100-shot XGBoost protocol. Table~\ref{tab:hyperparameters} reports the shared evaluator settings and the LLM configuration used for CLLM and \textsf{StructSynth}.}
 
 \subsection{Implementation and Hyperparameters}
 \label{app:hyperparameter}
@@ -224,8 +224,9 @@ The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth},
     \multirow{2}{*}{Random Forest} & n\_estimators = 200 \\
     & n\_jobs = $-1$ \\
     \midrule
-    \multirow{2}{*}{\makecell[l]{Logistic Reg.\\/ Ridge}} & max\_iter = 1000 (Logistic Reg.) \\
+    \multirow{3}{*}{\makecell[l]{Logistic Reg.\\/ Ridge}} & max\_iter = 1000 (Logistic Reg.) \\
     & solver = `lbfgs' (Logistic Reg.) \\
+    & alpha = 1.0 (Ridge) \\
     \midrule
     \multirow{2}{*}{MLP} & hidden\_layer\_sizes = (100,) \\
     & max\_iter = 500 \\
@@ -337,7 +338,7 @@ To provide a concrete illustration of the structural discovery capabilities disc
 
 In contrast, baseline methods exhibit significant structural distortions:
 \begin{itemize}[leftmargin=*]
-    \item \textbf{GraDe} tends to produce an overly dense graph with numerous spurious edges (e.g., direct links between \textit{asia} and \textit{dysp}), likely due to its reliance on attention maps that can conflate indirect associations with direct dependencies.
+    \item \textcolor{blue}{\textbf{GraDe}'s extracted FD graph is denser than the reference DAG in this $n=100$ example and contains spurious edges, such as a direct link between \textit{asia} and \textit{dysp}.}
     \item \textbf{GOGGLE}, while capturing some dependencies, suffers from edge reversals (e.g., \textit{lung} $\rightarrow$ \textit{smoke}) and misses critical connections (e.g., \textit{bronc} is isolated from \textit{dysp}). This reflects the instability of end-to-end differentiable structure learning in low-data regimes.
     \item \textbf{NoTears} yields a sparse and fragmented graph, failing to identify the relationship between \textit{smoke} and \textit{lung}, which are central to the dataset's dependency structure.
     \item \textbf{FCI}, a constraint-based method, correctly identifies some skeletons but leaves many edges undirected (represented by bi-directed or unoriented edges), failing to provide a clear generative order.
@@ -352,46 +353,56 @@ These visual examples corroborate our quantitative findings in Figure~\ref{fig:s
 \label{fig:structure_examples}
 \end{figure*}
 
-\section{Sensitivity to Downstream Model Choice}
-\label{app:downstream_sensitivity}
+\section{\textcolor{blue}{Additional Results on Post-Cutoff Datasets}}
+\label{app:post_cutoff_robustness}
 
-To verify that the gains reported in the main experiments are not specific to a single evaluation model, we compare \textsf{StructSynth} and CLLM under four downstream learners---XGBoost (tree-based), Random Forest (ensemble), Logistic Regression / Ridge (linear), and MLP (neural)---on four representative datasets spanning classification, regression, and post-cutoff settings (Table~\ref{tab:downstream_sensitivity}). \textsf{StructSynth} wins 14 out of 16 cells, outperforming both CLLM and the train-only baseline across all three classification datasets under every evaluation model. The two exceptions occur on the Salary regression task, where Ridge and MLP favor $\mathcal{D}_\mathtt{train}$ and CLLM respectively, suggesting that linear and shallow neural models are more sensitive to distributional shifts in regression settings. Across classification datasets, the margin is largest for MLP (+3.26 AUC on Adult), indicating that neural models benefit most from the improved distributional quality of StructSynth's synthetic data.
+\paragraph{\textcolor{blue}{Sensitivity to Training Sample Size.}}
+\textcolor{blue}{Complementing the Adult analysis in Figure~\ref{fig:influence_n}, Table~\ref{tab:post_cutoff_vary_n} reports downstream utility on Anxiety and Salary across $n\in\{20,50,100,200\}$.}
 
-\begin{table}[h]
-\small
+\begin{table}[t]
 \centering
-\caption{Downstream performance (\%) with different evaluation models on four representative datasets. (C): AUC, (R): $R^2$. Best per cell in \textbf{bold}.}
-\setlength{\tabcolsep}{0.9mm}
-\begin{tabular}{ll|ccc}
-    \hline
-    \textbf{Dataset} & \textbf{Eval.\ Model} & $\mathcal{D}_\mathtt{train}$ & \textbf{CLLM} & \textbf{StructSynth} \\
-    \hline
-    \multirow{4}{*}{\makecell[l]{Adult\\(C)}}
-    & XGBoost & $82.51$ & $83.95$ & $\boldsymbol{85.55}$ \\
-    & Random Forest & $85.03$ & $84.63$ & $\boldsymbol{87.45}$ \\
-    & Logistic Reg. & $85.68$ & $85.49$ & $\boldsymbol{87.80}$ \\
-    & MLP & $83.63$ & $83.59$ & $\boldsymbol{86.85}$ \\
-    \hline
-    \multirow{4}{*}{\makecell[l]{Anxiety$^\dag$\\(C)}}
-    & XGBoost & $85.49$ & $85.17$ & $\boldsymbol{86.45}$ \\
-    & Random Forest & $86.85$ & $85.14$ & $\boldsymbol{87.04}$ \\
-    & Logistic Reg. & $87.26$ & $85.87$ & $\boldsymbol{87.82}$ \\
-    & MLP & $84.85$ & $82.27$ & $\boldsymbol{85.76}$ \\
-    \hline
-    \multirow{4}{*}{\makecell[l]{Salary$^\dag$\\(R)}}
-    & XGBoost & $49.71$ & $54.53$ & $\boldsymbol{55.98}$ \\
-    & Random Forest & $55.16$ & $51.29$ & $\boldsymbol{57.12}$ \\
-    & Ridge & $\boldsymbol{59.48}$ & $52.58$ & $56.80$ \\
-    & MLP & $44.61$ & $\boldsymbol{46.00}$ & $42.64$ \\
-    \hline
-    \multirow{4}{*}{\makecell[l]{Churn\\(C)}}
-    & XGBoost & $86.86$ & $89.81$ & $\boldsymbol{90.39}$ \\
-    & Random Forest & $90.78$ & $91.66$ & $\boldsymbol{92.49}$ \\
-    & Logistic Reg. & $90.61$ & $91.91$ & $\boldsymbol{92.19}$ \\
-    & MLP & $91.71$ & $92.36$ & $\boldsymbol{93.61}$ \\
-    \hline
+\small
+\setlength{\tabcolsep}{3.5pt}
+\caption{\textcolor{blue}{Downstream utility across training-set sizes on the post-cutoff datasets. Both methods generate 1,000 synthetic rows per run. Anxiety AUC and Salary $R^2$ are reported on a 0--100 scale. The higher reported score in each comparison is in \textbf{bold}.}}
+\label{tab:post_cutoff_vary_n}
+{\color{blue}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Dataset} & \textbf{Method} & $n=20$ & $n=50$ & $n=100$ & $n=200$ \\
+\midrule
+\multirow{2}{*}{Anxiety (AUC)}
+  & CLLM        & 77.52          & 81.87          & 85.17          & 85.44 \\
+  & StructSynth & \textbf{80.83} & \textbf{83.50} & \textbf{86.45} & \textbf{87.23} \\
+\midrule
+\multirow{2}{*}{Salary ($R^2$)}
+  & CLLM        & 48.16          & 52.34          & 54.53          & 61.39 \\
+  & StructSynth & \textbf{50.56} & \textbf{54.90} & \textbf{55.98} & \textbf{63.54} \\
+\bottomrule
 \end{tabular}
-\label{tab:downstream_sensitivity}
+}
+}
+\end{table}
+
+\paragraph{\textcolor{blue}{LLM Backbone.}}
+\textcolor{blue}{Table~\ref{tab:qwen25_post_cutoff} reports an additional evaluation with Qwen2.5-32B at $n=100$ on the two post-cutoff datasets.}
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{\textcolor{blue}{Downstream utility on the post-cutoff datasets with Qwen2.5-32B at $n=100$ and 1,000 synthetic rows per run. Results are reported on a 0--1 scale as mean $\pm$ standard deviation across runs; the higher mean for each dataset is in \textbf{bold}.}}
+\label{tab:qwen25_post_cutoff}
+{\color{blue}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Dataset} & \textbf{Metric} & \textbf{CLLM} & \textbf{StructSynth} \\
+\midrule
+Anxiety & AUC   & $0.843 \pm 0.012$ & $\mathbf{0.856} \pm 0.014$ \\
+Salary  & $R^2$ & $0.518 \pm 0.037$ & $\mathbf{0.532} \pm 0.036$ \\
+\bottomrule
+\end{tabular}
+}
 \end{table}
 
 \section{Efficiency Analysis}
