@@ -21,7 +21,7 @@ The graph is initialized as $G_0 = (V_{\mathtt{source}}, \emptyset)$ and expande
 \subsubsection{Expansion and Reasoned Link Generation}
 
 At iteration $t$, let $G_t = (V_t, E_t)$ denote the current graph. Each BFS step dequeues a node $A_i$ and computes normalized association scores $\mathcal{S}(A_i) \in [0,1]^{K-1}$ between $A_i$ and all other attributes~\cite{agresti2011categorical}, using Cram\'{e}r's $V$ for categorical pairs, $|r|$ (absolute Pearson correlation) for continuous pairs, and the correlation ratio for mixed pairs (see Appendix~\ref{app:association_scores} for details).
-The LLM is then queried with a prompt $\pi_{\mathtt{generate}}$ that integrates the current graph state $G_t$, the node $A_i$, and $\mathcal{S}(A_i)$---pairing statistical evidence with the LLM's semantic prior so that each compensates the other's weakness at small $n$. The model proposes a set of direct successors for $A_i$, each accompanied by a textual rationale:
+The LLM is then queried with a prompt $\pi_{\mathtt{generate}}$ that integrates the current graph state $G_t$, the node $A_i$, and $\mathcal{S}(A_i)$---pairing statistical evidence with the LLM's semantic prior so that each compensates the other's weakness at small $n$. The model proposes a set of direct successors for $A_i$, each accompanied by a textual rationale~\cite{liu-etal-2024-unleashing-power}:
 \begin{equation}
     P_i = f_{\mathtt{LLM}}(\pi_{\mathtt{generate}}(A_i, G_t, \mathcal{S}(A_i), \mathcal{D}_{\mathtt{few\_shot}})).
 \end{equation}
@@ -38,10 +38,9 @@ This expansion-resolution cycle continues until the BFS queue is empty, yielding
 \begin{table*}[ht]
 
     \centering
-    \caption{Comparison of Models on Downstream Model Performance (\%). (C) and (R) denote classification and regression tasks, respectively. $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
     \resizebox{\textwidth}{!}{%
     \small
-    \begin{tabular}{ll llllll cc}
+    \begin{tabular}{ll llllll cr}
     \toprule
     
     \textbf{Type} & \textbf{Method} & 
@@ -76,6 +75,7 @@ This expansion-resolution cycle continues until the BFS queue is empty, yielding
     
     \bottomrule
     \end{tabular}}%
+    \caption{Comparison of Models on Downstream Model Performance (\%). (C) and (R) denote classification and regression tasks, respectively. $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
     \label{tab:results_comparison_performance}
 \end{table*}
 

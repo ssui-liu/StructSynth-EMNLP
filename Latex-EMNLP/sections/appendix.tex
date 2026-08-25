@@ -31,7 +31,7 @@ Beyond the prompt-based and structure-aware LLM methods discussed in the main te
 Conventional approaches to dependency structure discovery primarily fall into two categories: constraint-based and score-based methods. Constraint-based methods, such as the Peter--Clark (PC) algorithm~\cite{spirtes2000causation} and the Fast Causal Inference (FCI) algorithm~\cite{spirtes1995causal}, utilize conditional independence tests to iteratively prune edges from an initially fully connected graph. While PC assumes causal sufficiency (no hidden confounders), FCI is specifically designed to handle latent variables. In contrast, score-based methods optimize a global scoring criterion to identify the most suitable graph structure. A representative example is the Greedy Equivalence Search (GES)~\cite{chickering2002optimal}, which searches through equivalence classes to maximize a scoring function. However, both constraint-based and score-based approaches typically yield only Markov equivalence classes, thereby failing to distinguish between structurally distinct graphs that encode identical conditional independencies. To address this limitation, Functional Causal Models (FCMs) impose stronger assumptions regarding the data generation process. FCMs model effects explicitly as functions of direct causes combined with independent noise terms, enabling the identification of causal directions since independence between cause and noise typically breaks down when reversed~\cite{shimizu2006linear, hoyer2008nonlinear, zhang2009identifiability}. Recent advancements have generalized this approach, introducing conditions such as Generalized Independent Noise (GIN) to manage latent causal variables in linear, non-Gaussian settings~\cite{xie2020generalized}. However, the statistical power of these traditional algorithms heavily relies on a large number of samples, making them unreliable for structure discovery in the low-data regimes addressed by our work.
 
 \subsection{LLM-based Structure Learning}
-Leveraging Large Language Models (LLMs) for structure learning has recently emerged as a promising direction due to their inherent reasoning capabilities. Several paradigms have been proposed for integrating LLMs into structure discovery. Initially, methods focused on querying LLMs about pairwise causal relationships, showing strong accuracy in determining causal directions between variable pairs~\cite{kiciman2023causal}. To overcome the quadratic complexity inherent to pairwise approaches, more scalable methods employing breadth-first search (BFS) strategies have been introduced, reframing structure learning as a graph traversal task and significantly reducing the required number of queries to the LLM~\cite{jiralerspong2024efficient, zanna2025fairness}. A third paradigm enhances reliability by integrating an iterative supervision loop, in which traditional structure-learning algorithms propose initial graphs that are subsequently validated or corrected by LLMs. This method grounds LLM-generated structures in empirical evidence, thereby reducing hallucination risks~\cite{ban2023causal}. LLM-based structure discovery methods have demonstrated notable effectiveness across diverse domains, including medicine~\cite{naik2024applying, antonucci2023zero, arsenyan2024large}, economics~\cite{causal4financial}, and social sciences~\cite{manning2024automated}. Inspired by the success of LLMs in leveraging prior knowledge for domain-specific reasoning, our work integrates a scalable, LLM-driven paradigm for robust structure discovery.
+Leveraging Large Language Models (LLMs) for structure learning has recently emerged as a promising direction due to their inherent reasoning capabilities. Several paradigms have been proposed for integrating LLMs into structure discovery. Initially, methods focused on querying LLMs about pairwise causal relationships, showing strong accuracy in determining causal directions between variable pairs~\cite{kiciman2023causal}. To overcome the quadratic complexity inherent to pairwise approaches, more scalable methods employing breadth-first search (BFS) strategies have been introduced, reframing structure learning as a graph traversal task and significantly reducing the required number of queries to the LLM~\cite{jiralerspong2024efficient, zanna2025fairness}. A third paradigm enhances reliability by integrating an iterative supervision loop, in which traditional structure-learning algorithms propose initial graphs that are subsequently validated or corrected by LLMs. This method grounds LLM-generated structures in empirical evidence, thereby reducing hallucination risks~\cite{ban2023causal}. LLM-based structure discovery methods have demonstrated notable effectiveness across diverse domains, including medicine~\cite{naik2024applying, antonucci2023zero, arsenyan2024large}, economics~\cite{causal4financial}, social sciences~\cite{manning2024automated}, and complex networks~\cite{mao2024critical}. Inspired by the success of LLMs in leveraging prior knowledge for domain-specific reasoning~\cite{liu2025agenthpo}, our work integrates a scalable, LLM-driven paradigm for robust structure discovery.
 
 \section{Structural Formulation: Why a DAG?}
 \label{sec:why_dag}
@@ -42,7 +42,7 @@ A central design choice in \textsf{StructSynth} is the representation of inter-f
 We emphasize that our DAG is a \emph{generative dependency structure}: its edges encode statistical and probabilistic dependencies inferred from limited observations, not claims of ground-truth causality. This pragmatic interpretation aligns with the foundational Bayesian Network (BN) literature~\cite{pearl2009causality, koller2009probabilistic}, where DAGs serve as compact encodings of conditional independence relationships without necessarily asserting causal direction. The distinction is important: StructSynth uses the discovered DAG to \emph{organize} the generation process, not to make ontological claims about the data-generating mechanism.
 
 \paragraph{Functional Necessity of Directionality.}
-The Graph-Planned Conditional Synthesis stage (Section~\ref{sec:synth}) generates feature values autoregressively: each feature is produced conditioned on values already generated for its parent nodes. This autoregressive process inherently requires a \emph{total ordering} over features to determine which values are available as conditioning context at each step. An undirected graph $\{A\text{---}B, B\text{---}C\}$ is ambiguous---it cannot specify whether $A$ should be generated before $C$ or vice versa. A DAG $\{A \to B \to C\}$ resolves this ambiguity by defining a topological order that directly translates into a layer-by-layer generation schedule. Even when the underlying statistical relationship between two features is symmetric (e.g., $\mathrm{Age} \leftrightarrow \mathrm{Income}$), the generation process \emph{must} select a direction---the DAG provides exactly this. The specific direction chosen does not affect \emph{whether} the dependency is captured, only the \emph{order} in which values are conditioned.
+The Graph-Planned Conditional Synthesis stage (Section~\ref{sec:synth}) generates feature values autoregressively: each feature is produced conditioned on values already generated for its parent nodes. This autoregressive process inherently requires a \emph{total ordering} over features to determine which values are available as conditioning context at each step. An undirected graph $\{A\text{---}B, B\text{---}C\}$ is ambiguous---it cannot specify whether $A$ should be generated before $C$ or vice versa. A DAG $\{A \to B \to C\}$ resolves this ambiguity by defining a topological order that directly translates into a layer-by-layer generation schedule, much as directed dependency structures schedule computation in other graph-based settings~\cite{du2026graphoracle}. Even when the underlying statistical relationship between two features is symmetric (e.g., $\mathrm{Age} \leftrightarrow \mathrm{Income}$), the generation process \emph{must} select a direction---the DAG provides exactly this. The specific direction chosen does not affect \emph{whether} the dependency is captured, only the \emph{order} in which values are conditioned.
 
 \paragraph{Acyclicity as a Mathematical Prerequisite.}
 Beyond directionality, acyclicity is essential for the generation process to be well-defined. If cycles were permitted---e.g., $A \to B \to C \to A$---the generation would encounter circular dependencies: the value of $A$ would depend on $C$, which depends on $B$, which in turn depends on $A$, creating an unresolvable loop. The DAG constraint guarantees the existence of a valid topological ordering over nodes, ensuring that every feature can be generated exactly once, conditioned only on features whose values have already been determined.
@@ -165,8 +165,6 @@ Algorithm~\ref{alg:structsynth} provides the complete pseudocode for the \textsf
 
 \begin{table*}[t]
 \centering
-\caption{Summary of Dataset Characteristics.}
-\label{tab:dataset_summary}
 \resizebox{\textwidth}{!}{%
 \small
 \begin{tabular}{lcccccc}
@@ -181,6 +179,8 @@ Obesity~\cite{obesity} & 7 & 8 & - & Medical/Health & Regression & \textcolor{da
 Churn~\cite{churn} & 8 & 4 & 2 & Business & Binary & \textcolor{darksalmon}{\XSolidBrush} \\
 \bottomrule
 \end{tabular}}%
+\caption{Summary of Dataset Characteristics.}
+\label{tab:dataset_summary}
 \end{table*}
 
 \subsection{Datasets}
@@ -197,8 +197,6 @@ The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth},
 
 \begin{table}[t]
 \centering
-\caption{Hyperparameter Settings for Our Experiments.}
-\label{tab:hyperparameters}
 \begin{tabular}{ll}
     \toprule
     \textbf{Group} & \textbf{Hyperparameter Settings} \\
@@ -236,6 +234,8 @@ The detailed hyperparameter configurations for the LLMs in \textsf{StructSynth},
     & stable = True \\
     \bottomrule
 \end{tabular}
+\caption{Hyperparameter Settings for Our Experiments.}
+\label{tab:hyperparameters}
 \end{table}
 
 \subsection{Evaluation Metrics}
@@ -363,8 +363,6 @@ These visual examples corroborate our quantitative findings in Figure~\ref{fig:s
 \centering
 \small
 \setlength{\tabcolsep}{3.5pt}
-\caption{\textcolor{blue}{Downstream utility across training-set sizes on the post-cutoff datasets. Both methods generate 1,000 synthetic rows per run. Anxiety AUC and Salary $R^2$ are reported on a 0--100 scale. The higher reported score in each comparison is in \textbf{bold}.}}
-\label{tab:post_cutoff_vary_n}
 {\color{blue}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{llcccc}
@@ -382,6 +380,8 @@ These visual examples corroborate our quantitative findings in Figure~\ref{fig:s
 \end{tabular}
 }
 }
+\caption{\textcolor{blue}{Downstream utility across training-set sizes on the post-cutoff datasets. Both methods generate 1,000 synthetic rows per run. Anxiety AUC and Salary $R^2$ are reported on a 0--100 scale. The higher reported score in each comparison is in \textbf{bold}.}}
+\label{tab:post_cutoff_vary_n}
 \end{table}
 
 \paragraph{\textcolor{blue}{LLM Backbone.}}
@@ -391,8 +391,6 @@ These visual examples corroborate our quantitative findings in Figure~\ref{fig:s
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
-\caption{\textcolor{blue}{Downstream utility on the post-cutoff datasets with Qwen2.5-32B at $n=100$ and 1,000 synthetic rows per run. Results are reported on a 0--1 scale as mean $\pm$ standard deviation across runs; the higher mean for each dataset is in \textbf{bold}.}}
-\label{tab:qwen25_post_cutoff}
 {\color{blue}
 \begin{tabular}{llcc}
 \toprule
@@ -403,6 +401,8 @@ Salary  & $R^2$ & $0.518 \pm 0.037$ & $\mathbf{0.532} \pm 0.036$ \\
 \bottomrule
 \end{tabular}
 }
+\caption{\textcolor{blue}{Downstream utility on the post-cutoff datasets with Qwen2.5-32B at $n=100$ and 1,000 synthetic rows per run. Results are reported on a 0--1 scale as mean $\pm$ standard deviation across runs; the higher mean for each dataset is in \textbf{bold}.}}
+\label{tab:qwen25_post_cutoff}
 \end{table}
 
 \section{Efficiency Analysis}
@@ -416,9 +416,6 @@ Importantly, this ``input-dominant'' overhead implies that the \textbf{real mone
 
 \begin{table*}[t]
   \centering
-  \caption{Token usage under 100-shot ($\times 10^3$ tokens). We report input/output tokens for \textsc{CLLM} and \textsf{StructSynth}; overhead compares \textsf{StructSynth} combined totals (graph+table) against \textsc{CLLM} totals.}
-  \label{tab:token_usage}
-
   \resizebox{\textwidth}{!}{%
   \small
   \renewcommand{\arraystretch}{1.12}
@@ -458,6 +455,8 @@ Importantly, this ``input-dominant'' overhead implies that the \textbf{real mone
       & Relative Total (\%)  &  41.7 &  37.9 &  36.5 &  19.2 &  40.6 &  23.1 &  31.0 \\
     \bottomrule
   \end{tabular}}%
+  \caption{Token usage under 100-shot ($\times 10^3$ tokens). We report input/output tokens for \textsc{CLLM} and \textsf{StructSynth}; overhead compares \textsf{StructSynth} combined totals (graph+table) against \textsc{CLLM} totals.}
+  \label{tab:token_usage}
 \end{table*}
 
 \section{Extended Discussion}

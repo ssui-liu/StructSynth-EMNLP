@@ -18,11 +18,9 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
 
 \begin{table*}[ht]
 \centering
-\caption{Comparison of Models on Privacy Preservation and Statistical Fidelity Error (\%). $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
-
 \resizebox{\textwidth}{!}{%
 \small
-\begin{tabular}{ll llllll cc}
+\begin{tabular}{ll llllll cr}
 \toprule
 
 \textbf{Type} & \textbf{Method} & 
@@ -78,6 +76,7 @@ We use \texttt{gpt-4o-mini} with a temperature of 0.9 for both the CLLM and \tex
     Ours & StructSynth & $57.60_{\pm 3.13}$ & $57.86_{\pm 1.98}$ & $57.23_{\pm 1.69}$ & $64.64_{\pm 0.96}$ & $61.14_{\pm 1.10}$ & $58.63_{\pm 2.66}$ & $59.52$ & \textcolor{blue}{$9.50$} \\
 \bottomrule
 \end{tabular}}%
+\caption{Comparison of Models on Privacy Preservation and Statistical Fidelity Error (\%). $^\dag$ indicates datasets created post LLM knowledge cutoff. Best results are in \textbf{bold}; second-best are \underline{underlined}.}
 \label{tab:results_comparison_merged}
 
 \end{table*}
@@ -93,8 +92,6 @@ Table~\ref{tab:results_comparison_performance} summarizes the downstream results
 \begin{table}[t]
 \small
 \centering
-\caption{\textcolor{blue}{Downstream utility (\%) across four evaluator families and four representative datasets. Values are means over 10 runs. (C) denotes AUC for classification, (R) denotes $R^2$ for regression, and $^\dag$ marks a post-cutoff dataset. The highest score in each row is in \textbf{bold}.}}
-\label{tab:downstream_sensitivity}
 \setlength{\tabcolsep}{0.9mm}
 {\color{blue}
 \begin{tabular}{ll|ccc}
@@ -127,6 +124,8 @@ Table~\ref{tab:results_comparison_performance} summarizes the downstream results
     \hline
 \end{tabular}
 }
+\caption{\textcolor{blue}{Downstream utility (\%) across four evaluator families and four representative datasets. Values are means over 10 runs. (C) denotes AUC for classification, (R) denotes $R^2$ for regression, and $^\dag$ marks a post-cutoff dataset. The highest score in each row is in \textbf{bold}.}}
+\label{tab:downstream_sensitivity}
 \end{table}
 
 
@@ -155,9 +154,8 @@ To isolate the contributions of our method's two main stages, we evaluate seven 
 \begin{table}[t!]
 \small
 \centering
-
-\caption{Ablation Study on the Adult Dataset.}
 \setlength{\tabcolsep}{1mm}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{ll|ccc}
     \hline
     \multicolumn{2}{c|}{\textbf{Method}} & \textbf{AUC} & \textbf{Fidelity} & \textbf{Privacy} \\ 
@@ -174,7 +172,8 @@ To isolate the contributions of our method's two main stages, we evaluate seven 
     & Bayesian Sampler & 81.17 & \textbf{48.86} & \textbf{50.02} \\
     \hline
 \end{tabular}
-
+}
+\caption{Ablation Study on the Adult Dataset.}
 \label{tab:ablation_study}
 
 \end{table}
@@ -189,8 +188,6 @@ Taken together, these results clarify why \textsf{StructSynth}'s advantage over 
 \centering
 \small
 \setlength{\tabcolsep}{3.5pt}
-\caption{\textcolor{blue}{Task-and-field anonymization on two post-cutoff datasets ($n=100$, 1{,}000 synthetic samples). Utility is AUC for Anxiety and $R^2$ for Salary. Lower Fidelity is better; Privacy (DCR) is evaluated relative to 0.50. Best results are in \textbf{bold}.}}
-\label{tab:anonymization}
 {\color{blue}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{llccc}
@@ -208,6 +205,8 @@ Taken together, these results clarify why \textsf{StructSynth}'s advantage over 
 \end{tabular}
 }
 }
+\caption{\textcolor{blue}{Task-and-field anonymization on two post-cutoff datasets ($n=100$, 1{,}000 synthetic samples). Utility is AUC for Anxiety and $R^2$ for Salary. Lower Fidelity is better; Privacy (DCR) is evaluated relative to 0.50. Best results are in \textbf{bold}.}}
+\label{tab:anonymization}
 \end{table}
 
 
