@@ -1,0 +1,43 @@
+version: 1
+data:
+  name: adult
+  path: ../data/adult/raw_data.csv
+  metadata: ../data/adult/dataset_info.json
+  target_column: salary
+  task_type: classification
+  cleaning: adult
+  shots: [100]
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  test_size: 0.2
+  example_rows: 20
+
+discovery_llm:
+  model: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  temperature: 0.9
+  top_p: 0.95
+  max_tokens: 8000
+  request_limit: 200
+
+generation_llm:
+  model: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  temperature: 0.9
+  top_p: 0.95
+  max_tokens: 8000
+  request_limit: 2000
+
+generation:
+  n_samples: [100, 200, 500, 1000]
+  batch_size: 10
+  max_attempts: 5
+  max_workers: 1
+
+evaluation:
+  protocol: augmentation
+  model: xgboost
+  numeric_scaling: none
+  fidelity_reference: train_test
+
+output_dir: ../runs
+

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-04",
+  "code_baseline": "47d8570",
+  "sources": [
+    {
+      "path": "Latex-EMNLP/sections/method.tex",
+      "sha256": "df0019a50b293447b781bfa54b4198d27ae3096f69e30efb858de2d52aebf06c"
+    },
+    {
+      "path": "Latex-EMNLP/sections/appendix.tex",
+      "sha256": "a6239b2fbad2f965a6d9e15940f548c0e852a92d9f4cbc00a26a9b109472634c"
+    },
+    {
+      "path": "Latex-EMNLP/sections/experiments.tex",
+      "sha256": "96d1582636725a08d5af729f7ca94f8d504f927a77de813de22444ebe98b9b27"
+    },
+    {
+      "path": "Latex-arXiv/sections/method.tex",
+      "sha256": "e2031c6df3d7d0582775ceb9d762007d4bbf6236a8540c062df0482d0d1b0ccc"
+    }
+  ]
+}
