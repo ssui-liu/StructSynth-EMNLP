@@ -11,11 +11,12 @@ import os
 from pathlib import Path
 import threading
 import time
+import uuid
 from typing import Any, Callable, Optional, Protocol
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from .artifacts import canonical_json, fingerprint
+from .artifacts import canonical_json, fingerprint, file_hash
 from .config import LLMConfig
 
 
@@ -100,44 +101,93 @@ def parse_json_content(content):
 class UsageLedger:
     """Append-only request history; resumes budgets from existing requests."""
 
-    def __init__(self, path: str | Path | None = None):
+    def __init__(self, path: str | Path | None = None, *, repair_tail=True):
         self.path = Path(path) if path else None
         self._lock = threading.RLock()
         self.records = []
-        self._inflight = 0
+        self._active = set()
+        positions = {}
+        self.recovered_truncated_tail = False
         if self.path and self.path.exists():
-            for line in self.path.read_text(encoding="utf-8").splitlines():
+            lines = self.path.read_bytes().splitlines(keepends=True)
+            offset = 0
+            for index, line in enumerate(lines):
                 if line.strip():
-                    self.records.append(json.loads(line))
+                    try:
+                        record = json.loads(line)
+                    except (ValueError, UnicodeDecodeError):
+                        # A killed append may leave a partial final line. Keep
+                        # its durable reservation as unknown; never erase a
+                        # complete corrupt record or an error in the middle.
+                        if index != len(lines) - 1 or line.endswith(b"\n"):
+                            raise
+                        if repair_tail:
+                            with self.path.open("r+b") as stream:
+                                stream.truncate(offset)
+                                stream.flush()
+                                os.fsync(stream.fileno())
+                        self.recovered_truncated_tail = True
+                        break
+                    ticket = record.get("attempt_id")
+                    if ticket and ticket in positions:
+                        self.records[positions[ticket]] = record
+                    else:
+                        if ticket:
+                            positions[ticket] = len(self.records)
+                        self.records.append(record)
+                offset += len(line)
+            else:
+                if repair_tail and lines and not lines[-1].endswith(b"\n"):
+                    with self.path.open("ab") as stream:
+                        stream.write(b"\n")
+                        stream.flush()
+                        os.fsync(stream.fileno())
 
-    def reserve(self, config):
+    def _append(self, value):
+        if self.path:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            with self.path.open("a", encoding="utf-8") as stream:
+                stream.write(canonical_json(value) + "\n")
+                stream.flush()
+                os.fsync(stream.fileno())
+
+    def reserve(self, config, record=None):
         with self._lock:
-            if len(self.records) + self._inflight >= config.request_limit:
+            if len(self.records) >= config.request_limit:
                 raise BudgetExceeded(f"Request limit reached: {config.request_limit}")
             if config.token_limit is not None:
-                totals = [r.get("usage", {}).get("total_tokens") for r in self.records]
+                totals = [r.get("usage", {}).get("total_tokens") for r in self.records
+                          if r.get("attempt_id") not in self._active]
                 if any(value is None for value in totals):
                     raise BudgetExceeded("Cannot enforce token limit after a request with unknown usage")
                 if sum(totals) >= config.token_limit:
                     raise BudgetExceeded(f"Accounted token limit reached: {config.token_limit}")
-            self._inflight += 1
+            ticket = uuid.uuid4().hex
+            pending = {**(record or {}), "attempt_id": ticket, "status": "pending",
+                       "usage": TokenUsage().to_dict()}
+            self._append(pending)  # Durable before any HTTP call can begin.
+            self.records.append(pending)
+            self._active.add(ticket)
+            return ticket
 
-    def record(self, value):
+    def record(self, value, ticket=None):
         with self._lock:
-            if self.path:
-                self.path.parent.mkdir(parents=True, exist_ok=True)
-                with self.path.open("a", encoding="utf-8") as stream:
-                    stream.write(canonical_json(value) + "\n")
-                    stream.flush()
-                    os.fsync(stream.fileno())
-            self.records.append(value)
-            self._inflight = max(0, self._inflight - 1)
+            value = {**value, "attempt_id": ticket or uuid.uuid4().hex}
+            self._append(value)
+            if ticket is not None:
+                index = next(i for i, existing in enumerate(self.records) if existing.get("attempt_id") == ticket)
+                self.records[index] = value
+                self._active.discard(ticket)
+            else:
+                self.records.append(value)
 
     def summary(self):
         with self._lock:
             known = [r.get("usage", {}).get("total_tokens") for r in self.records]
             return {
                 "requests": len(self.records),
+                "api_requests": sum(r.get("execution_mode", "live") == "live" for r in self.records),
+                "replayed_requests": sum(r.get("execution_mode") == "replay" for r in self.records),
                 "successful_requests": sum(r.get("status") == "ok" for r in self.records),
                 "known_total_tokens": sum(v for v in known if v is not None),
                 "requests_with_unknown_usage": sum(v is None for v in known),
@@ -188,18 +238,32 @@ class OpenAICompatibleClient:
         }
         if self.config.json_mode:
             body["response_format"] = {"type": "json_object"}
+        last_record = last_ticket = None
         for attempt in range(self.config.max_attempts):
-            self.ledger.reserve(self.config)
             record = {
                 "time": datetime.now(timezone.utc).isoformat(),
                 "request_key": request.key, "request": asdict(request),
+                "client_identity": self.identity,
                 "model": self.config.model, "attempt": attempt + 1,
                 "status": "error", "usage": TokenUsage().to_dict(),
             }
+            try:
+                ticket = self.ledger.reserve(self.config, record)
+            except BudgetExceeded as exc:
+                if last_record is not None:
+                    # Record why this logical request did not reach its next
+                    # transport attempt without charging an unmade HTTP call.
+                    last_record.update(error=str(exc), error_type="BudgetExceeded", retry_scheduled=False)
+                    self.ledger.record(last_record, last_ticket)
+                raise
             retry = False
             error = None
             try:
                 raw = (self.transport or self._http)(body)
+                if not isinstance(raw, dict) or (raw.get("usage") is not None and not isinstance(raw["usage"], dict)):
+                    raise LLMResponseError("Provider response and usage must be JSON objects")
+                record.update(requested_model=self.config.model, resolved_model=raw.get("model", self.config.model),
+                              system_fingerprint=raw.get("system_fingerprint"))
                 usage = raw.get("usage") or {}
                 tokens = TokenUsage(usage.get("prompt_tokens"), usage.get("completion_tokens"))
                 if any(v is not None and (isinstance(v, bool) or not isinstance(v, int) or v < 0)
@@ -221,12 +285,15 @@ class OpenAICompatibleClient:
                 error = LLMTransportError(f"Model connection failed: {type(exc).__name__}")
             except LLMError as exc:
                 error = exc
-            except (KeyError, IndexError, TypeError, ValueError) as exc:
+            except (KeyError, IndexError, TypeError, ValueError, AttributeError) as exc:
                 error = LLMResponseError(f"Malformed provider response: {type(exc).__name__}")
             finally:
                 if error:
                     record["error"] = str(error)
-                self.ledger.record(record)
+                    record["error_type"] = type(error).__name__
+                    record["retry_scheduled"] = retry and attempt + 1 < self.config.max_attempts
+                self.ledger.record(record, ticket)
+            last_record, last_ticket = record, ticket
             if not retry or attempt + 1 == self.config.max_attempts:
                 raise error
             time.sleep(self.config.retry_delay * (2 ** attempt))
@@ -236,25 +303,46 @@ class OpenAICompatibleClient:
 class ReplayClient:
     """Replay recorded requests by content hash; never performs network I/O."""
 
-    def __init__(self, path: str | Path):
+    def __init__(self, path: str | Path, *, ledger: UsageLedger | None = None):
         path = Path(path)
-        self.identity = {"kind": "replay", "sha256": fingerprint(path.read_text(encoding="utf-8"))}
+        self.source_sha256 = file_hash(path)
+        self.identity = {"kind": "replay", "sha256": self.source_sha256}
+        self.ledger = ledger if ledger is not None else UsageLedger()
         self._lock = threading.Lock()
         self._responses = {}
         self.replayed = 0
-        for line in path.read_text(encoding="utf-8").splitlines():
-            if line.strip():
-                record = json.loads(line)
-                self._responses.setdefault(record["request_key"], []).append(record)
+        identities = []
+        for record in UsageLedger(path, repair_tail=False).records:
+            if "client_identity" in record:
+                identities.append(record["client_identity"])
+            self._responses.setdefault(record["request_key"], []).append(record)
+        if identities:
+            if any(value != identities[0] for value in identities):
+                raise LLMConfigurationError("Replay log contains multiple client identities")
+            self.identity = identities[0]
 
     def complete(self, request):
         with self._lock:
             responses = self._responses.get(request.key, [])
             if not responses:
                 raise LLMResponseError(f"No replay response for {request.purpose} ({request.key[:12]})")
-            record = responses.pop(0)
-            self.replayed += 1
+            while True:
+                record = responses.pop(0)
+                self.replayed += 1
+                # A live complete() retried these attempts internally; preserve
+                # the same logical response for the algorithm during replay.
+                if not record.get("retry_scheduled"):
+                    break
+                if not responses:
+                    raise LLMResponseError("Replay log ends during transport retry")
+            self.ledger.record({**record, "source_attempt_id": record.get("attempt_id"),
+                                "source_usage": record.get("usage"), "usage": TokenUsage(0, 0).to_dict(),
+                                "execution_mode": "replay", "source_sha256": self.source_sha256})
         if record.get("status") != "ok":
-            raise LLMResponseError(record.get("error", "Recorded request failed"))
+            error_type = {"LLMTransportError": LLMTransportError,
+                          "LLMConfigurationError": LLMConfigurationError,
+                          "BudgetExceeded": BudgetExceeded}.get(record.get("error_type"), LLMResponseError)
+            raise error_type(record.get("error", "Recorded request failed"))
         usage = record.get("usage", {})
-        return LLMResponse(record["content"], TokenUsage(usage.get("prompt_tokens"), usage.get("completion_tokens")), record.get("model", "replay"))
+        return LLMResponse(record["content"], TokenUsage(usage.get("prompt_tokens"), usage.get("completion_tokens")),
+                           record.get("resolved_model", record.get("model", "replay")))
