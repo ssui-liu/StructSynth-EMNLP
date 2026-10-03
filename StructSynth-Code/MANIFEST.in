@@ -1,0 +1,7 @@
+include README.md pyproject.toml requirements.txt constraints-tested-py311.txt env.example
+include run_data_split.py run_structure_learning.py run_data_generation.py
+graft configs
+graft docs
+graft tests
+graft data/adult
+global-exclude __pycache__ *.py[cod] .DS_Store

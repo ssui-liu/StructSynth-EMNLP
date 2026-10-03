@@ -1,0 +1,34 @@
+name: StructSynth
+
+on:
+  push:
+    paths: ['StructSynth-Code/**', '.github/workflows/structsynth.yml']
+  pull_request:
+    paths: ['StructSynth-Code/**', '.github/workflows/structsynth.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-verification:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.9', '3.11']
+    defaults:
+      run:
+        working-directory: StructSynth-Code
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '${{ matrix.python }}'
+          cache: pip
+          cache-dependency-path: StructSynth-Code/pyproject.toml
+      - run: python -m pip install -e '.[dev,evaluation]'
+      - run: ruff check src tests run_*.py
+      - run: python -m pytest -q
+      - run: structsynth demo --output-dir runs/ci-demo --model xgboost --max-workers 2
+      - run: structsynth demo --output-dir runs/ci-demo --model xgboost --max-workers 2 --resume
+      - run: python -m build

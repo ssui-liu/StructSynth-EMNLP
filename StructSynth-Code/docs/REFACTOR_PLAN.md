@@ -7,10 +7,13 @@
 - 开发分支：`codex/structsynth-paper-refactor`。
 - 代码基线：`47d8570`，该提交下 `StructSynth-Code/` 在开始重构时无本地改动；可通过 Git 恢复旧代码。
 - 论文依据：工作区 `Latex-EMNLP/sections/method.tex`、`appendix.tex`、`experiments.tex`，与 `Latex-arXiv` 方法正文交叉核对。工作区中未提交的论文改动保留原状；论文来源指纹见 `paper_sources.json`。
-- 实施范围：`StructSynth-Code/`；论文、审稿记录和已有实验结果不作为本次代码提交的修改对象。
+- 实施范围：`StructSynth-Code/` 与 `.github/workflows/structsynth.yml`；论文、审稿记录和已有实验结果不作为本次代码提交的修改对象。
 - 目标是与方法定义一致的可运行实现。没有重跑原论文全部实验，因此不能宣称恢复或提升了论文报告的指标。
 
 ## 迭代顺序与验收
+
+本轮五步均已完成。原 37 个生产 Python 文件、6542 行，收拢为 16 个包模块加 3 个薄入口，
+共 3649 行；测试和决策文档单独维护。完整验收为 321 项测试、十 seed Adult 离线流程和独立 wheel 运行。
 
 1. 固定论文语义和共享接口。明确 selected graph nodes、图外属性、全部已生成条件、拓扑层次、augmentation 协议。
 2. 重写图学习、生成和评估核心。用针对既有错误的反例验证，覆盖多路径 DAG、循环、部分响应、重试、类别边界和测试集隔离。
@@ -32,8 +35,12 @@
 | 混合 fidelity 分箱 | 用真实参照数据的共同分位点映射两组数据 | 论文未指定分箱边界来源，工程解释 |
 | 预处理 | 训练侧拟合，测试侧仅转换 | 避免旧实现根据测试类别改变训练数据 |
 | LLM 框架 | 用小型 OpenAI-compatible JSON 边界替代重复 LangChain 包装 | 工程替换，非方法创新；不保证新旧提示词产生相同样本 |
+| 样本规模间关系 | 每个 seed 生成最大规模，再用前缀评价不同规模 | 减少重复请求；论文未规定必须独立生成，需作为配对结果分析 |
+| 运行前本地基线 | 在任何 LLM 请求前拟合 real-only 预测模型并保存指标 | 检查依赖、模型参数和数据可用性；主实验仍使用配置中的协议 |
+| 多 seed 汇总 | 相同协议、源码、环境、数据和模型才合并；输出有效数和缺失原因 | 避免把重复 seed 或离线结果当独立真实模型证据 |
 
 各模块的详细决定与边界条件见 `decisions_graph.md`、`decisions_generation.md` 和 `decisions_evaluation.md`。
+迁移与旧代码检查见 `MIGRATION.md`；本轮实测证据、剩余研究验证边界见 `VALIDATION.md`。
 
 ## 外部接口依据
 
