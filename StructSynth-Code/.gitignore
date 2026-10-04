@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+.DS_Store
 *.egg-info/
 build/
 dist/
@@ -11,7 +12,7 @@ dist/
 !.env.example
 .idea/
 runs/
+results/
 .coverage
 htmlcov/
 data/*/*_shot/
-

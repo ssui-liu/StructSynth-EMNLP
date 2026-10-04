@@ -1,4 +1,4 @@
-"""Compatibility filename for the installed version-1 CLI."""
+"""Run graph induction through the installed StructSynth CLI."""
 import sys
 
 from structsynth.cli import main

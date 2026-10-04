@@ -4,6 +4,9 @@
 旧结果和原始 Adult 数据保留；旧实现从默认代码路径移除，避免同时维护两个语义不同的工作流。
 论文文件与已有论文改动不属于本轮修改。
 
+归档说明：以上描述原重构时的状态。后续开源目录整理已移除旧 `results/`，
+历史文件可从 `fbc839a` 提交查看；三个薄入口现位于 `StructSynth-Code/scripts/`。
+
 ## 文件与入口映射
 
 | 旧位置 | 新位置或入口 | 变化 |
@@ -20,7 +23,7 @@
 旧内部 Python import 不继续兼容。安装包之后从 `structsynth` 导入新 API。
 这里的“旧内部”指 `47d8570` 中的 `data_generation` 和 `structure_learning` 包。
 0.2.0 到 0.2.1 的进一步模块化保留 `structsynth` 已有公共导入，详见
-[代码导航](../src/structsynth/README.md)和[模块化记录](MODULARIZATION.md)。
+[代码导航](../../StructSynth-Code/src/structsynth/README.md)和[模块化记录](MODULARIZATION.md)。
 旧 JSON 图可以由 `DependencyGraph.from_dict(..., columns=...)` 显式读取，忽略旧缓存层级并重算；
 新 CLI 不自动把历史图或 CSV 当成当前版本的已完成实验。旧实现若把所有列预填入图，
 其节点语义无法从度数可靠恢复，应重新诱导。

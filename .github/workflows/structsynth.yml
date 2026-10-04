@@ -27,7 +27,7 @@ jobs:
           cache: pip
           cache-dependency-path: StructSynth-Code/pyproject.toml
       - run: python -m pip install -e '.[dev,evaluation]'
-      - run: ruff check src tests run_*.py
+      - run: ruff check src tests scripts
       - run: python -m pytest -q
       - run: structsynth demo --output-dir runs/ci-demo --model xgboost --max-workers 2
       - run: structsynth demo --output-dir runs/ci-demo --model xgboost --max-workers 2 --resume

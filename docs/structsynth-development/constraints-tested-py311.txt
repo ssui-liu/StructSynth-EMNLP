@@ -1,5 +1,5 @@
 # Validation snapshot: Python 3.11.9, macOS arm64, 2026-10-04.
-# Optional: pip install -e '.[dev,evaluation]' -c constraints-tested-py311.txt
+# From StructSynth-Code/: pip install -e '.[dev,evaluation]' -c ../docs/structsynth-development/constraints-tested-py311.txt
 # For other Python/platform versions, resolve pyproject.toml constraints instead.
 build==1.6.1
 cloudpickle==3.1.2

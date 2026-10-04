@@ -1,10 +1,10 @@
-# 数据与评估：论文依据、实现选择及审查记录
+# 数据与评估：协议与实现选择
 
-依据版本：`Latex-EMNLP/sections/method.tex` 与 `Latex-EMNLP/sections/appendix.tex`，2026-10-04。本文档记录本次重构中的实施判断，不声称新增运行结果已复现论文数值。
+本文依据论文的方法正文，以及附录的数据集、超参数和评估指标定义，说明数据边界与评价协议的实现选择。代码位于 [`data/`](../src/structsynth/data/) 和 [`evaluation/`](../src/structsynth/evaluation/)。
 
 ## 与论文逐项对齐
 
-| 项目 | 论文位置 | 新实现 |
+| 项目 | 论文位置 | 实现 |
 |---|---|---|
 | 数据边界 | Appendix `app:datasets`，原始数据先按 8:2 分割，再从训练池抽取 n 条 | `split_dataset` 先创建固定 holdout，再抽取 `shot` 条；剩余记录命名为 `unused`，不送入模型。改变 shot 不改变同一 seed 的 test。 |
 | 重复实验 | Appendix `app:datasets`，42–51 共十个种子 | `seed` 由实验配置传入；数据层没有固定循环或全局 RNG 修改。主流程保存每个 seed 的结果。 |
@@ -31,7 +31,7 @@
 9. **混合 fidelity 的分箱边界**：论文没有说明两个数据集是否共享边界。旧代码各自 qcut 后直接比较区间字符串；即便分布相近，只要边界小幅移动就会错误成为不同类别。新实现仅从指定 real reference 学习边界，同一边界应用于合成集，最外侧区间延伸至无穷以保留越界合成记录的质量。边界写入结果，可审查。
 10. **常量列与缺失数值**：常量或不足两条记录的 Pearson 未定义，采用零关联约定并列出受影响的列对；混合列若真实数值为常量，退回精确数值类别以保留合成值漂移。Privacy/fidelity 的论文公式没有规定缺失数值处理，因此遇到 NaN/Inf 明确失败，避免把未知处理伪装为论文指标；分类缺失按显式类别比较。只有一列时 fidelity 返回 `null`，不返回虚假的完美零分。
 
-## 旧实现的兼容与主动调整
+## 输入兼容与实现细节
 
 - `load_dataset` 接收显式 CSV 和 metadata 路径，兼容 `label_column` / `description` 旧键和 dataset-name 包裹格式。必须明确 `task_type`，不根据名称猜回归。
 - 显式声明的文本类别列按字符串读取，保留 `001` 等类别身份；显式数值或布尔类别域仍保留相应类型。CSV 的空白或重复表头在交给 pandas 前拒绝，避免 pandas 将复制的 target 自动改名为 `target.1` 后当作普通特征。
@@ -47,11 +47,9 @@
 
 `tests/test_data.py` 与 `tests/test_evaluation.py` 覆盖：先 holdout 后 shot、分类分层与稀有类失败、回归不误分层、容量受限的 prompt 平衡、无全局 RNG 污染、训练类别域不接触测试集、显式清洗、训练预处理对测试值变化不敏感、三种下游协议、未知目标与多分类 AUC、实际 XGBoost 分类/回归、小样本 ties 的精确期望、等大小 references、缩放单位不变性、Hamming 与 chunk 一致性、signed Pearson、联合 TVD 和混合共享分箱。
 
-首轮现代依赖环境：项目 `.venv`，Python 3.11；包含实际本地 XGBoost 分类/回归训练，无 LLM/API 调用。旧 Python 3.9 / pandas 1.3 / sklearn 1.0 环境额外验证了核心逻辑；其中 XGBoost 未安装，对应测试跳过。
-
 ## 多 seed 汇总协议
 
-`reporting.summarize_runs(run_dirs)` 仅读取各目录的 `manifest.json`、`metrics.json`、`usage.json`，返回结构化报告；`write_summary(run_dirs, output_dir)` 写出 `summary.json` 和 tidy `summary.csv`，返回 JSON 路径，不修改原始运行。
+`structsynth.evaluation.reporting.summarize_runs(run_dirs)` 仅读取各目录的 `manifest.json`、`metrics.json`、`usage.json`，返回结构化报告；`write_summary(run_dirs, output_dir)` 写出 `summary.json` 和 tidy `summary.csv`，返回 JSON 路径，不修改原始运行。
 
 - **相容组**包含实际 dataset/shot/n_samples、下游协议与模型、输入 CSV/metadata 指纹、完整代码指纹、依赖版本、整个 backend 身份以及其余配置。`data.seeds`、`data.shots`、输出位置和数据文件位置不影响已固定输入内容的单次实验，因此从兼容性键中移除；实际 shot/seed 仍来自 manifest。保留 generation 的整体 `n_samples` 计划，避免把不同最大生成规模的前缀实验默认视为相同。live、offline-demo、以及源 ledger hash 不同的 replay 分开汇总。
 - **统计单位是 seed**。重复传入同一路径先去重。同 seed 多份有效结果完全一致时只计一次；同 seed 有不同有效结果时，该 seed 的所有性能指标排除，并明确标记 `duplicate_seed_conflict`，不选择较好结果、最新结果或将它们当作多次独立实验。只有一份有效结果而其他副本未完成时，可使用该有效结果一次；副本状态仍列出。

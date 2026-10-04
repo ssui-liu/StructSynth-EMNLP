@@ -1,7 +1,7 @@
 # StructSynth 论文对齐重构记录
 
 本文记录截至 `9cb138c` 的 0.2.0 重构。后续按用户要求进行的 0.2.1 目录模块化，
-见[模块化记录](MODULARIZATION.md)和[代码导航](../src/structsynth/README.md)。
+见[模块化记录](MODULARIZATION.md)和[代码导航](../../StructSynth-Code/src/structsynth/README.md)。
 
 本次重构把论文中的两阶段方法落实为可安装、可测试、可追踪的研究代码。用户于 2026 年 10 月 4 日授权基于 Git 的破坏式优化和多 agent 开发，并授权按论文与工程判断处理不确定项。本文记录实现范围、复核入口和验证证据。
 
@@ -42,7 +42,8 @@
 | 运行前本地基线 | 在任何 LLM 请求前拟合 real-only 预测模型并保存指标 | 检查依赖、模型参数和数据可用性；主实验仍使用配置中的协议 |
 | 多 seed 汇总 | 相同协议、源码、环境、数据和模型才合并；输出有效数和缺失原因 | 避免把重复 seed 或离线结果当独立真实模型证据 |
 
-各模块的详细决定与边界条件见 `decisions_graph.md`、`decisions_generation.md` 和 `decisions_evaluation.md`。
+各模块的详细决定与边界条件见公开代码目录中的[图诱导](../../StructSynth-Code/docs/decisions_graph.md)、
+[生成](../../StructSynth-Code/docs/decisions_generation.md)和[评估](../../StructSynth-Code/docs/decisions_evaluation.md)。
 迁移与旧代码检查见 `MIGRATION.md`；本轮实测证据、剩余研究验证边界见 `VALIDATION.md`。
 
 ## 外部接口依据

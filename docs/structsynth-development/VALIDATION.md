@@ -33,17 +33,17 @@
 离线 Adult 替身会复制训练行；10,000 行合成输出和 40 组评价只证明软件流程与规模处理正确，
 不属于新模型结果，也不代表隐私保护或数据质量达标。
 
-## 本地检查入口
+## 历史本地检查产物
 
-以下产物位于被 Git 忽略的 `runs/`，保留在当前工作区，未提交为论文结果：
+以下离线产物原位于被 Git 忽略的 `StructSynth-Code/runs/`，已在后续开源目录整理时清理。
+这些路径仅记录当时的验证位置，未提交为论文结果，也不再作为可点击的检查入口：
 
-- [Adult 十 seed 汇总 JSON](../runs/validation-adult/summaries/a674cf73379f6c2a/summary.json)
-- [Adult 十 seed 汇总 CSV](../runs/validation-adult/summaries/a674cf73379f6c2a/summary.csv)
-- [Adult seed 42 manifest](../runs/validation-adult/adult/100_shot/seed_42/2563b60955f454e1/manifest.json)
-- [独立 wheel 的运行 manifest](../runs/validation-wheel/offline_demo/20_shot/seed_42/2788d76badb31914/manifest.json)
+- Adult 十 seed 汇总：`validation-adult/summaries/a674cf73379f6c2a/summary.{json,csv}`。
+- Adult seed 42：`validation-adult/adult/100_shot/seed_42/2563b60955f454e1/manifest.json`。
+- 独立 wheel：`validation-wheel/offline_demo/20_shot/seed_42/2788d76badb31914/manifest.json`。
 
-依赖版本见 `constraints-tested-py311.txt`。构建产物位于 `dist/`。
-源码分发包中的本地运行链接只用于指出原工作区产物，不表示分发包附带这些输出。
+原验证依赖版本见[环境快照](constraints-tested-py311.txt)。原 `dist/` 构建产物也已清理。
+上述“实测结果”保留原开发轮次的结论，不代表这些临时文件仍然存在。
 
 ## 交叉审查修复的具体问题
 
@@ -64,7 +64,7 @@
 ## 尚未建立的研究结论与已知边界
 
 - 尚未进行真实 LLM 的质量/成本实验，未重跑六数据集、基线、消融或 SHD 实验，不宣称复现或提高论文表格指标。
-- 论文未明确的选择集中记录在三个 `decisions_*.md`，特别是生成的全部已有条件、privacy ties、fidelity 真实参照与分箱来源。
+- 论文未明确的选择集中记录在 `StructSynth-Code/docs/decisions_*.md`，特别是生成的全部已有条件、privacy ties、fidelity 真实参照与分箱来源。
 - 远端模型 alias 可能变化，seed 也不保证确定性；journal 保存实际响应和 provider 提供的版本字段。
 - 请求次数是硬上限；token limit 是按已报告用量阻止后续请求，不是预付费硬封顶。
 - 生成有逐层/批次恢复；未完成的 discovery 会重新遍历并沿用预算。回放要求记录的请求与当前执行匹配，缺失或无法匹配时显式失败。

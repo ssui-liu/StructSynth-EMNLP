@@ -1,8 +1,8 @@
 # 图诱导、关联证据与生成顺序：实现决策
 
-本轮依据 `Latex-EMNLP/sections/method.tex` 的 Evidence-Grounded Graph Induction / Graph-Planned Conditional Synthesis，以及 `sections/appendix.tex` 的 Association Scores、Algorithm 1 和三个图诱导提示词模板。以下解释与边界处理是便于检查的实现决策，不是新增实验结论。
+本文依据论文的 Evidence-Grounded Graph Induction / Graph-Planned Conditional Synthesis，以及附录的 Association Scores、Algorithm 1 和三个图诱导提示词模板，说明统计证据、图语义及边界处理的实现选择。代码位于 [`structure/`](../src/structsynth/structure/)。
 
-| 论文要求或未规定处 | 本轮实现 | 检查位置 |
+| 论文要求或未规定处 | 实现 | 检查位置 |
 | --- | --- | --- |
 | `V ⊆ A`；图初始化仅选入 source nodes | 图对象分别保存完整 `columns=A` 和显式 `nodes=V`。BFS 仅加入 source 和实际被提议发现的节点。 | `graph.py`, `discovery.py` |
 | `A_iso = A \\ V` | 被选择但零度的节点仍在图内生成；未被选入的列才在最后补全。删边不删节点。 | `DependencyGraph.isolated_columns` |
@@ -11,7 +11,7 @@
 | source/link 提示词包含 few-shot examples | 两类请求都直接提供实际示例行，不使用会舍入小数的默认 DataFrame JSON 导出；调用方传入的示例必须按行值、JSON 类型及出现重数构成训练数据子集。未指定示例时取训练数据前至多 10 行；正式实验应显式保存、传入采样子集。 | `_prepare_examples`, `discover_structure` |
 | 每次 link 请求使用当前图、关联及语义先验 | 请求包含全部候选字段/描述、已经验证的当前图、源节点与其余全部列的关联证据，以及固定 few-shot examples。目标列不特殊排除。 | `discover_structure` |
 | 统计关联来自 `D_train` | 关联矩阵使用整个传入训练集，并对无向属性对只计算一次缓存。测试集、待生成数据均不参与。 | `association_evidence` |
-| continuous-continuous 为归一化关联强度 | 使用绝对 Pearson `|r|`，保留负相关的强度；数值缩放避免有限大数溢出。 | `association_score` |
+| continuous-continuous 为归一化关联强度 | 使用绝对 Pearson `abs(r)`，保留负相关的强度；数值缩放避免有限大数溢出。 | `association_score` |
 | categorical-categorical 使用论文偏差校正 Cramér V | 先计算未做 Yates 修正的 Pearson χ²，再逐项实现附录的 φ²、r、k 偏差修正。 | `association_score` |
 | mixed 使用 correlation ratio η | 按类别均值的加权方差与总方差之比开方；类别始终承担分组角色，与输入列顺序无关。 | `association_score` |
 | 论文未详细规定缺失值或退化统计量 | 每对独立排除缺失和连续列非有限值。样本不足、公式因常量导致零分母、偏差校正分母非正时，数值为 0，同时提供 `defined=false`、原因与有效样本数；提示词明确不能把 undefined 当作已测得的独立。η 在类别只有一个但连续列有方差时，仍按公式返回有效的 0。 | `AssociationScore` |
@@ -24,6 +24,6 @@
 | source 是否必须永久无入边未规定 | 将 source 视为初始化候选；后续 BFS 可以为它发现父节点，最终顺序由完成的 DAG 决定。不会额外强迫初始 roots 保持入度为零。 | `test_all_overlapping_cycles_are_resolved_with_each_new_edge_in_prompt` |
 | 旧 artifact 的节点范围与层级不可靠 | 新版本要求显式 `nodes`。加载旧格式时保留其中显式 V，不按 degree 猜测意图；忽略旧 `hierarchical_structure`/持久化 layers 并重算。缺少完整列 schema 时要求调用方给出。若旧流程预填充了全部列，需重新运行 discovery 才能恢复论文的选择语义。 | `DependencyGraph.from_dict` |
 
-图版本为 `schema_version=1`。这是生成用依赖计划，不是因果识别结果；新提示词避免把无向关联或边方向描述成已识别的因果关系。
+图版本为 `schema_version=1`。这是生成用依赖计划，不是因果识别结果；提示词避免把无向关联或边方向描述成已识别的因果关系。
 
-回归测试覆盖长短路径同时存在时的错误 BFS 分层、零度选中节点、局部诱导子图、旧层级损坏、关联公式及退化输入、few-shot 子集约束、多个共享路径环、非法删边、重复/自环提议、空 source、重试/环数量上限及不可重试预算错误。此阶段仅使用离线脚本化响应，未调用真实付费模型，也未据此宣称恢复论文实验指标。
+回归测试覆盖长短路径同时存在时的错误 BFS 分层、零度选中节点、局部诱导子图、旧层级损坏、关联公式及退化输入、few-shot 子集约束、多个共享路径环、非法删边、重复/自环提议、空 source、重试/环数量上限及不可重试预算错误。测试使用离线脚本化响应，不访问模型 API。
