@@ -1,5 +1,8 @@
 # 本轮开发验证记录
 
+本节对应 0.2.0 的论文对齐重构。0.2.1 模块化后的测试、安装包与跨版本回放验证，
+见[模块化记录](MODULARIZATION.md)。
+
 日期：2026-10-04。分支：`codex/structsynth-paper-refactor`。
 核心实现提交：`06bba68`；图诱导提交：`2411bc4`；初始合同与配置：`ec97095`。
 最后的迁移/打包提交可通过 `git log --oneline -- StructSynth-Code` 查看。

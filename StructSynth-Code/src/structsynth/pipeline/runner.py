@@ -1,4 +1,4 @@
-"""Experiment orchestration and inspectable artifacts; algorithms live elsewhere."""
+"""Execute split → graph induction → synthesis → evaluation with verified recovery."""
 from __future__ import annotations
 
 from dataclasses import replace
@@ -6,64 +6,18 @@ from datetime import datetime, timezone
 import json
 import logging
 from pathlib import Path
-import re
-import platform
-from importlib.metadata import version, PackageNotFoundError
 from typing import Callable
 
 import pandas as pd
-import numpy as np
 
-from .artifacts import atomic_csv, atomic_json, file_hash, fingerprint, file_lock, frame_records
-from .config import ExperimentConfig
-from .data import infer_training_schema, load_dataset, sample_examples, split_dataset
-from .discovery import discover_structure
-from .evaluation import evaluate_downstream, evaluate_fidelity, evaluate_privacy
-from .generation import GraphSynthesizer
-from .graph import DependencyGraph
-from .llm import OpenAICompatibleClient, UsageLedger
-
-
-def source_fingerprint():
-    package = Path(__file__).parent
-    return fingerprint({p.name: file_hash(p) for p in sorted(package.glob("*.py"))})
-
-
-def experiment_identity(config, shot, seed, *, backend="live"):
-    values = config.to_dict()
-    values.pop("output_dir")
-    # The invocation's grid is not an input to an individual experiment.
-    # Selecting one seed for recovery must resolve to the original run.
-    values["data"].pop("shots")
-    values["data"].pop("seeds")
-    environment = {"python": platform.python_version(),
-                   **{name: version(name) for name in ("numpy", "pandas", "scipy", "networkx", "scikit-learn", "PyYAML")}}
-    if config.evaluation.model == "xgboost":
-        try:
-            environment["xgboost"] = version("xgboost")
-        except PackageNotFoundError:
-            environment["xgboost"] = None
-    return {
-        "config": values, "shot": int(shot), "seed": int(seed), "backend": backend,
-        "data_sha256": file_hash(config.data.path),
-        "metadata_sha256": file_hash(config.data.metadata),
-        "source_sha256": source_fingerprint(), "artifact_schema": 1,
-        "environment": environment,
-    }
-
-
-def experiment_dir(config, identity):
-    name = re.sub(r"[^A-Za-z0-9_.-]+", "_", config.data.name).strip(".") or "dataset"
-    return (Path(config.output_dir) / name / f"{identity['shot']}_shot" /
-            f"seed_{identity['seed']}" / fingerprint(identity)[:16])
-
-
-def plan_experiments(config: ExperimentConfig, *, backend="live"):
-    return [{"shot": shot, "seed": seed,
-             "run_dir": str(experiment_dir(config, experiment_identity(config, shot, seed, backend=backend))),
-             "maximum_synthetic_rows": max(config.generation.n_samples),
-             "request_limit": config.discovery_llm.request_limit + config.generation_llm.request_limit}
-            for shot in config.data.shots for seed in config.data.seeds]
+from ..artifacts import atomic_csv, atomic_json, file_hash, fingerprint, file_lock, frame_records
+from ..config import ExperimentConfig
+from ..data import infer_training_schema, load_dataset, sample_examples, split_dataset
+from ..generation import GraphSynthesizer
+from ..llm import OpenAICompatibleClient, UsageLedger
+from ..structure import DependencyGraph, discover_structure
+from .evaluation import evaluate_baseline, evaluate_run
+from .identity import experiment_dir, experiment_identity
 
 
 def _now():
@@ -79,36 +33,6 @@ def _verify_artifacts(directory, artifacts):
         path = directory / name
         if not path.is_file() or file_hash(path) != digest:
             raise ValueError(f"Run artifact missing or modified: {path}")
-
-
-def evaluate_run(directory, train, test, synthetic, spec, config, seed):
-    results = {}
-    if config.evaluation.fidelity_reference == "train_test":
-        reference = pd.concat([train, test], ignore_index=True)
-    elif config.evaluation.fidelity_reference == "test":
-        reference = test
-    else:
-        reference = train
-    for n_samples in sorted(config.generation.n_samples):
-        subset = synthetic.iloc[:n_samples].copy()
-        if len(subset) != n_samples:
-            raise ValueError(f"Expected {n_samples} synthetic records, found {len(subset)}")
-        target = directory / f"n{n_samples}"
-        atomic_csv(target / "synthetic.csv", subset)
-        metrics = {
-            "n_samples": n_samples, "seed": seed,
-            "downstream": evaluate_downstream(train, subset, test, spec, protocol=config.evaluation.protocol,
-                                               seed=seed, model=config.evaluation.model,
-                                               model_params=config.evaluation.model_params),
-            "privacy": evaluate_privacy(subset, train, test, spec, seed=seed,
-                                         numeric_scaling=config.evaluation.numeric_scaling),
-            "fidelity": evaluate_fidelity(reference, subset, spec),
-            "fidelity_reference": config.evaluation.fidelity_reference,
-        }
-        atomic_json(target / "metrics.json", metrics)
-        results[str(n_samples)] = metrics
-    atomic_json(directory / "metrics.json", results)
-    return results
 
 
 def run_experiment(config: ExperimentConfig, shot: int, seed: int, *, stage="all", resume=False,
@@ -188,12 +112,7 @@ def run_experiment(config: ExperimentConfig, shot: int, seed: int, *, stage="all
             if config.evaluation.enabled and "real_baseline.json" not in manifest["artifacts"]:
                 # An actual local fit validates model parameters and data before
                 # paid requests; constructors alone defer many checks to fit().
-                for name, data in (("train", train), ("test", test)):
-                    if not np.isfinite(data[spec.numeric_columns].to_numpy(dtype=float)).all():
-                        raise ValueError(f"Paper privacy/fidelity metrics require finite numeric {name} values")
-                baseline = evaluate_downstream(train, train.iloc[:0], test, spec, protocol="real_only",
-                                               seed=seed, model=config.evaluation.model,
-                                               model_params=config.evaluation.model_params)
+                baseline = evaluate_baseline(train, test, spec, config, seed)
                 atomic_json(directory / "real_baseline.json", baseline)
                 manifest["artifacts"].update(_artifact_hashes(directory, ["real_baseline.json"]))
                 atomic_json(manifest_path, manifest)
@@ -286,7 +205,7 @@ def run_experiments(config, **kwargs):
     def report():
         if kwargs.get("stage", "all") not in {"all", "evaluate"} or not config.evaluation.enabled:
             return
-        from .reporting import write_summary
+        from ..evaluation.reporting import write_summary
         existing = [path for path in planned if (path / "manifest.json").is_file()]
         if existing:
             target = Path(config.output_dir) / "summaries" / fingerprint(sorted(path.name for path in planned))[:16]

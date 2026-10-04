@@ -150,7 +150,7 @@ def test_real_baseline_is_saved_verified_and_reused_before_discovery(config, mon
     manifest = json.loads((directory / "manifest.json").read_text())
     assert "real_baseline.json" in manifest["artifacts"]
     assert manifest["completed_stages"] == ["split", "discover"]
-    monkeypatch.setattr("structsynth.pipeline.evaluate_downstream",
+    monkeypatch.setattr("structsynth.pipeline.evaluation.evaluate_downstream",
                         lambda *args, **kwargs: pytest.fail("A verified baseline should be reused"))
     assert run_experiment(config, 4, 42, stage="discover", resume=True, backend="offline-audit",
                           client_factory=lambda *args: pytest.fail("Completed discovery should be reused")) == directory

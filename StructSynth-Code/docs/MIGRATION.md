@@ -8,16 +8,19 @@
 
 | 旧位置 | 新位置或入口 | 变化 |
 |---|---|---|
-| `data/utils.py` | `src/structsynth/data.py` | 明确 task/schema，先 holdout 后 shot，保存来源行身份 |
-| `structure_learning/` | `associations.py`、`graph.py`、`discovery.py` | 单一图合同，统计证据与 LLM 诱导分开 |
-| `data_generation/models/` | `generation.py`、`llm.py` | 稳定 row_id、全部已有条件、严格校验与可恢复批次 |
-| `data_generation/evaluation/` | `evaluation.py`、`reporting.py` | 统一协议与指标、缺失原因、多 seed 汇总 |
+| `data/utils.py` | `src/structsynth/data/` | 明确 task/schema，先 holdout 后 shot，保存来源行身份 |
+| `structure_learning/` | `src/structsynth/structure/` | 单一图合同，统计证据与 LLM 诱导分开 |
+| `data_generation/models/` | `generation/`、`llm/` | 稳定 row_id、全部已有条件、严格校验与可恢复批次 |
+| `data_generation/evaluation/` | `evaluation/` | 统一协议与指标、缺失原因、多 seed 汇总 |
 | `config/*.json`、旧 YAML | `configs/adult.yaml` | 统一 version-1 配置；未知字段显式报错 |
 | 三个 `run_*.py` | 同名薄入口或 `structsynth` CLI | 新配置格式；不再有脚本内硬编码路径和默认数据集 |
 | 冗长环境导出 `requirements.txt` | `pyproject.toml` + 可选 extras | 基础算法依赖、XGBoost 评估依赖、开发工具分开 |
 | `.idea/` | 不再跟踪 | 本地 IDE 状态不属于研究代码 |
 
 旧内部 Python import 不继续兼容。安装包之后从 `structsynth` 导入新 API。
+这里的“旧内部”指 `47d8570` 中的 `data_generation` 和 `structure_learning` 包。
+0.2.0 到 0.2.1 的进一步模块化保留 `structsynth` 已有公共导入，详见
+[代码导航](../src/structsynth/README.md)和[模块化记录](MODULARIZATION.md)。
 旧 JSON 图可以由 `DependencyGraph.from_dict(..., columns=...)` 显式读取，忽略旧缓存层级并重算；
 新 CLI 不自动把历史图或 CSV 当成当前版本的已完成实验。旧实现若把所有列预填入图，
 其节点语义无法从度数可靠恢复，应重新诱导。

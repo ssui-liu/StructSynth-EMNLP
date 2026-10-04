@@ -42,7 +42,7 @@ def main(argv=None):
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(levelname)s %(message)s")
     try:
         if args.command == "report":
-            from .reporting import write_summary
+            from .evaluation.reporting import write_summary
             print(write_summary(args.run_dirs, args.output_dir))
             return 0
         elif args.command == "demo":
