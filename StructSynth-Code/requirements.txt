@@ -1,3 +1,0 @@
-# Compatibility install entry point. Run from StructSynth-Code/.
-# pyproject.toml owns dependency requirements.
--e .[evaluation]

@@ -12,12 +12,26 @@ establish reproduction of the paper's reported scores.
 ## Install and verify without an API key
 
 Use Python 3.9 or newer; Python 3.11 is the primary tested environment.
-From this directory:
+From this directory, create and activate a virtual environment:
 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev,evaluation]'
+python -m pip install --upgrade pip
+```
+
+Choose the installation that matches your work. Dependencies and optional extras
+are defined in [`pyproject.toml`](pyproject.toml):
+
+| Use | Command |
+|---|---|
+| Core package and offline demo | `python -m pip install -e .` |
+| Paper experiments with XGBoost | `python -m pip install -e '.[evaluation]'` |
+| Development, tests and builds | `python -m pip install -e '.[dev,evaluation]'` |
+
+After the development installation, verify the pipeline without an API key:
+
+```bash
 python -m pytest -q
 ruff check src tests scripts
 structsynth demo --output-dir runs/demo --model xgboost --max-workers 2
@@ -30,8 +44,8 @@ and resumption. Its metrics are **not LLM generation-quality results**. No netwo
 requests are made by the demo or test suite. The default demo evaluator is logistic
 regression, which works with the core installation (`pip install -e .`).
 
-Dependencies are declared in `pyproject.toml`; `requirements.txt` is a compatibility
-install entry point.
+Editable installation (`-e`) uses the working tree directly. Omit `-e` for a
+regular installation. There is no separate dependency list to keep in sync.
 
 ## Run an experiment
 
@@ -60,9 +74,11 @@ model requests, which also catches invalid evaluator parameters early.
 
 The shared client sends JSON chat-completion requests to the configured
 `base_url`. The endpoint must support the selected model and request parameters.
-No model or parameter is silently substituted. Keys are read from `api_key_env`
-at request time; `env.example` shows shell syntax. `.env` files are not loaded
-automatically, and key values are not stored in run identities or request logs.
+No model or parameter is silently substituted. Each stage's `api_key_env` names
+the environment variable read at request time; it defaults to `OPENAI_API_KEY`,
+set with `export` as shown above. Configure `base_url`, `model` and `api_key_env`
+in the YAML file for other endpoints. `.env` files are not loaded automatically,
+and key values are not stored in run identities or request logs.
 
 The stages can also be run separately:
 
@@ -207,7 +223,8 @@ StructSynth-Code/
   scripts/                  Python entry scripts for individual stages
   src/structsynth/           installable package
   tests/                    offline regression tests
-  pyproject.toml            package metadata and dependencies
+  pyproject.toml            dependencies, CLI, wheel and development-tool settings
+  MANIFEST.in               additional files for the source distribution
 ```
 
 The package is organized by responsibility:
@@ -228,8 +245,9 @@ Existing public imports remain available; root-level `graph.py`, `associations.p
 `discovery.py` and `reporting.py` are compatibility exports.
 
 Run `python -m build` to create a wheel and source distribution. CI runs lint,
-tests, an offline XGBoost demo and package builds. The source distribution includes
-the stage scripts, example configuration, Adult data, method notes and tests.
-The wheel exposes the `structsynth` command and includes the package reading guide.
+tests, an offline XGBoost demo and package builds. [`MANIFEST.in`](MANIFEST.in)
+adds the stage scripts, example configuration, Adult data, method notes and tests
+to the source distribution. `pyproject.toml` selects the `structsynth` package
+and its reading guide for the wheel, and defines the `structsynth` command.
 Generated runs, build output, caches and local environments are excluded from Git
 and release packages.

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -18,14 +18,21 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Paper evaluation and development tools can be installed independently.
 evaluation = ["xgboost>=1.7,<4"]
 dev = ["pytest>=7,<10", "ruff>=0.9", "build>=1"]
 
 [project.scripts]
 structsynth = "structsynth.cli:main"
 
+[tool.setuptools]
+# Wheel assets are explicitly listed below; MANIFEST.in adds source-only assets.
+include-package-data = false
+
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["structsynth", "structsynth.*"]
+namespaces = false
 
 [tool.setuptools.package-data]
 structsynth = ["README.md"]

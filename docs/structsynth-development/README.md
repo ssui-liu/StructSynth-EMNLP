@@ -56,3 +56,29 @@ git show fbc839a:StructSynth-Code/results/structure_graph/adult/gpt_4o_mini/grap
 
 `runs/` 中的离线输出原本不受 Git 跟踪，清理后不能通过 Git 恢复。
 旧验证记录保留历史执行结论；本次验证仅说明整理后的工程行为正确。
+
+## 2026-10-04 安装与打包配置精简
+
+基线：`f21b161`。根据用户对根目录四个配置文件的整理要求，保留两个职责明确的文件：
+
+| 文件 | 处理与理由 |
+|---|---|
+| `pyproject.toml` | 保留在项目根目录，统一依赖、可选 extras、CLI、wheel 和开发工具配置；包发现仅限 `structsynth` 与子包，关闭隐式 namespace 扫描，显式打包代码导航 |
+| `MANIFEST.in` | 保留在项目根目录，精简为源码分发包所需的脚本、配置、方法说明、测试和 Adult 输入；不再递归纳入整目录中的任意文件类型 |
+| `requirements.txt` | 删除；原内容只是 `-e .[evaluation]`，不含独立依赖。原 `pip install -r requirements.txt` 改为 `python -m pip install -e '.[evaluation]'` |
+| `env.example` | 删除；原文件只有环境变量 export 示例，现集中说明在 README。运行时仍从 `api_key_env` 指定的环境变量读取密钥 |
+
+README 分别列出基础、论文评估和开发安装命令，注明 `.env` 不自动加载；删除无用的
+`.gitignore` 示例文件例外。运行时依赖、模型参数、Python 下限和包版本保持不变。
+
+构建依赖下限由 `setuptools>=61` 修正为 `>=64`，覆盖文档采用的 PEP 660 editable 安装。
+官方 [setuptools 64.0.0 更新记录](https://setuptools.pypa.io/en/latest/history.html#v64-0-0)
+说明该版本引入 editable hooks；[pip 21.3 更新记录](https://pip.pypa.io/en/stable/news/#v21-3)
+说明前端支持。因此 README 在创建虚拟环境后先更新 pip。
+保留 MANIFEST 的依据见 [setuptools 源码分发文件规则](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)。
+
+验证：323 项测试、Ruff 和依赖检查通过；wheel、sdist 与 editable 安装成功。
+源码包包含全部公开资产，wheel 的 46 个 Python 文件与当前源码逐字节一致。
+从临时 wheel 安装目录执行控制台入口、XGBoost 离线 demo 和续跑均通过；editable 导入
+确认来自独立临时源码副本。构建下限调整后重新验证分发包与 editable 安装。
+独立 agent 完成引用与构建兼容性复核；全部构建和安装检查使用临时目录，不产生项目内杂项。
