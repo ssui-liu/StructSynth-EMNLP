@@ -7,7 +7,8 @@ Siyi Liu, Yujia Zheng, Haoyang Li, and Yongqi Zhang
 StructSynth uses a learned dependency graph to guide tabular data generation with
 a black-box LLM in low-data settings. It combines **Evidence-Grounded Graph
 Induction** with **Graph-Planned Conditional Synthesis**, without LLM fine-tuning.
-See the paper for the method, experiments, and evaluation details.
+See the [paper on arXiv](https://arxiv.org/abs/2508.02601) for the method,
+experiments, and evaluation details.
 
 ## Installation
 
@@ -52,9 +53,6 @@ Omit `--seeds 42` to run all configured seeds. To resume an existing run:
 structsynth run --config configs/adult.yaml --seeds 42 --resume
 ```
 
-For the paper's 100-shot prompt setting, change `data.example_rows` from `20` to
-`100` and set `generation.n_samples` to `[1000]` in the YAML file.
-
 Configure data paths, model endpoints, and generation settings in YAML. Paths
 inside the file are relative to its location; default outputs are saved under
 `runs/`. Use `structsynth --help` for available commands, or the
@@ -89,9 +87,13 @@ python -m build
 If you use StructSynth, please cite the paper:
 
 ```bibtex
-@misc{structsynth,
-  title = {StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models},
-  author = {Liu, Siyi and Zheng, Yujia and Li, Haoyang and Zhang, Yongqi},
-  note = {Manuscript}
+@misc{liu2026structsynthdependencygraphsgeneration,
+  title={StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models},
+  author={Siyi Liu and Yujia Zheng and Haoyang Li and Yongqi Zhang},
+  year={2026},
+  eprint={2508.02601},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2508.02601},
 }
 ```
