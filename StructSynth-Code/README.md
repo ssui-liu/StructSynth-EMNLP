@@ -1,86 +1,168 @@
 # StructSynth
 
-Paper-aligned research code for **evidence-grounded graph induction** and
-**graph-planned conditional tabular synthesis**. A dependency DAG plans the
-generation order; it is not a claim of causal identification.
+**Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models**
 
-Method interpretations and implementation choices are documented for
-[graph induction](docs/decisions_graph.md), [generation](docs/decisions_generation.md)
-and [data/evaluation](docs/decisions_evaluation.md). Engineering tests do not
-establish reproduction of the paper's reported scores.
+Siyi Liu, Yujia Zheng, Haoyang Li, and Yongqi Zhang
 
-## Install and verify without an API key
+StructSynth generates tabular data from scarce examples by treating a learned
+dependency graph as a **generation plan for a black-box LLM**. The graph determines
+the generation order, conditioning context, and scope of each prompt. Both graph
+induction and data synthesis use inference-time prompting, without LLM fine-tuning.
 
-Use Python 3.9 or newer; Python 3.11 is the primary tested environment.
-From this directory, create and activate a virtual environment:
+[Method](#method) · [Paper results](#paper-results) · [Quick start](#quick-start) ·
+[Run an experiment](#run-an-experiment) · [Development](#development)
+
+## Method
+
+The method has two stages, corresponding to Sections 3.1 and 3.2 of the paper:
+
+1. **Evidence-Grounded Graph Induction.** An LLM selects source attributes and
+   expands a directed graph through breadth-first search. Attribute semantics,
+   few-shot examples, and statistical associations from the training data guide
+   each proposed link. LLM-based cycle resolution produces a dependency DAG.
+2. **Graph-Planned Conditional Synthesis.** The LLM generates attributes in
+   topological layers, conditioned on **all previously generated values**. Each
+   prompt includes the subgraph induced by the current layer and its parents to
+   make the planned dependencies explicit. Attributes outside the graph are
+   completed last, conditioned on the generated graph attributes.
+
+```mermaid
+flowchart LR
+    D["Training rows<br/>and descriptions"] --> I["Evidence-Grounded<br/>Graph Induction"]
+    I --> G["Dependency DAG"]
+    G --> S["Graph-Planned<br/>Conditional Synthesis"]
+    D -->|Few-shot examples| S
+    S --> X["Synthetic rows"]
+```
+
+The DAG specifies a generation plan; its edges do not establish ground-truth
+causal relations. Association evidence uses bias-corrected Cramér's V for
+categorical pairs, absolute Pearson correlation for numerical pairs, and the
+correlation ratio for mixed pairs. See the implementation notes for
+[graph induction](docs/decisions_graph.md) and [generation](docs/decisions_generation.md).
+
+## Paper results
+
+The main experiment uses **100 real training rows and 1,000 synthetic rows**,
+with `gpt-4o-mini` at temperature `0.9`. XGBoost is trained on real training data
+plus synthetic data and evaluated on a held-out real test set. Results are
+reported over ten seeds, 42 through 51.
+
+Table 1 of the paper reports the following downstream scores. Classification uses
+AUC and regression uses R²; values are multiplied by 100 and reported as mean ±
+standard deviation.
+
+| Dataset | Task | Real training data only | Real + StructSynth |
+|---|---|---:|---:|
+| Adult | Binary classification | 82.51 ± 1.93 | **85.55 ± 1.08** |
+| Anxiety | Three-class classification | 85.49 ± 1.60 | **86.45 ± 0.57** |
+| Compas | Binary classification | 64.84 ± 2.51 | **69.40 ± 0.25** |
+| Salary | Regression | 49.71 ± 7.02 | **55.98 ± 2.96** |
+| Obesity | Regression | 59.83 ± 6.40 | **62.27 ± 5.40** |
+| Churn | Binary classification | 86.86 ± 3.78 | **90.39 ± 1.96** |
+
+Across the fourteen compared generators, StructSynth has the best mean utility
+on all six datasets, with an average rank of **1.00**. Table 2 reports an average
+privacy-risk rank of **1.50**, using distance from `0.5` as the ranking criterion,
+and a statistical fidelity-error rank of **9.50**. The privacy metric measures
+record proximity; StructSynth provides no formal privacy guarantee.
+
+The paper also evaluates graph recovery on Asia, Child, and Insurance, sample
+sizes from 20 to 200, and alternative LLM backbones and downstream evaluators.
+These are paper-reported experiments. This repository provides the StructSynth
+pipeline and an Adult example; the full baseline suite and six-dataset benchmark
+are not bundled. Local offline tests check implementation behavior and do not
+reproduce the paper's model-quality scores.
+
+## Quick start
+
+Use Python 3.9 or newer; Python 3.11 is the primary tested environment. Run these
+commands from the project root:
 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-```
+python -m pip install -e '.[evaluation]'
 
-Choose the installation that matches your work. Dependencies and optional extras
-are defined in [`pyproject.toml`](pyproject.toml):
-
-| Use | Command |
-|---|---|
-| Core package and offline demo | `python -m pip install -e .` |
-| Paper experiments with XGBoost | `python -m pip install -e '.[evaluation]'` |
-| Development, tests and builds | `python -m pip install -e '.[dev,evaluation]'` |
-
-After the development installation, verify the pipeline without an API key:
-
-```bash
-python -m pytest -q
-ruff check src tests scripts
 structsynth demo --output-dir runs/demo --model xgboost --max-workers 2
 structsynth demo --output-dir runs/demo --model xgboost --max-workers 2 --resume
 ```
 
-The demo uses a deterministic client that copies training rows. It exercises the
-complete pipeline, real local XGBoost evaluation, concurrent batches, artifacts,
-and resumption. Its metrics are **not LLM generation-quality results**. No network
-requests are made by the demo or test suite. The default demo evaluator is logistic
-regression, which works with the core installation (`pip install -e .`).
+The demo makes no network requests and requires no API key. It copies training
+rows through a deterministic client to exercise graph induction, generation,
+XGBoost evaluation, saved artifacts, and resumption. Its scores are software
+checks, not measurements of LLM synthesis quality.
+
+Installation options are defined in [`pyproject.toml`](pyproject.toml):
+
+| Use | Command |
+|---|---|
+| Core package; offline demo with the default logistic evaluator | `python -m pip install -e .` |
+| Experiments with XGBoost | `python -m pip install -e '.[evaluation]'` |
+| Development, tests, and builds | `python -m pip install -e '.[dev,evaluation]'` |
 
 Editable installation (`-e`) uses the working tree directly. Omit `-e` for a
-regular installation. There is no separate dependency list to keep in sync.
+regular installation.
 
 ## Run an experiment
 
-All input/output paths inside a configuration are relative to **that configuration
-file**, independent of the shell's working directory. The included Adult data and
-metadata are used by `configs/adult.yaml`.
+[`configs/adult.yaml`](configs/adult.yaml) uses the included Adult CSV and metadata.
+Paths inside a configuration resolve relative to **that configuration file**,
+independent of the shell's working directory.
+
+### Configuration and the paper's main setting
+
+The example shares the paper's training size, LLM sampling parameters, and
+downstream evaluation protocol. Its prompt-example count and prefix evaluation
+are configurable:
+
+| Setting | Included Adult example | Paper's main setting |
+|---|---|---|
+| Real training rows (`data.shots`) | `[100]` | 100 |
+| Prompt examples (`data.example_rows`) | **20** | **All 100 training rows** |
+| Synthetic rows (`generation.n_samples`) | `[100, 200, 500, 1000]`, evaluated as prefixes of one 1,000-row generation | 1,000 |
+| Seeds (`data.seeds`) | 42–51 | 42–51 |
+| LLM, for both stages | `gpt-4o-mini` | `gpt-4o-mini` |
+| LLM sampling | `temperature: 0.9`, `top_p: 0.95`, `max_tokens: 8000` | Same values; Table 7 |
+| Downstream evaluation | XGBoost on real train + synthetic, scored on real test | Same protocol |
+
+For the paper's 100-shot prompt context, set `data.example_rows` to **100** in
+the existing YAML file. Set `generation.n_samples` to **`[1000]`** to evaluate
+only the main synthesis size. The included multi-size option evaluates paired
+prefixes within each seed; it does not generate four independent datasets.
+Each seed induces its own graph.
+
+With the included configuration, the original table is first split 80:20, then
+the requested training rows are sampled from the training pool. Unused training-pool
+rows and test rows are excluded from LLM prompts. Classification splits preserve classes;
+stratification, prompt balancing, privacy ties, and fidelity binning are documented
+[implementation choices](docs/decisions_evaluation.md).
+
+### Execute and resume
 
 ```bash
+# Inspect output paths and request limits without contacting a model.
 structsynth plan --config configs/adult.yaml --seeds 42
+
+# Set credentials before live discovery or generation.
 export OPENAI_API_KEY='your-key'
 structsynth run --config configs/adult.yaml --seeds 42
 structsynth run --config configs/adult.yaml --seeds 42 --resume
 ```
 
-`plan` reports run locations and request limits without contacting a model or
-creating experiment artifacts. Omit `--seeds 42` to run the configured seeds 42–51.
-`--shots` and `--seeds` select experiments; selecting a subset for recovery does
-not change the identity of an individual experiment.
+Omit `--seeds 42` to run all ten configured seeds. `--shots` and `--seeds` override
+the configured training sizes and seeds for this invocation. A local real-only
+baseline is evaluated and saved before the first model request.
 
-The default configuration uses 100 real training rows; synthesizes 1,000 rows
-once; and evaluates prefixes of 100, 200, 500 and 1,000 rows. Prefixes within a seed
-are paired, not independent generation runs. Each seed learns its own graph.
-The default evaluation fits XGBoost on **real train + synthetic data** and scores
-it on the held-out test set. A real-only baseline is fitted and saved before
-model requests, which also catches invalid evaluator parameters early.
+The client sends JSON chat-completion requests to the configured `base_url`.
+Each stage's `api_key_env` names the environment variable read at request time;
+the default is `OPENAI_API_KEY`. Configure `base_url`, `model`, and `api_key_env`
+in the YAML file for other endpoints. The endpoint must support the requested
+model and parameters. `.env` files are not loaded automatically, and key values
+are excluded from run identities and request logs.
 
-The shared client sends JSON chat-completion requests to the configured
-`base_url`. The endpoint must support the selected model and request parameters.
-No model or parameter is silently substituted. Each stage's `api_key_env` names
-the environment variable read at request time; it defaults to `OPENAI_API_KEY`,
-set with `export` as shown above. Configure `base_url`, `model` and `api_key_env`
-in the YAML file for other endpoints. `.env` files are not loaded automatically,
-and key values are not stored in run identities or request logs.
-
-The stages can also be run separately:
+To execute individual stages:
 
 ```bash
 structsynth split --config configs/adult.yaml --seeds 42
@@ -89,37 +171,14 @@ structsynth generate --config configs/adult.yaml --seeds 42 --resume
 structsynth evaluate --config configs/adult.yaml --seeds 42 --resume
 ```
 
-The three Python entry scripts live in [`scripts/`](scripts/README.md) and share
-the CLI's configuration and arguments. After installing the package, run them
-from the project root:
+The three entry scripts in [`scripts/`](scripts/README.md) provide the same
+`split`, `discover`, and `generate` stages. Use `--resume` to continue an existing
+experiment across stages. Generation and evaluation are separate commands.
 
-```bash
-python scripts/run_data_split.py --config configs/adult.yaml --seeds 42
-python scripts/run_structure_learning.py --config configs/adult.yaml --seeds 42 --resume
-python scripts/run_data_generation.py --config configs/adult.yaml --seeds 42 --resume
-structsynth evaluate --config configs/adult.yaml --seeds 42 --resume
-```
+### Use another dataset
 
-The scripts map to `split`, `discover` and `generate`, respectively. `generate`
-does not run evaluation. Use `--resume` to continue the same experiment across stages.
-
-## Method and data boundaries
-
-1. Split the original table 80:20, then sample `shot` rows from the training pool.
-   Unused training-pool rows are never passed to either LLM or downstream training.
-   Prompt examples are sampled only from the finite training set.
-2. Ask for source nodes, expand successors by BFS with train-only association
-   evidence, and resolve every elementary cycle. Validate the final DAG.
-3. Generate topological layers conditioned on **all previously generated values**
-   and the local induced subgraph. Complete attributes outside the selected graph
-   last. Selected zero-degree nodes remain graph roots.
-4. Evaluate augmentation utility, mixed-distance nearest-neighbor privacy risk,
-   and pairwise fidelity. Fidelity defaults to the real train-plus-test reference;
-   this reference is used only for evaluation.
-
-Classification splits preserve classes. Regression is selected explicitly via
-`task_type`. Metadata accepts the existing `label_column`/`description` aliases,
-or a schema such as:
+Provide a CSV, a metadata JSON file, and a configuration. Specify the prediction
+task explicitly as `classification` or `regression`. For example:
 
 ```json
 {
@@ -133,121 +192,118 @@ or a schema such as:
 }
 ```
 
-Optional `categories` supplies explicit hard domains. Otherwise, ordinary
-categorical features may take previously unseen values; observed training values
-are hints. Classification targets use a train-only closed label domain. Optional
-`boolean_columns` and `nullable_columns` make these types explicit. Privacy and
-fidelity require finite numeric observations under the paper's definitions;
-evaluation fails before model requests if real numeric data is missing/non-finite.
-Disable evaluation explicitly for a generation-only task that permits such data.
+Metadata also accepts the `label_column` and `description` aliases. Optional
+`categories` defines hard categorical domains; otherwise, ordinary categorical
+features may contain values unseen in the small training set. Classification
+targets use a train-derived closed label domain. `boolean_columns` and
+`nullable_columns` make those types explicit. Privacy and fidelity evaluation
+require finite numerical observations; disable evaluation for generation-only
+tasks that permit missing numerical data.
 
-The Adult and Anxiety historical transformations are explicit `data.cleaning`
-modes. Other data defaults to `none`. See [data/evaluation decisions](docs/decisions_evaluation.md)
-for stratification, prompt balancing, categorical encoding, missing metrics,
-privacy ties and fidelity binning.
+Set `data.cleaning` explicitly when using the Adult or Anxiety transformations;
+other datasets default to `none`. See [data and evaluation notes](docs/decisions_evaluation.md)
+for preprocessing, metric definitions, and unsupported inputs.
 
-## Inspect artifacts and resume
+## Outputs, recovery, and replay
 
-Each experiment is stored under:
+Each experiment writes to:
 
 ```text
-runs/<dataset>/<shot>_shot/seed_<seed>/<identity-prefix>/
-  manifest.json                   inputs, environment, source hash, stages, artifact hashes
-  split.json, schema.json          row provenance and train-derived metadata
+<output_dir>/<dataset>/<shot>_shot/seed_<seed>/<identity-prefix>/
+  manifest.json                    identity, stage status, environment, artifact hashes
+  split.json, schema.json           data provenance and train-derived metadata
   train.csv, test.csv, examples.csv
-  real_baseline.json               local real-only utility baseline
+  real_baseline.json
   graph.json, discovery_events.json
-  discovery_requests.jsonl         durable request reservations and outcomes
-  generation_requests.jsonl        prompts, responses, errors and usage
-  checkpoints/                    per-layer/batch progress and attempt counters
-  synthetic.csv, synthetic.json    full table, with JSON type preservation
-  generation_events.json
-  n100/metrics.json, n100/synthetic.csv, ...
+  discovery_requests.jsonl          discovery requests, responses, and usage
+  generation_requests.jsonl         generation requests, responses, and usage
+  checkpoints/                     generation progress and attempt counts
+  synthetic.csv, synthetic.json     complete generated table
+  n1000/metrics.json, ...           results for each configured synthesis size
   metrics.json, usage.json
-  failure_details.json            diagnostic events when an algorithm fails
 ```
 
-Request logs include the supplied example rows and model responses so that the
-experiment can be audited. Keep them with the run. Completed artifacts and request
-logs are hashed; deleting a started stage's journal cannot reset its request
-budget. An OS lock prevents two processes from writing the same run. Atomic
-checkpoints preserve completed rows and consumed attempts across interruption.
+The included configuration sets `output_dir` to `runs/` in the project root.
+`--resume` verifies configuration, inputs, source code, dependency versions, and
+saved artifacts. Changes to data, method settings, code, or dependencies create
+a new run directory. Generation resumes verified batches; interrupted discovery
+restarts graph induction with its existing request budget. Request logs contain
+prompt examples and responses, and must remain with the run for recovery or replay.
 
-`--resume` verifies the configuration, inputs, source code, dependency versions
-and completed artifacts. Changes produce a distinct run identity. Generation
-resumes verified batches; interrupted discovery restarts induction using the
-existing request budget. It does not currently resume a partially constructed
-graph. Retry exhaustion remains exhaustion after restarting.
+`request_limit` bounds attempted API calls, including transport retries. An
+optional `token_limit` stops subsequent calls once reported usage reaches the
+limit; an in-flight response can exceed it. Unknown usage remains unknown.
 
-`request_limit` bounds attempted API calls including transport retries.
-`token_limit`, when supplied, stops future calls after reported usage reaches the
-limit; a response or concurrent in-flight responses can cross it. Missing token
-usage is recorded as unknown, never zero, and prevents further token-limited
-calls. `usage.json` distinguishes API attempts from offline replay.
-
-## Replay and summarize
-
-To replay a completed run with the same input/configuration and prompt protocol:
+To replay a completed run without model requests, select one shot and seed and
+provide its source journals:
 
 ```bash
 structsynth run --config configs/adult.yaml --shots 100 --seeds 42 \
-  --replay-dir runs/adult/100_shot/seed_42/<source-run-id>
+  --replay-dir 'runs/adult/100_shot/seed_42/<source-run-id>'
 ```
 
-Replay never calls the network. It is identified separately by the source journal
-hashes and records zero new API consumption; original usage stays in `source_usage`
-inside its journal. Missing or mismatching recorded requests fail explicitly.
-Choose exactly one shot and seed for each pair of source journals. A remote seed
-does not imply deterministic LLM output; replay reproduces recorded responses.
+Replay requires matching inputs, configuration, and prompt protocol. It records
+zero new API consumption and preserves original usage separately. Saved responses
+support exact replay; a remote model's seed alone does not guarantee determinism.
 
-Full experiment runs write JSON/CSV summaries beneath `runs/summaries/`.
-To summarize selected run directories independently:
+Complete experiment runs write summaries beneath `<output_dir>/summaries/`.
+To aggregate selected run directories independently:
 
 ```bash
-structsynth report --run-dirs <run-directory-1> <run-directory-2> \
+structsynth report --run-dirs '<run-directory-1>' '<run-directory-2>' \
   --output-dir runs/review
 ```
 
-Compatible seeds are combined using a mean and sample standard deviation.
-Missing/undefined metrics and duplicate seeds are reported explicitly; unrelated
-models, inputs, protocols, code/environment versions and offline/live backends
-are kept in separate groups. One seed has no estimated standard deviation.
+Reports group compatible experiments and compute means and sample standard
+deviations across seeds. Missing metrics and conflicting duplicate seeds are
+reported explicitly. Offline, replay, and live results are kept in separate groups.
+Metrics are stored in their original units. The Table 1 scores reproduced above
+display AUC and R² multiplied by 100.
 
-## Project layout
+## Development
 
-```text
-StructSynth-Code/
-  configs/                  example experiment configurations
-  data/adult/               sample dataset and metadata
-  docs/                     method and implementation notes
-  scripts/                  Python entry scripts for individual stages
-  src/structsynth/           installable package
-  tests/                    offline regression tests
-  pyproject.toml            dependencies, CLI, wheel and development-tool settings
-  MANIFEST.in               additional files for the source distribution
+```bash
+python -m pip install -e '.[dev,evaluation]'
+python -m pytest -q
+ruff check src tests scripts
+python -m build
 ```
 
-The package is organized by responsibility:
+The tests use local responses and transports and do not call a model API.
+CI also runs an offline XGBoost demo, checks resumption, and builds both release
+formats. [`MANIFEST.in`](MANIFEST.in) includes scripts, configurations, method
+notes, tests, and Adult inputs in the source distribution. The wheel contains the
+package, its reading guide, and the `structsynth` command.
 
-| Module | Responsibility |
-|---|---|
-| `schema.py`, `config.py`, `artifacts.py` | Shared data/configuration contracts and atomic storage |
-| `data/` | Loading, validation, train-only metadata and sampling |
-| `structure/` | Association evidence, dependency DAGs, induction and prompts |
-| `generation/` | Planning, prompts, validation, checkpoints and synthesis orchestration |
-| `llm/` | Request/response contracts, provider client, accounting and replay |
-| `evaluation/` | Preprocessing, utility/privacy/fidelity metrics and multi-seed reports |
-| `pipeline/`, `cli.py`, `demo.py` | Experiment identity, stages, commands and offline verification |
+```text
+configs/                  experiment configurations
+data/adult/               example CSV and metadata
+docs/                     method and implementation notes
+scripts/                  entry scripts for individual stages
+src/structsynth/
+  data/                   loading, validation, metadata, and sampling
+  structure/              association evidence, DAGs, induction, and prompts
+  generation/             planning, prompts, validation, checkpoints, and synthesis
+  llm/                    provider client, accounting, and replay
+  evaluation/             utility, privacy, fidelity, and multi-seed reports
+  pipeline/               experiment identity and stage orchestration
+tests/                    offline regression tests
+```
 
-See [the package reading and maintenance guide](src/structsynth/README.md) for the
-module map, dependency direction and where to make each kind of change.
-Existing public imports remain available; root-level `graph.py`, `associations.py`,
-`discovery.py` and `reporting.py` are compatibility exports.
-
-Run `python -m build` to create a wheel and source distribution. CI runs lint,
-tests, an offline XGBoost demo and package builds. [`MANIFEST.in`](MANIFEST.in)
-adds the stage scripts, example configuration, Adult data, method notes and tests
-to the source distribution. `pyproject.toml` selects the `structsynth` package
-and its reading guide for the wheel, and defines the `structsynth` command.
-Generated runs, build output, caches and local environments are excluded from Git
+Shared contracts live in `schema.py`, `config.py`, and `artifacts.py`; commands
+enter through `cli.py`. The [package guide](src/structsynth/README.md) explains
+the reading order, dependency direction, and where to make each kind of change.
+Generated runs, build output, caches, and local environments are excluded from Git
 and release packages.
+
+## Citation
+
+If you use StructSynth, please cite the accompanying paper:
+
+```bibtex
+@misc{structsynth,
+  title = {StructSynth: Dependency Graphs as Generation Plans for Low-Data Tabular Synthesis with Language Models},
+  author = {Liu, Siyi and Zheng, Yujia and Li, Haoyang and Zhang, Yongqi},
+  note = {Manuscript}
+}
+```
